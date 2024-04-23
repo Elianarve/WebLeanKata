@@ -7,7 +7,19 @@ const Register = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: {errors} } = useForm();
 
-
+    // const onSubmit = async (data) =>{
+    //     try {
+    //         const response = await registerUser(data);
+    //         console.log(response)
+    //         const {token, rol} = response.sesiondata;
+    //         localStorage.setItem('token', token);
+    //         localStorage.setItem('rol', rol);
+    //         alert('Usuario creado correctamente ')
+    //         navigate('/');
+    //     } catch (error) {
+    //         console.error(error)
+    //     }
+    //   }
 
   return (
     <>
