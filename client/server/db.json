@@ -1,0 +1,25 @@
+{
+    "users": [
+      {
+        "name": "name",
+        "email": "mail@correo.com",
+        "password": "password",
+        "confirmPassword": "password",
+        "id": "1"
+      },
+      {
+        "id": "e553",
+        "name":"name",
+        "email": "algo@gmail.com",
+        "password": "QQQQQQ2",
+        "confirmPassword": "QQQQQQ2"
+      },
+      {
+        "id": "926b",
+        "name": "name2",
+        "email": "unemail@gmail.com",
+        "password": "ZZZZ11",
+        "confirmPassword": "ZZZZ11"
+      }
+    ]
+}
