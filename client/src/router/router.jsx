@@ -1,36 +1,35 @@
 import { createBrowserRouter } from "react-router-dom";
-import LayoutPublic from "../layout/LayoutPublic";
-import LayoutPrivate from "../layout/LayoutPrivate";
-import Login from "../pages/Login";
+import LayoutPublic from "../components/layout";
+import Home from "../components/home/Home";
+import NewItem from "../components/newitem/NewItem";
+import Edit from "../components/edit/Edit";
+import Card from "../components/card/Card";
 
 
-export default createBrowserRouter([
+export const router = createBrowserRouter([
+  {
+      path: "/",
+      element: <LayoutPublic />,
+      children: [
     {
-        path: "/",
-        element: <LayoutPublic />,
-        children: [
-            { 
-                path: "login", 
-                element: <Login /> 
-            },
-            { 
-                path: "register",
-                element: <Register /> 
-            },
-        ],
+      path: "/",
+      element: <Home/>,
+    },
+
+    {
+      path: "/NewItem",
+      element: <NewItem/>,
     },
     {
-        path: "/chatbot/id_user",
-        element: <LayoutPrivate />,
-        children: [
-            { 
-                path: "chatbot/:id_user",
-                element: <Dashboard /> 
-            },
-            { path: "settings/id_user",
-              element: <Settings /> 
-            },
-        ],
+      path: "/Edit/:id",
+      element: <Edit/>
     },
-]);
+    {
+      path: "/card/:id",
+      element: <Card/>
+    }
+  ],
+  }
+  ]);
 
+export default router;
