@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getOneReto } from '../../services/Retoservice'; 
-import SelectAllRetos from '../selectall/selectAllRetos';
+import SelectAllRetos from '../../components/selectall/selectAllRetos';
 
 const Card = () => {
   const { id } = useParams();

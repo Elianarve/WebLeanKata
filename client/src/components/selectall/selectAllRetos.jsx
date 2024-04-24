@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getRetos } from "../../services/service";
+import { getRetos } from "../../services/Retoservice";
 import { useNavigate } from 'react-router-dom';
 
 const SelectAllRetos = () => {

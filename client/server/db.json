@@ -32,12 +32,13 @@
       "estado": "En espera",
       "objetivo": "Mejorar la seguridad de la aplicación",
       "obstaculo": "Garantizar la precisión y la confiabilidad de la autenticación biométrica",
-      "experimento": "Integración de tecnologías biométricas y pruebas de precisión",
+      "experimento": "2",
       "hipotesis": "La autenticación biométrica proporcionará un nivel adicional de seguridad",
       "descripcion": "Desarrollar e implementar un sistema de autenticación biométrica que utilice características únicas del usuario, como huellas dactilares o reconocimiento facial",
       "metodologia": "Colaboración con expertos en seguridad, pruebas rigurosas de precisión y seguridad",
       "grupo_de_control": "Usuarios que seguirán utilizando la autenticación tradicional basada en contraseñas",
-      "criterios_de_exito": "Reducción en los intentos de acceso no autorizados, aumento en la confianza de los usuarios en la seguridad del sistema"
+      "criterios_de_exito": "Reducción en los intentos de acceso no autorizados, aumento en la confianza de los usuarios en la seguridad del sistema",
+      "image": "https://res.cloudinary.com/dlg7gpmha/image/upload/v1713973078/bicyclesmuseum/o8hhkthm9g6l8wohk0ll.png"
     },
     {
       "id": "15b8",
@@ -52,6 +53,20 @@
       "grupo_de_control": "prueba ",
       "criterios_de_exito": "prueba",
       "image": "https://res.cloudinary.com/dlg7gpmha/image/upload/v1713963183/bicyclesmuseum/nebtenfpxqofvuba6fra.png"
+    },
+    {
+      "id": "b3cd",
+      "name": "Primer reto editado <3",
+      "estado": "hola",
+      "objetivo": "prueba",
+      "obstaculo": "prueba",
+      "experimento": "1",
+      "hipotesis": "prueba",
+      "descripcion": "prueba",
+      "metodologia": "prueba",
+      "grupo_de_control": "prueba ",
+      "criterios_de_exito": "prueba",
+      "image": "https://res.cloudinary.com/dlg7gpmha/image/upload/v1713973184/bicyclesmuseum/p43bgtxbqtdcrdrzbnx1.png"
     }
   ]
 }
