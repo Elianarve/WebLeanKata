@@ -70,8 +70,6 @@ export const updateItem = async (id, newData) => {
   }
 };
 
-//Método GET para una bicicleta
-
 //Método GET
 export const getOneReto = async (id) => {
   try {

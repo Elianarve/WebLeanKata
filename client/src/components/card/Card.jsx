@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getOneReto } from '../../services/service'; 
+import { getOneReto } from '../../services/Retoservice'; 
 import SelectAllRetos from '../selectall/selectAllRetos';
 
 const Card = () => {

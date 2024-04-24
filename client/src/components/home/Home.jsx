@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getRetos } from '../../services/service'; 
+import { getRetos } from '../../services/Retoservice'; 
 import styled from 'styled-components';
 
 const HomeContainer = styled.div`

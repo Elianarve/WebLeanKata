@@ -1,13 +1,12 @@
 import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import { addReto, uploadImage } from '../../services/service';
+import { addReto, uploadImage } from '../../services/Retoservice';
 
 
 
 const NewItem = () => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const audioRef = useRef(null);
   const [imageUrl, setImageUrl] = useState("");
 
 
