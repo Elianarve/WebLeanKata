@@ -70,9 +70,9 @@ export const updateItem = async (id, newData) => {
   }
 };
 
-//Método GET para una bicicleta
 
-//Método GET
+
+//Método GET por Id
 export const getOneReto = async (id) => {
   try {
     const response = await fetch(`http://localhost:3000/retos/${id}`);

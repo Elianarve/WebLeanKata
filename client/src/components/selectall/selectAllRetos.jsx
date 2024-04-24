@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getRetos } from "../../services/service";
+import { getRetos, getOneReto } from "../../services/service";
 import { useNavigate } from 'react-router-dom';
 
 const SelectAllRetos = () => {
@@ -18,10 +18,16 @@ const SelectAllRetos = () => {
   
       fetchRetos();
     }, []);
+
+    const handleChange = (event) => {
+      const retoId = event.target.value;
+      navigate(`/card/${retoId}`);
+    };
+
   return (
-      <select>
-{retos.map((reto) => (
-  <option key={reto.id} value={reto.id} onClick={() => navigate(`/card/${reto.id}`)}>
+      <select onChange={handleChange}>
+      {retos.map((reto) => (
+    <option key={reto.id} value={reto.id}>
     {reto.name} 
     </option>
 ))}
@@ -29,7 +35,7 @@ const SelectAllRetos = () => {
   )
 }
 
-export default SelectAllRetos
+export default SelectAllRetos;
 
 
 
