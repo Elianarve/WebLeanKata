@@ -107,12 +107,6 @@ const Edit = () => {
         <input type="file" {...register('image', { required: true })} />
         {errors.image && <p className="error-message">Por favor adjunta una imagen</p>}
       </div>
-      <button className="edit-button" onClick={() => navigate(`/Edit/${reto.id}`)}>
-        <img src="src\assets\img\Edit.png" alt="Editar" />
-              </button>
-          <button className="delete-button" onClick={() => { const confirmDelete = window.confirm('¿Deseas eliminar esta bicicleta?'); if (confirmDelete) { handleDelete(bicycle.id, bicycle.image); navigate(0)}}}>
-                <img src="src\assets\img\Delete.png" alt="Eliminar"/>
-          </button>
     </form>
     
   );

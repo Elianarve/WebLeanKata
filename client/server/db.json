@@ -29,7 +29,7 @@
     {
       "id": "3",
       "name": "Implementación de un sistema de autenticación biométrica",
-      "estado": "En espera",
+      "estado": "terminado <3",
       "objetivo": "Mejorar la seguridad de la aplicación",
       "obstaculo": "Garantizar la precisión y la confiabilidad de la autenticación biométrica",
       "experimento": "2",
@@ -38,7 +38,7 @@
       "metodologia": "Colaboración con expertos en seguridad, pruebas rigurosas de precisión y seguridad",
       "grupo_de_control": "Usuarios que seguirán utilizando la autenticación tradicional basada en contraseñas",
       "criterios_de_exito": "Reducción en los intentos de acceso no autorizados, aumento en la confianza de los usuarios en la seguridad del sistema",
-      "image": "https://res.cloudinary.com/dlg7gpmha/image/upload/v1713973078/bicyclesmuseum/o8hhkthm9g6l8wohk0ll.png"
+      "image": "https://res.cloudinary.com/dlg7gpmha/image/upload/v1713977895/bicyclesmuseum/h3hzxpfzqi6xrmnxc7la.png"
     },
     {
       "id": "15b8",
@@ -67,6 +67,20 @@
       "grupo_de_control": "prueba ",
       "criterios_de_exito": "prueba",
       "image": "https://res.cloudinary.com/dlg7gpmha/image/upload/v1713973184/bicyclesmuseum/p43bgtxbqtdcrdrzbnx1.png"
+    },
+    {
+      "id": "d0ed",
+      "name": "Rookie",
+      "estado": "hola",
+      "objetivo": "prueba",
+      "obstaculo": "prueba",
+      "experimento": "1",
+      "hipotesis": "prueba",
+      "descripcion": "prueba",
+      "metodologia": "prueba",
+      "grupo_de_control": "prueba ",
+      "criterios_de_exito": "prueba",
+      "image": "https://res.cloudinary.com/dlg7gpmha/image/upload/v1713977964/bicyclesmuseum/q0yxlxsjc0mq88ldplpu.png"
     }
   ]
 }

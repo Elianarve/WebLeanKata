@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getOneReto } from '../../services/Retoservice'; 
 import SelectAllRetos from '../../components/selectall/selectAllRetos';
+
 
 const Card = () => {
   const { id } = useParams();
   const [reto, setReto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchReto = async () => {
@@ -48,6 +50,12 @@ const Card = () => {
       <p>Metodología: {reto.metodologia}</p>
       <p>Grupo de control: {reto.grupo_de_control}</p>
       <p>Criterios de éxito: {reto.criterios_de_exito}</p>
+      <button className="edit-button" onClick={() => navigate(`/Edit/${reto.id}`)}>
+        <img src="src\assets\img\Edit.png" alt="Editar" />
+              </button>
+          <button className="delete-button" onClick={() => { const confirmDelete = window.confirm('¿Deseas eliminar esta bicicleta?'); if (confirmDelete) { handleDelete(bicycle.id, bicycle.image); navigate(0)}}}>
+                <img src="src\assets\img\Delete.png" alt="Eliminar"/>
+          </button>
     </div>
   );
 };

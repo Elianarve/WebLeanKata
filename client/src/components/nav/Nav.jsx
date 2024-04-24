@@ -26,7 +26,7 @@ const Nav = () => {
       <p>LEANKATA</p>
       <StyledLink to="/NewItem">Proyecto-retos</StyledLink>
       <StyledLink to="/">INICIO</StyledLink>
-      <StyledLink to="/card">Tablero-Principal</StyledLink>
+      <StyledLink to="/Edit/:id">Tablero-Principal</StyledLink>
 
     </StyledNav>
   );
