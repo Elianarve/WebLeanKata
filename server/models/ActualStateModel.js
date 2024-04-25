@@ -3,7 +3,7 @@ import connection_db from "../database/connection_db.js";
 
 const ActualStateModel = connection_db.define('actualstate', { 
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         autoIncrement: true,
         primaryKey: true,
     },

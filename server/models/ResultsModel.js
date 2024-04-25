@@ -4,7 +4,7 @@ import ExperimentModel from "./ExperimentModel.js";
 
 const ResultsModel = connection_db.define('result', {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         autoIncrement: true,
         primaryKey: true,
     },

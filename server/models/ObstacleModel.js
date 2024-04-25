@@ -4,7 +4,7 @@ import TargetStateModel from "./TargetStateModel.js";
 
 const ObstacleModel = connection_db.define('obstacle', { 
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         autoIncrement: true,
         primaryKey: true,
     },

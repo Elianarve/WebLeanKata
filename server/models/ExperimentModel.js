@@ -4,7 +4,7 @@ import HypothesisModel from "./HypothesisModel.js";
 
 const ExperimentModel = connection_db.define('experiment', {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         autoIncrement: true,
         primaryKey: true,
     },

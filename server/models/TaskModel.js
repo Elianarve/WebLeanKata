@@ -4,7 +4,7 @@ import ExperimentModel from "./ExperimentModel.js";
 
 const TaskModel = connection_db.define('task', {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         autoIncrement: true,
         primaryKey: true,
     },

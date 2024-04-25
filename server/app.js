@@ -15,7 +15,6 @@ import ResultsModel from "./models/ResultsModel.js";
 import TargetStateModel from "./models/TargetStateModel.js";
 import TaskModel from './models/TaskModel.js';
 
-
 const app = express();
 
 app.use(cors());
