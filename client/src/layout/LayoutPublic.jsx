@@ -1,13 +1,15 @@
-import { Outlet } from "react-router-dom";
-import { Nav } from "../components/Nav";
-import { Footer } from "../components/Footer";
+// import Navbar from '../components/Navbar/Navbar'
+// import Footer from '../components/Footer/Footer'
+import { Outlet } from 'react-router-dom'
 
- export const LayoutPublic = () => {
-    return (
-        <>
-        <Nav/>
+const LayoutPublic = () => {
+  return (
+    <>
+        {/* <Navbar /> */}
         <Outlet />
-        <Footer/>
-        </>
-    )
+        {/* <Footer /> */}
+    </>
+  )
 }
+
+export default LayoutPublic
