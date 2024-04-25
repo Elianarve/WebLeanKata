@@ -4,8 +4,9 @@ import connection_db from "../database/connection_db.js";
 const ActualStateModel = connection_db.define('actualstate', { 
     id: {
         type: DataTypes.STRING,
-        autoIncrement: true,
+        // autoIncrement: true,
         primaryKey: true,
+        onDelete: 'CASCADE'
     },
     description: { 
         type: DataTypes.TEXT,
@@ -19,6 +20,5 @@ const ActualStateModel = connection_db.define('actualstate', {
     tableName: 'actualstates',
     timestamps: false
 });
-
 
 export default ActualStateModel;

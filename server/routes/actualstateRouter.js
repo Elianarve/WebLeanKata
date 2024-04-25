@@ -1,9 +1,9 @@
 import express from 'express';
-import { getAllActualState, addActualState } from '../controllers/ActualStateController.js';
+import { getActualState, addActualState } from '../controllers/ActualStateController.js';
 
 const router = express.Router();
 
-router.get('/', getAllActualState);
+router.get('/', getActualState);
 
 router.post('/', addActualState);
 

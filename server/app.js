@@ -30,8 +30,8 @@ try {
 
     // connection_db.sync();
 
-    await ChallengeModel.sync();
     await ActualStateModel.sync();
+    await ChallengeModel.sync();
     await ExperimentModel.sync();
     await HypothesisModel.sync();
     await LearningsModel.sync();
