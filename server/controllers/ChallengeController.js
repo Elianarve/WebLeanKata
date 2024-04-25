@@ -11,7 +11,16 @@ export const getChallenge = async (request, response) =>{
 
 export const addChallenge = async (req, res) => {
     try {
-        const addChallenge = await ChallengeModel.create(req.body);
+        let count = 1;
+        const idChallenge = await ChallengeModel.findOne({}, { sort: { 'created' : -1 } });
+        if (idChallenge) {
+            const numberId = parseInt(idChallenge.id.slice(1));
+            count = numberId + 1;
+        }
+        const formatted_Id = 'R' + String(count).padStart(3, '0');
+
+        const addChallenge = await ChallengeModel.create({ ...req.body, id: formatted_Id });
+        // const addChallenge = await ChallengeModel.create(req.body);
         res.status(201).json(addChallenge);
     }catch(error){
         return res.status(500).send({ error: 'Internal Server Error' });

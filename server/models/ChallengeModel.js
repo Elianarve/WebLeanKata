@@ -5,7 +5,7 @@ import ActualStateModel from "./ActualStateModel.js";
 const ChallengeModel = connection_db.define('challenges', {
     id: {
         type: DataTypes.STRING,
-        autoIncrement: true,
+        // autoIncrement: true,
         primaryKey: true,
         onDelete: 'CASCADE'
     },
