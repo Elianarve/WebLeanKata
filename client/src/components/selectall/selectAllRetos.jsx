@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getRetos, getOneReto } from "../../services/Retoservice";
 import { useNavigate } from 'react-router-dom';
 
+
 const SelectAllRetos = () => {
     const [retos, setRetos] = useState([]);
     const navigate = useNavigate();
@@ -25,13 +26,13 @@ const SelectAllRetos = () => {
     };
 
   return (
-      <select onChange={handleChange}>
+    <select value={reto.id} onChange={handleChange}>
       {retos.map((reto) => (
-    <option key={reto.id} value={reto.id}>
-    {reto.name} 
-    </option>
-))}
-</select>
+        <option key={reto.id} value={reto.id}>
+          {reto.name} 
+        </option>
+      ))}
+    </select>
   )
 }
 
