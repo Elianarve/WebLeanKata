@@ -1,53 +1,35 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from '../pages/Home';
-import GalleryNews from '../pages/GalleryNews'
-import AddNews from '../pages/AddNews'
-import News from '../pages/News'
-import Register from '../pages/Register'
-import LayoutPublic from '../layout/LayoutPublic'
-import UpdateNews from '../pages/UpdateNews'
-import LayoutPrivate from "../layout/LayoutPrivate";
-import { getNews } from "../services/newsServices";
+import LayoutPublic from "../components/layout";
+import Home from "../components/home/Home";
+import NewItem from "../components/newitem/NewItem";
+import Edit from "../components/edit/Edit";
+import Card from "../components/card/Card";
 
-const router = createBrowserRouter([
+
+export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <LayoutPublic />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/news",
-        element: <LayoutPrivate />,
-        children: [
-          {
-            index: true,
-            element: <GalleryNews />,
-            loader: getNews
-          },
-          {
-            path: "/news/add",
-            element: <AddNews />,
-          },
-          {
-            path: "/news/:id",
-            element: <News />,
-          },
-          {
-            path: "/news/:id/update",
-            element: <UpdateNews />,
-          }
-        ]
-      }
-    ]
+      path: "/",
+      element: <LayoutPublic />,
+      children: [
+    {
+      path: "/",
+      element: <Home/>,
+    },
+
+    {
+      path: "/NewItem",
+      element: <NewItem/>,
+    },
+    {
+      path: "/Edit/:id",
+      element: <Edit/>
+    },
+    {
+      path: "/card/:id",
+      element: <Card/>
+    }
+  ],
   }
-]);
+  ]);
 
 export default router;
-

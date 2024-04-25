@@ -1,65 +1,12 @@
-<!-- <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot con Dialogflow</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<div class="chat-container">
-    <div id="chat-box"></div>
-    <input type="text" id="user-input" placeholder="Escribe aquí...">
-    <button onclick="sendMessage()">Enviar</button>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
-<script src="https://www.gstatic.com/dialogflow-console/fast/messenger-cx/bootstrap.js?v=1"></script>
-<script src="script.js"></script>
-
-</body>
-</html> -->
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="img/png" href="/src/assets/react.svg" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LEANKATA</title>
+    <title>LeanKATA</title>
   </head>
-  <body>
-    return (
-      <div className="login-container">
-          <div className="login-form-container">
-              <form onSubmit={handleSubmit(handleLogin)} className="login-form">
-                  <div className="login-form-header">
-                      <h2 className="login-form-title">Inicio de sesión</h2>
-                  </div>
-                  <div className="login-form-input">
-                      <input id="email" autoComplete="on" type='email' placeholder='Email' {...register('email', { required: true })} className="login-input" />
-                      {errors.email && <p className="login-error-message">El email no puede estar vacío</p>}
-                  </div>
-                  <div className="login-form-input">
-                      <input id="password" type={showPassword ? 'text' : 'password'} name="password" placeholder="Contraseña" {...register('password', { required: true })} className="login-input" />
-                      <button type="button" id="togglePassword" className="login-toggle-password" onClick={togglePasswordVisibility}>
-                          {showPassword ? 'Ocultar' : 'Mostrar'}
-                      </button>
-                      {errors.password && <p className="login-error-message">La contraseña no puede estar vacía</p>}
-                  </div>
-                  <div className="login-form-submit">
-                      <button type="submit" className="login-button">
-                          Iniciar Sesión
-                      </button>
-                  </div>
-              </form>
-              <button onClick={() => navigate("/register")} className="register-button">
-                  Registro nuevos usuarios
-              </button>
-          </div>
-      </div>
-  );
+  <body style="margin:0">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

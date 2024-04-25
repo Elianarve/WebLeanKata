@@ -1,13 +1,11 @@
-// main.js
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { RouterProvider } from 'react-router-dom';
+import router from './router/router.jsx';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app'; // Importa el componente principal de la aplicación
-
-// Renderiza el componente principal dentro del elemento con el id 'root' en el DOM
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
   document.getElementById('root')
 );

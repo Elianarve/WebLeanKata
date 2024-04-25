@@ -18,3 +18,4 @@ const Home = ({ isAuthenticated }) => {
 };
 
 export default Home;
+
