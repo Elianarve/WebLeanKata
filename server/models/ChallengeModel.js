@@ -1,12 +1,13 @@
 import { DataTypes } from "sequelize";
-import connection_db from "../database/connection_db";
-import ActualStateModel from "./ActualStateModel";
+import connection_db from "../database/connection_db.js";
+import ActualStateModel from "./ActualStateModel.js";
 
-const ChallengeModel = connection_db.define('Challenge', {
+const ChallengeModel = connection_db.define('challenges', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
+        onDelete: 'CASCADE'
     },
     name: { 
         type: DataTypes.STRING,
@@ -25,16 +26,18 @@ const ChallengeModel = connection_db.define('Challenge', {
         allowNull: false,
          },
       actual_state_id: {
-        type: DataTypes.INTEGER, 
+        type: DataTypes.INTEGER,
+        unique: true, 
         allowNull: false,
         references: {
             model: ActualStateModel,
             key: 'id' 
         } 
        },     
-  });
-
-ChallengeModel.hasOne(ActualStateModel, { foreignKey: 'actual_state_id' });
-
+  },{
+    tableName: 'challenges',
+    timestamps: false
+});
 
 export default ChallengeModel;
+

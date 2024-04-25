@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
-import connection_db from "../database/connection_db";
-import TargetStateModel from "./TargetStateModel";
+import connection_db from "../database/connection_db.js";
+import TargetStateModel from "./TargetStateModel.js";
 
-const MentalContrastModel = connection_db.define('MentalContrast', {
+const MentalContrastModel = connection_db.define('mentalContrast', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -12,25 +12,25 @@ const MentalContrastModel = connection_db.define('MentalContrast', {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-            min: 1, // Valor mínimo permitido
+            min: 1, 
             max: 10
         }
     },
     target_state_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        unique: true,
         references: {
             model: TargetStateModel,
             key: 'id' 
         } 
-    },
-    date: {
-        type: DataTypes.DATEONLY,
-        allowNull: false,
     }
+},{
+    tableName: 'mentalContrasts',
+    timestamps: false
 });
 
-MentalContrastModel.hasOne(TargetStateModel, { foreignKey: 'target_state_id' });
+// TargetStateModel.hasOne(MentalContrastModel, { foreignKey: 'target_state_id' });
 
 
 export default MentalContrastModel;

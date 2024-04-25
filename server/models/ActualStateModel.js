@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
-import connection_db from "../database/connection_db";
+import connection_db from "../database/connection_db.js";
 
-const ActualStateModeleModel = connection_db.define('ActualState', { 
+const ActualStateModel = connection_db.define('actualstate', { 
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -15,6 +15,10 @@ const ActualStateModeleModel = connection_db.define('ActualState', {
         type: DataTypes.DATEONLY,
         allowNull: false,
     }
+},{
+    tableName: 'actualstates',
+    timestamps: false
 });
 
-export default ActualStateModeleModel;
+
+export default ActualStateModel;

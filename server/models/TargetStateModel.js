@@ -1,16 +1,12 @@
 import { DataTypes } from "sequelize";
-import connection_db from "../database/connection_db";
-import ChallengeModel from "./ChallengeModel";
+import connection_db from "../database/connection_db.js";
+import ChallengeModel from "./ChallengeModel.js";
 
-const TargetStateModel = connection_db.define('TargetState', { 
+const TargetStateModel = connection_db.define('targetstate', { 
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-    },
-    name: { 
-        type: DataTypes.STRING,
-        allowNull: false
     },
     description: { 
         type: DataTypes.TEXT,
@@ -27,9 +23,16 @@ const TargetStateModel = connection_db.define('TargetState', {
             model: ChallengeModel,
             key: 'id' 
         } 
-    }    
+    },
+    start_date: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+    },    
+},{
+    tableName: 'targetstates',
+    timestamps: false
 });
 
-ChallengeModel.hasMany(TargetStateModel, { foreingKey: 'challenge_id' });
+// ChallengeModel.hasMany(TargetStateModel, { foreingKey: 'challenge_id' });
 
 export default TargetStateModel;

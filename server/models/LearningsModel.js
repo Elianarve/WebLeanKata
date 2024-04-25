@@ -1,18 +1,19 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
-import ObstacleModel from "./ObstacleModel.js";
+import ResultsModel from "./ResultsModel.js";
 
-const HypothesisModel = connection_db.define('hypothesis', {
+const LearningModel = connection_db.define('learning', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
-    obstacle_id: {
+    results_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        unique: true,
         references: {
-            model: ObstacleModel,
+            model: ResultsModel,
             key: 'id' 
         } 
     },
@@ -20,19 +21,15 @@ const HypothesisModel = connection_db.define('hypothesis', {
         type: DataTypes.TEXT,
         allowNull: false
         },
-    date: {
+    learning_date: {
         type: DataTypes.DATEONLY,
         allowNull: false,
-    },
-    state_hipothesis: {
-        type: DataTypes.TEXT,
-        allowNull: false
-    }    
- },{
-    tableName: 'hypothesis',
+    },    
+},{
+    tableName: 'learnings',
     timestamps: false
 });
 
-// ObstacleModel.hasMany(HypothesisModel, { foreingKey: 'obstacle_id' });
+// ResultsModel.hasOne(LearningModel, { foreignKey: 'results_id' });
 
- export default HypothesisModel;
+export default LearningModel;
