@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getOneReto } from '../../services/Retoservice'; 
 import SelectAllRetos from '../../components/selectall/selectAllRetos';
+// import { handleDelete } from '../../services/Retoservice';
 
 
 const Card = () => {
@@ -53,9 +54,9 @@ const Card = () => {
       <button className="edit-button" onClick={() => navigate(`/Edit/${reto.id}`)}>
         <img src="src\assets\img\Edit.png" alt="Editar" />
               </button>
-          <button className="delete-button" onClick={() => { const confirmDelete = window.confirm('¿Deseas eliminar esta bicicleta?'); if (confirmDelete) { handleDelete(bicycle.id, bicycle.image); navigate(0)}}}>
+          {/* <button className="delete-button" onClick={() => { const confirmDelete = window.confirm('¿Deseas eliminar este reto?'); if (confirmDelete) { handleDelete(reto.id, reto.image); navigate(`/`)}}}>
                 <img src="src\assets\img\Delete.png" alt="Eliminar"/>
-          </button>
+          </button> */}
     </div>
   );
 };
