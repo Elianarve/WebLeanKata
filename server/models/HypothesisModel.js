@@ -5,7 +5,6 @@ import ObstacleModel from "./ObstacleModel.js";
 const HypothesisModel = connection_db.define('hypothesis', {
     id: {
         type: DataTypes.STRING,
-        // autoIncrement: true,
         primaryKey: true,
     },
     obstacle_id: {

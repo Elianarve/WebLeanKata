@@ -5,8 +5,8 @@ import HypothesisModel from "./HypothesisModel.js";
 const ExperimentModel = connection_db.define('experiment', {
     id: {
         type: DataTypes.STRING,
-        // autoIncrement: true,
         primaryKey: true,
+        onDelete: 'CASCADE'
     },
     hiphotesis_id: {
         type: DataTypes.STRING,

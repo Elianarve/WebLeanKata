@@ -16,6 +16,10 @@ const MentalContrastModel = connection_db.define('mentalContrast', {
             max: 10
         }
     },
+    evaluation_date: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+    },
     target_state_id: {
         type: DataTypes.STRING,
         allowNull: false,

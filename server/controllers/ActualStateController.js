@@ -2,8 +2,8 @@ import ActualStateModel from "../models/ActualStateModel.js";
 
 export const getActualState = async (request, response) =>{
     try {
-        const actualstate = await ActualStateModel.findAll();
-        response.status(200).json(actualstate);
+        const actualState = await ActualStateModel.findAll();
+        response.status(200).json(actualState);
     } catch(error) {
         response.status(500).json({message: error.message});
     }
