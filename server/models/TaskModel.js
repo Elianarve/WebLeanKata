@@ -6,10 +6,12 @@ const TaskModel = connection_db.define('task', {
     id: {
         type: DataTypes.STRING,
         primaryKey: true,
+        onDelete: 'CASCADE'
     },
     experiment_id: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         references: {
             model: ExperimentModel,
             key: 'id' 

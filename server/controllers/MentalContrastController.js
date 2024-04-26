@@ -21,8 +21,8 @@ export const addMentalContrast = async (req, res) => {
             count = numberId + 1;
         } 
         const formatted_Id = 'CM' + count.toString().padStart(3, '0');
-        const mentalContrast = await TargetStateModel.findOne(); 
-        const mentalContrastId = mentalContrast.id;
+        const targetState = await TargetStateModel.findOne(); 
+        const mentalContrastId = targetState.id;
       
         const addContrastMental = await MentalContrast.create({  id: formatted_Id, target_state_id: mentalContrastId, ...req.body });
         res.status(201).json(addContrastMental);

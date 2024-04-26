@@ -22,8 +22,8 @@ export const addTask = async (req, res) => {
         } 
         const formatted_Id = 'T' + count.toString().padStart(3, '0');
 
-        const task = await ExperimentModel.findOne(); 
-        const taskId = task.id;
+        const experimentId = await ExperimentModel.findOne(); 
+        const taskId = experimentId.id;
       
         const addTask = await TaskModel.create({  id: formatted_Id, experiment_id: taskId, ...req.body });
         res.status(201).json(addTask);

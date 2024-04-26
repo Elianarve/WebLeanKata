@@ -5,8 +5,8 @@ import ResultsModel from "./ResultsModel.js";
 const LearningModel = connection_db.define('learning', {
     id: {
         type: DataTypes.STRING,
-        // autoIncrement: true,
         primaryKey: true,
+        onDelete: 'CASCADE'
     },
     results_id: {
         type: DataTypes.STRING,

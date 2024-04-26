@@ -21,8 +21,8 @@ export const addObstacle = async (req, res) => {
             count = numberId + 1;
         } 
         const formatted_Id = 'OB' + count.toString().padStart(3, '0');
-        const obstacleM = await TargetStateModel.findOne(); 
-        const obstacleId = obstacleM.id;
+        const targetState = await TargetStateModel.findOne(); 
+        const obstacleId = targetState.id;
       
         const addObstacle = await ObstacleModel.create({  id: formatted_Id, target_state_id: obstacleId, ...req.body });
         res.status(201).json(addObstacle);

@@ -1,9 +1,10 @@
-import ResultsModel from '../models/ObstacleModel.js';
+import ResultsModel from '../models/ResultsModel.js';
 import ExperimentModel from '../models/ExperimentModel.js';
 
 export const getResults = async (request, response) =>{
     try {
         const result = await ResultsModel.findAll();
+        console.log(result);
         response.status(200).json(result);
     } catch(error) {
         response.status(500).json({message: error.message});
@@ -18,13 +19,17 @@ export const addResult = async (req, res) => {
             const numberId = parseInt(idResult.id.slice(2));
             count = numberId + 1;
         }
-        const formatted_Id = 'RE' + count.toString().padStart(3, '0');     
-        const experimentId = await ExperimentModel.findOne();   
-        const resultId = experimentId.id;
+        const formatted_Id = 'RE' + count.toString().padStart(3, '0');
 
-        const addResult = await ResultsModel.create({  id: formatted_Id, ...req.body, experiment_id: resultId });
+        const experiment = await ExperimentModel.findOne();   
+        const resultId = experiment.id;
+          
+        console.log(req.body);
+
+        const addResult = await ResultsModel.create({  id: formatted_Id, experiment_id: resultId, ...req.body, });
         res.status(201).json(addResult);
     }catch(error){
+        console.log(error)
         return res.status(500).send({ error: 'Internal Server Error' });
     }
 }

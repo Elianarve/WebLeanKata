@@ -23,8 +23,8 @@ export const addExperiment = async (req, res) => {
         } 
         const formatted_Id = 'Ex' + count.toString().padStart(3, '0');
         console.log(formatted_Id)
-        const experiment = await HypothesisModel.findOne(); 
-        const experimentId = experiment.id;
+        const hipothesis = await HypothesisModel.findOne(); 
+        const experimentId = hipothesis.id;
       
         const addExperiment = await ExperimentModel.create({  id: formatted_Id, hiphotesis_id: experimentId, ...req.body });
         res.status(201).json(addExperiment);

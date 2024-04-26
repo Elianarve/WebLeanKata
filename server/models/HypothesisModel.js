@@ -6,10 +6,12 @@ const HypothesisModel = connection_db.define('hypothesis', {
     id: {
         type: DataTypes.STRING,
         primaryKey: true,
+        onDelete: 'CASCADE'
     },
     obstacle_id: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         references: {
             model: ObstacleModel,
             key: 'id' 
@@ -19,7 +21,7 @@ const HypothesisModel = connection_db.define('hypothesis', {
         type: DataTypes.TEXT,
         allowNull: false
         },
-    date: {
+    plan_date: {
         type: DataTypes.DATEONLY,
         allowNull: false,
     },
