@@ -12,8 +12,8 @@ const Card = () => {
   useEffect(() => {
     const fetchReto = async () => {
       try {
-        const retoData = await getOneReto(id); // Llama al método getOneReto para obtener los detalles del reto específico
-        setReto(retoData); // Actualiza el estado con los detalles del reto
+        const retoData = await getOneReto(id);
+        setReto(retoData);
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -23,6 +23,7 @@ const Card = () => {
 
     fetchReto();
   }, [id]);
+
 
   if (loading) {
     return <div>Cargando...</div>;
@@ -38,7 +39,7 @@ const Card = () => {
 
   return (
     <div className="CardContainer">
-      <SelectAllRetos/>
+      <SelectAllRetos retoId={id} />
       <p>Estado: {reto.estado}</p>
       <p>Descripción: {reto.descripcion}</p>
       <p>Objetivo: {reto.objetivo}</p>

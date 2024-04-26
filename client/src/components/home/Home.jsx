@@ -2,6 +2,8 @@ import  { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getRetos } from '../../services/service'; 
 import styled from 'styled-components';
+import Card from '../card/Card';
+
 
 const HomeContainer = styled.div`
   padding: 20px;
@@ -33,8 +35,8 @@ const Home = () => {
   useEffect(() => {
     const fetchRetos = async () => {
       try {
-        const retosData = await getRetos(); // Llama al método getRetos para obtener todos los retos
-        setRetos(retosData); // Actualiza el estado con los retos obtenidos
+        const retosData = await getRetos();
+        setRetos(retosData); 
       } catch (error) {
         console.error('Error fetching retos:', error);
       }
@@ -61,3 +63,4 @@ const Home = () => {
 };
 
 export default Home;
+

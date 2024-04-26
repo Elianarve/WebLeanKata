@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react';
 import { getRetos, getOneReto } from "../../services/service";
 import { useNavigate } from 'react-router-dom';
 
-const SelectAllRetos = () => {
+const SelectAllRetos = ({ retoId }) => {
     const [retos, setRetos] = useState([]);
     const navigate = useNavigate();
   
     useEffect(() => {
       const fetchRetos = async () => {
         try {
-          const retosData = await getRetos(); // Llama al método getRetos para obtener todos los retos
-          setRetos(retosData); // Actualiza el estado con los retos obtenidos
+          const retosData = await getRetos(); 
+          setRetos(retosData); 
         } catch (error) {
           console.error('Error fetching retos:', error);
         }
@@ -25,7 +25,7 @@ const SelectAllRetos = () => {
     };
 
   return (
-      <select onChange={handleChange}>
+      <select value={retoId} onChange={handleChange}>
       {retos.map((reto) => (
     <option key={reto.id} value={reto.id}>
     {reto.name} 
