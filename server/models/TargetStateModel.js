@@ -5,7 +5,7 @@ import ChallengeModel from "./ChallengeModel.js";
 const TargetStateModel = connection_db.define('targetstate', { 
     id: {
         type: DataTypes.STRING,
-        autoIncrement: true,
+        // autoIncrement: true,
         primaryKey: true,
     },
     description: { 
@@ -17,7 +17,7 @@ const TargetStateModel = connection_db.define('targetstate', {
         allowNull: false,
     },
     challenge_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
             model: ChallengeModel,

@@ -28,18 +28,18 @@ try {
     await connection_db.authenticate();
     console.log('Connection has been established successfully.👏👏');
 
-    // connection_db.sync();
+    connection_db.sync();
 
-    await ActualStateModel.sync();
-    await ChallengeModel.sync();
-    await ExperimentModel.sync();
-    await HypothesisModel.sync();
-    await LearningsModel.sync();
-    await MentalContrastModel.sync();
-    await ObstacleModel.sync();
-    await ResultsModel.sync();
-    await TargetStateModel.sync();
-    await TaskModel.sync();
+    // await ActualStateModel.sync();
+    // await ChallengeModel.sync();
+    // await ExperimentModel.sync();
+    // await HypothesisModel.sync();
+    // await LearningsModel.sync();
+    // await MentalContrastModel.sync();
+    // await ObstacleModel.sync();
+    // await ResultsModel.sync();
+    // await TargetStateModel.sync();
+    // await TaskModel.sync();
     console.log('Models connected correctly 📋👏👏👏');
 
    } catch (error) {

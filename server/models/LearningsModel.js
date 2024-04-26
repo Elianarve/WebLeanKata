@@ -5,11 +5,11 @@ import ResultsModel from "./ResultsModel.js";
 const LearningModel = connection_db.define('learning', {
     id: {
         type: DataTypes.STRING,
-        autoIncrement: true,
+        // autoIncrement: true,
         primaryKey: true,
     },
     results_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         references: {

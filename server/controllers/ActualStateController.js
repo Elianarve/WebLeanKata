@@ -1,15 +1,5 @@
 import ActualStateModel from "../models/ActualStateModel.js";
 
-const countId = async () => {
-    let count = 1;
-    const idChallenge = await ChallengeModel.findOne({}, { sort: { 'created' : -1 } });
-    if (idChallenge) {
-        const numberId = parseInt(idChallenge.id.slice(1));
-        count = numberId + 1;
-    }
-    return count;
-};
-
 export const getActualState = async (request, response) =>{
     try {
         const actualstate = await ActualStateModel.findAll();
@@ -21,13 +11,20 @@ export const getActualState = async (request, response) =>{
 
 export const addActualState = async (req, res) => {
     try {
-        // const count = await countId();
-        // const formatted_Id = 'EA' + String(count).padStart(3, '0');
-        // const addAcState = await ActualStateModel.create({ ...req.body, id: formatted_Id });
-        const addAcState = await ActualStateModel.create(req.body);
-        console.log(addAcState)
+        
+        let count = 1;
+        const idChallenge = await ActualStateModel.findOne({}, { sort: { 'created' : -1 } });
+       
+        if (idChallenge) {
+            const numberId = parseInt(idChallenge.id.slice(2));
+            count = numberId + 1;
+        } 
+        const formatted_Id = 'EA' + count.toString().padStart(3, '0');
+        console.log(formatted_Id)
+        const addAcState = await ActualStateModel.create({  id: formatted_Id, ...req.body, });
         res.status(201).json(addAcState);
     }catch(error){
+        console.log(error)
         return res.status(500).send({ error: 'Internal Server Error' });
     }
 }

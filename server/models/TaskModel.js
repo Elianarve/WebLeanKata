@@ -5,11 +5,11 @@ import ExperimentModel from "./ExperimentModel.js";
 const TaskModel = connection_db.define('task', {
     id: {
         type: DataTypes.STRING,
-        autoIncrement: true,
+        // autoIncrement: true,
         primaryKey: true,
     },
     experiment_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
             model: ExperimentModel,

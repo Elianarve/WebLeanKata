@@ -5,11 +5,11 @@ import TargetStateModel from "./TargetStateModel.js";
 const ObstacleModel = connection_db.define('obstacle', { 
     id: {
         type: DataTypes.STRING,
-        autoIncrement: true,
+        // autoIncrement: true,
         primaryKey: true,
     },
     target_state_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
             model: TargetStateModel,

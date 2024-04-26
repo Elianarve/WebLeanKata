@@ -5,11 +5,11 @@ import HypothesisModel from "./HypothesisModel.js";
 const ExperimentModel = connection_db.define('experiment', {
     id: {
         type: DataTypes.STRING,
-        autoIncrement: true,
+        // autoIncrement: true,
         primaryKey: true,
     },
     hiphotesis_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         references: {
             model: HypothesisModel,

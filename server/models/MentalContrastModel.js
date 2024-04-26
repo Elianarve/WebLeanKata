@@ -5,7 +5,7 @@ import TargetStateModel from "./TargetStateModel.js";
 const MentalContrastModel = connection_db.define('mentalContrast', {
     id: {
         type: DataTypes.STRING,
-        autoIncrement: true,
+        // autoIncrement: true,
         primaryKey: true,
     },
     points: {
@@ -17,7 +17,7 @@ const MentalContrastModel = connection_db.define('mentalContrast', {
         }
     },
     target_state_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         references: {

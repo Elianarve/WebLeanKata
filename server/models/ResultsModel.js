@@ -5,11 +5,11 @@ import ExperimentModel from "./ExperimentModel.js";
 const ResultsModel = connection_db.define('result', {
     id: {
         type: DataTypes.STRING,
-        autoIncrement: true,
+        // autoIncrement: true,
         primaryKey: true,
     },
     experiment_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         references: {
