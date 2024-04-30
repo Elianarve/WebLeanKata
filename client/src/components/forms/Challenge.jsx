@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { postChallenge } from '../../services/challengeService';
+import { postChallenge } from '../../services/challengeServices';
 import { useForm } from 'react-hook-form';
 
 

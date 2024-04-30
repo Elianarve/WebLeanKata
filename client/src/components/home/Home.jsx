@@ -1,8 +1,7 @@
 import  { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getRetos } from '../../services/service'; 
+import { getChallenge } from '../../services/challengeServices'; 
 import styled from 'styled-components';
-import Card from '../card/Card';
 
 
 const HomeContainer = styled.div`
@@ -35,7 +34,7 @@ const Home = () => {
   useEffect(() => {
     const fetchRetos = async () => {
       try {
-        const retosData = await getRetos();
+        const retosData = await getChallenge();
         setRetos(retosData); 
       } catch (error) {
         console.error('Error fetching retos:', error);

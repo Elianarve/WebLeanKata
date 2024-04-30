@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { updateItem, getOneReto, uploadImage } from '../../services/service';
+// import { updateItem, getOneReto, uploadImage } from '../../services/service';
 
 import { useParams } from 'react-router';
 

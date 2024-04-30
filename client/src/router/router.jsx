@@ -3,8 +3,8 @@ import LayoutPublic from "../components/layout";
 import Home from "../components/home/Home";
 import Edit from "../components/edit/Edit";
 import Card from "../components/card/Card";
-import Challenge from '../components/challenge/Challenge';
-import ActualState from "../components/actualState/ActualState";
+import Challenge from '../components/forms/Challenge';
+import ActualState from "../components/forms/ActualState";
 
 
 export const router = createBrowserRouter([

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getOneReto } from '../../services/service'; 
-import SelectAllRetos from '../selectall/selectAllRetos';
+import { getOneChallenge } from '../../services/challengeServices'; 
+import SelectAllChallenges from '../selectall/selectAllChallenges';
 
 const Card = () => {
   const { id } = useParams();
@@ -12,7 +12,7 @@ const Card = () => {
   useEffect(() => {
     const fetchReto = async () => {
       try {
-        const retoData = await getOneReto(id);
+        const retoData = await getOneChallenge(id);
         setReto(retoData);
         setLoading(false);
       } catch (error) {
@@ -39,7 +39,7 @@ const Card = () => {
 
   return (
     <div className="CardContainer">
-      <SelectAllRetos retoId={id} />
+      <SelectAllChallenges retoId={id} />
       <p>Estado: {reto.estado}</p>
       <p>Descripción: {reto.descripcion}</p>
       <p>Objetivo: {reto.objetivo}</p>
