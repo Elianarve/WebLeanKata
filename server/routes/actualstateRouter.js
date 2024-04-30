@@ -1,5 +1,5 @@
 import express from 'express';
-import { getActualState, addActualState, updateActualState, getOneActualState, deleteActualState  } from '../controllers/ActualStateController.js';
+import { getActualState, addActualState, updateActualState, getOneActualState, deleteActualState, searchActualState  } from '../controllers/ActualStateController.js';
 
 const router = express.Router();
 
@@ -12,5 +12,7 @@ router.put('/:id', updateActualState);
 router.delete('/:id', deleteActualState);
 
 router.get('/:id', getOneActualState);
+
+router.get('/search', searchActualState);
 
 export default router;

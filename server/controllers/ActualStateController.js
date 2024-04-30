@@ -1,5 +1,5 @@
 import ActualStateModel from "../models/ActualStateModel.js";
-import {searchModel} from "../helpers/searchHelper.js";
+import searchModel from "../helpers/searchHelper.js";
 
 export const getActualState = async (request, response) =>{
     try {
@@ -64,12 +64,10 @@ export const deleteActualState = async (req, res) => {
 
 export const searchActualState = async (req, res) => {
     const searchText = req.query.searchText;
-
     try {
-        const searchResults = await searchModel(ActualStateModel, 'name', searchText);
-        res.json(searchResults);
+      const actualState = await searchModel(ActualStateModel, ['id', 'description', 'date' ], searchText);
+      res.status(200).json(actualState);
     } catch (error) {
-        console.error('Error al buscar estados actuales:', error);
-        res.status(500).json({ error: 'Error al buscar estados actuales' });
+      res.status(500).json({message: error.message});
     }
-};
+  }
