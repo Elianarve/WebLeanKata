@@ -2,10 +2,14 @@ import  { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getChallenge } from '../../services/challengeServices'; 
 import '../../pages/home/Home.css';
+import Search from '../../components/searchBar/SearchBar';
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
   const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+  const [filteredChallanges, setFilteredChallanges] = useState([]);
+  
 
   useEffect(() => {
     const fetchChallenges = async () => {
@@ -15,6 +19,7 @@ const Home = () => {
       } catch (error) {
         console.error('Error fetching retos:', error);
       }
+      
     };
 
     fetchChallenges();
@@ -24,7 +29,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* <Search /> */}
+       <Search />
       <h2>Retos</h2>
       <div className="gallery-items">
       {challenges.map((challenge) => (
