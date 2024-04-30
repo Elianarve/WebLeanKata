@@ -1,14 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { postChallenge } from '../../services/challengeService';
-// import { postActualState} from '../../services/actualStateServices';
 import { useForm } from 'react-hook-form';
-import { useState, useEffect } from 'react';
 
 
 const Challenge = () => {
   const { handleSubmit, register, formState: { errors }} = useForm();
   const navigate = useNavigate();
-  // const { actualStateId } = useParams();
+  
 
   const onSubmit = async (data) => {
     try {

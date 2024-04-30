@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import LayoutPublic from "../components/layout";
 import Home from "../components/home/Home";
-import NewItem from "../components/newitem/NewItem";
 import Edit from "../components/edit/Edit";
 import Card from "../components/card/Card";
 import Challenge from '../components/challenge/Challenge';
@@ -14,7 +13,7 @@ export const router = createBrowserRouter([
       element: <LayoutPublic />,
       children: [
     {
-      path: "/",
+      path: "/home",
       element: <Home/>,
     },
     {
@@ -24,10 +23,6 @@ export const router = createBrowserRouter([
     {
       path: "/actualstate",
       element: <ActualState/>,
-    },
-    {
-      path: "/NewItem",
-      element: <NewItem/>,
     },
     {
       path: "/Edit/:id",
