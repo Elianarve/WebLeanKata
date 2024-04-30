@@ -14,8 +14,8 @@ const Nav = () => {
         <button onClick={toggleMenu}>Crear Proyecto/Reto</button>
         {openMenu && (
         <div>
-        <a href="#">Nuevo</a>
-        <a href="#">Existente</a>
+        <a href="/actualstate">Nuevo</a>
+        <a href="/home">Existente</a>
         </div>
          )}
       </div>

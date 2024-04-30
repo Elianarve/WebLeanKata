@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getOneChallenge } from '../../services/challengeServices'; 
-import SelectAllChallenges from '../selectall/selectAllChallenges';
+import SelectAllChallenges from '../selectall/SelectAllChallenges';
 
 const Card = () => {
   const { id } = useParams();
