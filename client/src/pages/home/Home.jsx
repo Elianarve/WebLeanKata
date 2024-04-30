@@ -23,8 +23,6 @@ const Home = () => {
     fetchChallenges();
   }, []);
 
-  
-
   return (
     <div className="home-container">
        <Search />
