@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import LayoutPublic from "../components/Layout";
-import Home from "../components/home/Home";
+import LayoutPublic from "../components/layout";
+import Home from "../pages/home/Home";
 import Edit from "../components/edit/Edit";
 import Card from "../components/card/Card";
 import Challenge from '../components/forms/Challenge';
@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
       element: <LayoutPublic />,
       children: [
     {
-      path: "/home",
+      index: true,
       element: <Home/>,
     },
     {
