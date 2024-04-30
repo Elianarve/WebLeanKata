@@ -7,8 +7,6 @@ import Search from '../../components/searchBar/SearchBar';
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
   const navigate = useNavigate();
-  const [search, setSearch] = useState("");
-  const [filteredChallanges, setFilteredChallanges] = useState([]);
   
 
   useEffect(() => {
