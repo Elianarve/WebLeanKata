@@ -54,7 +54,6 @@ try {
     // await ResultsModel.sync();
     // await TaskModel.sync();
     // await LearningsModel.sync();
-
     console.log('Models connected correctly 📋👏👏👏');
 
    } catch (error) {

@@ -22,10 +22,10 @@ export const addChallenge = async (req, res) => {
         const actState = await ActualStateModel.findOne();   
         const actualstateId = actState.id;
 
-        const addChallenge = await ChallengeModel.create({  id: formatted_Id, ...req.body, actual_state_id: actualstateId });
+        const addChallenge = await ChallengeModel.create({ id: formatted_Id, ...req.body, actual_state_id: actualstateId });
         res.status(201).json(addChallenge);
     }catch(error){
-        return res.status(500).send({ error: 'Internal Server Error' });
+        return res.status(500).send({ error: 'Internal Server Error' + error});
     }
 }
 
