@@ -52,6 +52,32 @@
       "grupo_de_control": "prueba ",
       "criterios_de_exito": "prueba",
       "image": "https://res.cloudinary.com/dlg7gpmha/image/upload/v1713963183/bicyclesmuseum/nebtenfpxqofvuba6fra.png"
+    },
+    {
+      "id": "5e8f",
+      "name": "Eliana",
+      "estado": "caos",
+      "objetivo": "ok",
+      "obstaculo": "ok",
+      "experimento": "1",
+      "hipotesis": "ok",
+      "descripcion": "ok",
+      "metodologia": "ok",
+      "grupo_de_control": "ok",
+      "criterios_de_exito": "ok"
+    },
+    {
+      "id": "612d",
+      "name": "ok",
+      "estado": "ok",
+      "objetivo": "ok",
+      "obstaculo": "ok",
+      "experimento": "comprobando",
+      "hipotesis": "ok",
+      "descripcion": "ok",
+      "metodologia": "ok",
+      "grupo_de_control": "ok",
+      "criterios_de_exito": "ok"
     }
   ]
 }
