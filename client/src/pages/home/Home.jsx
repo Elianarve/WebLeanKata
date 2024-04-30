@@ -29,7 +29,10 @@ const Home = () => {
       <div className="gallery-items">
       {challenges.map((challenge) => (
           <div key={challenge.id} className="challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
-          {challenge.description}
+          <div className="challenge-container">{challenge.name}
+          <p>{challenge.description}</p>
+          <p>{challenge.actualState}</p>
+          </div>
           </div>
         ))}
       </div>
