@@ -2,6 +2,7 @@ import  { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getRetos } from '../../services/Retoservice'; 
 import styled from 'styled-components';
+import calendary from '../calendary/calendary';
 
 const HomeContainer = styled.div`
   padding: 20px;
@@ -46,6 +47,9 @@ const Home = () => {
   
   return (
     <HomeContainer>
+
+      <calendary />
+
       <h2>Retos</h2>
       <Gallery>
         {retos.map((reto) => (
