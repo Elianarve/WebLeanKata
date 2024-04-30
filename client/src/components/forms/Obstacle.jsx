@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { postObstacle} from '../../services/obstacleServices';
 import { useForm } from 'react-hook-form';
+import './Forms.css';
 
 
 const Obstacle = () => {

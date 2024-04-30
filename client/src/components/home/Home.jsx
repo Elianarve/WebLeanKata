@@ -5,20 +5,20 @@ import styled from 'styled-components';
 
 
 const HomeContainer = styled.div`
-  padding: 20px;
+  padding: 2%;
+  background-color: #ECF0F1;
+  border-radius: 10px;
 `;
 
-const Gallery = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+const Gallery = styled.table`
+  width: 100%;
+  border-collapse: collapse;
 `;
 
-const RetoCard = styled.div`
+const RetoCard = styled.tr`
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
@@ -27,39 +27,83 @@ const RetoCard = styled.div`
   }
 `;
 
+const CardContent = styled.td`
+  padding: 0%;
+  display: flex;
+  flex-direction: raw;
+  justify-content: space-around;  
+`;
+
+// const Home = () => {
+//   const [retos, setRetos] = useState([]);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchRetos = async () => {
+//       try {
+//         const retosData = await getChallenge();
+//         setRetos(retosData); 
+//       } catch (error) {
+//         console.error('Error fetching retos:', error);
+//       }
+//     };
+
+//     fetchRetos();
+//   }, []);
+  
+//   return (
+//     <HomeContainer>
+//       <h2>Retos</h2>
+//       <Gallery>
+//         <tbody>
+//           {challenges.map((challenge) => (
+//             <RetoCard key={challenge.id} onClick={() => navigate(`/card/${challenge.id}`)}>
+//               <CardContent>
+//                 <h3>{reto.name}</h3>
+//                 <p>{reto.descripcion}</p>
+//                 <p>Estado: {reto.estado}</p>
+//               </CardContent>
+//             </RetoCard>
+//           ))}
+//         </tbody>
+//       </Gallery>
+//     </HomeContainer>
+//   );
+// };
+
+export default Home;
+
 const Home = () => {
-  const [retos, setRetos] = useState([]);
+  const [challenges, setChallenges] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchRetos = async () => {
+    const fetchChallenges = async () => {
       try {
-        const retosData = await getChallenge();
-        setRetos(retosData); 
+        const challengesData = await getChallenge();
+        setChallenges(challengesData); 
       } catch (error) {
         console.error('Error fetching retos:', error);
       }
     };
 
-    fetchRetos();
+    fetchChallenges();
   }, []);
-
-  
-  return (
-    <HomeContainer>
+return (
+    <div className="home-container">
+      {/* <Search /> */}
       <h2>Retos</h2>
-      <Gallery>
-        {retos.map((reto) => (
-          <RetoCard key={reto.id} onClick={() => navigate(`/card/${reto.id}`)}>
-            <h3>{reto.name}</h3>
-            <p>{reto.descripcion}</p>
-            <p>Estado: {reto.estado}</p>
-          </RetoCard>
+      <div className="gallery-items">
+      {challenges.map((challenge) => (
+          <div key={challenge.id} className="challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
+          {challenge.description}
+          </div>
         ))}
-      </Gallery>
-    </HomeContainer>
+      </div>
+    </div>
   );
 };
+
 
 export default Home;
 

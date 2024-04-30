@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { postChallenge } from '../../services/challengeServices';
 import { useForm } from 'react-hook-form';
+import './Forms.css';
 
 
 const Challenge = () => {
