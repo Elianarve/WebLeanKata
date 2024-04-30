@@ -1,0 +1,83 @@
+{
+  "retos": [
+    {
+      "id": "1",
+      "name": "Desarrollo de una nueva funcionalidad de chat en tiempo real",
+      "estado": "En progreso",
+      "objetivo": "Mejorar la interacción en tiempo real entre usuarios",
+      "obstaculo": "Integración con sistemas existentes",
+      "experimento": "Implementación de la funcionalidad en un entorno de prueba",
+      "hipotesis": "La nueva funcionalidad mejorará la experiencia del usuario",
+      "descripcion": "Desarrollar una funcionalidad de chat en tiempo real que permita a los usuarios comunicarse de manera instantánea",
+      "metodologia": "Desarrollo ágil con enfoque en iteraciones cortas y retroalimentación continua",
+      "grupo_de_control": "Usuarios que no tienen acceso a la nueva funcionalidad",
+      "criterios_de_exito": "Aumento en el tiempo de retención de usuarios, mejora en la satisfacción del cliente"
+    },
+    {
+      "id": "2",
+      "name": "Optimización del rendimiento del servidor",
+      "estado": "Planificado",
+      "objetivo": "Reducir el tiempo de carga de la aplicación",
+      "obstaculo": "Identificar y corregir cuellos de botella en el código",
+      "experimento": "Implementación de técnicas de optimización y pruebas de rendimiento",
+      "hipotesis": "La optimización del rendimiento del servidor mejorará la experiencia del usuario",
+      "descripcion": "Identificar y resolver problemas de rendimiento en el servidor para mejorar la velocidad y la eficiencia de la aplicación",
+      "metodologia": "Análisis exhaustivo del código, uso de herramientas de monitoreo y optimización",
+      "grupo_de_control": "Usuarios que utilizarán la versión actual sin optimizaciones",
+      "criterios_de_exito": "Reducción significativa en el tiempo de carga de la aplicación, disminución en las quejas de los usuarios sobre la lentitud"
+    },
+    {
+      "id": "3",
+      "name": "Implementación de un sistema de autenticación biométrica",
+      "estado": "En espera",
+      "objetivo": "Mejorar la seguridad de la aplicación",
+      "obstaculo": "Garantizar la precisión y la confiabilidad de la autenticación biométrica",
+      "experimento": "Integración de tecnologías biométricas y pruebas de precisión",
+      "hipotesis": "La autenticación biométrica proporcionará un nivel adicional de seguridad",
+      "descripcion": "Desarrollar e implementar un sistema de autenticación biométrica que utilice características únicas del usuario, como huellas dactilares o reconocimiento facial",
+      "metodologia": "Colaboración con expertos en seguridad, pruebas rigurosas de precisión y seguridad",
+      "grupo_de_control": "Usuarios que seguirán utilizando la autenticación tradicional basada en contraseñas",
+      "criterios_de_exito": "Reducción en los intentos de acceso no autorizados, aumento en la confianza de los usuarios en la seguridad del sistema"
+    },
+    {
+      "id": "15b8",
+      "name": "Rookie",
+      "estado": "hola",
+      "objetivo": "prueba",
+      "obstaculo": "prueba",
+      "experimento": "prueba",
+      "hipotesis": "prueba",
+      "descripcion": "prueba",
+      "metodologia": "prueba",
+      "grupo_de_control": "prueba ",
+      "criterios_de_exito": "prueba",
+      "image": "https://res.cloudinary.com/dlg7gpmha/image/upload/v1713963183/bicyclesmuseum/nebtenfpxqofvuba6fra.png"
+    },
+    {
+      "id": "5e8f",
+      "name": "Eliana",
+      "estado": "caos",
+      "objetivo": "ok",
+      "obstaculo": "ok",
+      "experimento": "1",
+      "hipotesis": "ok",
+      "descripcion": "ok",
+      "metodologia": "ok",
+      "grupo_de_control": "ok",
+      "criterios_de_exito": "ok"
+    },
+    {
+      "id": "612d",
+      "name": "ok",
+      "estado": "ok",
+      "objetivo": "ok",
+      "obstaculo": "ok",
+      "experimento": "comprobando",
+      "hipotesis": "ok",
+      "descripcion": "ok",
+      "metodologia": "ok",
+      "grupo_de_control": "ok",
+      "criterios_de_exito": "ok"
+    }
+  ]
+}

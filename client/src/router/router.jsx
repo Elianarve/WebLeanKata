@@ -1,45 +1,39 @@
 import { createBrowserRouter } from "react-router-dom";
-import LayoutPublic from '../layout/LayoutPublic'
-// import LayoutPrivate from '';
+import LayoutPublic from "../components/layout";
+import Home from "../components/home/Home";
+import Edit from "../components/edit/Edit";
+import Card from "../components/card/Card";
+import Challenge from '../components/forms/Challenge';
+import ActualState from "../components/forms/ActualState";
 
-import Register from "../pages/Register/Register";
-import Home from '../pages/Home';
-import Login from "../pages/login";
-// import Dashboard from '';
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
+  {
+      path: "/",
+      element: <LayoutPublic />,
+      children: [
     {
-        path: "/",
-        element: <LayoutPublic />,
-        children: [
-            {
-                index: true,
-                element: <Home />
-            },
-            { 
-                path: "/login", 
-                element: <Login /> 
-            },
-            { 
-                path: "/register",
-                element: <Register /> 
-            },
-        ],
+      path: "/home",
+      element: <Home/>,
+    },
+    {
+      path: "/reto",
+      element: <Challenge/>,
+    },
+    {
+      path: "/actualstate",
+      element: <ActualState/>,
+    },
+    {
+      path: "/Edit/:id",
+      element: <Edit/>
+    },
+    {
+      path: "/card/:id",
+      element: <Card/>
     }
-    // {
-    //     path: "/chatbot/id_user",
-    //     element: <LayoutPrivate />,
-    //     children: [
-    //         { 
-    //             path: "chatbot/:id_user",
-    //             element: <Dashboard /> 
-    //         },
-    //         { path: "settings/id_user",
-    //           element: <Settings /> 
-    //         },
-    //     ],
-    // },
-])
+  ],
+  }
+  ]);
 
-export default router
-
+export default router;
