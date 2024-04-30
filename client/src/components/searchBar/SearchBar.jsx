@@ -1,51 +1,36 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "./SearchBar.css";
+import { useState } from 'react';
+import axios from 'axios';
 
+const SearchBar = ({ onSearch }) => {
+  const [searchText, setSearchText] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
-function Search () {
-    const [challanges, setChallanges] = useState([]);
-    const [search, setSearch] = useState("");
-    const [filteredChallanges, setFilteredChallanges] = useState([]);
-    const navigate = useNavigate();
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`http://tu-backend.com/buscar?texto=${searchText}`);
+      setSearchResults(response.data);
+      onSearch(response.data); // Llama a la función onSearch pasándole los resultados
+    } catch (error) {
+      console.error('Error al buscar:', error);
+    }
+  };
 
-    useEffect(() => {
-        axios.get("http://localhost:5000/challenge").then((response) => {
-            setChallanges(response.data);
-        });
-    }, []);
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Buscar..."
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
+      />
+      <button onClick={handleSearch}>Buscar</button>
+      <ul>
+        {searchResults.map(result => (
+          <li key={result.id}>{result.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-    useEffect(() => {
-        setFilteredChallanges(
-            challanges.filter((challange) =>
-                challange.name.toLowerCase().includes(search.toLowerCase())
-            )
-        );
-    }, [search, challanges]);
-
-    return (
-        <div>
-            <input
-                type="text"
-                placeholder="Buscar..."
-                onChange={(e) => setSearch(e.target.value)}
-            />
-            {filteredChallanges.map((challange, index) => (
-               <div key={index} className="gallery">
-                     <div key={challange.id} onClick={() => navigate(`/card/${challange.id}`)}>
-                        <div className="card">
-            <p>{challange.id}</p>
-            <h3>{challange.name}</h3>
-            <p>{challange.descripcion}</p>
-            <p>Estado: {challange.estado}</p>
-            </div>
-          </div>
-                </div>
-            ))}
-        </div>
-
-    );
-}
-
-export default Search;
+export default SearchBar;

@@ -1,14 +1,13 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getChallenge } from '../../services/challengeServices'; 
 import '../../pages/home/Home.css';
-import Search from '../../components/searchBar/SearchBar';
+import SearchBar from '../../components/searchBar/SearchBar';
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
   const navigate = useNavigate();
   
-
   useEffect(() => {
     const fetchChallenges = async () => {
       try {
@@ -17,23 +16,28 @@ const Home = () => {
       } catch (error) {
         console.error('Error fetching retos:', error);
       }
-      
     };
 
     fetchChallenges();
   }, []);
 
+  const handleSearch = (searchResults) => {
+    setChallenges(searchResults); // Actualiza los desafíos con los resultados de la búsqueda
+  };
+
   return (
     <div className="home-container">
-       <Search />
+      <SearchBar onSearch={handleSearch} />
       <h2>Retos</h2>
       <div className="gallery-items">
-      {challenges.map((challenge) => (
+        {challenges.map((challenge) => (
           <div key={challenge.id} className="challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
-          <div className="challenge-container">{challenge.name}
-          <p>{challenge.description}</p>
-          <p>{challenge.actualState}</p>
-          </div>
+            <div className="challenge-container">
+              <p> {challenge.id}</p>
+              <p>{challenge.name}</p>
+              <p>{challenge.description}</p>
+              <p>{challenge.actual_state_id}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -41,6 +45,6 @@ const Home = () => {
   );
 };
 
-
 export default Home;
+
 
