@@ -13,7 +13,7 @@ const Challenge = () => {
     try {
       const response = await postChallenge(data);
       console.log("Desafío creado:", response.data);
-      navigate('/');
+      navigate('/home');
     } catch (error) {
       console.error("Error al crear el desafío:", error);
     }
