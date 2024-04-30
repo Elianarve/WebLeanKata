@@ -13,7 +13,7 @@ export const addActualState = async (req, res) => {
     try {
         
         let count = 1;
-        const idChallenge = await ActualStateModel.findOne({}, { sort: { 'created' : -1 } });
+        const idChallenge = await ActualStateModel.findOne({order: [['id', 'DESC']]});
        
         if (idChallenge) {
             const numberId = parseInt(idChallenge.id.slice(2));

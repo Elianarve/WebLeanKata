@@ -5,6 +5,8 @@ const ActualStateModel = connection_db.define('actualstate', {
     id: {
         type: DataTypes.STRING,
         primaryKey: true,
+        allowNull: false,
+        unique: true,
         onDelete: 'CASCADE'
     },
     description: { 
