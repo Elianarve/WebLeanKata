@@ -1,5 +1,4 @@
-import React from 'react';
-import './Footer.css'; // Importar los estilos CSS
+import './Footer.css'; 
 import svgImage from '../../assets/img/footer.svg';
 
 const Footer = () => {
