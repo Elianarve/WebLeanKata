@@ -14,7 +14,7 @@ export const addTargetState = async (req, res) => {
     try {
         
         let count = 1;
-        const idTargetState = await TargetStateModel.findOne({}, { sort: { 'created' : -1 } });
+        const idTargetState = await TargetStateModel.findOne({order: [['id', 'DESC']]});
        
         if (idTargetState) {
             const numberId = parseInt(idTargetState.id.slice(2));
@@ -22,7 +22,7 @@ export const addTargetState = async (req, res) => {
         } 
         const formatted_Id = 'EO' + count.toString().padStart(3, '0');
         console.log(formatted_Id)
-        const challengeId = await ChallengeModel.findOne(); 
+        const challengeId = await ChallengeModel.findOne({order: [['id', 'DESC']]}); 
         const targetStateId = challengeId.id;
       
         const addTargetStat = await TargetStateModel.create({  id: formatted_Id, ...req.body, challenge_id: targetStateId });

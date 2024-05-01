@@ -5,15 +5,15 @@ import SelectAllChallenges from '../selectall/SelectAllChallenges';
 
 const Card = () => {
   const { id } = useParams();
-  const [reto, setReto] = useState(null);
+  const [challenge, setChallenge] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchReto = async () => {
+    const fetchChallenge = async () => {
       try {
-        const retoData = await getOneChallenge(id);
-        setReto(retoData);
+        const challengeData = await getOneChallenge(id);
+        setChallenge(challengeData);
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -21,7 +21,7 @@ const Card = () => {
       }
     };
 
-    fetchReto();
+    fetchChallenge();
   }, [id]);
 
 
@@ -33,22 +33,22 @@ const Card = () => {
     return <div>Error: {error}</div>;
   }
 
-  if (!reto) {
+  if (!challenge) {
     return <div>No se encontró el reto</div>;
   }
 
   return (
     <div className="CardContainer">
-      <SelectAllChallenges retoId={id} />
-      <p>Estado: {reto.estado}</p>
-      <p>Descripción: {reto.descripcion}</p>
-      <p>Objetivo: {reto.objetivo}</p>
-      <p>Obstáculo: {reto.obstaculo}</p>
-      <p>Experimento: {reto.experimento}</p>
-      <p>Hipótesis: {reto.hipotesis}</p>
-      <p>Metodología: {reto.metodologia}</p>
-      <p>Grupo de control: {reto.grupo_de_control}</p>
-      <p>Criterios de éxito: {reto.criterios_de_exito}</p>
+      <SelectAllChallenges challengeId={id} />
+      {/* <p>RetoId: {challenge.id}</p>
+      <p>Descripción: {challenge.description}</p>
+      <p>Objetivo: {challenge.name}</p>
+      <p>Obstáculo: {challenge.start_date}</p>
+      <p>Experimento: {challenge.end_date}</p>
+      <p>Hipótesis: {challenge.actual_state_id}</p> */}
+      {/* <p>Metodología: {challenge.metodologia}</p>
+      <p>Grupo de control: {challenge.grupo_de_control}</p>
+      <p>Criterios de éxito: {challenge.criterios_de_exito}</p> */}
     </div>
   );
 };

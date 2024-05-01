@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import '../nav/Nav.css';
+import logo from '../../assets/img/logo-lk.png';
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -11,7 +12,9 @@ const Nav = () => {
 
   return (
     <nav className="navbar">
-      <div className="logo">Mi Logo</div>
+      <div className="logo">
+        <img src={logo} alt="logo" />
+      </div>
       <ul className='nav-links'>
         <li className="nav-button" onClick={toggleMenu} >Proyecto/Reto</li>
         {openMenu && (

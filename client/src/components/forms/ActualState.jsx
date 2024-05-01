@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { postActualState } from '../../services/actualStateServices';
 import { useForm } from 'react-hook-form';
-import './Forms.css';
+import './css/Forms.css';
 
 const ActualState = () => {
   const { handleSubmit, register, formState: { errors }} = useForm();

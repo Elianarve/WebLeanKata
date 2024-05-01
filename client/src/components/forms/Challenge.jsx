@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { postChallenge } from '../../services/challengeServices';
 import { useForm } from 'react-hook-form';
-import './Forms.css';
-
+import './css/Forms.css';
+import Obstacle from './Obstacle';
+import TargetState from './TargetState';
 
 const Challenge = () => {
   const { handleSubmit, register, formState: { errors }} = useForm();
@@ -13,7 +14,7 @@ const Challenge = () => {
     try {
       const response = await postChallenge(data);
       console.log("Desafío creado:", response.data);
-      navigate('/home');
+      navigate('/targetstate');
     } catch (error) {
       console.error("Error al crear el desafío:", error);
     }
@@ -21,6 +22,7 @@ const Challenge = () => {
 
 
   return (
+    <>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>RETO: </h2>
         <div className='items'>
@@ -45,6 +47,9 @@ const Challenge = () => {
   </div>
   <button type="submit">Enviar</button>
   </form>
+  <TargetState/>
+   <Obstacle/>
+  </>
   )
 }
 

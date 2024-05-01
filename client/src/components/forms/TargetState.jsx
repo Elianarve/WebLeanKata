@@ -1,11 +1,25 @@
 import { useForm } from 'react-hook-form';
+import './css/Forms.css';
+import { postTargetState } from '../../services/targetStateServices';
+import { useNavigate } from 'react-router-dom';
 
 const TargetState = () => {
     const { handleSubmit, register, formState: { errors }} = useForm();
+    const navigate = useNavigate();
+
+    const onSubmit = async (data) => {
+      try {
+        const response = await postTargetState(data);
+        console.log("Desafío creado:", response.data);
+        navigate('/obstacle');
+      } catch (error) {
+        console.error("Error al crear el desafío:", error);
+      }
+    };
     
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Estado actual: </h2>
+      <h2>Estado objetivo: </h2>
   <div className='items'>
     <label className='label-item'>Descripción</label>
     <input type="text-input" {...register('description', { required: true })} />

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { postObstacle} from '../../services/obstacleServices';
 import { useForm } from 'react-hook-form';
-import './Forms.css';
+import './css/Forms.css';
 
 
 const Obstacle = () => {
@@ -13,7 +13,7 @@ const Obstacle = () => {
     try {
       const response = await postObstacle(data);
       console.log("Desafío creado:", response.data);
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       console.error("Error al crear el desafío:", error);
     }
@@ -22,7 +22,7 @@ const Obstacle = () => {
 
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Obstaculo</h2>
+      <h2>Obstaculo:</h2>
         <div className='items'>
           <label className='label-item'>Descripción</label>
           <input type="text-input" {...register('description', { required: true })} />

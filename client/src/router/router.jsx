@@ -5,8 +5,8 @@ import Edit from "../components/edit/Edit";
 import Card from "../components/card/Card";
 import Challenge from '../components/forms/Challenge';
 import ActualState from "../components/forms/ActualState";
-import Obstacle from "../components/forms/obstacle";
-
+import TargetState from "../components/forms/TargetState";
+import Obstacle from "../components/forms/Obstacle";
 
 export const router = createBrowserRouter([
   {
@@ -30,13 +30,21 @@ export const router = createBrowserRouter([
       element: <ActualState/>,
     },
     {
+      path: "/targetstate",
+      element: <TargetState/>,
+    },
+    {
+      path: "/obstacle",
+      element: <Obstacle/>,
+    },
+    {
       path: "/Edit/:id",
       element: <Edit/>
     },
     {
       path: "/card/:id",
       element: <Card/>
-    }
+    },
   ],
   }
   ]);
