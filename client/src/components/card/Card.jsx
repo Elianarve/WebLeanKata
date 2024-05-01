@@ -40,15 +40,6 @@ const Card = () => {
   return (
     <div className="CardContainer">
       <SelectAllChallenges challengeId={id} />
-      {/* <p>RetoId: {challenge.id}</p>
-      <p>Descripción: {challenge.description}</p>
-      <p>Objetivo: {challenge.name}</p>
-      <p>Obstáculo: {challenge.start_date}</p>
-      <p>Experimento: {challenge.end_date}</p>
-      <p>Hipótesis: {challenge.actual_state_id}</p> */}
-      {/* <p>Metodología: {challenge.metodologia}</p>
-      <p>Grupo de control: {challenge.grupo_de_control}</p>
-      <p>Criterios de éxito: {challenge.criterios_de_exito}</p> */}
     </div>
   );
 };

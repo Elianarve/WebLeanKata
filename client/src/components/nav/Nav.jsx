@@ -21,7 +21,7 @@ const Nav = () => {
         <div className='nav-display'>
         <a className='a-link' href="/actualstate">Nuevo</a>
         <hr className='line' />
-        <a className='a-link' href="/home">Existente</a>
+        <a className='a-link' href="/card/:id">Existente</a>
         </div>
          )}
         <li className="nav-button"><Link to="/">Inicio</Link></li>

@@ -7,16 +7,10 @@
   margin-bottom: 10px; 
 }
 
-.gallery-item {
+.gallery-items {
   width: 100%;
   border-collapse: collapse;
 }        
-
-.gallery-itemm:hover {
-  border-radius: 52px;
-  background: #ECF0F1;
-  box-shadow: 16px 16px 32px #92FFC0, -16px -16px 32px #002661;
-} 
 
 .challenge-description {
   background-color: #f9f9f9;
@@ -24,19 +18,47 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5%;
   font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 10px;
+}
+
+.challenge-description:hover {
+  background-color: #e0e0e0;
+}
+
+.challenge-table {
+  display: table;
+  width: 100%;
+}
+
+.table-row .challenge-description {
+  display: table-row;
+  margin: auto;
+  align-items: center;
 
   &:hover {
     background-color: #e0e0e0;
-}
+  }
+
+  &:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+
+  &:nth-child(even) {
+    background-color: #f0f0f0;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
 }
 
-.challenge-container {
-  padding: 0%;
-  display: flex;
-  flex-direction: raw;
-  justify-content: space-around;  
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  padding: 8px;
 }

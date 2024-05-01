@@ -3,9 +3,8 @@ import { postObstacle} from '../../services/obstacleServices';
 import { useForm } from 'react-hook-form';
 import './css/Forms.css';
 
-
 const Obstacle = () => {
-  const { handleSubmit, register, formState: { errors }} = useForm();
+  const { handleSubmit, register } = useForm();
   const navigate = useNavigate();
   
 
