@@ -1,16 +1,25 @@
+/* Estilos generales */
 .home-container {
   border: none; 
-  border-radius: 52px;
-  background: #ECF0F1;
-  box-shadow: 16px 16px 32px #c9cccd, -16px -16px 32px #ffffff;
-  padding: 10px 20px; 
-  margin-bottom: 10px; 
+  box-shadow: 2% 2% 4% #c9cccd, -2% -2% 4% #ffffff;
+  padding: 1.5% 2%;
+  margin-bottom: 2%;
+  margin-top: 3%;
+  border-radius: 5px;
+}
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.5em;
+  color: #4d4d4d;
+  margin-bottom: 2%;
+  text-align: center;
 }
 
 .gallery-items {
   width: 100%;
   border-collapse: collapse;
-}        
+}
 
 .challenge-description {
   background-color: #f9f9f9;
@@ -19,7 +28,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: 10px;
+  margin-bottom: 2%;
 }
 
 .challenge-description:hover {
@@ -31,34 +40,32 @@
   width: 100%;
 }
 
-.table-row .challenge-description {
-  display: table-row;
-  margin: auto;
-  align-items: center;
-
-  &:hover {
-    background-color: #e0e0e0;
-  }
-
-  &:nth-child(odd) {
-    background-color: #f9f9f9;
-  }
-
-  &:nth-child(even) {
-    background-color: #f0f0f0;
-  }
-
-  &:last-child {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-}
-
 .table-row {
   display: table-row;
 }
 
+.table-cell-title {
+  display: table-cell;
+  background-color: #f9f9f9;
+  padding: 1em;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #4d4d4d;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
 .table-cell {
   display: table-cell;
-  padding: 8px;
+  padding: 1em;
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
+
+.table-cell-actualstate {
+  display: table-cell;
+  padding: 1em;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
 }
