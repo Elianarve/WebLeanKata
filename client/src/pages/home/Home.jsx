@@ -24,7 +24,6 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* <Search /> */}
       <h2>Retos</h2>
       <div className="gallery-items">
       {challenges.map((challenge) => (
