@@ -20,7 +20,6 @@ const Home = () => {
     fetchChallenges();
   }, []);
 
-  
 
   return (
     <div className="home-container">
@@ -29,7 +28,9 @@ const Home = () => {
       <div className="gallery-items">
       {challenges.map((challenge) => (
           <div key={challenge.id} className="challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
-          {challenge.description}
+              <p> {challenge.id}</p>
+              <p>{challenge.name}</p>
+              <p>{challenge.actual_state_id}</p>
           </div>
         ))}
       </div>
