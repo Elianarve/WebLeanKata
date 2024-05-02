@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import '../nav/Nav.css';
+import logo from '../../assets/img/logo-lk.png';
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -9,19 +11,22 @@ const Nav = () => {
   };
 
   return (
-    <nav>
-      <div className='dropdown'>
-        <button onClick={toggleMenu}>Crear Proyecto/Reto</button>
+    <nav className="navbar">
+      <div className="logo">
+        <img src={logo} alt="logo" />
+      </div>
+      <ul className='nav-links'>
+        <li className="nav-button" onClick={toggleMenu} >Proyecto/Reto</li>
         {openMenu && (
-        <div>
-        <a href="#">Nuevo</a>
-        <a href="#">Existente</a>
+        <div className='nav-display'>
+        <a className='a-link' href="/actualstate">Nuevo</a>
+        <hr className='line' />
+        <a className='a-link' href="/card/:id">Existente</a>
         </div>
          )}
-      </div>
-      <Link to="/actualstate"></Link>
-      <Link to="/">Inicio</Link>
-      <Link to="">Tablero-Principal</Link>
+        <li className="nav-button"><Link to="/">Inicio</Link></li>
+        <li className="nav-button"><Link to="/Edit/:id">Tablero Principal</Link></li>
+      </ul>
     </nav>
   );
 };
