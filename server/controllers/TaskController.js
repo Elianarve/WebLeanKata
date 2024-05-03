@@ -14,7 +14,7 @@ export const addTask = async (req, res) => {
     try {
         
         let count = 1;
-        const idTask = await TaskModel.findOne({}, { sort: { 'created' : -1 } });
+        const idTask = await TaskModel.findOne({order: [['id', 'DESC']]});
        
         if (idTask) {
             const numberId = parseInt(idTask.id.slice(1));
@@ -22,7 +22,7 @@ export const addTask = async (req, res) => {
         } 
         const formatted_Id = 'T' + count.toString().padStart(3, '0');
 
-        const experimentId = await ExperimentModel.findOne(); 
+        const experimentId = await ExperimentModel.findOne({order: [['id', 'DESC']]}); 
         const taskId = experimentId.id;
       
         const addTask = await TaskModel.create({  id: formatted_Id, experiment_id: taskId, ...req.body });
