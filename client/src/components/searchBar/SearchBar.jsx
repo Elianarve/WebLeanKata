@@ -1,34 +1,21 @@
 import { useState } from 'react';
-import axios from 'axios';
 
 const SearchBar = ({ onSearch }) => {
-  const [searchText, setSearchText] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearch = async () => {
-    try {
-      const response = await axios.get(`http://tu-backend.com/buscar?texto=${searchText}`);
-      setSearchResults(response.data);
-      onSearch(response.data); // Llama a la función onSearch pasándole los resultados
-    } catch (error) {
-      console.error('Error al buscar:', error);
-    }
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+    onSearch(event.target.value); 
   };
 
   return (
-    <div>
+    <div className="search-bar">
       <input
         type="text"
         placeholder="Buscar..."
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
+        value={searchTerm}
+        onChange={handleSearch}
       />
-      <button onClick={handleSearch}>Buscar</button>
-      <ul>
-        {searchResults.map(result => (
-          <li key={result.id}>{result.name}</li>
-        ))}
-      </ul>
     </div>
   );
 };

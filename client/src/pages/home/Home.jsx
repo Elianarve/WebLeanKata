@@ -6,6 +6,7 @@ import SearchBar from '../../components/searchBar/SearchBar';
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
+  const [filteredChallenges, setFilteredChallenges] = useState([]); // Estado para almacenar los desafíos filtrados
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -13,6 +14,7 @@ const Home = () => {
       try {
         const challengesData = await getChallenge();
         setChallenges(challengesData); 
+        setFilteredChallenges(challengesData); // Inicialmente, establece los desafíos filtrados como todos los desafíos
       } catch (error) {
         console.error('Error fetching retos:', error);
       }
@@ -21,8 +23,13 @@ const Home = () => {
     fetchChallenges();
   }, []);
 
-  const handleSearch = (searchResults) => {
-    setChallenges(searchResults); // Actualiza los desafíos con los resultados de la búsqueda
+  const handleSearch = (searchTerm) => {
+    const filteredResults = challenges.filter((challenge) => {
+      return Object.values(challenge).some((value) =>
+        typeof value === 'string' && value.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
+    setFilteredChallenges(filteredResults); 
   };
 
   return (
@@ -30,7 +37,7 @@ const Home = () => {
       <SearchBar onSearch={handleSearch} />
       <h2>Retos</h2>
       <div className="gallery-items">
-        {challenges.map((challenge) => (
+        {filteredChallenges.map((challenge) => (
           <div key={challenge.id} className="challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
             <div className="challenge-container">
               <p> {challenge.id}</p>
@@ -46,5 +53,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
