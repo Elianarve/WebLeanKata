@@ -71,7 +71,7 @@ export const deleteChallenge = async (req, res) => {
 
 export const searchChallenge = async (req, res) => {
     const searchText = req.query.texto; // Accedemos al parámetro de consulta 'texto' en la URL
-    
+
     try {
         const challenges = await ChallengeModel.findAll({
             where: {
@@ -82,10 +82,10 @@ export const searchChallenge = async (req, res) => {
                 ]
             }
         });
-        
+
         res.status(200).json(challenges);
     } catch (error) {
         console.error('Error searching challenges:', error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
-};
+}
