@@ -6,6 +6,7 @@
   margin-bottom: 2%;
   margin-top: 3%;
   border-radius: 5px;
+  
 }
 
 h2 {
@@ -32,12 +33,20 @@ h2 {
 }
 
 .challenge-description:hover {
-  background-color: #e0e0e0;
+  box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
+
 }
+ 
+
+
 
 .challenge-table {
   display: table;
   width: 100%;
+  border-radius: 50px;
+  background: #e0e0e0;
+  box-shadow:  20px 20px 60px #ECF0F1,
+             -20px -20px 60px #ffffff;
 }
 
 .table-row {
