@@ -3,6 +3,7 @@ import { postActualState } from '../../services/actualStateServices';
 import { useForm } from 'react-hook-form';
 import './css/Forms.css';
 
+
 const ActualState = () => {
   const { handleSubmit, register, formState: { errors }} = useForm();
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const ActualState = () => {
   const onSubmit = (data) => { 
     postActualState(data).then(() => {
         navigate(`/reto`); 
+        console.log (onSubmit)
     })
     .catch((error) => {
       console.error("Error al publicar:", error);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 // import { updateItem, getOneReto, uploadImage } from '../../services/service';
@@ -22,7 +22,7 @@ body {
     margin-top: 3%;
     margin-bottom: 3%;
     padding: 2%;
-    background-color: #FFFFFF;
+    background-color: #92FFC0;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-size: 1.5vw;

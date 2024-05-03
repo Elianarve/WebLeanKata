@@ -51,7 +51,13 @@
   }
   
   button[type="submit"]:hover {
-    background: #002661;
-    color: #ECF0F1;
+    transition: 0.6s;  
+    border-radius: 52px;
+    background: #ECF0F1;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
+
+    
   }
-  
+   

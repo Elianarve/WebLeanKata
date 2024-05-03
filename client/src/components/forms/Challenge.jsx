@@ -23,7 +23,7 @@ const Challenge = () => {
 
   return (
     <>
-    <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <h2>RETO: </h2>
         <div className='items'>
           <label className='label-item'>Nombre</label>
