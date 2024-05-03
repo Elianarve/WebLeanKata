@@ -1,0 +1,10 @@
+.footer-container {
+    position: fixed; /* Fijar el footer */
+    bottom: 0; /* Alinearlo al pie de la página */
+    width: 100vw; /* Ancho completo de la ventana */
+  }
+  
+  .footer-container img {
+    width: 100%; /* La imagen ocupa el ancho completo del footer */
+    height: auto; /* Altura automática para mantener la relación de aspecto */
+  }
