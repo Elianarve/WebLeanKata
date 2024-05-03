@@ -12,10 +12,10 @@ const Obstacle = () => {
   const onSubmit = async (data) => {
     try {
       const response = await postObstacle(data);
-      console.log("Desafío creado:", response.data);
-      navigate('/');
+      console.log("Hipotesis creado:", response.data);
+      navigate('/hypothesis');
     } catch (error) {
-      console.error("Error al crear el desafío:", error);
+      console.error("Error al crear la hipotesis:", error);
     }
   };
 
@@ -25,7 +25,7 @@ const Obstacle = () => {
       <h2>Obstaculo:</h2>
         <div className='items'>
           <label className='label-item'>Descripción</label>
-          <input type="text-input" {...register('description', { required: true })} />
+          <input type="text" {...register('description', { required: true })} />
         </div>
   <button type="submit">Enviar</button>
   </form>

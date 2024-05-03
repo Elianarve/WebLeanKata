@@ -36,7 +36,7 @@ export const deleteMentalContrast = async (id) => {
 };
 
 
-export const postMentalContrast= async (data) => {
+export const postMentalContrast = async (data) => {
     const response = await axios.post(API_URL, data);
     console.log(response);
     alert("MentalContrast creado exitosamente");
