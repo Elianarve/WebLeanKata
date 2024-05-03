@@ -1,0 +1,38 @@
+.home-container {
+  border: none; 
+  border-radius: 52px;
+  background: #ECF0F1;
+  box-shadow: 16px 16px 32px #c9cccd, -16px -16px 32px #ffffff;
+  padding: 10px 20px; 
+  margin-bottom: 10px; 
+}
+
+.gallery-item {
+  width: 100%;
+  border-collapse: collapse;
+}        
+
+.gallery-itemm:hover {
+  border-radius: 52px;
+  background: #ECF0F1;
+  box-shadow: 16px 16px 32px #92FFC0, -16px -16px 32px #002661;
+} 
+
+.challenge-description {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e0e0e0;
+}
+}
+
+.challenge-container {
+  padding: 0%;
+  display: flex;
+  flex-direction: raw;
+  justify-content: space-around;  
+}
