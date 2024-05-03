@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getOneChallenge } from '../../services/challengeServices'; 
 import SelectAllChallenges from '../selectall/SelectAllChallenges';
 
+
 const Card = () => {
   const { id } = useParams();
   const [challenge, setChallenge] = useState(null);
@@ -38,7 +39,7 @@ const Card = () => {
   }
 
   return (
-    <div className="CardContainer">
+    <div className="cardContainer">
       <SelectAllChallenges challengeId={id} />
     </div>
   );

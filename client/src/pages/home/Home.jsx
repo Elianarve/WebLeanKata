@@ -17,6 +17,7 @@ const Home = () => {
         setFilteredChallenges(challengesData); // Inicialmente, establece los desafíos filtrados como todos los desafíos
       } catch (error) {
         console.error('Error fetching retos:', error);
+        setError('No se pudieron cargar los desafíos. Por favor, inténtalo de nuevo más tarde.');
       }
     };
 
@@ -54,8 +55,8 @@ const Home = () => {
             ))}
           </div>
         </div>
+        </div>
       </div>
-    </div>
   );
 };
 

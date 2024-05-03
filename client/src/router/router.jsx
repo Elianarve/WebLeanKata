@@ -7,6 +7,12 @@ import Challenge from '../components/forms/Challenge';
 import ActualState from "../components/forms/ActualState";
 import TargetState from "../components/forms/TargetState";
 import Obstacle from "../components/forms/Obstacle";
+import ContrastMental from "../components/forms/ContrastMental";
+import Hypothesis from "../components/forms/Hypothesis";
+import Experiment from "../components/forms/Experiment";
+import Task from '../components/forms/Task';
+import Result from "../components/forms/Result";
+import Learning from "../components/forms/Learning";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +42,30 @@ export const router = createBrowserRouter([
     {
       path: "/obstacle",
       element: <Obstacle/>,
+    },
+    {
+      path: "/contrast",
+      element: <ContrastMental/>
+    },
+    {
+      path: "/hypothesis",
+      element: <Hypothesis/>
+    },
+    {
+      path: "/experiment",
+      element: <Experiment/>
+    },
+    {
+      path: "/task",
+      element: <Task/>
+    },
+    {
+      path: "/result",
+      element: <Result/>
+    },
+    {
+      path:"/learning",
+      element: <Learning/>
     },
     {
       path: "/Edit/:id",

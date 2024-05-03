@@ -2,41 +2,8 @@ import { useState, useEffect } from 'react';
 import { getChallenge } from "../../services/challengeServices";
 import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
-
-// const SelectAllChallenges = ({ challengeId }) => {
-//     const [challenges, setChallenges] = useState([]);
-//     const navigate = useNavigate();
-  
-//     useEffect(() => {
-//       const fetchChallenges = async () => {
-//         try {
-//           const challengesData = await getChallenge(); 
-//           setChallenges(challengesData);
-//         } catch (error) {
-//           console.error('Error fetching Challenges:', error);
-//         }
-//       };
-  
-//       fetchChallenges();
-//     }, []);
-
-//     const handleChange = (event) => {
-//       const challengeId = event.target.value;
-//       navigate(`/card/${challengeId}`);
-//     };
-
-//   return (
-//     <select value={challengeId} onChange={handleChange}>
-//       {challenges.map((challenge) => (
-//         <option key={challenge.id} value={challenge.id}>
-//           {challenge.name} 
-//         </option>
-//       ))}
-//     </select>
-//   )
-// }
-
-// export default SelectAllChallenges;
+// import update from '../../assets/img/Edit-File.svg';
+// import delte from '../../assets/img/delete.svg';
 
 
 const SelectAllChallenges = ({ challengeId }) => {
@@ -75,11 +42,15 @@ const SelectAllChallenges = ({ challengeId }) => {
             {selectedChallenge && (
               <>
              <div className="centered-table">
-            <table>
+            <table className='container-table'>
                 <tbody>
                     <tr>
                         <td className='title-table'>RetoID:</td>
                         <td>{selectedChallenge?.id}</td>
+                        <div className='logos'>
+                        {/* <img src={update} alt="logo-update" />
+                        <img src={delte} alt="logo-delete" /> */}
+                        </div>
                     </tr>
                     <tr>
                         <td className='title-table'>Descripción:</td>
