@@ -36,7 +36,7 @@ export const deleteHypothesis = async (id) => {
         }
 };
 
-export const postHypothesis= async (data) => {
+export const postHypothesis = async (data) => {
     const response = await axios.post(API_URL, data);
     alert("Hypothesis creado exitosamente")
     return response;

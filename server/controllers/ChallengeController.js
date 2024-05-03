@@ -1,5 +1,6 @@
 import ActualStateModel from "../models/ActualStateModel.js";
 import ChallengeModel from "../models/ChallengeModel.js";
+import { Op } from 'sequelize';
 
 export const getChallenge = async (request, response) =>{
     try {
@@ -67,3 +68,24 @@ export const deleteChallenge = async (req, res) => {
         return res.status(500).send({ error: 'Internal Server Error' });
     }
 };
+
+export const searchChallenge = async (req, res) => {
+    const searchText = req.query.texto; // Accedemos al parámetro de consulta 'texto' en la URL
+
+    try {
+        const challenges = await ChallengeModel.findAll({
+            where: {
+                [Op.or]: [
+                    { name: { [Op.iLike]: `%${searchText}%` } }, // Buscar por nombre
+                    { description: { [Op.iLike]: `%${searchText}%` } } // Buscar por descripción
+                    // Agrega más campos aquí si deseas buscar en otros campos
+                ]
+            }
+        });
+
+        res.status(200).json(challenges);
+    } catch (error) {
+        console.error('Error searching challenges:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+}

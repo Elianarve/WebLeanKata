@@ -1,13 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { postChallenge } from '../../services/challengeServices';
+
 import { useForm } from 'react-hook-form';
 import './css/Forms.css';
 import Obstacle from './Obstacle';
 import TargetState from './TargetState';
+import { useState } from 'react';
 
 const Challenge = () => {
   const { handleSubmit, register, formState: { errors }} = useForm();
   const navigate = useNavigate();
+  // const [targetState, setTargetState] = useState(false);
+  // const [obstacle, setObstacle] = useState(false);
   
 
   const onSubmit = async (data) => {
@@ -20,19 +24,18 @@ const Challenge = () => {
     }
   };
 
-
   return (
     <>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>RETO: </h2>
         <div className='items'>
           <label className='label-item'>Nombre</label>
-          <input type="text-input" {...register('name', { required: true })} />
+          <input type="text" {...register('name', { required: true })} />
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
         </div>
         <div className='items'>
           <label className='label-item'>Descripción</label>
-          <input type="text-input" {...register('description', { required: true })} />
+          <input type="text" {...register('description', { required: true })} />
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
         </div>
         <div className='items'>
@@ -47,8 +50,8 @@ const Challenge = () => {
   </div>
   <button type="submit">Enviar</button>
   </form>
-  <TargetState/>
-   <Obstacle/>
+  {/* {targetState && <TargetState />}
+  {obstacle && <Obstacle />} */}
   </>
   )
 }

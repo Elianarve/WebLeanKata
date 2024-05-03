@@ -1,51 +1,23 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "./SearchBar.css";
+import { useState } from 'react';
 
+const SearchBar = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('');
 
-function Search () {
-    const [challanges, setChallanges] = useState([]);
-    const [search, setSearch] = useState("");
-    const [filteredChallanges, setFilteredChallanges] = useState([]);
-    const navigate = useNavigate();
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+    onSearch(event.target.value); 
+  };
 
-    useEffect(() => {
-        axios.get("http://localhost:3000/challenges").then((response) => {
-            setChallanges(response.data);
-        });
-    }, []);
+  return (
+    <div className="search-bar">
+      <input
+        type="text"
+        placeholder="Buscar..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
+    </div>
+  );
+};
 
-    useEffect(() => {
-        setFilteredChallanges(
-            challanges.filter((challange) =>
-                challange.name.toLowerCase().includes(search.toLowerCase())
-            )
-        );
-    }, [search, challanges]);
-
-    return (
-        <div>
-            <input
-                type="text"
-                placeholder="Buscar..."
-                onChange={(e) => setSearch(e.target.value)}
-            />
-            {filteredChallanges.map((challange, index) => (
-               <div key={index} className="gallery">
-                     <div key={challange.id} onClick={() => navigate(`/card/${challange.id}`)}>
-                        <div className="card">
-            <p>{challange.id}</p>
-            <h3>{challange.name}</h3>
-            <p>{challange.descripcion}</p>
-            <p>Estado: {challange.estado}</p>
-            </div>
-          </div>
-                </div>
-            ))}
-        </div>
-
-    );
-}
-
-export default Search;
+export default SearchBar;

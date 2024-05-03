@@ -38,6 +38,8 @@ app.use('/experiment', experimentRouter);
 app.use('/task', taskRouter);
 app.use('/results', resultRouter);
 app.use('/learning', learningRouter);
+app.use('/search', challengeRouter);
+app.use('/search', actualstateRouter);
 
 try {
     await connection_db.authenticate();

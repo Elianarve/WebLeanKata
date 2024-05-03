@@ -14,14 +14,14 @@ export const addObstacle = async (req, res) => {
     try {
         
         let count = 1;
-        const idObstacle = await ObstacleModel.findOne({}, { sort: { 'created' : -1 } });
+        const idObstacle = await ObstacleModel.findOne({order: [['id', 'DESC']]});
        
         if (idObstacle) {
             const numberId = parseInt(idObstacle.id.slice(2));
             count = numberId + 1;
         } 
         const formatted_Id = 'OB' + count.toString().padStart(3, '0');
-        const targetState = await TargetStateModel.findOne(); 
+        const targetState = await TargetStateModel.findOne({order: [['id', 'DESC']]}); 
         const obstacleId = targetState.id;
       
         const addObstacle = await ObstacleModel.create({  id: formatted_Id, target_state_id: obstacleId, ...req.body });
