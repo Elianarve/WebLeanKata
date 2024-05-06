@@ -8,6 +8,7 @@ const Home = () => {
   const [challenges, setChallenges] = useState([]);
   const [filteredChallenges, setFilteredChallenges] = useState([]); // Estado para almacenar los desafíos filtrados
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
   
   useEffect(() => {
     const fetchChallenges = async () => {

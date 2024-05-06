@@ -12,11 +12,10 @@ export const getChallenge = async () => {
         throw error;
     }
 };
-
 export const getOneChallenge = async (id) => {
     try {
-        const response = await axios.get(`${API_URL_CHALLENGE}`);
-        return response;
+        const response = await axios.get(`${API_URL_CHALLENGE}/${id}`);
+        return response.data; // Devolver solo los datos del reto, no todo el objeto de respuesta
     } catch (error) {
         console.error("Error al obtener el reto por ID", error);
         throw error;
@@ -43,17 +42,24 @@ export const postChallenge = async (data) => {
     return response;
   };
 
-
-  export const updateChallenge = async (id, data) => {
+  export const updateChallenge = async (id, newData) => { 
     try {
-        const response = await axios.put(`${API_URL_CHALLENGE}/${id}`,data);
-        if (response.status === 200) {
-            alert('Reto actualizado correctamente');
-            return response.data;
-        }
+      const response = await fetch(`http://localhost:3000/bicycles/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newData)
+      });
+  
+      if (!response.ok) { 
+        throw new Error('Error updatingItem'); 
+      }
+  
+      return response.json(); 
     } catch (error) {
-        console.error("Error al actualizar el reto:", error);
-        throw error;
+      console.error('Error updatingItem:', error);
+      throw error;
     }
-};
+  };
 

@@ -35,13 +35,18 @@ export const deleteResult = async (id) => {
         }
 };
 
-
 export const postResult = async (data) => {
-    const response = await axios.post(API_URL, data);
-    console.log(response);
-    alert("Result creado exitosamente");
-    return response;
-  };
+    try {
+        const response = await axios.post(API_URL, data);
+        if (response.status === 201) {
+            alert('Result creado correctamente');
+            return response.data;
+        }
+    } catch (error) {
+        console.error("Error al crear el Result:", error);
+        throw error;
+    }
+};
 
 
   export const updateResult = async (id, data) => {
@@ -56,4 +61,3 @@ export const postResult = async (data) => {
         throw error;
     }
 };
-

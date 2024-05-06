@@ -9,7 +9,7 @@ const ActualState = () => {
 
   const onSubmit = (data) => { 
     postActualState(data).then(() => {
-        navigate(`/reto`); 
+        navigate(`/challenge`); 
     })
     .catch((error) => {
       console.error("Error al publicar:", error);

@@ -1,18 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { postChallenge } from '../../services/challengeServices';
-
 import { useForm } from 'react-hook-form';
 import './css/Forms.css';
-import Obstacle from './Obstacle';
-import TargetState from './TargetState';
-import { useState } from 'react';
 
 const Challenge = () => {
   const { handleSubmit, register, formState: { errors }} = useForm();
-  const navigate = useNavigate();
-  // const [targetState, setTargetState] = useState(false);
-  // const [obstacle, setObstacle] = useState(false);
-  
+  const navigate = useNavigate();  
 
   const onSubmit = async (data) => {
     try {
@@ -50,8 +43,6 @@ const Challenge = () => {
   </div>
   <button type="submit">Enviar</button>
   </form>
-  {/* {targetState && <TargetState />}
-  {obstacle && <Obstacle />} */}
   </>
   )
 }

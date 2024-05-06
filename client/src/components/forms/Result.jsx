@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 import {postResult } from '../../services/resultServices';
 
 const Result = () => {
-    const { handleSubmit, register, formState: { errors }} = useForm();
+    const { handleSubmit, register, /*formState: { errors }*/} = useForm();
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         try {
           const response = await postResult(data);
-          console.log("Resultado creada:", response.data);
+          console.log("Resultado creado:", response.data);
           navigate('/learning');
         } catch (error) {
           console.error("Error al crear el resultado:", error);
