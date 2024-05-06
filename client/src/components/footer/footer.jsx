@@ -1,11 +1,11 @@
 import './Footer.css'; 
-import svgImage from '../../assets/img/footer.svg';
 
 const Footer = () => {
   return (
-    <div className="footer-container">
-      <img src={svgImage} alt="SVG Image" />
-    </div>
+    <footer>
+      <p>Hola</p>
+      <p>Adios</p>
+    </footer>
   );
 }
 
