@@ -19,7 +19,7 @@ import EditExperiment from "../components/edit/EditExperiment";
 // import EditResult from "../components/edit/EditResult";
 // import EditLearning from "../components/edit/EditLearning";
 import EditMentalContrast from "../components/edit/EditMentalContrast";
-// import EditHypothesis from "../components/edit/EditHypothesis";
+import EditHypothesis from "../components/edit/EditHypothesis";
 
 export const router = createBrowserRouter([
   {
@@ -106,10 +106,10 @@ export const router = createBrowserRouter([
       path: "/editContrastMental/:id",
       element: <EditMentalContrast/>
     },
-    // {
-    //   path: "/editHypothesis/:id",
-    //   element: <EditHypothesis/>
-    // },
+    {
+      path: "/editHypothesis/:id",
+      element: <EditHypothesis/>
+    },
   ],
   }
   ]);

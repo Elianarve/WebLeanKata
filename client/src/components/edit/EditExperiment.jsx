@@ -41,7 +41,6 @@ const EditExperimet = () => {
     };
 
     return (
-
         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
             <h2>Editar Experimento</h2>
             <div className='items'>

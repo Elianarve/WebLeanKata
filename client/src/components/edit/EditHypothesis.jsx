@@ -7,67 +7,61 @@ import { useForm } from "react-hook-form";
 const EditHypothesis = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { handleSubmit, setValue } = useForm();
+    const {register, formState: {errors}, handleSubmit, reset, setValue} = useForm();
     const [hypothesisData, setHypothesisData] = useState({});
-    // const [loading, setLoading] = useState(true);
-    // const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchHypothesis = async () => {
-            try {
-                const hypothesisData = await getOneHypothesis(id);
-                console.log("Datos de la hipótesis:", hypothesisData); //💖datos llegado o
+                const reponse = await getOneHypothesis(id);
+                const hypothesisData = reponse.data;
                 setHypothesisData(hypothesisData);
-                setValue("id", hypothesisData.id);
                 setValue("description", hypothesisData.description);
                 setValue("plan_date", hypothesisData.plan_date);
                 setValue("state_hypothesis", hypothesisData.state_hypothesis);
 
-
-            } catch (error) {
-                // setLoading(false);
-                // setError(error.message)
-                console.error("Error al obtener la hipótesis:", error);
-            }
-        };
+        }
         fetchHypothesis();
     }, [id, setValue]);
-
-    // if (loading) {
-    //   return <div>Cargando...</div>;
-    // }
-
-    // if (!hypothesisData) {
-    //   return <div>No se encontró la hipótesis</div>;
-    // }
 
     const onSubmit = async (hypothesisData) => {
         try {
             await updateHypothesis(id, hypothesisData);
-            navigate("/");
-        } catch (error) {
-            console.error("Error al editar la hipótesis:", error);
+            alert("¡Los datos de la hipótesis han sido actualizados correctamente!");
+            navigate("/hypothesis");
+            reset();
         }
-    },
+        catch (error) {
+            console.error("Error al actualizar la hipótesis:", error);
+            alert("Error al actualizar la hipótesis. Por favor, intenta nuevamente.");
+        }
+    }
 
     return (
-        <form className="form-create" onSubmit={handleSubmit(onSubmit)}>
-            <h2>EDITAR HIPÓTESIS:</h2>
-            <div className="items">
-                <label className="label-item">Descripción</label>
-                <input type="text" name="description" defaultValue={hypothesisData.description} />
+        <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+
+            <h2>Editar Hipótesis</h2>
+            <div className='items'>
+                <label className='label-item'>Descripción</label>
+                <textarea rows="10" cols="50" name="description" defaultValue={hypothesisData.description} {...register('description', { required: true })} />
+                {errors.description && <p className="error-message">La descripción es requerida</p>}
             </div>
-            <div className="items">
-                <label className="label-item">Fecha de planificación</label>
-                <input type="date" name="plan_date" defaultValue={hypothesisData.plan_date} />
+            <div className='items'>
+                <label className='label-item'>Fecha de planificación</label>
+                <input type="date" name="plan_date" defaultValue={hypothesisData.plan_date} {...register('plan_date', { required: true })} />
+                {errors.plan_date && <p className="error-message">La fecha de planificación es requerida</p>}
             </div>
-            <div className="items">
-                <label className="label-item">Estado de la hipótesis</label>
-                <input type="text" name="state_hypothesis" defaultValue={hypothesisData.state_hypothesis} />
+            <div className='items'>
+                <label className='label-item'>Estado de la hipótesis</label>
+                <select name="state_hypothesis" defaultValue={hypothesisData.state_hypothesis} {...register('state_hypothesis', { required: true })}>
+                    <option value="true">Activa</option>
+                    <option value="false">Inactiva</option>
+                </select>
+                {errors.state_hypothesis && <p className="error-message">El estado de la hipótesis es requerido</p>}
             </div>
-            <button type="submit">Guardar Cambios</button>
+            <button type="submit" className='button'>Guardar</button>
         </form>
     );
-};
+}
 
 export default EditHypothesis;
+
