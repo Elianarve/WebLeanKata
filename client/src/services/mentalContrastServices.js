@@ -15,7 +15,7 @@ export const getMentalContrast = async () => {
 
 export const getOneMentalContrast = async (id) => {
     try {
-        const response = await axios.get(`${API_URL}`);
+        const response = await axios.get(`${API_URL}/${id}`);
         return response;
     } catch (error) {
         console.error("Error al obtener el MentalContrast por ID", error);
