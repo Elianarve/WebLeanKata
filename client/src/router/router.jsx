@@ -14,7 +14,7 @@ import Result from "../components/forms/Result";
 import Learning from "../components/forms/Learning";
 import EditChallenge from "../components/edit/EditChallenge";
 import EditActualState from "../components/edit/EditActualState";
-// import EditExperiment from "../components/edit/EditExperiment";
+import EditExperiment from "../components/edit/EditExperiment";
 // import EditTask from "../components/edit/EditTask";
 // import EditResult from "../components/edit/EditResult";
 // import EditLearning from "../components/edit/EditLearning";
@@ -86,10 +86,10 @@ export const router = createBrowserRouter([
       path: "/editChallenge/:id",
       element: <EditChallenge/>
     },
-    // {
-    //   path: "/editExperiment/:id",
-    //   element: <EditExperiment/>
-    // },
+    {
+      path: "/editExperiment/:id",
+      element: <EditExperiment/>
+    },
     // {
     //   path: "/editTask/:id",
     //   element: <EditTask/>
