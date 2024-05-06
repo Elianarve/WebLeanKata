@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getOneChallenge } from '../../services/challengeServices'; 
 import SelectAllChallenges from '../selectall/SelectAllChallenges';
+import "./Card.css";
 
 const Card = () => {
   const { id } = useParams();
@@ -38,7 +39,7 @@ const Card = () => {
   }
 
   return (
-    <div className="CardContainer">
+    <div className="Card-Container">
       <SelectAllChallenges challengeId={id} />
     </div>
   );

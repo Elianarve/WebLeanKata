@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getChallenge } from '../../services/challengeServices'; 
-import '../../pages/home/Home.css';
+import './Home.css';
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
@@ -23,27 +23,32 @@ const Home = () => {
   }, []);
 
   return (
+    <div className='home-relief'>
+
     <div className="home-container">
       <h2>Retos</h2>
+
+      <h3>
+        <span>ID</span>
+        <span>Descripción</span>
+        <span>Estado</span>
+      </h3>
       <div className="gallery-items">
         {error && <p className="error-message">{error}</p>}
-        <div className="challenge-container">
-          <div className="challenge-table">
-            <div className="table-row">
-              <div className="table-cell-title">ID del desafío</div>
-              <div className="table-cell-title">Nombre del desafío</div>
-              <div className="table-cell-title">ID del estado actual del desafío</div>
-            </div>
-            {challenges.map((challenge) => (
-              <div key={challenge.id} className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
-                <div className="table-cell">{challenge.id}</div>
-                <div className="table-cell">{challenge.name}</div>
-                <div className="table-cell">{challenge.actual_state_id}</div>
+        <div className="challenge-table">
+          {challenges.map((challenge) => (
+            <div key={challenge.id} className="challenge-wrapper">
+              <div className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
+                <span>{challenge.id}</span>
+                <span>{challenge.name}</span>
+                <span>{challenge.actual_state_id}</span>
               </div>
-            ))}
-          </div>
+            </div>
+            
+          ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };

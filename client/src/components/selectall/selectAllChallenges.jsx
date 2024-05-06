@@ -73,34 +73,38 @@ const SelectAllChallenges = ({ challengeId }) => {
                 ))}
             </select>
             {selectedChallenge && (
-              <>
-             <div className="centered-table">
-            <table>
-                <tbody>
-                    <tr>
-                        <td className='title-table'>RetoID:</td>
-                        <td>{selectedChallenge?.id}</td>
-                    </tr>
-                    <tr>
-                        <td className='title-table'>Descripción:</td>
-                        <td>{selectedChallenge?.description}</td>
-                    </tr>
-                    <tr>
-                        <td className='title-table'>Fecha Inicio:</td>
-                        <td>{selectedChallenge?.start_date}</td>
-                    </tr>
-                    <tr>
-                        <td className='title-table'>Fecha Fin:</td>
-                        <td>{selectedChallenge?.end_date}</td>
-                    </tr>
-                    <tr>
-                        <td className='title-table'>Estado Actual ID:</td>
-                        <td>{selectedChallenge?.actual_state_id}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-              </>
+                <div className='challenge-details'>
+                    <div className="detail-pair">
+                        <div className='detail'>
+                            <p className='title-table'>RetoID:</p>
+                            <p>{selectedChallenge?.id}</p>
+                        </div>
+                        <div className='detail'>
+                            <p className='title-table'>Nombre:</p>
+                            <p>{selectedChallenge?.name}</p>
+                        </div>
+                    </div>
+                    <div className="detail-pair">
+                        <div className='detail'>
+                            <p className='title-table'>Descripción:</p>
+                            <p>{selectedChallenge?.description}</p>
+                        </div>
+                        <div className='detail'>
+                            <p className='title-table'>Fecha Inicio:</p>
+                            <p>{selectedChallenge?.start_date}</p>
+                        </div>
+                    </div>
+                    <div className="detail-pair">
+                        <div className='detail'>
+                            <p className='title-table'>Fecha Fin:</p>
+                            <p>{selectedChallenge?.end_date}</p>
+                        </div>
+                        <div className='detail'>
+                            <p className='title-table'>Estado Actual ID:</p>
+                            <p>{selectedChallenge?.actual_state_id}</p>
+                        </div>
+                    </div>
+                </div>
             )}
         </div>
     );
