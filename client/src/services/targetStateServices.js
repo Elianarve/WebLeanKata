@@ -15,7 +15,7 @@ export const getTargetState = async () => {
 
 export const getOneTargetState = async (id) => {
     try {
-        const response = await axios.get(`${API_URL}`);
+        const response = await axios.get(`${API_URL}/${id}`);
         return response;
     } catch (error) {
         console.error("Error al obtener el TargetState por ID", error);
