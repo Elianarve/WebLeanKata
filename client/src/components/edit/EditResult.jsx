@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getOneResult, updateResult } from '../../services/resultServices';
-import { useParams } from 'react-router-dom';
+import { getOneResult, updateResult, deleteResult } from '../../services/resultServices';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../forms/css/Forms.css';
 
 
@@ -9,6 +9,7 @@ const EditResult = () => {
   const { id } = useParams();
   const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
   const [ resultData, setResultData] = useState({});
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchData = async () => {
@@ -76,7 +77,8 @@ const EditResult = () => {
           <input type="text" name='next_step' defaultValue={ resultData.next_step } {...register('next_step', { required: true })} />
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
         </div>
-  <button type="submit">Editar</button>
+        <button onClick={() => deleteResult(id).then(() => navigate("/home")) }>Eliminar</button>
+        <button type="submit">Editar</button>
       </form>
   );
 }

@@ -18,6 +18,11 @@ import EditObstacle from "../components/edit/EditObstacle";
 import EditResult from "../components/edit/EditResult";
 import EditTargetState from "../components/edit/EditTargetState";
 import EditTask from "../components/edit/EditTask";
+import EditChallenge from '../components/edit/EditChallenge';
+import EditExperiment from '../components/edit/EditExperiment';
+import EditMentalContrast from '../components/edit/EditContrastMental';
+import EditHypothesis from '../components/edit/EditHypothesis';
+
 
 export const router = createBrowserRouter([
   {
@@ -91,6 +96,22 @@ export const router = createBrowserRouter([
     {
       path:"/edittask/:id",
       element: <EditTask/>
+    },
+    {
+      path: "/editChallenge/:id",
+      element: <EditChallenge/>
+    },
+    {
+      path: "/editExperiment/:id",
+      element: <EditExperiment/>
+    },
+    {
+      path: "/editContrastMental/:id",
+      element: <EditMentalContrast/>
+    },
+    {
+      path: "/editHypothesis/:id",
+      element: <EditHypothesis/>
     },
     {
       path: "/card/:id",

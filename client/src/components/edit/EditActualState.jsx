@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getOneActualState, updateActualState } from '../../services/actualStateServices';
-import { useParams } from 'react-router-dom';
+import { getOneActualState, updateActualState, deleteActualState } from '../../services/actualStateServices';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../forms/css/Forms.css';
+
 
 
 const EditActualState = () => {
   const { id } = useParams();
   const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
   const [actualStateData, setActualStateData] = useState({});
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchData = async () => {
@@ -47,6 +49,7 @@ const EditActualState = () => {
           {/* {errors.speeds?.type === 'pattern' && <p className="error-message">La velocidad debe ser un valor numérico</p>}
           {errors.speeds?.type === 'required' && <p className="error-message">El campo velocidades es requerido</p>} */}
         </div>
+        <button onClick={() => deleteActualState(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />
       </form>
   );

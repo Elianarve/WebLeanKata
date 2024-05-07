@@ -68,3 +68,12 @@
   border: 1px solid #ddd;
   background-color: #f9f9f9;
 }
+
+.logos{
+  display: flex;
+  justify-content: space-around;
+}
+
+.logo-update{
+  width:22%;
+}

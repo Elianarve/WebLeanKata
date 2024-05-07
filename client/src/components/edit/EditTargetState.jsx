@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getOneTargetState, updateTargetState } from '../../services/targetStateServices';
-import { useParams } from 'react-router-dom';
+import { deleteTargetState, getOneTargetState, updateTargetState } from '../../services/targetStateServices';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../forms/css/Forms.css';
 
 
@@ -9,6 +9,7 @@ const EditTargetState = () => {
   const { id } = useParams();
   const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
   const [ targetStateData, setTargetStateData ] = useState({});
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchData = async () => {
@@ -52,6 +53,7 @@ const EditTargetState = () => {
        <input type="date" name='date_goal' defaultValue={targetStateData.date_goal } {...register('date_goal', { required: true })} />
        {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
      </div>
+     <button onClick={() => deleteTargetState(id).then(() => navigate("/home")) }>Eliminar</button>
      <button type="submit">Editar</button>
          </form>
      );

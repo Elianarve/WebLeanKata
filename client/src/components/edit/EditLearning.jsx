@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getOneLearning, updateLearning } from '../../services/learningsServices';
-import { useParams } from 'react-router-dom';
+import { getOneLearning, updateLearning, deleteLearning } from '../../services/learningsServices';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../forms/css/Forms.css';
 
 
@@ -9,6 +9,7 @@ const EditLearning = () => {
   const { id } = useParams();
   const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
   const [ learningData, setLearningData] = useState({});
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchData = async () => {
@@ -47,6 +48,7 @@ const EditLearning = () => {
           {/* {errors.speeds?.type === 'pattern' && <p className="error-message">La velocidad debe ser un valor numérico</p>}
           {errors.speeds?.type === 'required' && <p className="error-message">El campo velocidades es requerido</p>} */}
         </div>
+        <button onClick={() => deleteLearning(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />
       </form>
   );
