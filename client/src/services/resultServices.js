@@ -15,7 +15,7 @@ export const getResult = async () => {
 
 export const getOneResult = async (id) => {
     try {
-        const response = await axios.get(`${API_URL}`);
+        const response = await axios.get(`${API_URL}/${id}`);
         return response;
     } catch (error) {
         console.error("Error al obtener el Result por ID", error);

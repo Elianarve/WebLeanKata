@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { getOneActualState, updateActualState } from '../../services/actualStateServices';
 import { useParams } from 'react-router-dom';
 import '../forms/css/Forms.css';
 
+
 const EditActualState = () => {
   const { id } = useParams();
-  const { register, formState: {errors}, handleSubmit, reset, setValue } = useForm();
+  const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
   const [actualStateData, setActualStateData] = useState({});
   
   useEffect(() => {
@@ -37,7 +38,7 @@ const EditActualState = () => {
         <h2>Editar estado actual</h2>
         <div className='items'>
           <label className='label-item'>Descripción </label>
-          <textarea type="text" rows="10" cols="50" name="description" defaultValue={actualStateData.description} {...register('description', { required: true })}/>
+          <textarea type="text" rows="10" cols="50" name="description" defaultValue={actualStateData.description } {...register('description', { required: true })}/>
           {/* {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>}  */}
         </div>
         <div className='items'>
