@@ -67,7 +67,6 @@ export const deleteActualState = async (req, res) => {
 
 export const searchActualState = async (req, res) => {
     const searchText = req.query.searchText;
-
     try {
         const searchResults = await searchModel(ActualStateModel, 'name', searchText);
         res.json(searchResults);
