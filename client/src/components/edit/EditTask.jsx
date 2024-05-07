@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getOneTask, updateTask } from '../../services/taskServices';
-import { useParams } from 'react-router-dom';
+import { deleteTask, getOneTask, updateTask } from '../../services/taskServices';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../forms/css/Forms.css';
 
 const EditTask = () => {
   const { id } = useParams();
   const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
   const [ taskData, setTaskData ] = useState({});
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchData = async () => {
@@ -69,6 +70,7 @@ const EditTask = () => {
           <input type="text" name='state' defaultValue={taskData.state} {...register('state', { required: true })} />
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
         </div>
+     <button onClick={() => deleteTask(id).then(() => navigate("/home")) }>Eliminar</button>
      <button type="submit">Editar</button>
          </form>
      );

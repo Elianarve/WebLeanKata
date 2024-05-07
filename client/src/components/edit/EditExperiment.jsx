@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
-import {getOneExperiment, updateExperiment} from '../../services/experimentServices';
+import {getOneExperiment, updateExperiment, deleteExperiment} from '../../services/experimentServices';
 import '../forms/css/Forms.css';
 
 
@@ -9,6 +9,7 @@ const EditExperimet = () => {
     const {id} = useParams();
     const {register, formState: {errors}, handleSubmit, reset, setValue} = useForm();
     const [experimentData, setExperimentData] = useState({});
+    const navigate = useNavigate();
 
     useEffect (() => {
         const fetchData = async () => {
@@ -96,6 +97,7 @@ const EditExperimet = () => {
                 </select>
                 {/* {errors.state_experiment && <p className="error-message">El estado del experimento es requerido</p>} */}
             </div>
+            <button onClick={() => deleteExperiment(id).then(() => navigate("/home")) }>Eliminar</button>
             <input type="submit" value="Editar" />
         </form>
     );

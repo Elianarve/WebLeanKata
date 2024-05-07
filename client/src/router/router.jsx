@@ -17,9 +17,11 @@ import EditChallenge from "../components/edit/EditChallenge";
 import EditExperiment from "../components/edit/EditExperiment";
 import EditTask from "../components/edit/EditTask";
 import EditResult from "../components/edit/EditResult";
-import EditLearning from "../components/edit/EditLearning";
-import EditMentalContrast from "../components/edit/EditMentalContrast";
-import EditHypothesis from "../components/edit/EditHypothesis";
+import EditTargetState from "../components/edit/EditTargetState";
+import EditMentalContrast from '../components/edit/EditContrastMental';
+import EditHypothesis from '../components/edit/EditHypothesis';
+import EditObstacle from '../components/edit/EditObstacle';
+import EditLearning from '../components/edit/EditLearning';
 
 export const router = createBrowserRouter([
   {
@@ -83,6 +85,26 @@ export const router = createBrowserRouter([
       element: <EditActualState/>
     },
     {
+      path:"/editlearning/:id",
+      element: <EditLearning/>
+    },
+    {
+      path: "/editobstacle/:id",
+      element: <EditObstacle/>
+    },
+    {
+      path:"/editresult/:id",
+      element: <EditResult/>
+    },
+    {
+      path:"/edittargetstate/:id",
+      element: <EditTargetState/>
+    },
+    {
+      path:"/edittask/:id",
+      element: <EditTask/>
+    },
+    {
       path: "/editChallenge/:id",
       element: <EditChallenge/>
     },
@@ -91,20 +113,12 @@ export const router = createBrowserRouter([
       element: <EditExperiment/>
     },
     {
-      path: "/editTask/:id",
-      element: <EditTask/>
-    },
-    {
-      path: "/editResult/:id",
-      element: <EditResult/>
-    },
-    {
-      path: "/editLearning/:id",
-      element: <EditLearning/>
-    },
-    {
       path: "/editContrastMental/:id",
       element: <EditMentalContrast/>
+    },
+    {
+      path: "/editHypothesis/:id",
+      element: <EditHypothesis/>
     },
     {
       path: "/editHypothesis/:id",

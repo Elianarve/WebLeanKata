@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { getOneActualState, updateActualState, deleteActualState } from '../../services/actualStateServices';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../forms/css/Forms.css';
+
 
 
 const EditActualState = () => {
   const { id } = useParams();
   const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
   const [actualStateData, setActualStateData] = useState({});
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchData = async () => {
@@ -47,6 +49,7 @@ const EditActualState = () => {
           <input type="date" name="date" defaultValue={actualStateData.date } {...register('date', {required: true })}/>
           {errors.date?.type === 'required' && <p className="error-message">El campo fecha es requerido</p>}
         </div>
+        <button onClick={() => deleteActualState(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />
       </form>
   );

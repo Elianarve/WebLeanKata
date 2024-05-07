@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getOneHypothesis, updateHypothesis } from "../../services/hypothesisServices";
+import { getOneHypothesis, updateHypothesis, deleteHypothesis } from "../../services/hypothesisServices";
 import { useForm } from "react-hook-form";
 // import '../forms/css/Forms.css';
 
@@ -58,10 +58,10 @@ const EditHypothesis = () => {
                 </select>
                 {errors.state_hypothesis && <p className="error-message">El estado de la hipótesis es requerido</p>}
             </div>
+            <button onClick={() => deleteHypothesis(id).then(() => navigate("/home")) }>Eliminar</button>
             <button type="submit" className='button'>Guardar</button>
         </form>
     );
 }
 
 export default EditHypothesis;
-
