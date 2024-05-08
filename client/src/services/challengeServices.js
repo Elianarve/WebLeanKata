@@ -15,7 +15,7 @@ export const getChallenge = async () => {
 
 export const getOneChallenge = async (id) => {
     try {
-        const response = await axios.get(`${API_URL_CHALLENGE}`);
+        const response = await axios.get(`${API_URL_CHALLENGE}/${id}`);
         return response;
     } catch (error) {
         console.error("Error al obtener el reto por ID", error);

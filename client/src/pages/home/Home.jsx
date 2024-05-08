@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { getChallenge } from '../../services/challengeServices'; 
 import '../../pages/home/Home.css';
 import SearchBar from '../../components/searchBar/SearchBar';
+import delte from '../../assets/img/delete.svg';
+import update from '../../assets/img/Edit-File.svg';
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
-  const [filteredChallenges, setFilteredChallenges] = useState([]); // Estado para almacenar los desafíos filtrados
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const fetchChallenges = async () => {
       try {
@@ -41,16 +43,18 @@ const Home = () => {
         <div className="challenge-container">
           <div className="challenge-table">
             <div className="table-row">
-              <div className="table-cell-title">ID del desafío</div>
-              <div className="table-cell-title">Nombre del desafío</div>
-              <div className="table-cell-title">ID del estado actual del desafío</div>
+              <div className="table-cell-title">ID del reto</div>
+              <div className="table-cell-title">Nombre del reto</div>
+              <div className="table-cell-title">ID del estado actual del reto</div>
             </div>
-            
-        {filteredChallenges.map((challenge) => (
+            {challenges.map((challenge) => (
               <div key={challenge.id} className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
                 <div className="table-cell">{challenge.id}</div>
                 <div className="table-cell">{challenge.name}</div>
                 <div className="table-cell">{challenge.actual_state_id}</div>
+                <div className='logos'>
+                <img className='logo-update' src={update} alt="" />
+              </div>
               </div>
             ))}
           </div>
