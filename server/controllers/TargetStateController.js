@@ -24,6 +24,7 @@ export const addTargetState = async (req, res) => {
         console.log(formatted_Id)
         const challengeId = await ChallengeModel.findOne({order: [['id', 'DESC']]}); 
         const targetStateId = challengeId.id;
+        console.log(targetStateId)
       
         const addTargetStat = await TargetStateModel.create({  id: formatted_Id, ...req.body, challenge_id: targetStateId });
         res.status(201).json(addTargetStat);

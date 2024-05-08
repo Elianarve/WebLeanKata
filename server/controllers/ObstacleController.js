@@ -32,6 +32,7 @@ export const addObstacle = async (req, res) => {
     }
 }
 
+
 export const updateObstacle = async (req, res) => {   
     const obstacleId = req.params.id; 
     try {
