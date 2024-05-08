@@ -56,3 +56,12 @@ export const postExperiment = async (data) => {
     }
 };
 
+export const getExperimentsByChallengeId = async (challengeId) => {
+    try {
+        const response = await axios.get(`${API_URL}/challenges/${challengeId}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener los experimentos por ID de reto:", error);
+        throw error;
+    }
+};

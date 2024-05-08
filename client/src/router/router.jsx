@@ -22,6 +22,7 @@ import EditMentalContrast from '../components/edit/EditContrastMental';
 import EditHypothesis from '../components/edit/EditHypothesis';
 import EditObstacle from '../components/edit/EditObstacle';
 import EditLearning from '../components/edit/EditLearning';
+import Detail from "../components/detail/Detail";
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ export const router = createBrowserRouter([
     {
       path: "/card/:id",
       element: <Card/>
+    },
+    {
+      path: "/detail/:id",
+      element: <Detail/>
     },
     {
       path:"/editActualState/:id",

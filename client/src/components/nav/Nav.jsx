@@ -25,7 +25,7 @@ const Nav = () => {
         </div>
          )}
         <li className="nav-button"><Link to="/">Inicio</Link></li>
-        <li className="nav-button"><Link to="/Edit/:id">Tablero Principal</Link></li>
+        <li className="nav-button"><Link to="/detail/:id">Tablero Principal</Link></li>
       </ul>
     </nav>
   );
