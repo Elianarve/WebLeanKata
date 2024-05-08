@@ -16,7 +16,7 @@ const Nav = () => {
         <img src={logo} alt="logo" />
       </div>
       <ul className='nav-links'>
-        <li className="nav-button" onClick={toggleMenu} >Proyecto/Reto</li>
+        <li className="nav-button" onClick={toggleMenu} >Proyectos y retos</li>
         {openMenu && (
         <div className='nav-display'>
         <a className='a-link' href="/actualstate">Nuevo</a>
