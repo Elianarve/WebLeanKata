@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { getChallenge } from "../../services/challengeServices";
-import './SelectAllChallenges.css';
-import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import '../selectall/SelectAllChallenges.css';
+// import update from '../../assets/img/Edit-File.svg';
+// import delte from '../../assets/img/delete.svg';
 
-const SelectAllChallenges = ({ onChallengeSelect }) => {
+
+const SelectAllChallenges = ({ challengeId }) => {
     const [challenges, setChallenges] = useState([]);
-    const [selectedChallengeId, setSelectedChallengeId] = useState(null);
-    const [filteredTargetStates, setFilteredTargetStates] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchChallenges = async () => {
@@ -21,47 +23,58 @@ const SelectAllChallenges = ({ onChallengeSelect }) => {
         fetchChallenges();
     }, []);
 
-    useEffect(() => {
-        // Filtrar los targetstates cuando el challenge seleccionado cambia
-        if (selectedChallengeId !== null) {
-            const filteredStates = challenges.find(challenge => challenge.id === selectedChallengeId)?.targetstates || [];
-            setFilteredTargetStates(filteredStates);
-        }
-    }, [selectedChallengeId, challenges]);
-
-    const handleChallengeSelect = (selectedChallengeId) => {
-        setSelectedChallengeId(selectedChallengeId);
-        const selectedChallenge = challenges.find(challenge => challenge.id === selectedChallengeId);
-        onChallengeSelect(selectedChallenge);
+    const handleChange = (event) => {
+        const selectedChallengeId = event.target.value;
+        navigate(`/card/${selectedChallengeId}`);
     };
+
+    const selectedChallenge = challenges.find(challenge => challenge.id === challengeId);
 
     return (
         <div className='container-challenge'>
-            <h2>Selecciona un reto:</h2>
-            <select className='container-select' onChange={(e) => handleChallengeSelect(e.target.value)}>
-                <option value="">Selecciona un reto...</option>
+            <select value={challengeId} onChange={handleChange} className='container-select'>
                 {challenges.map((challenge) => (
                     <option key={challenge.id} value={challenge.id}>
                         {challenge.name}
                     </option>
                 ))}
             </select>
-  {/* Renderizar los targetstates filtrados */}
-          
-            <div>
-                <h3>Target States:</h3>
-                <ul>
-                    {filteredTargetStates.map((state) => (
-                        <li key={state.id}>{state.name}</li>
-                    ))}
-                </ul>
-            </div>
+            {selectedChallenge && (
+              <>
+             <div className="centered-table">
+            <table className='container-table'>
+                <tbody>
+                    <tr>
+                        <td className='title-table'>RetoID:</td>
+                        <td>{selectedChallenge?.id}</td>
+                        <div className='logos'>
+                        {/* <img src={update} alt="logo-update" />
+                        <img src={delte} alt="logo-delete" /> */}
+                        </div>
+                    </tr>
+                    <tr>
+                        <td className='title-table'>Descripción:</td>
+                        <td>{selectedChallenge?.description}</td>
+                    </tr>
+                    <tr>
+                        <td className='title-table'>Fecha Inicio:</td>
+                        <td>{selectedChallenge?.start_date}</td>
+                    </tr>
+                    <tr>
+                        <td className='title-table'>Fecha Fin:</td>
+                        <td>{selectedChallenge?.end_date}</td>
+                    </tr>
+                    <tr>
+                        <td className='title-table'>Estado Actual ID:</td>
+                        <td>{selectedChallenge?.actual_state_id}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+              </>
+            )}
         </div>
     );
-};
-
-SelectAllChallenges.propTypes = {
-    onChallengeSelect: PropTypes.func.isRequired,
 };
 
 export default SelectAllChallenges;
