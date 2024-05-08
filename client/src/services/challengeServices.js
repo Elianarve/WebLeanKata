@@ -26,7 +26,8 @@ export const getOneChallenge = async (id) => {
 export const deleteChallenge = async (id) => {
         try {
             const response = await axios.delete(`${API_URL_CHALLENGE}/${id}`);
-            if (response.status === 200) {
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el estado objetivo?"); 
+            if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }
         } catch (error) {

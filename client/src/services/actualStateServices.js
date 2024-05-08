@@ -27,7 +27,7 @@ export const getOneActualState = async (id) => {
 export const deleteActualState = async (id) => {
         try {
             const response = await axios.delete(`${API_URL_AE}/${id}`);
-            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar la foto?"); 
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el estado objetivo?"); 
             if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../pages/home/Home.css';
 import SearchBar from '../../components/searchBar/SearchBar';
-import delte from '../../assets/img/delete.svg';
 import update from '../../assets/img/Edit-File.svg';
 import { getChallenge } from '../../services/challengeServices';
 import { getActualState } from '../../services/actualStateServices'; 
