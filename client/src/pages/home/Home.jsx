@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { getChallenge } from '../../services/challengeServices'; 
 import '../../pages/home/Home.css';
 import SearchBar from '../../components/searchBar/SearchBar';
-import delte from '../../assets/img/delete.svg';
 import update from '../../assets/img/Edit-File.svg';
 
 const Home = () => {

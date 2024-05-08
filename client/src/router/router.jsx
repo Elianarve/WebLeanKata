@@ -98,19 +98,19 @@ export const router = createBrowserRouter([
       element: <EditTask/>
     },
     {
-      path: "/editChallenge/:id",
+      path: "/editchallenge/:id",
       element: <EditChallenge/>
     },
     {
-      path: "/editExperiment/:id",
+      path: "/editexperiment/:id",
       element: <EditExperiment/>
     },
     {
-      path: "/editContrastMental/:id",
+      path: "/editcontrastmental/:id",
       element: <EditMentalContrast/>
     },
     {
-      path: "/editHypothesis/:id",
+      path: "/edithypothesis/:id",
       element: <EditHypothesis/>
     },
     {
