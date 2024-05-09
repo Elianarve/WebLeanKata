@@ -2,14 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getOneChallenge } from '../../services/challengeServices'; 
 import SelectAllChallenges from '../selectall/SelectAllChallenges';
-<<<<<<< HEAD
-=======
 import TargetSta from '../selectall/TargetSta';
 import MentalContras from '../selectall/MentalContras';
 import { getOneMentalContrast } from '../../services/mentalContrastServices';
 import Obstacle from '../selectall/Obstacle';
 
->>>>>>> feature-chatbot
 
 const Card = () => {
   const { id } = useParams();
@@ -55,11 +52,8 @@ const Card = () => {
     <>
     <div className="cardContainer">
       <SelectAllChallenges challengeId={id} />
-<<<<<<< HEAD
-=======
       <TargetSta challengeId={id}/>
       <Obstacle />
->>>>>>> feature-chatbot
     </div>
     </>
   );
