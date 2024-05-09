@@ -3,9 +3,9 @@ import { postChallenge } from '../../services/challengeServices';
 
 import { useForm } from 'react-hook-form';
 import './css/Forms.css';
-import Obstacle from './Obstacle';
-import TargetState from './TargetState';
-import { useState } from 'react';
+// import Obstacle from './Obstacle';
+// import TargetState from './TargetState';
+// import { useState } from 'react';
 
 const Challenge = () => {
   const { handleSubmit, register, formState: { errors }} = useForm();

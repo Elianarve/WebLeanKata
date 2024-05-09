@@ -25,7 +25,7 @@ const ActualState = () => {
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
         </div>
         <div className='items'>
-        <label className='label-item'>Fecha: </label>
+        <label>Fecha: </label>
         <input type="date" {...register('date', { required: true })} />
           {/* {errors.date && <p className="error-message">La fecha es requerida</p>} */}
         </div>
