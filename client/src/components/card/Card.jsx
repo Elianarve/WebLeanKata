@@ -6,7 +6,7 @@ import TargetSta from '../selectall/TargetSta';
 import MentalContras from '../selectall/MentalContras';
 import { getOneMentalContrast } from '../../services/mentalContrastServices';
 import Obstacle from '../selectall/Obstacle';
-
+import "./Card.css"
 
 const Card = () => {
   const { id } = useParams();
