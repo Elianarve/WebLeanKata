@@ -1,20 +1,20 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { postHypothesis } from '../../services/hypothesisServices';
+import { postHypothesis } from '../../services/hypothesisServices'
 
 const Hypothesis = () => {
-    const { handleSubmit, register, formState: { errors }} = useForm();
-    const navigate = useNavigate();
+  const { handleSubmit, register, formState: { errors }} = useForm();
+  const navigate = useNavigate();
 
-    const onSubmit = async (data) => {
-        try {
-          const response = await postHypothesis(data);
-          console.log("Hipótesis creada:", response.data);
-          navigate('/experiment');
-        } catch (error) {
-          console.error("Error al crear la hipótesis:", error);
-        }
-      };
+  const onSubmit = async (data) => {
+    try {
+      const response = await postHypothesis(data);
+      console.log("Hipótesis creada:", response.data);
+      navigate('/experiment');
+    } catch (error) {
+      console.error("Error al crear la hipótesis:", error);
+    }
+  };
 
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
@@ -27,16 +27,16 @@ const Hypothesis = () => {
       <div className='items'>
         <label className='label-item'>Fecha de planificación:</label>
         <input type="date" {...register('plan_date', { required: true, validate: value => new Date(value) > new Date() || 'La fecha de planificación debe ser posterior a la fecha actual' })} />
-        {errors.plan_date && <p className="error-message">{errors.plan_date.message}</p>}
+        {errors.plan_date && <p className="error-message">La fecha de planificación es requerida</p>}
       </div>
       <div className='items'>
         <label className='label-item'>Estado de hipótesis:</label>
-        <input type="text" {...register('state_hypothesis', { required: true })} />
+        <input type="text" {...register('state_hipothesis', { required: true })} />
         {errors.state_hypothesis && <p className="error-message">El estado de la hipótesis es requerido</p>}
       </div>
       <button type="submit">Enviar</button>
     </form>
-  )
+  );
 }
 
 export default Hypothesis;

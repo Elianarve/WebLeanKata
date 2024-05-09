@@ -10,7 +10,6 @@ const Obstacle = () => {
   const [imageUrl, setImageUrl] = useState(""); 
   const navigate = useNavigate();
   
-
   const onSubmit = async (data) => {
     try {
       if (data.image) {
@@ -22,13 +21,13 @@ const Obstacle = () => {
         setImageUrl(responseImage.secure_url); 
         data = { ...data, image: responseImage.secure_url }; 
       }
+      
       await postObstacle(data);
       navigate('/hypothesis');
     } catch (error) {
       console.error("Error creating obstacle:", error);
     }
   };
-
 
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
