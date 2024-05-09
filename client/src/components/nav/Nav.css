@@ -1,69 +1,69 @@
 .navbar {
-    background-color: #ECF0F1;
-    color: #000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4px 70px;
-    font-family: Arial, Helvetica, sans-serif;
-   }
-  
-  .logo {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .nav-links {
-    list-style-type: none;
-    margin: 5;
-    padding: 5;
-    display: flex;
-  }
-  
-  .nav-links li {
-    margin-left: 30px;
-  }
-    
-  .nav-links li a {
-    text-decoration: none;
-    color: #000;
-  }
-  
-  .nav-button {
-        transition: 0.6s;  
-        border-radius: 52px;
-        background: #ECF0F1;
-        padding: 10px 20px;
-        cursor: pointer;
-        box-shadow:  16px 16px 32px #c9cccd,
-        -16px -16px 32px #ffffff;
-  }
-  
-  .nav-button:hover {
-  box-shadow: #92FFC0,
-              #002661;
-  }
+  background-color: #ECF0F1;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 70px;
+  font-family: Arial, Helvetica, sans-serif;
+ }
 
-  .nav-display {
-    display: flex;
-    flex-direction: column; 
-    position: absolute;
-    top: 9.5%; 
-    left: 69%; 
-    background-color: #ECF0F1; 
-    border: 1px solid #ccc; 
-    z-index: 1; 
-    border-radius: 8%;
-  }
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
 
-  .a-link{ 
-    display: block; 
-    padding: 8px 16px;
-    text-decoration: none;
-    color: black;
-  }
+.nav-links {
+  list-style-type: none;
+  margin: 5;
+  padding: 5;
+  display: flex;
+}
 
-  .line{
-    border: solid black 1px;
-    width: 90%;
-  }
+.nav-links li {
+  margin-left: 30px;
+}
+  
+.nav-links li a {
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-button {
+      transition: 0.6s;  
+      border-radius: 52px;
+      background: #ECF0F1;
+      padding: 10px 20px;
+      cursor: pointer;
+      box-shadow:  16px 16px 32px #c9cccd,
+      -16px -16px 32px #ffffff;
+}
+
+.nav-button:hover {
+box-shadow: #92FFC0,
+            #002661;
+}
+
+.nav-display {
+  display: flex;
+  flex-direction: column; 
+  position: absolute;
+  top: 9.5%; 
+  left: 69%; 
+  background-color: #ECF0F1; 
+  border: 1px solid #ccc; 
+  z-index: 1; 
+  border-radius: 8%;
+}
+
+.a-link{ 
+  display: block; 
+  padding: 8px 16px;
+  text-decoration: none;
+  color: black;
+}
+
+.line{
+  border: solid black 1px;
+  width: 90%;
+}
