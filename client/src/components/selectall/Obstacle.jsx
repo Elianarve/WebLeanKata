@@ -13,8 +13,6 @@ const Obstacle = ({targetStateId}) => {
             try {
                 const obstacleData = await getObstacle(targetStateId);
                 const targetStatesId = obstacleData.filter(state => state.target_state_id === targetStateId);
-                // console.log(obstacleData)
-                // console.log(targetStatesId)
                 setObstacles(targetStatesId)
             } catch (error){
                 console.error('Error fetching Challenges:', error);

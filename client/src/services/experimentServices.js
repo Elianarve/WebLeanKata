@@ -42,6 +42,18 @@ export const postExperiment = async (data) => {
     return response;
   }
 
+  export const uploadImage = async (imageData) => {
+    try {
+      const response = await axios.post(
+        "http://api.cloudinary.com/v1_1/dpkll45y2/image/upload", 
+        imageData
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Error al cargar la imagen en Cloudinary: " + error.message);
+    }
+  };
+
 
   export const updateExperiment = async (id, data) => {
     try {

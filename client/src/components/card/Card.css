@@ -1,0 +1,125 @@
+body {
+    background-color: #e0e0e0 ;
+}
+
+  .centered-table {
+    border-radius: 16px;
+    background: #e0e0e0;
+    box-shadow: 8px 8px 16px #bebebe,
+    -8px -8px 16px #ffffff;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .title-table {
+    border-radius: 16px;
+background: #e0e0e0;
+box-shadow: 8px 8px 16px #bebebe,
+-8px -8px 16px #ffffff;
+  }
+.table {
+    border-radius: 16px;
+    background: #e0e0e0;
+    box-shadow: 8px 8px 16px #bebebe,
+    -8px -8px 16px #ffffff;
+      }
+
+.logos {
+
+    border-radius: 16px;
+    background: #e0e0e0;
+    box-shadow: 8px 8px 16px #bebebe,
+    -8px -8px 16px #ffffff;
+    margin: 20px;
+      }
+
+  .edit {
+    border-radius: 16px;
+    background: #e0e0e0;
+    box-shadow: 8px 8px 16px #bebebe,
+    -8px -8px 16px #ffffff;
+      }
+
+  
+  /* Estilos para el texto */
+  .cardText {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Estilos para los enlaces */
+  .cardLink {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .cardLink:hover {
+   border-radius: 16px;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  /* Estilos para los botones */
+  .cardButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .cardButton:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos para imágenes */
+  .cardImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Estilos para listas */
+  .cardList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .cardListItem {
+    margin-bottom: 10px;
+    
+  }
+  
+  /* Estilos para íconos */
+  .cardIcon {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Estilos para etiquetas */
+  .cardTag {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  
+  /* Estilos para responsive */
+  @media screen and (max-width: 768px) {
+    .cardContainer {
+      flex-direction: column;
+    }
+  }
+  
