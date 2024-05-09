@@ -47,7 +47,7 @@ const Home = () => {
               <div className="table-cell-title">ID del estado actual del reto</div>
             </div>
             {challenges.map((challenge) => (
-              <div key={challenge.id} className="table-row challenge-description" onClick={() => navigate(/card/${challenge.id})}>
+              <div key={challenge.id} className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
                 <div className="table-cell">{challenge.id}</div>
                 <div className="table-cell">{challenge.name}</div>
                 <div className="table-cell">{challenge.actual_state_id}</div>
