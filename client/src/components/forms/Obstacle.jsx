@@ -20,9 +20,7 @@ const Obstacle = () => {
       const responseImage = await uploadImage(imageData); 
       setImageUrl(responseImage.secure_url); 
       const obstacleData = { ...data, image: responseImage.secure_url }; 
-      console.log(obstacleData);
       const response = await postObstacle(obstacleData);
-      console.log("Obstacle created:", response.data);
       navigate('/hypothesis');
     } catch (error) {
       console.error("Error creating obstacle:", error);
@@ -38,8 +36,8 @@ const Obstacle = () => {
         <input type="text" {...register('description', { required: true })} />
       </div>
       <div className='items'>
-        <input type="file" {...register('image', { required: true })} />
-        {errors.image && <p className="error-message">Por favor adjunta una imagen</p>}
+        <input type="file" {...register('image', { required: false })} />
+        {errors.image && <p className="error-message">Por favor adjunta Archivo</p>}
       </div>
       <button type="submit">Enviar</button>
     </form>

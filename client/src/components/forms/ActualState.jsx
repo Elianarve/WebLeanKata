@@ -21,13 +21,13 @@ const ActualState = () => {
       <h2>ESTADO ACTUAL: </h2>
         <div className='items'>
           <label className='label-item'>Descripción: </label>
-          <input type="text" {...register('description', { required: true })} />
-          {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
+          <input type="text" {...register('description', { required: 'La descripción es requerida', validate: value => value.trim() !== '' || 'Por favor, introduce texto' })} />
+           {errors.description && <p className="error-message">{errors.description.message}</p>} 
         </div>
         <div className='items'>
         <label>Fecha: </label>
-        <input type="date" {...register('date', { required: true })} />
-          {/* {errors.date && <p className="error-message">La fecha es requerida</p>} */}
+        <input type="date" {...register('date', { required: 'La fecha es requerida' })} />
+          {errors.date && <p className="error-message">{errors.date.message}</p>} 
         </div>
         <button type="submit">Enviar</button>
   </form>

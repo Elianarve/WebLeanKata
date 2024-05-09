@@ -81,8 +81,8 @@ const Experiment = () => {
     {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
   </div>
   <div className='items'>
-  <input type="file" {...register('image', { required: true })} />
-          {errors.image && <p className="error-message">Por favor adjunta una imagen</p>}
+  <input type="file" {...register('image', { required: false })} />
+          {errors.image && <p className="error-message">Por favor adjunta un archivo</p>}
   </div>
   <button type="submit">Enviar</button>
     </form>
