@@ -3,7 +3,7 @@ import { getChallenge } from "../../services/challengeServices";
 import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
-
+import SelectAllActualState from '../selectall/SelectAllActualState';
 
 const SelectAllChallenges = ({ challengeId }) => {
     const [challenges, setChallenges] = useState([]);
@@ -73,6 +73,9 @@ const SelectAllChallenges = ({ challengeId }) => {
         </div>
               </>
             )}
+            <>
+            <SelectAllActualState actualStateId/>
+            </>
         </div>
     );
 };

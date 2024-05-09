@@ -6,24 +6,20 @@ import '../selectall/SelectAllChallenges.css';
 import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
 import MentalContras from './MentalContras';
+import Obstacle from './Obstacle';
 
 const TargetSta = ({ challengeId }) => {
     const [targetStates, setTargetState] = useState([]);
     const navigate = useNavigate();
-    const [targetStatesfilteredId, setTargetStatesfilteredId] = useState(null);
+
 
     useEffect(() => {
         const fetchTargetState = async () => {
             try {
-                
+              
                 const targetStateData = await getTargetState(challengeId);
                 const targetStatesfiltered = targetStateData.filter(state => state.challenge_id === challengeId);
                 setTargetState(targetStatesfiltered);
-                console.log(targetStates)
-                console.log(targetStatesfiltered)
-                const targetSId = targetStates[0].id;
-                console.log(targetSId)
-                setTargetStatesfilteredId(targetSId);
             } catch (error) {
                 console.error('Error fetching Challenges:', error);
             }
@@ -51,7 +47,6 @@ const TargetSta = ({ challengeId }) => {
                             </thead>
                             <tbody>
                                 {targetStates.map((targetState) => (
-                                     <>
                                     <tr key={targetState.id}>
                                         <td>{targetState.id}</td>
                                         <td>{targetState.description}</td>
@@ -67,7 +62,6 @@ const TargetSta = ({ challengeId }) => {
 
                                         </td>
                                     </tr>
-                                    </>
                                 ))}
                                 
                             </tbody>
@@ -76,7 +70,8 @@ const TargetSta = ({ challengeId }) => {
                     </div>
                 </>
             )}
-         <MentalContras targetStateId={targetStatesfilteredId}/>
+         <MentalContras targetState={targetStates}/>
+         <Obstacle targetState={targetStates}/>
         </div>
         
     );

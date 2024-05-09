@@ -4,28 +4,32 @@ import { getMentalContrast } from '../../services/mentalContrastServices';
 import update from '../../assets/img/Edit-File.svg';
 import '../selectall/SelectAllChallenges.css';
 
-
-const MentalContras = ({targetStates}) => {
+const MentalContras = ({ targetState }) => {
     const [mentalContrasts, setMentalContrasts] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchMentalContrast = async () => {
             try {
-                console.log(targetStates)
-                const mentalContrastsData = await getMentalContrast(targetStates);
-                console.log(mentalContrastsData)
-                const targetStateIds = mentalContrastsData.filter(contrast => contrast.target_state_id === targetStates);
-                console.log(targetStates)
-                console.log(targetStateIds)
-                setMentalContrasts(targetStateIds)
+                const arrayTargetStaId = [];
+                const mentalContrastsData = await getMentalContrast();
+                targetState.map(item =>{ 
+                    const targetId = item.id
+                    arrayTargetStaId.push(targetId);   
+                });
+                const arrayMentalContratFiltered = [];
+                arrayTargetStaId.map(targetId => {
+                    const mentalContrastfilteredData =  mentalContrastsData.filter(contrast => contrast.target_state_id ===  targetId );
+                    arrayMentalContratFiltered.push(...mentalContrastfilteredData);                    
+                })         
+                setMentalContrasts(arrayMentalContratFiltered)
             } catch (error) {
                 console.error('Error fetching Challenges:', error);
             }
         };
 
         fetchMentalContrast();
-    }, [targetStates]);
+    }, [targetState]);
 
     return (
         <div className='container-challenge'>
@@ -69,3 +73,5 @@ const MentalContras = ({targetStates}) => {
 
 
 export default MentalContras;
+
+
