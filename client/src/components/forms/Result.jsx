@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import {postResult } from '../../services/resultServices';
 
 const Result = () => {
-    const { handleSubmit, register, /*formState: { errors }*/} = useForm();
+    const { handleSubmit, register /*formState: { errors }*/} = useForm();
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
