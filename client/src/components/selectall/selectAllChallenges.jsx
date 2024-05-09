@@ -2,41 +2,7 @@ import { useState, useEffect } from 'react';
 import { getChallenge } from "../../services/challengeServices";
 import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
-
-// const SelectAllChallenges = ({ challengeId }) => {
-//     const [challenges, setChallenges] = useState([]);
-//     const navigate = useNavigate();
-  
-//     useEffect(() => {
-//       const fetchChallenges = async () => {
-//         try {
-//           const challengesData = await getChallenge(); 
-//           setChallenges(challengesData);
-//         } catch (error) {
-//           console.error('Error fetching Challenges:', error);
-//         }
-//       };
-  
-//       fetchChallenges();
-//     }, []);
-
-//     const handleChange = (event) => {
-//       const challengeId = event.target.value;
-//       navigate(`/card/${challengeId}`);
-//     };
-
-//   return (
-//     <select value={challengeId} onChange={handleChange}>
-//       {challenges.map((challenge) => (
-//         <option key={challenge.id} value={challenge.id}>
-//           {challenge.name} 
-//         </option>
-//       ))}
-//     </select>
-//   )
-// }
-
-// export default SelectAllChallenges;
+import update from '../../assets/img/Edit-File.svg';
 
 
 const SelectAllChallenges = ({ challengeId }) => {
@@ -74,12 +40,14 @@ const SelectAllChallenges = ({ challengeId }) => {
             </select>
             {selectedChallenge && (
               <>
+            <h3>Retos</h3>
              <div className="centered-table">
-            <table>
+            <table className='container-table'>
                 <tbody>
                     <tr>
                         <td className='title-table'>RetoID:</td>
                         <td>{selectedChallenge?.id}</td>
+                        <td className='edit'>Acciones</td>
                     </tr>
                     <tr>
                         <td className='title-table'>Descripción:</td>
@@ -88,6 +56,9 @@ const SelectAllChallenges = ({ challengeId }) => {
                     <tr>
                         <td className='title-table'>Fecha Inicio:</td>
                         <td>{selectedChallenge?.start_date}</td>
+                        <td className='logos'>
+                        <button className='button-edit' onClick={()=> navigate(`/editchallenge/${selectedChallenge.id}`)}><img src={update} alt="logo-update" className='logo-edit' /></button>
+                        </td>
                     </tr>
                     <tr>
                         <td className='title-table'>Fecha Fin:</td>
@@ -107,3 +78,5 @@ const SelectAllChallenges = ({ challengeId }) => {
 };
 
 export default SelectAllChallenges;
+
+

@@ -15,7 +15,7 @@ export const getMentalContrast = async () => {
 
 export const getOneMentalContrast = async (id) => {
     try {
-        const response = await axios.get(`${API_URL}`);
+        const response = await axios.get(`${API_URL}/${id}`);
         return response;
     } catch (error) {
         console.error("Error al obtener el MentalContrast por ID", error);
@@ -26,7 +26,8 @@ export const getOneMentalContrast = async (id) => {
 export const deleteMentalContrast = async (id) => {
         try {
             const response = await axios.delete(`${API_URL}/${id}`);
-            if (response.status === 200) {
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el contraste mental?"); 
+            if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }
         } catch (error) {
@@ -36,7 +37,7 @@ export const deleteMentalContrast = async (id) => {
 };
 
 
-export const postMentalContrast= async (data) => {
+export const postMentalContrast = async (data) => {
     const response = await axios.post(API_URL, data);
     console.log(response);
     alert("MentalContrast creado exitosamente");

@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { getChallenge } from '../../services/challengeServices'; 
 import '../../pages/home/Home.css';
 import SearchBar from '../../components/searchBar/SearchBar';
+import update from '../../assets/img/Edit-File.svg';
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
   const [filteredChallenges, setFilteredChallenges] = useState([]); // Estado para almacenar los desafíos filtrados
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
   
   useEffect(() => {
     const fetchChallenges = async () => {
@@ -35,21 +37,31 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <SearchBar onSearch={handleSearch} />
+    <SearchBar onSearch={handleSearch} />
       <h2>Retos</h2>
       <div className="gallery-items">
-        {filteredChallenges.map((challenge) => (
-          <div key={challenge.id} className="challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
-            <div className="challenge-container">
-              <p> {challenge.id}</p>
-              <p>{challenge.name}</p>
-              <p>{challenge.description}</p>
-              <p>{challenge.actual_state_id}</p>
+        <div className="challenge-container">
+          <div className="challenge-table">
+            <div className="table-row">
+              <div className="table-cell-title">ID del desafío</div>
+              <div className="table-cell-title">Nombre del desafío</div>
+              <div className="table-cell-title">ID del estado actual del desafío</div>
+              <div className="table-cell-title"></div>
             </div>
+              {filteredChallenges.map((challenge) => (
+              <div key={challenge.id} className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
+                <div className="table-cell">{challenge.id}</div>
+                <div className="table-cell">{challenge.name}</div>
+                <div className="table-cell">{challenge.actual_state_id}</div>
+                <div className='logos'>
+                <img className='logo-update' src={update} alt="" />
+              </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+        </div>
       </div>
-    </div>
   );
 };
 
