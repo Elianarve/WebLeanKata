@@ -20,6 +20,10 @@ const ObstacleModel = connection_db.define('obstacle', {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true
+    }
 
 },{
     tableName: 'obstacles',
