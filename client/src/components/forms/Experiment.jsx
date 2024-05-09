@@ -13,8 +13,8 @@ const Experiment = () => {
         if (data.image) {
           const imageData = new FormData();
           imageData.append("file", data.image[0]); 
-          imageData.append("upload_preset", "LeanKata"); 
-  
+      
+      imageData.append("upload_preset", "LeanKata"); 
           const responseImage = await uploadImage(imageData); 
           setImageUrl(responseImage.secure_url); 
           data = { ...data, image: responseImage.secure_url }; 

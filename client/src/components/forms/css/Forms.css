@@ -54,3 +54,9 @@ button[type="submit"]:hover {
   background: #002661;
   color: #ECF0F1;
 }
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 1%;
+}

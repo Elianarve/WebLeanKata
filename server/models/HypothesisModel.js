@@ -25,7 +25,7 @@ const HypothesisModel = connection_db.define('hypothesis', {
         type: DataTypes.DATEONLY,
         allowNull: false,
     },
-    state_hipothesis: {
+    state_hypothesis: {
         type: DataTypes.TEXT,
         allowNull: false
     }    

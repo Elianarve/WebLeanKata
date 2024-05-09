@@ -22,7 +22,7 @@ const ObstacleModel = connection_db.define('obstacle', {
     },
     image: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     }
 },{
     tableName: 'obstacles',

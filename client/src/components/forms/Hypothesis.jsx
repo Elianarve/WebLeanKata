@@ -31,7 +31,7 @@ const Hypothesis = () => {
       </div>
       <div className='items'>
         <label className='label-item'>Estado de hipótesis:</label>
-        <input type="text" {...register('state_hipothesis', { required: true })} />
+        <input type="text" {...register('state_hypothesis', { required: true })} />
         {errors.state_hypothesis && <p className="error-message">El estado de la hipótesis es requerido</p>}
       </div>
       <button type="submit">Enviar</button>

@@ -26,7 +26,7 @@ const Learning = () => {
       </div>
       <div className='items'>
         <label className='label-item'>Fecha de aprendizaje:</label>
-        <input type="date" {...register('learning_date', { required: true, validate: value => new Date(value) <= new Date() || 'La fecha de aprendizaje debe ser anterior o igual a la fecha actual' })} />
+        <input type="date" {...register('learning_date', { required: true })} />
         {errors.learning_date && <p className="error-message">{errors.learning_date.message}</p>}
       </div>
       <button type="submit">Enviar</button>
