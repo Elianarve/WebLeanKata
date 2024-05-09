@@ -14,14 +14,14 @@ export const addMentalContrast = async (req, res) => {
     try {
         
         let count = 1;
-        const idMentalContrast = await MentalContrast.findOne({}, { sort: { 'created' : -1 } });
+        const idMentalContrast = await MentalContrast.findOne({order: [['id', 'DESC']]});
        
         if (idMentalContrast) {
             const numberId = parseInt(idMentalContrast.id.slice(2));
             count = numberId + 1;
         } 
         const formatted_Id = 'CM' + count.toString().padStart(3, '0');
-        const targetState = await TargetStateModel.findOne(); 
+        const targetState = await TargetStateModel.findOne({order: [['id', 'DESC']]}); 
         const mentalContrastId = targetState.id;
       
         const addContrastMental = await MentalContrast.create({  id: formatted_Id, target_state_id: mentalContrastId, ...req.body });

@@ -11,7 +11,7 @@ const TargetState = () => {
       try {
         const response = await postTargetState(data);
         console.log("Desafío creado:", response.data);
-        navigate('/obstacle');
+        navigate('/contrast');
       } catch (error) {
         console.error("Error al crear el desafío:", error);
       }
@@ -22,7 +22,7 @@ const TargetState = () => {
       <h2>Estado objetivo: </h2>
   <div className='items'>
     <label className='label-item'>Descripción</label>
-    <input type="text-input" {...register('description', { required: true })} />
+    <input type="text" {...register('description', { required: true })} />
     {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
   </div>
   <div className='items'>

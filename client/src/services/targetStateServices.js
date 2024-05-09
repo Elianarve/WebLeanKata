@@ -15,7 +15,7 @@ export const getTargetState = async () => {
 
 export const getOneTargetState = async (id) => {
     try {
-        const response = await axios.get(`${API_URL}`);
+        const response = await axios.get(`${API_URL}/${id}`);
         return response;
     } catch (error) {
         console.error("Error al obtener el TargetState por ID", error);
@@ -26,7 +26,8 @@ export const getOneTargetState = async (id) => {
 export const deleteTargetState = async (id) => {
         try {
             const response = await axios.delete(`${API_URL}/${id}`);
-            if (response.status === 200) {
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el estado objetivo?"); 
+            if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }
         } catch (error) {

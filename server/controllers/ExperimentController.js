@@ -15,7 +15,7 @@ export const addExperiment = async (req, res) => {
     try {
         
         let count = 1;
-        const idExperiment= await ExperimentModel.findOne({}, { sort: { 'created' : -1 } });
+        const idExperiment= await ExperimentModel.findOne({order: [['id', 'DESC']]});
        
         if (idExperiment) {
             const numberId = parseInt(idExperiment.id.slice(2));
@@ -23,7 +23,7 @@ export const addExperiment = async (req, res) => {
         } 
         const formatted_Id = 'Ex' + count.toString().padStart(3, '0');
         console.log(formatted_Id)
-        const hipothesis = await HypothesisModel.findOne(); 
+        const hipothesis = await HypothesisModel.findOne({order: [['id', 'DESC']]}); 
         const experimentId = hipothesis.id;
       
         const addExperiment = await ExperimentModel.create({  id: formatted_Id, hiphotesis_id: experimentId, ...req.body });

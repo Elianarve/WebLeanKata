@@ -15,7 +15,7 @@ export const getChallenge = async () => {
 
 export const getOneChallenge = async (id) => {
     try {
-        const response = await axios.get(`${API_URL_CHALLENGE}`);
+        const response = await axios.get(`${API_URL_CHALLENGE}/${id}`);
         return response;
     } catch (error) {
         console.error("Error al obtener el reto por ID", error);
@@ -26,7 +26,8 @@ export const getOneChallenge = async (id) => {
 export const deleteChallenge = async (id) => {
         try {
             const response = await axios.delete(`${API_URL_CHALLENGE}/${id}`);
-            if (response.status === 200) {
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el estado objetivo?"); 
+            if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }
         } catch (error) {

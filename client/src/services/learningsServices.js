@@ -15,7 +15,7 @@ export const getLearning = async () => {
 
 export const getOneLearning = async (id) => {
     try {
-        const response = await axios.get(`${API_URL}`);
+        const response = await axios.get(`${API_URL}/${id}`);
         return response;
     } catch (error) {
         console.error("Error al obtener el Learning por ID", error);

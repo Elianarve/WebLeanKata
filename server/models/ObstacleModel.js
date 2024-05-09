@@ -11,7 +11,6 @@ const ObstacleModel = connection_db.define('obstacle', {
     target_state_id: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         references: {
             model: TargetStateModel,
             key: 'id' 
@@ -27,6 +26,6 @@ const ObstacleModel = connection_db.define('obstacle', {
     timestamps: false
 });
 
-// TargetStateModel.hasMany(ObstacleModel, { foreingKey: 'target_state_id' });
+// ObstacleModel.hasMany(TargetStateModel, { foreingKey: 'target_state_id' });
 
 export default ObstacleModel;
