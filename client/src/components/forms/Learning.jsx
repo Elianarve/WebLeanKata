@@ -16,24 +16,22 @@ const Learning = () => {
         }
       };
 
-
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Aprendizaje:</h2>
       <div className='items'>
-          <label className='label-item'>Descripción: </label>
-          <input type="text" {...register('description', { required: true })} />
-          {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
-        </div>
-    <div className='items'>
-    <label className='label-item'>Fecha de aprendizaje:</label>
-    <input type="date" {...register('learning_date', { required: true })} />
-    {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
-       </div>
-  
-  <button type="submit">Enviar</button>
+        <label className='label-item'>Descripción:</label>
+        <input type="text" {...register('description', { required: true })} />
+        {errors.description && <p className="error-message">La descripción es requerida</p>}
+      </div>
+      <div className='items'>
+        <label className='label-item'>Fecha de aprendizaje:</label>
+        <input type="date" {...register('learning_date', { required: true, validate: value => new Date(value) <= new Date() || 'La fecha de aprendizaje debe ser anterior o igual a la fecha actual' })} />
+        {errors.learning_date && <p className="error-message">{errors.learning_date.message}</p>}
+      </div>
+      <button type="submit">Enviar</button>
     </form>
   )
 }
 
-export default Learning
+export default Learning;
