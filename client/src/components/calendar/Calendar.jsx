@@ -38,7 +38,7 @@ const Calendar = ({ onDateSelect, challenges }) => {
   };
 
   return (
-    <div className="calendar-total">
+    <div className="calendar-wrapper">
       <div className="calendar-container">
         <div className="calendar-header" onClick={toggleCalendar}>
           <span>{selectedDate ? selectedDate.toDateString() : 'Selecciona una fecha'}</span>

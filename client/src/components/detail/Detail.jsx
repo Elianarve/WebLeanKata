@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getOneChallenge } from '../../services/challengeServices';
 import { useParams } from 'react-router-dom';
-import SelectAllChallenges from '../selectall/SelectAllChallenges';
+import SelectAllChallenges from '../selectall/selectAllChallenges';
 import SelectAllTargetState from '../selectall/selectAlllTargetStates'; 
 import SelectAllObstacles from '../selectall/SelectAllObstacles';
 import SelectAllHypothesis from '../selectall/SelectAllHypothesis';

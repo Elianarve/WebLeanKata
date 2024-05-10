@@ -1,27 +1,43 @@
-/* Estilos base */
+
 body {
   background-color: #ECF0F1;
-  margin: 0; /* Eliminado el margen predeterminado del body */
-  padding: 0; /* Eliminado el padding predeterminado del body */
+  margin: 0; 
+  padding: 0; 
 }
 
 
 .home-container {
-  border: none; 
-  box-shadow: 2% 2% 4% #c9cccd, -2% -2% 4% #ffffff;
-  padding: 1.5% 2%;
-  margin-bottom: 2%;
-  margin-top: 3%;
-  border-radius: 5px;
-  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrado horizontal */
+  padding: 30px;
+  max-width: 90%; /* Ajustado el ancho máximo */
+  margin: 0 auto; /* Centrado horizontal */
 }
 
-.title {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2.5em;
-  color: #4d4d4d;
-  margin-bottom: 2%;
-  text-align: center;
+.SearchBar {
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 1em;
+  background-color: #ccc;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+  transition: 300ms ease-in-out;
+}
+
+.SearchBar:focus {
+  background-color: white;
+  transform: scale(1.05);
+  box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
+}
+
+h2 {
+  margin: 0;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  background-color: #ECF0F1;
+  padding: 20px;
+ 
 }
 
 .gallery-items {
@@ -31,9 +47,10 @@ body {
   margin-bottom: 12px;
   border-radius: 16px;
   background-color: #ECF0F1;
-  padding: 20px;
-  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
-}
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: inset 8px 8px 16px #c9cccd,
+              inset -8px -8px 16px #ffffff;}
 
 .challenge-wrapper {
   border: none;
@@ -43,65 +60,62 @@ body {
   transition: 0.6s;
   border-radius: 16px;
   background: #ECF0F1;
-  padding: 20px 30px;
+  padding: 8px 450px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 2%;
+  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
+}
+
+h3 {
+  display: flex;
+  justify-content: space-between;
+  width: 55%;
+  margin-left: 10%;
 }
 
 .challenge-description {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  padding: 10px 0;
+  width: 250%;
+  margin-left: -80%;
+  padding-right: 40%;
 }
 
 .challenge-description span {
   flex: 1;
 }
-.home-calendar{
-  position: relative;
-  color: #002661;
-  font-weight: bold;
-  font-size: 1.1em;
-  color: #4d4d4d;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-.table-cell {
-  display: table-cell;
-  padding: 1em;
-  cursor: pointer;
-  box-shadow:  8px 8px 16px #c9cccd,
-              -8px -8px 16px #ffffff;
-}
-.calendar-wapper {
-  font-weight: bold;
-  transition: 0.6s;  
-  border-radius: 16px;
-  background: #ECF0F1;
-  padding: 20px 50px;
-  cursor: pointer;
-  box-shadow:  8px 8px 16px #c9cccd,
-              -8px -8px 16px #ffffff;
-}
 
 
 
-/* Media queries para hacer los estilos más receptivos */
-@media (max-width: 768px) {
+/* Estilos base */
+@media (min-width: 769px) {
   .home-container {
-    padding: 20px; /* Ajustado el padding */
-    max-width: 100%; /* Ajustado el ancho máximo */
+    padding: 20px;
+    max-width: 90%;
   }
 
   h2 {
-    width: 100%; /* Ajustado el ancho */
+    width: auto;
   }
 
   .gallery-items,
   .challenge-wrapper {
-    max-width: 100%; /* Ajustado el ancho máximo */
+    max-width: auto;
+  }
+}
+
+/* Media queries para hacer los estilos más receptivos */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 30px;
+    max-width: 100%;
+  }
+
+  h2 {
+    width: 100%;
+  }
+
+  .gallery-items,
+  .challenge-wrapper {
+    max-width: 100%;
   }
 }
