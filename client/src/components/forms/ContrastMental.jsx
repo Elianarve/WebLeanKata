@@ -3,9 +3,28 @@ import { useNavigate } from 'react-router-dom';
 import { postMentalContrast } from '../../services/mentalContrastServices';
 
 const ContrastMetal = () => {
-  const { handleSubmit, register, formState: { errors }} = useForm();
   const navigate = useNavigate();
 
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const { handleSubmit, register, formState: { errors } } = useForm({
+    defaultValues: {
+      evaluation_date: getCurrentDate()
+    }
+  });
+
+  const validateEvaluationDate = (value) => {
+    const currentDate = getCurrentDate();
+    if (value !== currentDate) {
+      return `La fecha de evaluación debe coincidir con el día actual (${currentDate})`;
+    }
+  };
 
   const onSubmit = async (data) => {
     try {
@@ -20,18 +39,18 @@ const ContrastMetal = () => {
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Contraste mental: </h2>
       <div className='items'>
-          <label className='label-item'>Puntuación</label>
-          <input type="number" min="1" max="10" {...register('points', { required: true })} />
-          {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
-        </div>
-    <div className='items'>
-    <label className='label-item'>Fecha de evaluación:</label>
-    <input type="date" {...register('evaluation_date', { required: true })} />
-    {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
-  </div>
-        <button type="submit">Enviar</button>
+        <label className='label-item'>Puntuación</label>
+        <input type="number" min="1" max="10" {...register('points', { required: 'La puntuación es requerida', min: { value: 1, message: 'La puntuación mínima es 1' }, max: { value: 10, message: 'La puntuación máxima es 10' } })} />
+        {errors.points && <p className="error-message">{errors.points.message}</p>}
+      </div>
+      <div className='items'>
+        <label className='label-item'>Fecha de evaluación:</label>
+        <input type="date" {...register('evaluation_date', { required: true, validate: validateEvaluationDate })} />
+        {errors.evaluation_date && <p className="error-message">{errors.evaluation_date.message}</p>}
+      </div>
+      <button type="submit">Enviar</button>
     </form>
   )
 }
 
-export default ContrastMetal
+export default ContrastMetal;

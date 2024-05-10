@@ -6,7 +6,6 @@ export const getExperiment = async () => {
     try {
         const response = await axios.get(`${API_URL}`);
         const data = await response.data
-        console.log(data)
         return data;
     } catch (error) {
         console.error("Error al obtener los experimentos:", error);
@@ -53,6 +52,18 @@ export const postExperiment = async (data) => {
     } catch (error) {
         console.error("Error al actualizar el Experiment:", error);
         throw error;
+    }
+};
+
+export const uploadImage = async (imageData) => {
+    try {
+        const response = await axios.post(
+            "http://api.cloudinary.com/v1_1/dpkll45y2/image/upload",
+            imageData
+        );
+        return response.data;
+    } catch (error) {
+        throw new Error("Error al cargar la imagen en Cloudinary: " + error.message);
     }
 };
 

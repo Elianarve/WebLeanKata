@@ -6,7 +6,6 @@ export const getActualState = async () => {
     try {
         const response = await axios.get(`${API_URL_AE}`);
         const data = await response.data
-        console.log(data)
         return data;
     } catch (error) {
         console.error("Error al obtener los retos:", error);

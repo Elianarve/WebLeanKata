@@ -6,6 +6,7 @@
   margin-bottom: 2%;
   margin-top: 3%;
   border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .title {
@@ -27,7 +28,6 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 2%;
 }
 
@@ -49,7 +49,7 @@
   background-color: #f9f9f9;
   padding: 1em;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #4d4d4d;
   text-align: center;
   border: 1px solid #ddd;
