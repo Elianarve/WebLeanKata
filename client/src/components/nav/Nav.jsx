@@ -20,7 +20,6 @@ const Nav = () => {
         {openMenu && (
         <div className='nav-display'>
         <a className='a-link' href="/actualstate">Nuevo</a>
-        <hr className='line' />
         <a className='a-link' href="/card/:id">Existente</a>
         </div>
          )}
