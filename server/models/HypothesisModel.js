@@ -11,7 +11,6 @@ const HypothesisModel = connection_db.define('hypothesis', {
     obstacle_id: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         references: {
             model: ObstacleModel,
             key: 'id' 
