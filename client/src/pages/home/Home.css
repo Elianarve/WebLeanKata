@@ -65,6 +65,30 @@ h3 {
 .challenge-description span {
   flex: 1;
 }
+.home-calendar{
+  position: relative;
+  color: #002661;
+  font-weight: bold;
+  transition: 0.6s;  
+  border-radius: 16px;
+  background: #ECF0F1;
+  padding: 20px 50px;
+  cursor: pointer;
+  box-shadow:  8px 8px 16px #c9cccd,
+              -8px -8px 16px #ffffff;
+}
+.calendar-wapper {
+  font-weight: bold;
+  transition: 0.6s;  
+  border-radius: 16px;
+  background: #ECF0F1;
+  padding: 20px 50px;
+  cursor: pointer;
+  box-shadow:  8px 8px 16px #c9cccd,
+              -8px -8px 16px #ffffff;
+}
+
+
 
 /* Media queries para hacer los estilos más receptivos */
 @media (max-width: 768px) {

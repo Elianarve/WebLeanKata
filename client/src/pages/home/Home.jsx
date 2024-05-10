@@ -75,7 +75,6 @@ const Home = () => {
     <div className="home-container">
       <div className='home-relief'>
         <SearchBar onSearch={handleSearch} />
-        <h2>Retos</h2>
         <div className="home-calendar">
           {/* Enlace o botón para abrir y cerrar el calendario */}
           <button onClick={toggleCalendar}>Calendario</button>
@@ -86,8 +85,10 @@ const Home = () => {
                 onChange={handleDateChange}
                 value={selectedDate}
               />
-            </div>
+             </div>
           )}
+        <h2>Retos</h2>
+      
         </div>
         <h3>
           <span>ID</span>
