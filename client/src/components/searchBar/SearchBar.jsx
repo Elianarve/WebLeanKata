@@ -11,7 +11,7 @@ const SearchBar = ({ onSearch }) => {
     <div>
       <input
         type="text"
-        placeholder="Buscar..."
+        placeholder="Buscar por ID o Nombre..."
         value={searchTerm}
         onChange={handleSearch}
         className='searchBar'

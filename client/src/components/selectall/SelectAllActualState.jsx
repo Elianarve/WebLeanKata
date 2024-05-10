@@ -1,74 +1,68 @@
-// import { useState, useEffect } from 'react';
-// import { getActualState } from "../../services/actualStateServices";
-// import { useNavigate } from 'react-router-dom';
-// import '../selectall/SelectAllChallenges.css';
-// import update from '../../assets/img/Edit-File.svg';
+import { useState, useEffect } from 'react';
+import { getOneActualState } from "../../services/actualStateServices";
+import { useNavigate } from 'react-router-dom';
+import '../selectall/SelectAllChallenges.css';
+import update from '../../assets/img/Edit-File.svg';
 
 
-// const SelectAllActualState = ({ actualStateId }) => {
-//     const [actualStates, setActualStateData] = useState([]);
-//     const navigate = useNavigate();
+const SelectAllActualState = ({ actualStateId }) => {
+    const [actualState, setActualState] = useState(null);
+    const navigate = useNavigate();
 
-//     useEffect(() => {
-//         const fetchActualState = async () => {
-//             try {
-//                 const actualStateData = await getActualState();
-//                 console.log(actualStateData)
-//                 setActualStateData(actualStateData);
-//             } catch (error) {
-//                 console.error('Error fetching Challenges:', error);
-//             }
-//         };
 
-//         fetchActualState();
-//     }, []);
+    useEffect(() => {
+        const fetchActualState = async () => {
+            try {
+                const actualStateData = await getOneActualState(actualStateId);
+                setActualState(actualStateData.data);
 
-//     const handleChange = (event) => {
-//         const selectedActualStateDataId = event.target.value;
-//         navigate(`/card/${selectedActualStateDataId}`);
-//     };
+            } catch (error) {
+                console.error('Error fetching Challenges:', error);
+            }
+        };
 
-//     const selectedActualState = actualStates.find(actualState => actualState.id === actualStateId);
-//     console.log(selectedActualState)
+        fetchActualState();
+    }, [actualStateId]);
 
-//     return (
-//         <div className='container-challenge'>
-//             <select value={actualStateId} onChange={handleChange} className='container-select'>
-//                 {actualStates.map((actualstate) => (
-//                     <option key={actualstate.id} value={actualstate.id}>
-//                         {actualstate.id}
-//                     </option>
-//                 ))}
-//             </select>
-//             {selectedActualState && (
-//               <>
-//              <div className="centered-table">
-//             <table className='container-table'>
-//                 <tbody>
-//                     <tr>
-//                         <td className='title-table'>Estado Actual ID:</td>
-//                         <td>{selectedActualState?.id}</td>
-//                         <td className='edit'>Editar</td>
-//                     </tr>
-//                     <tr>
-//                         <td className='title-table'>Descripción:</td>
-//                         <td>{selectedActualState?.description}</td>
-//                     </tr>
-//                     <tr>
-//                         <td className='title-table'>Fecha:</td>
-//                         <td>{selectedActualState?.date}</td>
-//                         <td className='logos'>
-//                         <button className='button-edit' onClick={()=> navigate(`/editchallenge/${selectedActualState.id}`)}><img src={update} alt="logo-update" className='logo-edit' /></button>
-//                         </td>
-//                     </tr>
-//                 </tbody>
-//             </table>
-//         </div>
-//               </>
-//             )}
-//         </div>
-//     );
-// };
 
-// export default SelectAllActualState;
+    return (
+        <div className='container-challenge'>
+            {actualState && (
+                <>
+                    <h3>ESTADO ACTUAL</h3>
+                    <div className="centered-table">
+                        <table className='container-table'>
+                            <tbody>
+                                <thead>
+                                    <tr key={actualState.id}>
+                                        <tr>
+                                            <td className='title-table'>Estado Actual ID</td>
+                                            <td>{actualState.id}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className='title-table'>Descripción</td>
+                                            <td>{actualState.description}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className='title-table'>Fecha</td>
+                                            <td>{actualState.date}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className='title-table'>Acciones</td>
+                                            <td>
+                                                <button className='button-edit' onClick={() => navigate(`/editactualstate/${actualState.id}`)}><img src={update} alt="logo-update" className='logo-edit' /></button>
+                                            </td>
+                                        </tr>
+                                    </tr>
+                                </thead>
+                            </tbody>
+                        </table>
+                    </div>
+                </>
+            )}
+        </div>
+    );
+};
+
+export default SelectAllActualState;
 

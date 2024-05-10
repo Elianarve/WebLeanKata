@@ -3,17 +3,14 @@ import { useParams } from 'react-router-dom';
 import { getOneChallenge } from '../../services/challengeServices'; 
 import SelectAllChallenges from '../selectall/selectAllChallenges';
 import TargetSta from '../selectall/TargetSta';
-import MentalContras from '../selectall/MentalContras';
-import { getOneMentalContrast } from '../../services/mentalContrastServices';
-import Obstacle from '../selectall/Obstacle';
-import "./Card.css"
+import SelectAllActualState from '../selectall/SelectAllActualState';
 
 const Card = () => {
   const { id } = useParams();
   const [challenge, setChallenge] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [mentalContrast, setMentalContras] = useState(null);
+  
 
 
   useEffect(() => {
@@ -22,10 +19,6 @@ const Card = () => {
         const challengeData = await getOneChallenge(id);    
         setChallenge(challengeData);
         setLoading(false);
-
-        const mentalContrastData = await getOneMentalContrast(id);
-        setMentalContras(mentalContrastData);
-
       } catch (error) {
         setError(error.message);
         setLoading(false);
@@ -44,16 +37,16 @@ const Card = () => {
     return <div>Error: {error}</div>;
   }
 
-  if (!challenge || !mentalContrast) {
+  if (!challenge ) {
     return <div>No se encontró el reto</div>;
   }
   
   return (
     <>
     <div className="cardContainer">
+      <SelectAllActualState actualStateId={challenge.data.actual_state_id}/>
       <SelectAllChallenges challengeId={id} />
       <TargetSta challengeId={id}/>
-      <Obstacle />
     </div>
     </>
   );

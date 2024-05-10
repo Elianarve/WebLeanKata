@@ -6,7 +6,6 @@ export const getHypothesis = async () => {
     try {
         const response = await axios.get(`${API_URL}`);
         const data = await response.data
-        console.log(data)
         return data;
     } catch (error) {
         console.error("Error al obtener las Hypothesis:", error);
@@ -37,10 +36,17 @@ export const deleteHypothesis = async (id) => {
 };
 
 export const postHypothesis = async (data) => {
-    const response = await axios.post(API_URL, data);
-    alert("Hypothesis creado exitosamente")
-    return response;
-  }
+    try {
+        const response = await axios.post(`${API_URL}`, data);
+        if (response.status === 201) {
+            alert('Hypothesis creado correctamente');
+            return response.data;
+        }
+    } catch (error) {
+        console.error("Error al crear la Hypothesis:", error);
+        throw error;
+    }
+}
 
 
   export const updateHypothesis = async (id, data) => {

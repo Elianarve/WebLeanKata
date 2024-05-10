@@ -33,9 +33,12 @@ export const addActualState = async (req, res) => {
 export const updateActualState = async (req, res) => {   
     const actualStateId = req.params.id; 
     try {
-        await ActualStateModel.update(req.body,{  where: {id: actualStateId}});
-        await ActualStateModel.findOne({where: {id: actualStateId}});
+       const response = await ActualStateModel.update(req.body,{  where: {id: actualStateId}});
+       console.log(response + "respuesta actualizar modelo")
+       const actualStateUpdated = await ActualStateModel.findOne({where: {id: actualStateId}});
+       console.log(actualStateUpdated + "modelo actualizado")
         res.status(200).json({message: `Actualizado correctamente`});
+
     } catch(error) {
         res.status(500).json({message: error.message});
     }   
@@ -64,7 +67,6 @@ export const deleteActualState = async (req, res) => {
 
 export const searchActualState = async (req, res) => {
     const searchText = req.query.searchText;
-
     try {
         const searchResults = await searchModel(ActualStateModel, 'name', searchText);
         res.json(searchResults);
