@@ -24,9 +24,10 @@ import learningRouter from './routes/learningRouter.js';
 // import TargetStateModel from "./models/TargetStateModel.js";
 // import TaskModel from './models/TaskModel.js';
 
-const app = express();
+export const app = express();
 app.use(cors());
 app.use(express.json());
+
 
 app.use('/challenge', challengeRouter);
 app.use('/actualstates', actualstateRouter);

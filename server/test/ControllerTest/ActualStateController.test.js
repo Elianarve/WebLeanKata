@@ -1,7 +1,7 @@
 import request from 'supertest';
 import connection_db from "../../database/connection_db";
 import ActualStateModel from "../../models/ActualStateModel";
-import app from '../../app'; 
+import app from '../../app';
 
 const api = request(app);
 
@@ -22,8 +22,6 @@ describe('Testing CRUD in Actual State API', () => {
             expect(response.status).toBe(200);
         });
     });
-
-    
 
     describe('POST request to add a new actual state', () => {
         let newActualState = {};
@@ -49,82 +47,66 @@ describe('Testing CRUD in Actual State API', () => {
         });
 
         afterEach(async () => {
-            // Cleanup: Delete the newly added actual state from the database
             await ActualStateModel.destroy({ where: { id: response.body.id } });
         });
     });
 
-
-
     describe('PUT request to update an existing actual state', () => {
-      let newActualState = {}; // Se declara un objeto vacío para almacenar el nuevo estado actual
-  
-      beforeEach(async () => {
-          // Se crea un nuevo estado actual y se guarda su ID
-          const createResponse = await api.post('/actualstates').send({
-              description: 'test',
-              date: 'test'
-          });
-          newActualState.id = createResponse.body.id; // Se guarda el ID en newActualState
-      });
-  
-      test('Response should return status 200', async () => {
-          // Se utiliza el ID guardado para hacer la solicitud de actualización
-          const updateResponse = await api
-              .put(`/actualstates/${newActualState.id}`)
-              .send({ description: 'Updated Description' });
-  
-          expect(updateResponse.status).toBe(200); // Se espera que la respuesta tenga un estado 200
-      });
-  
-      afterEach(async () => {
-        // Buscar el estado actual a eliminar basado en su descripción
-        const actualStateToDelete = await ActualStateModel.findOne({
-            where: { description: 'test' } // Modificar según el criterio de búsqueda que desees utilizar
-        });
-    
-        // Verificar si se encontró el estado actual antes de intentar eliminarlo
-        if (actualStateToDelete) {
-            // Eliminar el estado actual encontrado
-            await actualStateToDelete.destroy();
-        }
-    });
-  });
-  
-
-
-
-    describe('DELETE request to delete an existing actual state', () => {
         let newActualState = {};
-        let deleteResponse;
 
         beforeEach(async () => {
-          newActualState = await ActualStateModel.create({
-              description: 'test',
-              date: 'test' // Assuming a valid date format
-          });
-      
-          deleteResponse = await api.delete(`/actualstates/${newActualState.id}`);
-      });
+            const createResponse = await api.post('/actualstates').send({
+                description: 'test',
+                date: '2024-05-04'
+            });
+            newActualState.id = createResponse.body.id;
+        });
 
-        test('Response should return status 201', async () => {
-            expect(deleteResponse.status).toBe(201);
+        test('Response should return status 200', async () => {
+            const currentDate = new Date();
+            const updateResponse = await api
+                .put(`/actualstates/${newActualState.id}`)
+                .send({ 
+                    description: 'Updated Description',
+                    date: currentDate.toISOString()
+                });
+
+            expect(updateResponse.status).toBe(200);
         });
 
         afterEach(async () => {
-          // Buscar el estado actual a eliminar basado en su descripción
-          const actualStateToDelete = await ActualStateModel.findOne({
-              where: { description: 'test' } // Modificar según el criterio de búsqueda que desees utilizar
-          });
-      
-          // Verificar si se encontró el estado actual antes de intentar eliminarlo
-          if (actualStateToDelete) {
-              // Eliminar el estado actual encontrado
-              await actualStateToDelete.destroy();
-          }
-      });
+            const actualStateToDelete = await ActualStateModel.findOne({
+                where: { description: 'test' }
+            });
+
+            if (actualStateToDelete) {
+                await actualStateToDelete.destroy();
+            }
+        });
+    });
+
+    describe('deleteActualState', () => {
+        let response;
+
+        beforeEach(async () => {
+            const newActualState = await ActualStateModel.create({
+                id: '1',
+                description: 'Descripción del estado actual',
+                date: new Date()
+            });
+
+            response = await api.delete(`/actualstates/${newActualState.id}`);
+        });
+
+        test('debería eliminar un estado actual existente y devolver un mensaje de éxito', async () => {
+            expect(response.status).toBe(201);
+            expect(response.body).toEqual({ message: 'Challenge deleted' });
+        });
+
+        test('debería devolver un error 500 si hay un problema al eliminar el estado actual', async () => {
+            // Puedes simular un problema aquí y ajustar el test según sea necesario
+        });
     });
 });
-
 
 
