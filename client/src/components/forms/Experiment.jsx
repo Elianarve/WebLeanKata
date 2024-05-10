@@ -4,7 +4,7 @@ import { postExperiment, uploadImage } from '../../services/experimentServices';
 import { useState } from 'react';
 
 const Experiment = () => {
-  const { handleSubmit, register, formState: { errors } } = useForm();
+  const { handleSubmit, register, formState: { errors }, watch } = useForm();
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState('');
 
