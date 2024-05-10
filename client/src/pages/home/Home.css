@@ -1,80 +1,108 @@
-/* Estilos generales */
-.home-container {
-  border: none; 
-  box-shadow: 2% 2% 4% #c9cccd, -2% -2% 4% #ffffff;
-  padding: 1.5% 2%;
-  margin-bottom: 2%;
-  margin-top: 3%;
-  border-radius: 5px;
+/* Estilos base */
+body {
+  background-color: #ECF0F1;
+  margin: 0; /* Eliminado el margen predeterminado del body */
+  padding: 0; /* Eliminado el padding predeterminado del body */
 }
 
-.title {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2.5em;
-  color: #4d4d4d;
-  margin-bottom: 2%;
-  text-align: center;
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrado horizontal */
+  padding: 30px;
+  max-width: 90%; /* Ajustado el ancho máximo */
+  margin: 0 auto; /* Centrado horizontal */
+}
+
+h2 {
+  margin: 0;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  background-color: #ECF0F1;
+  padding: 20px;
+  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
 }
 
 .gallery-items {
   width: 100%;
   border-collapse: collapse;
+  margin: 0;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  background-color: #ECF0F1;
+  padding: 20px;
+  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
+}
+
+.challenge-wrapper {
+  border: none;
+  border-radius: 16%;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  transition: 0.6s;
+  border-radius: 16px;
+  background: #ECF0F1;
+  padding: 20px 30px;
+  cursor: pointer;
+  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
+}
+
+h3 {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  padding: 10px;
 }
 
 .challenge-description {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: 2%;
-}
-
-.challenge-description:hover {
-  background-color: #e0e0e0;
-}
-
-.challenge-table {
-  display: table;
-  width: 100%;
-}
-
-.table-row {
-  display: table-row;
-}
-
-.table-cell-title {
-  display: table-cell;
-  background-color: #f9f9f9;
-  padding: 1em;
-  font-weight: bold;
-  font-size: 1.2em;
-  color: #4d4d4d;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-.table-cell {
-  display: table-cell;
-  padding: 1em;
-  cursor: pointer;
-  border: 1px solid #ddd;
-}
-
-.table-cell-actualstate {
-  display: table-cell;
-  padding: 1em;
-  cursor: pointer;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
-}
-
-.logos{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0;
 }
 
-.logo-update{
-  width:22%;
+.challenge-description span {
+  flex: 1;
+}
+.home-calendar{
+  position: relative;
+  color: #002661;
+  font-weight: bold;
+  transition: 0.6s;  
+  border-radius: 16px;
+  background: #ECF0F1;
+  padding: 20px 50px;
+  cursor: pointer;
+  box-shadow:  8px 8px 16px #c9cccd,
+              -8px -8px 16px #ffffff;
+}
+.calendar-wapper {
+  font-weight: bold;
+  transition: 0.6s;  
+  border-radius: 16px;
+  background: #ECF0F1;
+  padding: 20px 50px;
+  cursor: pointer;
+  box-shadow:  8px 8px 16px #c9cccd,
+              -8px -8px 16px #ffffff;
+}
+
+
+
+/* Media queries para hacer los estilos más receptivos */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 20px; /* Ajustado el padding */
+    max-width: 100%; /* Ajustado el ancho máximo */
+  }
+
+  h2 {
+    width: 100%; /* Ajustado el ancho */
+  }
+
+  .gallery-items,
+  .challenge-wrapper {
+    max-width: 100%; /* Ajustado el ancho máximo */
+  }
 }
