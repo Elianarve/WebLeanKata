@@ -15,15 +15,11 @@ const Nav = () => {
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
-      <ul className='nav-links'>
+      <div className="menu-icon" onClick={toggleMenu}>
+        <div className={`hamburger ${openMenu ? 'active' : ''}`}></div>
+      </div>
+      <ul className={`nav-links ${openMenu ? 'open' : ''}`}>
         <li className="nav-button" onClick={toggleMenu} >Proyecto/Reto</li>
-        {openMenu && (
-        <div className='nav-display'>
-        <a className='a-link' href="/actualstate">Nuevo</a>
-        <hr className='line' />
-        <a className='a-link' href="/card/:id">Existente</a>
-        </div>
-         )}
         <li className="nav-button"><Link to="/">Inicio</Link></li>
         <li className="nav-button"><Link to="/detail/:id">Tablero Principal</Link></li>
       </ul>
