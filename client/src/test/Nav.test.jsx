@@ -20,7 +20,7 @@ describe('Nav component', () => {
     test('It has a link to Tablero principal', async () => {
         await render(<MemoryRouter><Nav/></MemoryRouter>);
         const links = screen.getByText(/Tablero principal/i);
-        expect(links).toHaveAttribute('href', '/Edit/:id');
+        expect(links).toHaveAttribute('href', '/detail/:id');
     });
 
     // test('Toggle menu and check links', () => {
