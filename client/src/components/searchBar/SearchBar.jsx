@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import '../searchBar/SearchBar.css';
+
+
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const handleSearch = (event) => {
@@ -7,9 +10,9 @@ const SearchBar = ({ onSearch }) => {
   };
   return (
     <div className="search-bar">
-      <input
+      <input className='search-bar-input'
         type="text"
-        placeholder="Buscar..."
+        placeholder="Buscar por ID o Nombre..."
         value={searchTerm}
         onChange={handleSearch}
       />

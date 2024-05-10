@@ -55,6 +55,10 @@ const ExperimentModel = connection_db.define('experiment', {
     state_experiment: {
         type: DataTypes.TEXT,
         allowNull: false 
+    },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true
     }    
 },{
     tableName: 'experiments',

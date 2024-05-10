@@ -11,7 +11,6 @@ const TaskModel = connection_db.define('task', {
     experiment_id: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         references: {
             model: ExperimentModel,
             key: 'id' 
@@ -46,6 +45,6 @@ const TaskModel = connection_db.define('task', {
     timestamps: false
 });      
 
-// ExperimentModel.hasMany(TaskModel, { foreignKey: 'experiment_id' });
+ExperimentModel.hasMany(TaskModel, { foreignKey: 'experiment_id' });
 
 export default TaskModel;

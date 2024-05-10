@@ -6,22 +6,27 @@ import update from '../../assets/img/Edit-File.svg';
 import Calendar from 'react-calendar';
 import "./Home.css";
 import "../../components/calendar/Calendar";
+import { getActualState } from '../../services/actualStateServices';
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
+  const [filteredChallenges, setFilteredChallenges] = useState([]); 
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [filteredChallenges, setFilteredChallenges] = useState([]); // Estado para almacenar los desafíos filtrados por fecha
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false); // Estado para controlar la visibilidad del calendario
-  const navigate = useNavigate();
-  const calendarRef = useRef(null); // Ref para el calendario
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false); 
+  const calendarRef = useRef(null); 
 
   useEffect(() => {
     const fetchChallenges = async () => {
       try {
-        const challengesData = await getChallenge();
-        setChallenges(challengesData); 
-        setFilteredChallenges(challengesData); // Inicialmente, establece los desafíos filtrados como todos los desafíos
+        const [challengesData, actualStatesData] = await Promise.all([getChallenge(), getActualState()]);
+        const challengesWithData = challengesData.map(challenge => ({
+          ...challenge,
+          actual_state: actualStatesData.find(actualState => actualState.id === challenge.actual_state_id)?.description || 'Descripción no encontrada'
+        }));
+        setChallenges(challengesWithData); 
+        setFilteredChallenges(challengesWithData); 
       } catch (error) {
         console.error('Error fetching retos:', error);
         setError('No se pudieron cargar los desafíos. Por favor, inténtalo de nuevo más tarde.');
@@ -31,10 +36,8 @@ const Home = () => {
     fetchChallenges();
   }, []);
 
-  // Función para manejar cambios en la fecha seleccionada
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    // Filtrar los desafíos por la fecha seleccionada
     const filtered = challenges.filter(challenge => {
       const challengeDate = new Date(challenge.start_date);
       return challengeDate.toDateString() === date.toDateString();
@@ -42,19 +45,16 @@ const Home = () => {
     setFilteredChallenges(filtered);
   };
 
-  // Función para alternar el estado del calendario y controlar su visibilidad
   const toggleCalendar = () => {
-    setIsCalendarOpen(!isCalendarOpen); // Alternar entre abierto y cerrado
+    setIsCalendarOpen(!isCalendarOpen);
   };
 
-  // Función para cerrar el calendario si se hace clic fuera de él
   const handleOutsideClick = (event) => {
     if (calendarRef.current && !calendarRef.current.contains(event.target)) {
       setIsCalendarOpen(false);
     }
   };
 
-  // Función para manejar la búsqueda
   const handleSearch = (searchTerm) => {
     const filteredResults = challenges.filter((challenge) => {
       return Object.values(challenge).some((value) =>
@@ -64,7 +64,6 @@ const Home = () => {
     setFilteredChallenges(filteredResults); 
   };
 
-  // Agregar un listener de eventos para cerrar el calendario cuando se hace clic fuera de él
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
     return () => {
@@ -77,9 +76,7 @@ const Home = () => {
       <div className='home-relief'>
         <SearchBar onSearch={handleSearch} />
         <div className="home-calendar">
-          {/* Enlace o botón para abrir y cerrar el calendario */}
           <button onClick={toggleCalendar}>Calendario</button>
-          {/* Renderizar el calendario solo si está abierto */}
           {isCalendarOpen && (
             <div ref={calendarRef} className="calendar-wrapper">
               <Calendar
@@ -119,3 +116,4 @@ const Home = () => {
 };
 
 export default Home;
+

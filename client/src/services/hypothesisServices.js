@@ -6,7 +6,6 @@ export const getHypothesis = async () => {
     try {
         const response = await axios.get(`${API_URL}`);
         const data = await response.data
-        console.log(data)
         return data;
     } catch (error) {
         console.error("Error al obtener las Hypothesis:", error);
