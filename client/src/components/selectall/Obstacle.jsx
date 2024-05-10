@@ -44,6 +44,7 @@ const Obstacle = ({targetState}) => {
                             <th className='title-table'>Obstaculo ID</th>
                             <th className='title-table'>EOID</th>
                             <th className='title-table'>Descripción</th>
+                            <th className='title-table'>Imagen</th>
                             <th className='title-table'>Acciones</th>
                         </tr>
                     </thead>
@@ -54,6 +55,7 @@ const Obstacle = ({targetState}) => {
                                 <td>{obstacle.id}</td>
                                 <td>{obstacle.target_state_id}</td>
                                 <td>{obstacle.description}</td>
+                                <td><img src={obstacle.image}></img></td>
                                 <td>
                                     <button className='button-edit' onClick={() => navigate(`/editobstacle/${obstacle.id}`)}>
                                         <img src={update} alt="logo-update" className='logo-edit' />

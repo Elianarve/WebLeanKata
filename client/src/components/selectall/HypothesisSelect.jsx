@@ -58,7 +58,7 @@ const HypothesisSelect = ({obstacle}) => {
                                 <td>{hypothes.id}</td>
                                 <td>{hypothes.description}</td>
                                 <td>{hypothes.plan_date}</td>
-                                <td>{hypothes.state_hipothesis}</td>
+                                <td>{hypothes.state_hypothesis}</td>
                                 <td>{hypothes.obstacle_id}</td>
                                 <td>
                                     <button className='button-edit' onClick={() => navigate(`/edithypothesis/${hypothes.id}`)}>

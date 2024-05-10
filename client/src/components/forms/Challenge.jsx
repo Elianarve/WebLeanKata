@@ -6,7 +6,6 @@ import './css/Forms.css';
 const Challenge = () => {
   const { handleSubmit, register, formState: { errors }, watch } = useForm();
   const navigate = useNavigate();
-  const { formState: { isDirty } } = useForm();
   const startDate = watch('start_date');
   const endDate = watch('end_date');
 
@@ -55,7 +54,7 @@ const Challenge = () => {
         <input type="date" {...register('end_date', { required: true })} />
         {errors.end_date && <p className="error-message">La fecha de fin es requerida</p>} 
       </div>
-      <button type="submit" disabled={!isDirty}>Enviar</button>
+      <button type="submit">Enviar</button>
     </form>
   );
 }

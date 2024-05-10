@@ -14,7 +14,7 @@ const Hypothesis = () => {
     } catch (error) {
       console.error("Error al crear la hipótesis:", error);
     }
-  };
+  }
 
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>

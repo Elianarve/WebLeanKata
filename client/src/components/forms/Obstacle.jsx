@@ -39,7 +39,7 @@ const Obstacle = () => {
       </div>
       <div className='items'>
         <label className='label-item'>Archivo:</label>
-        <input type="file" {...register('image')} />
+        <input type="file" {...register('image', {required: false})} />
         {errors.image && <p className="error-message">Por favor adjunta un archivo</p>}
       </div>
       <button type="submit">Enviar</button>
