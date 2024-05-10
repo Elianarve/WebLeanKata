@@ -34,9 +34,9 @@ const Obstacle = ({targetState}) => {
 
   return (
     <div className='container-challenge'>
-    {obstacles && (
+    {obstacles.length > 0 && (
         <>
-        <h3>Obtaculos </h3>
+        <h3>Obtaculos<button className='button-edit' onClick={() => navigate('/obstacle')}><img src={more} alt="" /></button> </h3>
             <div className="centered-table">
                 <table className='container-table'>
                     <thead>
@@ -44,6 +44,7 @@ const Obstacle = ({targetState}) => {
                             <th className='title-table'>Obstaculo ID</th>
                             <th className='title-table'>EOID</th>
                             <th className='title-table'>Descripción</th>
+                            <th className='title-table'>Imagen</th>
                             <th className='title-table'>Acciones</th>
                         </tr>
                     </thead>
@@ -54,11 +55,12 @@ const Obstacle = ({targetState}) => {
                                 <td>{obstacle.id}</td>
                                 <td>{obstacle.target_state_id}</td>
                                 <td>{obstacle.description}</td>
+                                <img className='img-form' src={obstacle.image} alt="" />
                                 <td>
                                     <button className='button-edit' onClick={() => navigate(`/editobstacle/${obstacle.id}`)}>
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
-                                    <button className='button-edit' onClick={() => navigate('/obstacle')}><img src={more} alt="" /></button>
+                                    <button className='button-edit' onClick={() => navigate(`/hypothesis`)}>Añadir Hipotesis</button>
                                 </td>
                             </tr>
                         ))}

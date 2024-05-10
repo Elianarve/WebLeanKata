@@ -1,16 +1,8 @@
-.gallery{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+.search-bar{
+    margin-bottom: 4%;
 }
 
-.card{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: all 0.3s;
+.search-bar-input{
+    width: 25%;
+    padding: 0.5%;
 }

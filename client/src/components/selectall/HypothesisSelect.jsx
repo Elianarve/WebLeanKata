@@ -5,6 +5,7 @@ import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
 import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
+import Experiments from './Experiments';
 
 const HypothesisSelect = ({obstacle}) => {
   const [hypothesis, setHypothesis] = useState([]);
@@ -39,7 +40,7 @@ const HypothesisSelect = ({obstacle}) => {
     <div className='container-challenge'>
     {hypothesis.length > 0 && (
         <>
-        <h3>Hypothesis</h3>
+        <h3>Hipotesis<button className='button-edit' onClick={() => navigate(`/hypothesis`)}><img src={more} alt="" /></button></h3>
             <div className="centered-table">
                 <table className='container-table'>
                     <thead>
@@ -58,13 +59,13 @@ const HypothesisSelect = ({obstacle}) => {
                                 <td>{hypothes.id}</td>
                                 <td>{hypothes.description}</td>
                                 <td>{hypothes.plan_date}</td>
-                                <td>{hypothes.state_hipothesis}</td>
+                                <td>{hypothes.state_hypothesis}</td>
                                 <td>{hypothes.obstacle_id}</td>
                                 <td>
                                     <button className='button-edit' onClick={() => navigate(`/edithypothesis/${hypothes.id}`)}>
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
-                                    <button className='button-edit' onClick={() => navigate(`/hypothesis`)}><img src={more} alt="" /></button>
+                                    <button className='button-edit' onClick={() => navigate(`/experiment`)}>Añadir Experimento</button>
                                     <button className='button-edit' onClick={() => deleteHypothesis(hypothes.id).then(() => navigate(0))}><img src={delte} alt="" /></button>
 
                                 </td>
@@ -77,6 +78,7 @@ const HypothesisSelect = ({obstacle}) => {
             </div>
         </>
     )}
+    <Experiments hypothesis={hypothesis}/>
 </div>
 
 );

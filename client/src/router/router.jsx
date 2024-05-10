@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import LayoutPublic from "../components/layout";
+import LayoutPublic from "../components/layout/LayoutPublic";
 import Home from "../pages/home/Home";
 import Card from "../components/card/Card";
 import Challenge from '../components/forms/Challenge';

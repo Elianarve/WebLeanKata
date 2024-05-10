@@ -40,14 +40,13 @@ const SelectAllChallenges = ({ challengeId }) => {
             </select>
             {selectedChallenge && (
               <>
-            <h3>Retos</h3>
+            <h3>RETOS</h3>
              <div className="centered-table">
             <table className='container-table'>
                 <tbody>
                     <tr>
                         <td className='title-table'>RetoID:</td>
                         <td>{selectedChallenge?.id}</td>
-                        <td className='edit'>Acciones</td>
                     </tr>
                     <tr>
                         <td className='title-table'>Descripción:</td>
@@ -56,9 +55,6 @@ const SelectAllChallenges = ({ challengeId }) => {
                     <tr>
                         <td className='title-table'>Fecha Inicio:</td>
                         <td>{selectedChallenge?.start_date}</td>
-                        <td className='logos'>
-                        <button className='button-edit' onClick={()=> navigate(`/editchallenge/${selectedChallenge.id}`)}><img src={update} alt="logo-update" className='logo-edit' /></button>
-                        </td>
                     </tr>
                     <tr>
                         <td className='title-table'>Fecha Fin:</td>
@@ -67,6 +63,12 @@ const SelectAllChallenges = ({ challengeId }) => {
                     <tr>
                         <td className='title-table'>Estado Actual ID:</td>
                         <td>{selectedChallenge?.actual_state_id}</td>
+                    </tr>
+                    <tr>
+                    <td className='title-table'>Acciones</td>
+                    <td>
+                        <button className='button-edit' onClick={()=> navigate(`/editchallenge/${selectedChallenge.id}`)}><img src={update} alt="logo-update" className='logo-edit' /></button>
+                    </td>
                     </tr>
                 </tbody>
             </table>

@@ -19,16 +19,25 @@ const ActualState = () => {
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>ESTADO ACTUAL: </h2>
-        <div className='items'>
-          <label className='label-item'>Descripción: </label>
-          <input type="text" {...register('description', { required: true })} />
-          {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
-        </div>
-        <div className='items'>
+      <div className='items'>
+        <label className='label-item'>Descripción: </label>
+        <input 
+          type="text" 
+          {...register('description', { 
+            required: 'La descripción es requerida', 
+            pattern: {
+              value: /^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/,
+              message: 'Por favor, introduce solo texto'
+            }
+          })} 
+        />
+        {errors.description && <p className="error-message">{errors.description.message}</p>} 
+      </div>
+      <div className='items'>
         <label>Fecha: </label>
-        <input type="date" {...register('date', { required: true })} />
-          {/* {errors.date && <p className="error-message">La fecha es requerida</p>} */}
-        </div>
+        <input type="date" {...register('date', { required: 'La fecha es requerida' })} />
+        {errors.date && <p className="error-message">{errors.date.message}</p>} 
+      </div>
         <button type="submit">Enviar</button>
   </form>
   )
