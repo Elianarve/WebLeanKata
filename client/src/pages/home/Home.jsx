@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getChallenge } from '../../services/challengeServices'; 
-import '../../pages/home/Home.css';
+import './Home.css';
 import SearchBar from '../../components/searchBar/SearchBar';
 import update from '../../assets/img/Edit-File.svg';
 
@@ -36,7 +36,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-    <SearchBar onSearch={handleSearch} />
+    <SearchBar onSearch={handleSearch} className="SearchBar"/>
       <h2>Retos</h2>
       <div className="gallery-items">
         <div className="challenge-container">
