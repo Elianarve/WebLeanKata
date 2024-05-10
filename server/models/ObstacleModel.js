@@ -24,6 +24,7 @@ const ObstacleModel = connection_db.define('obstacle', {
         type: DataTypes.STRING,
         allowNull: true
     }
+
 },{
     tableName: 'obstacles',
     timestamps: false

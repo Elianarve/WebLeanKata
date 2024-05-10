@@ -3,24 +3,34 @@ import { useNavigate } from 'react-router-dom';
 import { getObstacle } from '../../services/obstacleServices';
 import more from '../../assets/img/Plus.svg';
 import update from '../../assets/img/Edit-File.svg';
+import HypothesisSelect from './HypothesisSelect';
 
-const Obstacle = ({targetStateId}) => {
+const Obstacle = ({targetState}) => {
     const [obstacles, setObstacles] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchObstacle = async () => {
             try {
-                const obstacleData = await getObstacle(targetStateId);
-                const targetStatesId = obstacleData.filter(state => state.target_state_id === targetStateId);
-                setObstacles(targetStatesId)
+                const arrayTargetStaId = [];
+                const obstacleData = await getObstacle();
+                targetState.map(item =>{ 
+                    const targetId = item.id
+                    arrayTargetStaId.push(targetId);   
+                });
+                const arrayObstacleFiltered = [];
+                arrayTargetStaId.map(targetId => {
+                    const obstacleFilteredData =  obstacleData.filter(contrast => contrast.target_state_id ===  targetId );
+                    arrayObstacleFiltered.push(...obstacleFilteredData);                    
+                })         
+                setObstacles(arrayObstacleFiltered)
             } catch (error){
                 console.error('Error fetching Challenges:', error);
             }
         };
 
         fetchObstacle();
-    }, []);
+    }, [targetState]);
 
   return (
     <div className='container-challenge'>
@@ -57,6 +67,7 @@ const Obstacle = ({targetStateId}) => {
             </div>
         </>
     )}
+    <HypothesisSelect obstacle={obstacles}/>
 </div>
 );
 }

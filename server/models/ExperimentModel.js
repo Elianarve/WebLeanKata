@@ -59,7 +59,7 @@ const ExperimentModel = connection_db.define('experiment', {
     image: {
         type: DataTypes.STRING,
         allowNull: true
-    }   
+    }    
 },{
     tableName: 'experiments',
     timestamps: false
