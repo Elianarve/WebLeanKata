@@ -6,6 +6,7 @@ import SearchBar from '../../components/searchBar/SearchBar';
 import update from '../../assets/img/Edit-File.svg';
 import Calendar from 'react-calendar';
 import "./Home.css";
+import "../../components/calendar/Calendar";
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);

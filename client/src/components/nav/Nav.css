@@ -12,6 +12,10 @@
   font-size: 20px;
   font-weight: bold;
 }
+.logo img {
+  width: 100px; /* ajusta el ancho según sea necesario */
+  height: auto; /* auto para mantener la proporción */
+}
 
 .nav-links {
   list-style-type: none;
@@ -64,6 +68,16 @@ box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
   margin: 0;
 }
 
+<<<<<<< HEAD
 .a-link:hover{
   background-color: #3e4f52;
 }
+=======
+.a-link:hover {
+  box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
+}
+.line{
+  border: solid black 1px;
+  width: 90%;
+}
+>>>>>>> feature-details

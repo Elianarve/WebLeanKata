@@ -1,8 +1,8 @@
-/* Estilos base */
+
 body {
   background-color: #ECF0F1;
-  margin: 0; /* Eliminado el margen predeterminado del body */
-  padding: 0; /* Eliminado el padding predeterminado del body */
+  margin: 0; 
+  padding: 0; 
 }
 
 
@@ -37,7 +37,7 @@ h2 {
   border-radius: 16px;
   background-color: #ECF0F1;
   padding: 20px;
-  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
+ 
 }
 
 .gallery-items {
@@ -47,9 +47,10 @@ h2 {
   margin-bottom: 12px;
   border-radius: 16px;
   background-color: #ECF0F1;
-  padding: 20px;
-  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
-}
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: inset 8px 8px 16px #c9cccd,
+              inset -8px -8px 16px #ffffff;}
 
 .challenge-wrapper {
   border: none;
@@ -59,7 +60,7 @@ h2 {
   transition: 0.6s;
   border-radius: 16px;
   background: #ECF0F1;
-  padding: 20px 30px;
+  padding: 8px 450px;
   cursor: pointer;
   box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
 }
@@ -67,58 +68,54 @@ h2 {
 h3 {
   display: flex;
   justify-content: space-between;
-  width: 70%;
-  padding: 10px;
+  width: 55%;
+  margin-left: 10%;
 }
 
 .challenge-description {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  padding: 10px 0;
+  width: 250%;
+  margin-left: -80%;
+  padding-right: 40%;
 }
 
 .challenge-description span {
   flex: 1;
 }
-.home-calendar{
-  position: relative;
-  color: #002661;
-  font-weight: bold;
-  transition: 0.6s;  
-  border-radius: 16px;
-  background: #ECF0F1;
-  padding: 20px 50px;
-  cursor: pointer;
-  box-shadow:  8px 8px 16px #c9cccd,
-              -8px -8px 16px #ffffff;
-}
-.calendar-wapper {
-  font-weight: bold;
-  transition: 0.6s;  
-  border-radius: 16px;
-  background: #ECF0F1;
-  padding: 20px 50px;
-  cursor: pointer;
-  box-shadow:  8px 8px 16px #c9cccd,
-              -8px -8px 16px #ffffff;
-}
 
 
 
-/* Media queries para hacer los estilos más receptivos */
-@media (max-width: 768px) {
+/* Estilos base */
+@media (min-width: 769px) {
   .home-container {
-    padding: 20px; /* Ajustado el padding */
-    max-width: 100%; /* Ajustado el ancho máximo */
+    padding: 20px;
+    max-width: 90%;
   }
 
   h2 {
-    width: 100%; /* Ajustado el ancho */
+    width: auto;
   }
 
   .gallery-items,
   .challenge-wrapper {
-    max-width: 100%; /* Ajustado el ancho máximo */
+    max-width: auto;
+  }
+}
+
+/* Media queries para hacer los estilos más receptivos */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 30px;
+    max-width: 100%;
+  }
+
+  h2 {
+    width: 100%;
+  }
+
+  .gallery-items,
+  .challenge-wrapper {
+    max-width: 100%;
   }
 }
