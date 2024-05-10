@@ -12,6 +12,10 @@
   font-size: 20px;
   font-weight: bold;
 }
+.logo img {
+  width: 100px; /* ajusta el ancho según sea necesario */
+  height: auto; /* auto para mantener la proporción */
+}
 
 .nav-links {
   list-style-type: none;

@@ -1,64 +1,20 @@
-body {
-    background-color: #ECF0F1 ;
-}
+/* Card.css */
 
-table.container-table {
-    border: none;
-  border-radius: 16%;
-  margin-top: 15px;
-  margin-bottom: 5px;
+.cardContainer {
+  width: 50%; /* Establece el ancho al 50% del contenedor padre */
+  margin: 0 auto; /* Centra horizontalmente el contenedor */
   transition: 0.6s;
-  border-radius: 16px;
+  border-radius: 40px;
   background: #ECF0F1;
-  padding: 20px 30px;
+  padding: 20px;
   cursor: pointer;
-  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
+  box-shadow: 16px 16px 32px #c9cccd, -16px -16px 32px #ffffff;
 }
 
-
-.logos {
-    border:none;
-    border-radius: 16px;
-    margin: 20px;
-    padding: 20px 20px;
-    background: #ECF0F1;
-    box-shadow: 8px 8px 16px #bebebe,
-    -8px -8px 16px #ffffff;
-   
-      }
-
-  .edit {
-    border: none;
-    border-radius: 16px;
-    margin: 10px;
-    padding: 10% 10px;
-    background: #ECF0F1;
-    box-shadow: 8px 8px 16px #bebebe,
-    -8px -8px 16px #ffffff;
-      }
-.container-select {
-    border: none;
-    transition: 0.6s;  
-      border-radius: 40px;
-      background: #ECF0F1;
-      padding: 20px 20px;
-      cursor: pointer;
-      box-shadow:  16px 16px 32px #c9cccd,
-      -16px -16px 32px #ffffff;
+.cardContainer:hover {
+  box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
 }
 
-    .container-select:hover {
-        border: none;
-        box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
-        }
-        
-    
+/* Estilos adicionales si es necesario */
 
-/*  */
-  /* Estilos para responsive */
-  @media screen and (max-width: 768px) {
-    .cardContainer {
-      flex-direction: column;
-    }
-  }
   
