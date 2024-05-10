@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { Router } from 'react-router-dom'
-import ActualState from "../components/forms/ActualState";
+import ActualState from "../components/forms/ActualState.jsx";
 import { createMemoryHistory } from 'history';
 import test from 'jest';
 import { expect } from 'jest';
@@ -8,7 +8,6 @@ import { expect } from 'jest';
 test("render ActualState form", async () => {
   const history = createMemoryHistory()
 
-  // Renderiza el formulario de estado actual
   render(
     <Router history={history}>
       <ActualState />

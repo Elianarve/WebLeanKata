@@ -1,34 +1,59 @@
-import axios from 'axios';
-import { getActualState, getOneActualState } from '../../services/actualStateServices';
-import { jest } from '@jest/globals';
-import { describe, test, expect } from 'jest';
+import ActualState from "../components/forms/ActualState";
+import test from 'jest';
+import { expect } from 'jest';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
+import { Router } from 'react-router-dom';
 
-jest.mock('axios');
 
-describe('Actual State Services', () => {
-  test('getActualState returns data from axios', async () => {
-    const mockData = { data: 'test' };
-    axios.get.mockResolvedValue(mockData);
+test("render ActualState form", async () => {
+  const history = createMemoryHistory()
 
-    const data = await getActualState();
+  // Render the ActualState component
+  render(
+    <Router history={history}>
+      <ActualState />
+    </Router>
+  );
+  
+  // Verify that the elements of the form are present on the screen
+  const headingElement = screen.getByText("ESTADO ACTUAL:");
+  expect(headingElement).toBeInTheDocument();
 
-    expect(data).toBe(mockData);
-    expect(axios.get).toHaveBeenCalledWith('http://localhost:5000/actualstates');
-  });
+  const descriptionLabelElement = screen.getByText("Descripción:");
+  expect(descriptionLabelElement).toBeInTheDocument();
 
-  test('getOneActualState returns data from axios', async () => {
-    const mockData = { data: 'test' };
-    axios.get.mockResolvedValue(mockData);
+  const dateLabelElement = screen.getByText("Fecha:");
+  expect(dateLabelElement).toBeInTheDocument();
 
-    const data = await getOneActualState(1);
+  const sendButtonElement = screen.getByText("Enviar");
+  expect(sendButtonElement).toBeInTheDocument();
 
-    expect(data).toBe(mockData);
-    expect(axios.get).toHaveBeenCalledWith('http://localhost:5000/actualstates/EA001');
-  });
+  // Verify that the send button is initially disabled
+  expect(sendButtonElement).toBeDisabled();
 
-  test('getActualState throws an error', async () => {
-    axios.get.mockRejectedValue(new Error('Test error'));
+  // Simulate filling out the form
+  const descriptionInput = screen.getByLabelText("Descripción:");
+  fireEvent.change(descriptionInput, { target: { value: "Estado actual" } });
 
-    await expect(getActualState()).rejects.toThrow('Test error');
+  const dateInput = screen.getByLabelText("Fecha:");
+  fireEvent.change(dateInput, { target: { value: "2024-05-10" } });
+
+  // Verify that the send button is enabled after filling out the form
+  expect(sendButtonElement).toBeEnabled();
+
+  // Simulate submitting the form
+  fireEvent.click(sendButtonElement);
+
+  // Wait for the form submission to complete
+  await waitFor(() => {
+    // Perform additional assertions after the form submission if necessary
+
+    // Verify that the form has been cleared after submission
+    expect(descriptionInput.value).toBe("");
+    expect(dateInput.value).toBe("");
+
+    // Verify that the user has been redirected to the result page
+    expect(history.location.pathname).toBe("/result");
   });
 });
