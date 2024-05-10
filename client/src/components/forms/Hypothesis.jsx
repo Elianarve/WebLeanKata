@@ -3,18 +3,18 @@ import { useForm } from 'react-hook-form';
 import { postHypothesis } from '../../services/hypothesisServices'
 
 const Hypothesis = () => {
-  const { handleSubmit, register, formState: { errors }} = useForm();
+  const { handleSubmit, register, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
       const response = await postHypothesis(data);
-      console.log("Hipótesis creada:", response.data);
+      console.log("Hipotesis creada:", response.data);
       navigate('/experiment');
     } catch (error) {
-      console.error("Error al crear la hipótesis:", error);
+      console.error("Error al crear la hipotesis:", error);
     }
-  }
+  };
 
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>

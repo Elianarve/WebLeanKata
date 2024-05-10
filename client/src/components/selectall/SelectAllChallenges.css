@@ -4,7 +4,6 @@
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
     box-shadow: 2% 2% 4% #c9cccd, -2% -2% 4% #ffffff;
-    /* height: 100vh;  */
 }
 
 .centered-table {
@@ -43,11 +42,43 @@ th {
 
 .button-edit{
     cursor: pointer;
-    width: 30%;
+    width: 4%;
+    border-radius: 15%;
+}
+
+.logo-edit{
+    width: 100%;
 }
 
 .edit{
     display: flex;
     justify-content: center;
+}
+
+.img-form{
+    width: 20%;
+}
+
+.button-add{
+    cursor: pointer;
+    width: 18%;
+}
+
+/* .img-plus{
+    width: 80%;
+} */
+
+.img-delete{
+    width: 100%;
+}
+
+.button-add-t{
+    width: 8%;
+    border-radius: 8%;
+}
+
+.container-button{
+    display: flex;
+    gap: 2%;
 }
 

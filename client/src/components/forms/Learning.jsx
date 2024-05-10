@@ -3,18 +3,18 @@ import { useForm } from 'react-hook-form';
 import { postLearning } from '../../services/learningsServices';
 
 const Learning = () => {
-    const { handleSubmit, register, formState: { errors }} = useForm();
-    const navigate = useNavigate();
+  const { handleSubmit, register, formState: { errors } } = useForm();
+  const navigate = useNavigate();
 
-    const onSubmit = async (data) => {
-        try {
-          const response = await postLearning(data);
-          console.log("Aprendizaje creado:", response.data);
-          navigate('/');
-        } catch (error) {
-          console.error("Error al crear el aprendizaje:", error);
-        }
-      };
+  const onSubmit = async (data) => {
+    try {
+      const response = await postLearning(data);
+      console.log("Aprendizaje creado:", response.data);
+      navigate('/');
+    } catch (error) {
+      console.error("Error al crear el aprendizaje:", error);
+    }
+  };
 
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>

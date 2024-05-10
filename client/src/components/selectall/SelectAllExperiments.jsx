@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { getExperimentsByChallengeId } from "../../services/experimentServices";
 import './SelectAllChallenges.css';
 
 const SelectAllExperiments = ({ challengeId, onExperimentSelect }) => {
