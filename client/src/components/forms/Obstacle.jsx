@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { postObstacle, uploadImage } from '../../services/obstacleServices';
 import { useForm } from 'react-hook-form';
-import './css/Forms.css';
 import { useState } from 'react';
+import './css/Forms.css';
 
 const Obstacle = () => {
   const { handleSubmit, register, formState: { errors } } = useForm();
@@ -24,10 +24,9 @@ const Obstacle = () => {
       console.log("Hipotesis creada:", response.data);
       navigate('/hypothesis');
     } catch (error) {
-      console.error("Error al crear la hipotesis:", error);
+      console.error("Error creating obstacle:", error);
     }
   };
-
 
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>

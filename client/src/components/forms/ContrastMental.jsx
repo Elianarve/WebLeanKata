@@ -30,11 +30,12 @@ const ContrastMetal = () => {
     try {
       const response = await postMentalContrast(data);
       console.log("Contraste mental creado correctamente:", response.data);
-      navigate('/obstacle');
+      navigate('/obstacle'); 
     } catch (error) {
       console.error("Error al crear el contraste mental:", error);
     }
   };
+
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Contraste mental: </h2>

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { postHypothesis } from '../../services/hypothesisServices';
+import { postHypothesis } from '../../services/hypothesisServices'
 
 const Hypothesis = () => {
   const { handleSubmit, register, formState: { errors } } = useForm();
@@ -36,7 +36,7 @@ const Hypothesis = () => {
       </div>
       <button type="submit">Enviar</button>
     </form>
-  )
+  );
 }
 
 export default Hypothesis;

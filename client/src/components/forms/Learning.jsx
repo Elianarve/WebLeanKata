@@ -16,7 +16,6 @@ const Learning = () => {
     }
   };
 
-
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Aprendizaje:</h2>
@@ -35,4 +34,4 @@ const Learning = () => {
   )
 }
 
-export default Learning
+export default Learning;

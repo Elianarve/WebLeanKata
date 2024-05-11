@@ -1,11 +1,11 @@
 import './Footer.css'; 
-import svgImage from '../../assets/img/footer.svg';
 
 const Footer = () => {
   return (
-    <div className="footer-container">
-      <img src={svgImage} alt="SVG Image" />
-    </div>
+    <footer className='footer-container'>
+      <p className='pFooter transparent'>Politica de privacidad | Terminos de uso</p>
+      <p className='pFooter blue'>© 2006 - 2021 Wix.com, Inc</p>
+    </footer>
   );
 }
 

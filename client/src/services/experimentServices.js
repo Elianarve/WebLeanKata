@@ -41,7 +41,6 @@ export const postExperiment = async (data) => {
     return response;
   }
 
-
   export const updateExperiment = async (id, data) => {
     try {
         const response = await axios.put(`${API_URL}/${id}`,data);

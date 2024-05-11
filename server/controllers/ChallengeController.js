@@ -40,7 +40,7 @@ export const addChallenge = async (req, res) => {
 export const updateChallenge = async (req, res) => {   
     const challengeId = req.params.id; 
     try {
-        await ChallengeModel.update(req.body,{  where: {id: challengeId}});
+        await ChallengeModel.update(req.body,{where: {id: challengeId}});
         await ChallengeModel.findOne({where: {id: challengeId}});
         res.status(200).json({message: `Actualizado correctamente`});
     } catch(error) {

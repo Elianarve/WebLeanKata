@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { getOneActualState, updateActualState, deleteActualState } from '../../services/actualStateServices';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -24,6 +24,7 @@ const EditActualState = () => {
     fetchData();
   }, [id, setValue]);
 
+
   const onSubmit = async (actualStateData) => {
     try {
       await updateActualState(id, actualStateData);
@@ -34,20 +35,19 @@ const EditActualState = () => {
       alert('Error al actualizar el elemento. Por favor, intenta nuevamente.');
     }
   };
-        
+     
   return (
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
         <h2>Editar estado actual</h2>
         <div className='items'>
           <label className='label-item'>Descripción </label>
           <textarea type="text" rows="10" cols="50" name="description" defaultValue={actualStateData.description } {...register('description', { required: true })}/>
-          {/* {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>}  */}
+          {errors.description?.type === 'required' && <p className="error-message">El campo descripción es requerido</p>}
         </div>
         <div className='items'>
           <label className='label-item'>Fecha</label>
           <input type="date" name="date" defaultValue={actualStateData.date } {...register('date', {required: true })}/>
-          {/* {errors.speeds?.type === 'pattern' && <p className="error-message">La velocidad debe ser un valor numérico</p>}
-          {errors.speeds?.type === 'required' && <p className="error-message">El campo velocidades es requerido</p>} */}
+          {errors.date?.type === 'required' && <p className="error-message">El campo fecha es requerido</p>}
         </div>
         <button onClick={() => deleteActualState(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />

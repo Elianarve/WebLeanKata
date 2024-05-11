@@ -1,20 +1,20 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import {postResult } from '../../services/resultServices';
+import { postResult } from '../../services/resultServices';
 
 const Result = () => {
-    const { handleSubmit, register, formState: { errors }} = useForm();
-    const navigate = useNavigate();
+  const { handleSubmit, register, formState: { errors } } = useForm();
+  const navigate = useNavigate();
 
-    const onSubmit = async (data) => {
-        try {
-          const response = await postResult(data);
-          console.log("Resultado creada:", response.data);
-          navigate('/learning');
-        } catch (error) {
-          console.error("Error al crear el resultado:", error);
-        }
-      };
+  const onSubmit = async (data) => {
+    try {
+      const response = await postResult(data);
+      console.log("Resultado creado:", response.data);
+      navigate('/learning');
+    } catch (error) {
+      console.error("Error al crear el resultado:", error);
+    }
+  };
       
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
@@ -59,4 +59,4 @@ const Result = () => {
   )
 }
 
-export default Result
+export default Result;
