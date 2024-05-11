@@ -1,16 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import router from '../router/router';
-import test from 'jest';
-import { expect } from 'jest';
+import {LayoutPublic} from '../components/layout/LayoutPublic';
+import {describe, test, expect} from 'jest';
+import { screen, render} from '@testing-library/react';
 
-test('renders Obstacle component when visiting /obstacle', () => {
-  render(
-    <MemoryRouter initialEntries={['/obstacle']}>
-      {router}
-    </MemoryRouter>
-  );
 
-  // Reemplaza "Obstacle" con el texto o elemento real en tu componente Obstacle
-  expect(screen.getByText('Obstacle')).toBeInTheDocument();
+describe('<LayoutPublic />', () => {
+test("renders layout component when visiting /", () => {
+  render( <LayoutPublic /> );
+  expect(screen.getByText("Inicio")).toBeInTheDocument();
+});
 });

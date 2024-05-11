@@ -1,57 +1,63 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { Router } from 'react-router-dom'
-import ActualState from "../components/forms/ActualState.jsx";
-import { createMemoryHistory } from 'history';
-import test from 'jest';
-import { expect } from 'jest';
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import Challenge from '../components/forms/Challenge';
+import { describe, it, expect } from 'vitest';
+import jest from 'jest';
 
-test("render ActualState form", async () => {
-  const history = createMemoryHistory()
 
-  render(
-    <Router history={history}>
-      <ActualState />
-    </Router>
-  );
-  
-  // Verifica que los elementos del formulario estén presentes en la pantalla
-  const headingElement = screen.getByText("ESTADO ACTUAL:");
-  expect(headingElement).toBeInTheDocument();
+describe('Test Unitario para el Componente Challenge', () => {
+  it('Debería renderizar correctamente el formulario', () => {
+    const { getByText, getByLabelText } = render(<Challenge />);
 
-  const descriptionLabelElement = screen.getByText("Descripción:");
-  expect(descriptionLabelElement).toBeInTheDocument();
+    // Verificar si el formulario y sus elementos se renderizan correctamente
+    expect(getByText('RETO:')).toBeInTheDocument();
+    expect(getByLabelText('Nombre')).toBeInTheDocument();
+    expect(getByLabelText('Descripción')).toBeInTheDocument();
+    expect(getByLabelText('Fecha de inicio:')).toBeInTheDocument();
+    expect(getByLabelText('Fecha de fin:')).toBeInTheDocument();
+    expect(getByText('Enviar')).toBeInTheDocument();
+  });
 
-  const dateLabelElement = screen.getByText("Fecha:");
-  expect(dateLabelElement).toBeInTheDocument();
+  it('Debería mostrar un mensaje de error cuando se envía el formulario con campos vacíos', async () => {
+    const { getByText } = render(<Challenge />);
 
-  const sendButtonElement = screen.getByText("Enviar");
-  expect(sendButtonElement).toBeInTheDocument();
+    // Enviar el formulario sin completar ningún campo
+    fireEvent.click(getByText('Enviar'));
 
-  // Verifica que el botón de enviar esté inicialmente deshabilitado
-  expect(sendButtonElement).toBeDisabled();
+    // Verificar si se muestra el mensaje de error correcto para el campo de nombre
+    await waitFor(() => {
+      expect(getByText('El nombre es requerido')).toBeInTheDocument();
+    });
 
-  // Simula el llenado del formulario
-  const descriptionInput = screen.getByLabelText("Descripción:");
-  fireEvent.change(descriptionInput, { target: { value: "Estado actual" } });
+    // Agregar más verificaciones para otros campos requeridos según sea necesario
+  });
 
-  const dateInput = screen.getByLabelText("Fecha:");
-  fireEvent.change(dateInput, { target: { value: "2024-05-10" } });
+  it('Debería actualizar el estado del formulario al escribir en los campos de entrada', () => {
+    const { getByLabelText } = render(<Challenge />);
+    const nombreInput = getByLabelText('Nombre');
 
-  // Verifica que el botón de enviar esté habilitado después de llenar el formulario
-  expect(sendButtonElement).toBeEnabled();
+    // Escribir en el campo de nombre
+    fireEvent.change(nombreInput, { target: { value: 'Nuevo Nombre' } });
 
-  // Simula el envío del formulario
-  fireEvent.click(sendButtonElement);
+    // Verificar si el estado del campo de nombre se actualiza correctamente
+    expect(nombreInput.value).toEqual('Nuevo Nombre');
+  });
 
-  // Espera a que ocurra algún cambio después del envío del formulario
-  await waitFor(() => {
-    // Realiza verificaciones adicionales después del envío del formulario si es necesario
+  it('Debería llamar a la función onSubmit al enviar el formulario', async () => {
+    const mockSubmit = jest.fn();
+    const { getByText, getByLabelText } = render(<Challenge onSubmit={mockSubmit} />);
+    
+    // Completar el formulario
+    fireEvent.change(getByLabelText('Nombre'), { target: { value: 'Nombre de prueba' } });
+    fireEvent.change(getByLabelText('Descripción'), { target: { value: 'Descripción de prueba' } });
+    fireEvent.change(getByLabelText('Fecha de inicio:'), { target: { value: '2024-05-11' } });
+    fireEvent.change(getByLabelText('Fecha de fin:'), { target: { value: '2024-05-12' } });
 
-    // Verifica que el formulario se haya limpiado después del envío
-    expect(descriptionInput.value).toBe("");
-    expect(dateInput.value).toBe("");
+    // Enviar el formulario
+    fireEvent.click(getByText('Enviar'));
 
-    // Verifica que se haya redirigido a la página de desafío
-    expect(history.location.pathname).toBe("/challenge");
+    // Verificar si la función onSubmit se llama correctamente
+    await waitFor(() => {
+      expect(mockSubmit).toHaveBeenCalled();
+    });
   });
 });
