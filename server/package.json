@@ -12,6 +12,7 @@
     "mongoose": "^8.3.2",
     "mysql2": "^3.9.7",
     "nodemon": "^3.1.0",
+    "react-is": "^18.3.1",
     "sequelize": "^6.37.3"
   },
   "name": "server",

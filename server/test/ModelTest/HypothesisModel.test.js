@@ -16,14 +16,14 @@ describe('HypothesisModel', () => {
     expect(HypothesisModel).toBeDefined();
   });
 
-  it('should have columns id, obstacle_id, description, plan_date, and state_hipothesis correctly defined', () => {
+  it('should have columns id, obstacle_id, description, plan_date, and state_hypothesis correctly defined', () => {
     const columns = HypothesisModel.rawAttributes;
     expect(columns.id).toBeDefined();
     expect(columns.obstacle_id).toBeDefined();
     expect(columns.description).toBeDefined();
     expect(columns.plan_date).toBeDefined();
-    expect(columns.state_hipothesis).toBeDefined();
-  });
+    expect(columns.state_hypothesis).toBeDefined(); // Corregido el nombre de la columna
+});
 
   it('should have the table "hypothesis" correctly configured', () => {
     expect(HypothesisModel.options.tableName).toBe('hypothesis');
