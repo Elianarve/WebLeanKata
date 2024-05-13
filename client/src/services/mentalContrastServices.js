@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:5002/mentalcontrast';
+const API_URL = 'http://localhost:5003/mentalcontrast';
 
 export const getMentalContrast = async () => {
     try {

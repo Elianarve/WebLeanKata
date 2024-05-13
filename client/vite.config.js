@@ -13,7 +13,7 @@ export default defineConfig({
     outDir: 'dist',
   },
   server: {
-    port: 5002,
+    port: 5003,
   },
 })
 // vite.config.js
