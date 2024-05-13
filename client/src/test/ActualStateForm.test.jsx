@@ -43,8 +43,8 @@ describe('Test Unitario para el Componente Challenge', () => {
   });
 
   it('Debería llamar a la función onSubmit al enviar el formulario', async () => {
-    const mockSubmit = jest.fn();
-    const { getByText, getByLabelText } = render(<Challenge onSubmit={mockSubmit} />);
+    const test = jest.fn();
+    const { getByText, getByLabelText } = render(<Challenge onSubmit={test} />);
     
     // Completar el formulario
     fireEvent.change(getByLabelText('Nombre'), { target: { value: 'Nombre de prueba' } });
@@ -57,7 +57,8 @@ describe('Test Unitario para el Componente Challenge', () => {
 
     // Verificar si la función onSubmit se llama correctamente
     await waitFor(() => {
-      expect(mockSubmit).toHaveBeenCalled();
+      expect
+      .toHaveBeenCalled();
     });
   });
 });
