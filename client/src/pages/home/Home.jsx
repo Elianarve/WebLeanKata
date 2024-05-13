@@ -5,13 +5,15 @@ import '../../pages/home/Home.css';
 import SearchBar from '../../components/searchBar/SearchBar';
 import update from '../../assets/img/Edit-File.svg';
 import {getActualState} from '../../services/actualStateServices';
+import { io } from 'socket.io-client';
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
   const [filteredChallenges, setFilteredChallenges] = useState([]); 
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  
+  const socket = io();
+
   useEffect(() => {
     const fetchChallenges = async () => {
       try {
@@ -29,6 +31,19 @@ const Home = () => {
     };
 
     fetchChallenges();
+
+    // Connect to the WebSocket server
+    socket.connect();
+
+    // Add event listeners for the 'message' and 'connect' events
+    socket.on('message', (message) => {
+      console.log('Mensaje recibido:', message);
+    });
+
+    socket.on('connect', () => {
+      console.log('Cliente conectado al servidor WebSocket');
+    });
+
   }, []);
 
   const handleSearch = (searchTerm) => {

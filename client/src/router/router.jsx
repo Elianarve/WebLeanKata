@@ -24,6 +24,8 @@ import EditObstacle from '../components/edit/EditObstacle';
 import Process from '../components/forms/Process';
 import Tribe from '../components/forms/Tribe';
 import EditTribe from "../components/edit/EditTribe";
+import Card from "../components/card/Card";
+
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,10 @@ export const router = createBrowserRouter([
       element: <Home/>,
     },
     {
+      path:"/card/:id",
+      element: <Card/>
+    },
+    {
       path: "/process",
       element: <Process/>
     },
@@ -43,7 +49,7 @@ export const router = createBrowserRouter([
       element: <Tribe/>
     },
     {
-      path: "/reto",
+      path: "/challenge",
       element: <Challenge/>,
     },
     {
