@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import '../searchBar/SearchBar.css';
-
+import './SearchBar.css'
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -9,14 +8,16 @@ const SearchBar = ({ onSearch }) => {
     onSearch(event.target.value); 
   };
   return (
-    <div className="search-bar">
-      <input className='search-bar-input'
-        type="text"
-        placeholder="Buscar por ID o Nombre..."
+  <>
+    <div>
+      <input
+        placeholder="Buscar..."
         value={searchTerm}
         onChange={handleSearch}
+        className="search-bar"
       />
     </div>
+  </>
   );
 };
 export default SearchBar;

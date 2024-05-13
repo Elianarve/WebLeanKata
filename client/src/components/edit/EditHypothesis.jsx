@@ -37,9 +37,12 @@ const EditHypothesis = () => {
     }
 
     return (
+        <div className="form-container">
+        <div className="form-center">
+        <h2>Editar Hipótesis</h2>
+
         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
 
-            <h2>Editar Hipótesis</h2>
             <div className='items'>
                 <label className='label-item'>Descripción</label>
                 <textarea rows="10" cols="50" name="description" defaultValue={hypothesisData.description} {...register('description', { required: true })} />
@@ -61,6 +64,8 @@ const EditHypothesis = () => {
             <button onClick={() => deleteHypothesis(id).then(() => navigate("/home")) }>Eliminar</button>
             <button type="submit" className='button'>Guardar</button>
         </form>
+        </div>
+        </div>
     );
 }
 

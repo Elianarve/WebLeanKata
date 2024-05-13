@@ -17,6 +17,8 @@ const Tribe = () => {
   };
 
   return (
+    <div className="form-container">
+      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>TRIBU: </h2>
       <div className='items'>
@@ -41,6 +43,8 @@ const Tribe = () => {
       </div>
         <button className='button-forms' type="submit">ENVIAR</button>
   </form>
+  </div>
+  </div>
   )
 }
 

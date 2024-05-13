@@ -35,8 +35,11 @@ const EditProcess = () => {
   };
         
   return (
+    <div className="form-container">
+    <div className="form-center">
+    <h2>Editar proceso</h2>
+
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-        <h2>Editar proceso</h2>
         <div className='items'>
           <label className='label-item'>Descripción </label>
           <textarea type="text" rows="10" cols="50" name="description" defaultValue={processData.description } {...register('description', { required: true })}/>
@@ -45,6 +48,8 @@ const EditProcess = () => {
         <button onClick={() => deleteProcess(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />
       </form>
+      </div>
+      </div>
   );
 }
 

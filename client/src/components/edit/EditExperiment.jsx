@@ -42,8 +42,11 @@ const EditExperimet = () => {
     };
 
     return (
+        <div className="form-container">
+        <div className="form-center">
+        <h2>Editar Experimento</h2>
+
         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-            <h2>Editar Experimento</h2>
             <div className='items'>
                 <label className='label-item'>Descripción</label>
                 <textarea rows="10" cols="50" name="description" defaultValue={experimentData.description} {...register('description', {required: true})}/>
@@ -100,6 +103,8 @@ const EditExperimet = () => {
             <button onClick={() => deleteExperiment(id).then(() => navigate("/home")) }>Eliminar</button>
             <input type="submit" value="Editar" />
         </form>
+        </div>
+        </div>
     );
 }
 

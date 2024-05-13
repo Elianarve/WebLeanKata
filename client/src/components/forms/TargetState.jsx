@@ -24,6 +24,8 @@ const TargetState = () => {
   };
 
   return (
+    <div className="form-container">
+      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Estado objetivo:</h2>
       <div className='items'>
@@ -49,6 +51,8 @@ const TargetState = () => {
       </div>
       <button className='button-forms' type="submit">Enviar</button>
     </form>
+    </div>
+    </div>
   )
 }
 

@@ -17,6 +17,8 @@ const Hypothesis = () => {
   };
 
   return (
+    <div className="form-container">
+      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Hipótesis: </h2>
       <div className='items'>
@@ -36,6 +38,8 @@ const Hypothesis = () => {
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
     </form>
+    </div>
+    </div>
   )
 }
 

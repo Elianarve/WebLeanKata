@@ -34,8 +34,11 @@ const EditObstacle = () => {
   };
         
   return (
+    <div className="form-container">
+    <div className="form-center">
+    <h2>Editar Obstaculo</h2>
+
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-        <h2>Editar Obstaculo</h2>
         <div className='items'>
         <label className='label-item'>Descripción:</label>
         <input type="text" name="description" defaultValue={ obstacleData.description }  {...register('description', { required: true })} />
@@ -44,6 +47,8 @@ const EditObstacle = () => {
         <button onClick={() => deleteObstacle(id).then(() => navigate("/home")) }>Eliminar</button>
         <button type="submit">Editar</button>
       </form>
+      </div>
+      </div>
   );
 }
 

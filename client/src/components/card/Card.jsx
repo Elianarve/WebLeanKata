@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getOneChallenge} from '../../services/challengeServices'; 
-import SelectAllChallenges from '../selectall/SelectAllChallenges';
+import SelectAllChallenges from '../selectall/selectAllChallenges';
 import TargetSta from '../selectall/TargetSta';
 import SelectAllActualState from '../selectall/SelectAllActualState';
+import './Card.css'
 
 const Card = () => {
   const { id } = useParams();
@@ -40,13 +41,13 @@ const Card = () => {
   }
   
   return (
-    <>
+    <div className="card-center">
     <div className="cardContainer">
       <SelectAllActualState/>
       <SelectAllChallenges challengeId={id} />
       <TargetSta challengeId={id}/>
     </div>
-    </>
+    </div>
   );
 };
 

@@ -67,7 +67,11 @@
   cursor: pointer;
   border: 1px solid #ddd;
   background-color: #f9f9f9;
-}
+  white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+  overflow: hidden; /* Oculta el texto que sobresale del contenedor */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto es recortado */
+  width: 100%; /* Opcional: para que el texto ocupe todo el ancho disponible */
+} 
 
 .logos{
   display: flex;

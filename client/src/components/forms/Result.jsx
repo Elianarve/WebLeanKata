@@ -17,6 +17,8 @@ const Result = () => {
       };
       
   return (
+    <div className="form-container">
+      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Resultado:</h2>
       <div className='items'>
@@ -56,6 +58,9 @@ const Result = () => {
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
     </form>
+    </div>
+    </div>
+    
   )
 }
 

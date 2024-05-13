@@ -43,15 +43,15 @@ const Home = () => {
   return (
     <div className="home-container">
     <SearchBar onSearch={handleSearch} />
-      <h3>RETOS</h3>
+    
       <div className="gallery-items">
         <div className="challenge-container">
           <div className="challenge-table">
             <div className="table-row">
-              <div className="table-cell-title">ID del Reto</div>
-              <div className="table-cell-title">Nombre del Reto</div>
+              <div className="table-cell-title">ID</div>
+              <div className="table-cell-title">Nombre</div>
               <div className="table-cell-title">Estado actual</div>
-              <div className="table-cell-title">Acciones</div>
+              <div className="table-cell-title">Editar</div>
             </div>
               {filteredChallenges.map((challenge) => (
               <div key={challenge.id} className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>

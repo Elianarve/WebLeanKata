@@ -36,8 +36,11 @@ const EditTargetState = () => {
   };
         
   return (
-         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+    <div className="form-container">
+    <div className="form-center">
     <h2>Estado objetivo: </h2>
+
+         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
      <div className='items'>
        <label className='label-item'>Descripción</label>
        <input type="text" name='description' defaultValue={targetStateData.description } {...register('description', { required: true })} />
@@ -56,6 +59,8 @@ const EditTargetState = () => {
      <button onClick={() => deleteTargetState(id).then(() => navigate("/home")) }>Eliminar</button>
      <button type="submit">Editar</button>
          </form>
+         </div>
+         </div>
      );
 }   
    

@@ -17,6 +17,8 @@ const Process = () => {
   };
 
   return (
+    <div className="form-container">
+      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>PROCESO: </h2>
       <div className='items'>
@@ -31,6 +33,8 @@ const Process = () => {
       </div>
         <button className='button-forms' type="submit">ENVIAR</button>
   </form>
+  </div>
+  </div>
   )
 }
 
