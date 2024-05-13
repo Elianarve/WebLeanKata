@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { postActualState } from '../../services/actualStateServices';
 import { useForm } from 'react-hook-form';
@@ -19,8 +16,9 @@ const ActualState = () => {
 
   const onSubmit = (data) => { 
     postActualState(data).then(() => {
-      navigate(`/challenge`); 
-    }).catch((error) => {
+        navigate(`/reto`); 
+    })
+    .catch((error) => {
       console.error("Error al publicar:", error);
     });
   };
@@ -28,17 +26,6 @@ const ActualState = () => {
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>ESTADO ACTUAL: </h2>
-      <div className='items'>
-        <label className='label-item'>Descripción: </label>
-        <textarea
-          type="text" 
-          {...register('description', { 
-            required: 'La descripción es requerida'
-          })} 
-        />
-        {errors.description && <p className="error-message">{errors.description.message}</p>} 
-      </div>
-      <div className='items'>
       <div className='items'>
         <label className='label-item'>Descripción: </label>
         <textarea
