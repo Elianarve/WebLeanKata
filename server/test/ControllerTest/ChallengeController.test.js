@@ -1,14 +1,14 @@
 import request from 'supertest';
 import connection_db from "../../database/connection_db.js";
 import ChallengeModel from "../../models/ChallengeModel.js";
-import {app} from '../../app.js'; // Ajustar según tu estructura de importaciones
+import { app } from '../../app.js'; // Ajustar según tu estructura de importaciones
 
 const api = request(app);
 
 describe('Testing CRUD in Challenge Controller', () => {
 
   beforeAll(async () => {
-    await connection_db.sync(); // Esto sincronizará todos los modelos con la base de datos
+    await connection_db.authenticate(); // Esto sincronizará todos los modelos con la base de datos
   });
 
   describe('GET /challenges should return status 200 and an array of challenges', () => {
@@ -98,7 +98,13 @@ describe('Testing CRUD in Challenge Controller', () => {
         await challengeToDelete.destroy();
       }
     });
+    
   });
+
+  afterAll( () =>{
+    connection_db.close();
+    // server.close();
+});
 
 });
 

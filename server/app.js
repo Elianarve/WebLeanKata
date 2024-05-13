@@ -1,6 +1,6 @@
 import connection_db from "./database/connection_db.js";
 import express from 'express';
-import { PORT } from './config.js';
+import { PORT, NODE_ENV } from './config.js';
 import cors from 'cors';
 import challengeRouter from './routes/challengeRouter.js';
 import targetStateRouter from './routes/targetStateRouter.js';
@@ -12,6 +12,7 @@ import experimentRouter from './routes/experimentRouter.js';
 import taskRouter from './routes/taskRouter.js';
 import resultRouter from './routes/resultRouter.js';
 import learningRouter from './routes/learningRouter.js';
+
 
 // import ChallengeModel from './models/ChallengeModel.js';
 // import ActualStateModel from "./models/ActualStateModel.js";
@@ -63,8 +64,11 @@ try {
     console.error('Unable to connect to the database:', error);
    }
 
-export const server = app.listen(PORT, () => {
-    console.log(`La API se esta escuchando en el puerto http://localhost:${PORT}`);
-});
+   if (NODE_ENV !== "test"){
+    app.listen(PORT, () => {
+        console.log(`La API se esta escuchando en el puerto http://localhost:${PORT}`);
+    });
+   }
+
 
 export default app;

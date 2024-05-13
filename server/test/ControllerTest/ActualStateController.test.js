@@ -1,8 +1,8 @@
 import request from 'supertest';
 import connection_db from "../../database/connection_db.js";
 import ActualStateModel from "../../models/ActualStateModel.js";
-import {app} from '../../app.js'; // Ajustar según tu estructura de importaciones
-import { PORT } from '../../config';
+import { app } from '../../app.js'; // Ajustar según tu estructura de importaciones
+
 
 
 const api = request(app);
@@ -10,7 +10,7 @@ const api = request(app);
 describe('Testing CRUD in Actual State API', () => {
 
     beforeAll(async () => {
-        await connection_db.sync(); // Esto sincronizará todos los modelos con la base de datos
+        await connection_db.authenticate(); // Esto sincronizará todos los modelos con la base de datos
       });
 
 
@@ -113,6 +113,13 @@ describe('Testing CRUD in Actual State API', () => {
         test('debería devolver un error 500 si hay un problema al eliminar el estado actual', async () => {
             // Puedes simular un problema aquí y ajustar el test según sea necesario
         });
+
+ 
+    });
+
+    afterAll( () =>{
+        connection_db.close();
+        // server.close();
     });
 });
 
