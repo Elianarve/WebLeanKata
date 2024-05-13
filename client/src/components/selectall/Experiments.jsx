@@ -53,7 +53,7 @@ const Experiments = ({hypothesis}) => {
             <div className="centered-table">
                 <table className='container-table'>
                         {experiments.map((experiment) => (
-                            <tr key={experiment.id}>
+                            <tbody key={experiment.id}>
                                 <tr>
                                 <td className='title-table'>Experimento ID</td>
                                 <td className='tr-table'>{experiment.id}</td>
@@ -117,7 +117,7 @@ const Experiments = ({hypothesis}) => {
                                     <td className='title-table'></td>
                                     <td></td>
                                 </tr>
-                            </tr>
+                            </tbody>
                          ))} 
                                            
                 </table>

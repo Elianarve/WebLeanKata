@@ -24,7 +24,7 @@ import EditMentalContrast from '../components/edit/EditContrastMental';
 import EditHypothesis from '../components/edit/EditHypothesis';
 import Process from '../components/forms/Process';
 import Tribe from '../components/forms/Tribe';
-
+import EditTribe from "../components/edit/EditTribe";
 
 export const router = createBrowserRouter([
   {
@@ -39,10 +39,10 @@ export const router = createBrowserRouter([
       path: "/process",
       element: <Process/>
     },
-    // {
-    //   path: "/tribe",
-    //   element: <Tribe/>
-    // },
+    {
+      path: "/tribe",
+      element: <Tribe/>
+    },
     {
       path: "/reto",
       element: <Challenge/>,
@@ -82,6 +82,10 @@ export const router = createBrowserRouter([
     {
       path:"/learning",
       element: <Learning/>
+    },
+    {
+      path: "/edittribe/:id",
+      element: <EditTribe/>
     },
     {
       path: "/editactualstate/:id",

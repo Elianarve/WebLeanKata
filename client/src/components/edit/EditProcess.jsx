@@ -1,33 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getOneProcess, updateProcess, deleteProcess } from '../../services/processServices';
-import { useParams, useNavigate } from 'react-router-dom';
+import { getOneProcess, updateProcess } from '../../services/processServices';
 import '../forms/css/Forms.css';
 
-
-
-const EditProcess = () => {
-  const { id } = useParams();
-  const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
+const EditProcess = ({processId, setLoading, setEditable}) => {
+  const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [processData, setProcessData] = useState({});
-  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getOneProcess(id);
+      const response = await getOneProcess(processId);
       const processData = response.data;
       setProcessData(processData);
       setValue('description', processData.description);
     };
 
     fetchData();
-  }, [id, setValue]);
+  }, [processId, setValue]);
 
   const onSubmit = async (processData) => {
     try {
-      await updateProcess(id, processData);
+      await updateProcess(processId, processData);
       alert('¡Los datos del elemento han sido actualizados correctamente!');
-      reset();
+      setLoading(true);
+      setEditable(false);
     } catch (error) {
       console.error('Error al actualizar el elemento:', error);
       alert('Error al actualizar el elemento. Por favor, intenta nuevamente.');
@@ -45,8 +41,8 @@ const EditProcess = () => {
           <textarea type="text" rows="10" cols="50" name="description" defaultValue={processData.description } {...register('description', { required: true })}/>
           {/* {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>}  */}
         </div>
-        <button onClick={() => deleteProcess(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />
+        <button onClick={() => setEditable(false)}>Cerrar</button>
       </form>
       </div>
       </div>

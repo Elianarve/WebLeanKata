@@ -41,9 +41,8 @@ const TaskSelect = ({experiment}) => {
         <h3>TAREAS <button className='button-add-h' onClick={() => navigate(`/task`)}><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
             <div className="centered-table">
                 <table className='container-table'>
-                    <tbody>
                         {tasks.map((task) => (
-                            <tr key={task.id}>
+                            <tbody key={task.id}>
                                 <tr>
                                 <td className='title-table'>Tarea ID</td>
                                 <td className='tr-table'>{task.id}</td>
@@ -89,11 +88,8 @@ const TaskSelect = ({experiment}) => {
                                     <td className='title-table'></td>
                                     <td></td>
                                 </tr>
-                            </tr>
+                            </tbody>
                          ))} 
-                        
-                    </tbody>
-                    
                 </table>
             </div>
         </>

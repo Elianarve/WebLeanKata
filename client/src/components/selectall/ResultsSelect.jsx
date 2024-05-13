@@ -43,9 +43,8 @@ const ResultsSelect = ({experiment}) => {
         <h3>RESULTADOS</h3>
             <div className="centered-table">
                 <table className='container-table'>
-                    <tbody>
                         {results.map((result) => (
-                            <tr className='tr-table' key={result.id}>
+                            <tbody className='tr-table' key={result.id}>
                                 <tr>
                                 <td className='title-table'>Resultado ID</td>
                                 <td className='tr-table'>{result.id}</td>
@@ -93,12 +92,8 @@ const ResultsSelect = ({experiment}) => {
 
                                 </td>
                                 </tr>
-                               
-                            </tr>
+                            </tbody>
                          ))} 
-                        
-                    </tbody>
-                    
                 </table>
             </div>
         </>

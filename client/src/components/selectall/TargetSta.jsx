@@ -36,7 +36,7 @@ const TargetSta = ({ challengeId }) => {
                     <div className="centered-table">
                         <table className='container-table'>
                                 {targetStates.map((targetState) => (
-                                    <tr key={targetState.id}>
+                                    <tbody key={targetState.id}>
                                         <tr>
                                             <td className='title-table'>Estado Objetivo ID</td>
                                             <td className='tr-table'>{targetState.id}</td>
@@ -72,7 +72,7 @@ const TargetSta = ({ challengeId }) => {
                                     <td className='title-table'></td>
                                     <td></td>
                                     </tr>
-                                </tr>
+                                </tbody>
                                 ))}
                         </table>
                     </div>
