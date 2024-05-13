@@ -1,24 +1,19 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getChallenge } from '../../services/challengeServices'; 
+import '../../pages/home/Home.css';
 import SearchBar from '../../components/searchBar/SearchBar';
-// import delte from '../../assets/img/delete.svg';
 import update from '../../assets/img/Edit-File.svg';
 import {getActualState} from '../../services/actualStateServices';
-import {getChallenge} from '../../services/challengeServices';
-import Calendar from '../../components/calendar/Calendar';
-import './Home.css';
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
   const [filteredChallenges, setFilteredChallenges] = useState([]); 
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false); // Estado para controlar la visibilidad del calendario
-  const calendarRef = useRef(null); // Ref para el calendario
-
+  
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchChallenges = async () => {
       try {
         const [challengesData, actualStatesData] = await Promise.all([getChallenge(), getActualState()]);
         const challengesWithData = challengesData.map(challenge => ({
@@ -28,58 +23,26 @@ const Home = () => {
         setChallenges(challengesWithData); 
         setFilteredChallenges(challengesWithData); 
       } catch (error) {
-        console.error("Error al obtener los retos:", error);
+        console.error('Error fetching retos:', error);
         setError('No se pudieron cargar los desafíos. Por favor, inténtalo de nuevo más tarde.');
       }
     };
 
-    fetchData();
+    fetchChallenges();
   }, []);
 
- const handleDateChange = (date) => {
-    setSelectedDate(date);
-    // Filtrar los desafíos por la fecha seleccionada
-    const filtered = challenges.filter(challenge => {
-      const challengeDate = new Date(challenge.start_date);
-      return challengeDate.toDateString() === date.toDateString();
-    });
-    setFilteredChallenges(filtered);
-  };
-
-  // Función para alternar el estado del calendario y controlar su visibilidad
-  const toggleCalendar = () => {
-    setIsCalendarOpen(!isCalendarOpen); // Alternar entre abierto y cerrado
-  };
-
-  // Función para cerrar el calendario si se hace clic fuera de él
-  const handleOutsideClick = (event) => {
-    if (calendarRef.current && !calendarRef.current.contains(event.target)) {
-      setIsCalendarOpen(false);
-    }
-  };
-
-  // Función para manejar la búsqueda
   const handleSearch = (searchTerm) => {
     const filteredResults = challenges.filter((challenge) => {
       return Object.values(challenge).some((value) =>
         typeof value === 'string' && value.toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
-    setFilteredChallenges(filteredResults);
+    setFilteredChallenges(filteredResults); 
   };
-
-  // Agregar un listener de eventos para cerrar el calendario cuando se hace clic fuera de él
-  useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
 
   return (
     <div className="home-container">
-    <SearchBar onSearch={handleSearch} />
-    
+    <SearchBar onSearch={handleSearch} />    
       <div className="gallery-items">
         <div className="challenge-container">
           <div className="challenge-table">
