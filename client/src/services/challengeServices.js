@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL_CHALLENGE = 'http://localhost:5001/challenge';
+const API_URL_CHALLENGE = 'http://localhost:5002/challenge';
 
 export const getChallenge = async () => {
     try {
