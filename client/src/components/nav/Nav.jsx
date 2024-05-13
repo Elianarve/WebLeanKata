@@ -16,7 +16,14 @@ const Nav = () => {
         <img src={logo} alt="logo" />
       </div>
       <ul className='nav-links'>
-        <li className="nav-button" onClick={toggleMenu}>Proyecto/Reto</li>
+        <li className="nav-button" onClick={toggleMenu} >Proyecto/Reto</li>
+        {openMenu && (
+        <div className='nav-display'>
+        <a className='a-link' href="/process">Nuevo</a>
+        <hr className='line' />
+        <a className='a-link' href="/card/:id">Existente</a>
+        </div>
+         )}
         <li className="nav-button"><Link to="/">Inicio</Link></li>
         <li className="nav-button"><Link to="/Edit/:id">Tablero Principal</Link></li>
       </ul>
