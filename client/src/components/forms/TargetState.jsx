@@ -11,7 +11,7 @@ const TargetState = () => {
     try {
       const response = await postTargetState(data);
       console.log("Desafío creado:", response.data);
-      navigate('/contrast');
+      navigate(`/card/${response.data.challenge_id}`);
     } catch (error) {
       console.error("Error al crear el desafío:", error);
     }
@@ -28,7 +28,7 @@ const TargetState = () => {
       <h2>Estado objetivo:</h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
-        <input type="text" {...register('description', { required: true })} />
+        <textarea type="text" {...register('description', { required: true })} />
         {errors.description && <p className="error-message">La descripción es requerida</p>}
       </div>
       <div className='items'>
@@ -47,7 +47,7 @@ const TargetState = () => {
         {errors.date_goal && errors.date_goal.type === 'futureDate' && <p className="error-message">La fecha de meta debe ser posterior a la fecha de inicio</p>}
         {errors.date_goal && errors.date_goal.type !== 'futureDate' && <p className="error-message">La fecha de meta es requerida</p>}
       </div>
-      <button type="submit">Enviar</button>
+      <button className='button-forms' type="submit">Enviar</button>
     </form>
   )
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getOneChallenge } from '../../services/challengeServices'; 
+import { getOneChallenge} from '../../services/challengeServices'; 
 import SelectAllChallenges from '../selectall/SelectAllChallenges';
 import TargetSta from '../selectall/TargetSta';
 import SelectAllActualState from '../selectall/SelectAllActualState';
@@ -10,8 +10,6 @@ const Card = () => {
   const [challenge, setChallenge] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-
 
   useEffect(() => {
     const fetchChallenge = async () => {
@@ -26,7 +24,7 @@ const Card = () => {
     };
 
     fetchChallenge();
-  }, [id]);
+  }, []);
 
 
   if (loading) {
@@ -44,7 +42,7 @@ const Card = () => {
   return (
     <>
     <div className="cardContainer">
-      <SelectAllActualState actualStateId={challenge.data.actual_state_id}/>
+      <SelectAllActualState/>
       <SelectAllChallenges challengeId={id} />
       <TargetSta challengeId={id}/>
     </div>

@@ -22,7 +22,7 @@ const Learning = () => {
       <h2>Aprendizaje:</h2>
       <div className='items'>
         <label className='label-item'>Descripción:</label>
-        <input type="text" {...register('description', { required: true })} />
+        <textarea type="text" {...register('description', { required: true })} />
         {errors.description && <p className="error-message">La descripción es requerida</p>}
       </div>
       <div className='items'>
@@ -30,7 +30,7 @@ const Learning = () => {
         <input type="date" {...register('learning_date', { required: true })} />
         {errors.learning_date && <p className="error-message">{errors.learning_date.message}</p>}
       </div>
-      <button type="submit">Enviar</button>
+      <button type="submit" className='button-forms'>Enviar</button>
     </form>
   )
 }

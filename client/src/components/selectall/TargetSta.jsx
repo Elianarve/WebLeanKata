@@ -29,34 +29,33 @@ const TargetSta = ({ challengeId }) => {
     }, [challengeId]);
 
     return (
-        <div className='container-challenge'>
+        <div className='container-challenge' >
             {targetStates && (
                 <>
-                    <h3>ESTADO OBJETIVO<button className='button-add' onClick={() => navigate(`/targetstate`)}><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
+                    <h3>ESTADO OBJETIVO <button className='button-add' onClick={() => navigate(`/targetstate`)}><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
                     <div className="centered-table">
                         <table className='container-table'>
-                            <tbody>
                                 {targetStates.map((targetState) => (
                                     <tr key={targetState.id}>
                                         <tr>
                                             <td className='title-table'>Estado Objetivo ID</td>
-                                            <td>{targetState.id}</td>
+                                            <td className='tr-table'>{targetState.id}</td>
                                         </tr>
                                         <tr>
                                             <td className='title-table'>Descripción</td>
-                                            <td>{targetState.description}</td>
+                                            <td className='tr-table'>{targetState.description}</td>
                                         </tr>
                                         <tr>
                                             <td className='title-table'>Fecha de Inicio</td>
-                                            <td>{targetState.start_date}</td>
+                                            <td className='tr-table'>{targetState.start_date}</td>
                                         </tr>
                                         <tr>
                                             <td className='title-table'>Fecha de Meta</td>
-                                            <td>{targetState.date_goal}</td>
+                                            <td className='tr-table'>{targetState.date_goal}</td>
                                         </tr>
                                         <tr>
                                             <td className='title-table'>RetoID</td>
-                                            <td>{targetState.challenge_id}</td>
+                                            <td className='tr-table'>{targetState.challenge_id}</td>
                                         </tr>
                                         <tr>
                                             <td className='title-table'>Acciones</td>
@@ -69,10 +68,12 @@ const TargetSta = ({ challengeId }) => {
                                                 <button className='button-edit' onClick={() => deleteTargetState(targetState.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                             </td>
                                         </tr>
+                                    <tr>
+                                    <td className='title-table'></td>
+                                    <td></td>
                                     </tr>
+                                </tr>
                                 ))}
-
-                            </tbody>
                         </table>
                     </div>
                 </>

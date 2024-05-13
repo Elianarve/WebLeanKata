@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { postTask } from '../../services/taskServices';
 
 function Task() {
-  const { handleSubmit, register, formState: { errors } } = useForm();
+  const { handleSubmit, register, formState: { errors, isDirty }, getValues } = useForm();
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
@@ -36,7 +36,7 @@ function Task() {
       <h2>Tarea:</h2>
       <div className='items'>
         <label className='label-item'>Descripción:</label>
-        <input type="text" {...register('description', { required: true })} />
+        <textarea type="text" {...register('description', { required: true })} />
         {errors.description && <p className="error-message">La descripción es requerida</p>}
       </div>
       <div className='items'>
@@ -64,7 +64,7 @@ function Task() {
         <input type="text" {...register('state', { required: true })} />
         {errors.state && <p className="error-message">El estado es requerido</p>}
       </div>
-      <button type="submit" disabled={!isDirty}>Enviar</button>
+      <button type="submit" disabled={!isDirty} className='button-forms'>Enviar</button>
     </form>
   )
 }

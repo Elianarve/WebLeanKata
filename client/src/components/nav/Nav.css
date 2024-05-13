@@ -1,4 +1,4 @@
-.navbar {
+  .navbar {
     background-color: #ECF0F1;
     color: #000;
     display: flex;
@@ -40,30 +40,30 @@
   }
   
   .nav-button:hover {
-  box-shadow: #92FFC0,
-              #002661;
-  }
-
+    box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
+    }
+  
   .nav-display {
     display: flex;
     flex-direction: column; 
     position: absolute;
     top: 9.5%; 
-    left: 69%; 
+    left: 68%; 
     background-color: #ECF0F1; 
     border: 1px solid #ccc; 
     z-index: 1; 
     border-radius: 8%;
   }
-
+  
   .a-link{ 
     display: block; 
-    padding: 8px 16px;
+    padding: 18px;
     text-decoration: none;
-    color: black;
+    color: #fff;
+    background-color: #587175;
+    margin: 0;
   }
-
-  .line{
-    border: solid black 1px;
-    width: 90%;
+  
+  .a-link:hover{
+    background-color: #3e4f52;
   }

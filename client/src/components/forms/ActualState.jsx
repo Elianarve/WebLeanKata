@@ -2,10 +2,17 @@ import { useNavigate } from 'react-router-dom';
 import { postActualState } from '../../services/actualStateServices';
 import { useForm } from 'react-hook-form';
 import './css/Forms.css';
+import { useState, useEffect } from 'react';
 
 const ActualState = () => {
-  const { handleSubmit, register, formState: { errors }} = useForm();
+  const { handleSubmit, register, formState: { errors, isDirty }, setValue } = useForm();
   const navigate = useNavigate();
+  const [currentDate] = useState(new Date().toISOString().split('T')[0]);
+
+  useEffect(() => {
+    setValue('date', currentDate);
+  }, [currentDate, setValue]);
+
 
   const onSubmit = (data) => { 
     postActualState(data).then(() => {
@@ -21,14 +28,10 @@ const ActualState = () => {
       <h2>ESTADO ACTUAL: </h2>
       <div className='items'>
         <label className='label-item'>Descripción: </label>
-        <input 
+        <textarea
           type="text" 
           {...register('description', { 
-            required: 'La descripción es requerida', 
-            pattern: {
-              value: /^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/,
-              message: 'Por favor, introduce solo texto'
-            }
+            required: 'La descripción es requerida'
           })} 
         />
         {errors.description && <p className="error-message">{errors.description.message}</p>} 
@@ -38,7 +41,7 @@ const ActualState = () => {
         <input type="date" {...register('date', { required: 'La fecha es requerida' })} />
         {errors.date && <p className="error-message">{errors.date.message}</p>} 
       </div>
-        <button type="submit">Enviar</button>
+        <button className='button-forms' type="submit" disabled={!isDirty}>ENVIAR</button>
   </form>
   )
 }

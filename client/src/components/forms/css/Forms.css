@@ -20,7 +20,8 @@
   
   .label-item {
     color: #002661;
-    font-weight: bold; 
+    font-weight: bold;
+    margin-right: 10px;
   }
   
   input[type="text-input"],
@@ -40,18 +41,16 @@
     border-color: #002661; 
   }
   
-  button[type="submit"] {
-    border: none;
-    border-radius: 13%; 
-    background: #ECF0F1;
-    color: #002661;
-    padding: 1% 2%;
-    cursor: pointer;
+  .button-forms{
+    border-radius: 100px;
+    background-color: #92FFC0;
+    padding: 2% 2%;
+    color: #000;
     transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
   }
-  
-  button[type="submit"]:hover {
+
+  .button-forms:hover{
     background: #002661;
     color: #ECF0F1;
   }
-  

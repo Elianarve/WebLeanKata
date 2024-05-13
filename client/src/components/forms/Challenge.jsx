@@ -37,13 +37,13 @@ const Challenge = () => {
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
         <h2>RETO: </h2>
         <div className='items'>
-          <label className='label-item'>Nombre</label>
+          <label className='label-item'>Nombre</label> 
           <input type="text" {...register('name', { required: true })} />
           {errors.name && <p className="error-message">El nombre es requerido</p>}
         </div>
         <div className='items'>
           <label className='label-item'>Descripción</label>
-          <input type="text" {...register('description', { required: 'La descripción es requerida', validate: validateText })} />
+          <textarea type="text" {...register('description', { required: 'La descripción es requerida', validate: validateText })} />
           {errors.description && <p className="error-message">{errors.description.message}</p>}
         </div>
         <div className='items'>
@@ -56,7 +56,7 @@ const Challenge = () => {
           <input type="date" {...register('end_date', { required: true })} />
           {errors.end_date && <p className="error-message">La fecha de fin es requerida</p>}
         </div>
-        <button type="submit">Enviar</button>
+        <button className='button-forms' type="submit">ENVIAR</button>
       </form>
     </>
   )
