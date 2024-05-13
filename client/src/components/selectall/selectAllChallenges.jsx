@@ -3,7 +3,7 @@ import { getChallenge } from "../../services/challengeServices";
 import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
-import SelectAllActualState from '../selectall/SelectAllActualState';
+// import SelectAllActualState from '../selectall/SelectAllActualState';
 
 const SelectAllChallenges = ({ challengeId }) => {
     const [challenges, setChallenges] = useState([]);
@@ -46,23 +46,23 @@ const SelectAllChallenges = ({ challengeId }) => {
                 <tbody>
                     <tr>
                         <td className='title-table'>RetoID:</td>
-                        <td>{selectedChallenge?.id}</td>
+                        <td className='tr-table'>{selectedChallenge?.id}</td>
                     </tr>
                     <tr>
                         <td className='title-table'>Descripción:</td>
-                        <td>{selectedChallenge?.description}</td>
+                        <td className='tr-table'>{selectedChallenge?.description}</td>
                     </tr>
                     <tr>
                         <td className='title-table'>Fecha Inicio:</td>
-                        <td>{selectedChallenge?.start_date}</td>
+                        <td className='tr-table'>{selectedChallenge?.start_date}</td>
                     </tr>
                     <tr>
                         <td className='title-table'>Fecha Fin:</td>
-                        <td>{selectedChallenge?.end_date}</td>
+                        <td className='tr-table'>{selectedChallenge?.end_date}</td>
                     </tr>
                     <tr>
                         <td className='title-table'>Estado Actual ID:</td>
-                        <td>{selectedChallenge?.actual_state_id}</td>
+                        <td className='tr-table'>{selectedChallenge?.actual_state_id}</td>
                     </tr>
                     <tr>
                     <td className='title-table'>Acciones</td>
@@ -75,9 +75,6 @@ const SelectAllChallenges = ({ challengeId }) => {
         </div>
               </>
             )}
-            <>
-            <SelectAllActualState actualStateId/>
-            </>
         </div>
     );
 };

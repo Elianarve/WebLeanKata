@@ -20,6 +20,9 @@ import EditResult from "../components/edit/EditResult";
 import EditTargetState from "../components/edit/EditTargetState";
 import EditMentalContrast from '../components/edit/EditContrastMental';
 import EditHypothesis from '../components/edit/EditHypothesis';
+import Process from '../components/forms/Process';
+import Tribe from '../components/forms/Tribe';
+
 import EditObstacle from '../components/edit/EditObstacle';
 import EditLearning from '../components/edit/EditLearning';
 import Detail from "../components/detail/Detail";
@@ -34,11 +37,15 @@ export const router = createBrowserRouter([
       element: <Home/>,
     },
     {
-      path: "/obstacle",
-      element: <Obstacle/>,
+      path: "/process",
+      element: <Process/>
     },
+    // {
+    //   path: "/tribe",
+    //   element: <Tribe/>
+    // },
     {
-      path: "/challenge",
+      path: "/reto",
       element: <Challenge/>,
     },
     {

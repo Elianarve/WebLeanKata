@@ -32,30 +32,30 @@ const MentalContras = ({ targetState }) => {
     }, [targetState]);
 
     return (
-        <div className='container-challenge'>
+        <div className='container-challenge' >
             {mentalContrasts.length > 0 && (
                 <>
                 <h3>CONTRASTE MENTAL</h3>
-                    <div className="centered-table">
+                    <div className="centered-table" >
                         <table className='container-table'>
                             <tbody>
                                 {mentalContrasts.map((mentalContrast) => (
                                     <tr key={mentalContrast.id}>
                                         <tr>
                                         <td className='title-table'>Contraste mental ID</td>
-                                        <td>{mentalContrast.id}</td>
+                                        <td  className='tr-table'>{mentalContrast.id}</td>
                                         </tr>
                                         <tr>
                                         <td className='title-table'>Puntuación</td>
-                                        <td>{mentalContrast.points}</td>
+                                        <td className='tr-table'>{mentalContrast.points}</td>
                                         </tr>
                                         <tr>
                                         <td className='title-table'>Fecha de evaluacion</td>
-                                        <td>{mentalContrast.evaluation_date}</td>
+                                        <td className='tr-table'>{mentalContrast.evaluation_date}</td>
                                         </tr>
                                         <tr>
                                         <td className='title-table'>EOID</td>
-                                        <td>{mentalContrast.target_state_id}</td>
+                                        <td className='tr-table'>{mentalContrast.target_state_id}</td>
                                         </tr>
                                         <tr>
                                         <td className='title-table'>Acciones</td>

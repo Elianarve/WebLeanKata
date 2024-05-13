@@ -22,7 +22,7 @@ const Obstacle = () => {
       }
       const response = await postObstacle(data);
       console.log("Hipotesis creada:", response.data);
-      navigate('/hypothesis');
+      navigate(`/card/${response.data.id}`);
     } catch (error) {
       console.error("Error creating obstacle:", error);
     }
@@ -33,7 +33,7 @@ const Obstacle = () => {
       <h2>Obstáculo:</h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
-        <input type="text" {...register('description', { required: true })} />
+        <textarea type="text" {...register('description', { required: true })} />
         {errors.description && <p className="error-message">La descripción es requerida</p>}
       </div>
       <div className='items'>
@@ -41,7 +41,7 @@ const Obstacle = () => {
         <input type="file" {...register('image', { required: false })} />
         {errors.image && <p className="error-message">Por favor adjunta un archivo</p>}
       </div>
-      <button type="submit">Enviar</button>
+      <button type="submit" className='button-forms'>Enviar</button>
     </form>
   )
 }

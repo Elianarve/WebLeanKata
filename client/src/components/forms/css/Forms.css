@@ -16,37 +16,38 @@
   margin-bottom: 20px;
   }
   .label-item {
-  color: #587175;
-  font-weight: bold;
+    color: #002661;
+    font-weight: bold;
+    margin-right: 10px;
   }
-  button[type="submit"] {
-  border: none;
-  border-radius: 5px;
-  background: #ECF0F1;
-  color: #587175;
-  padding: 10px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.3s ease, color 0.3s ease;
+  
+  input[type="text-input"],
+  input[type="date"],
+  textarea {
+    width: 100%;
+    padding: 2%;
+    border: 1px solid #ECF0F1;
+    border-radius: 2.5%;
+    margin-top: 1%; 
   }
-  button[type="submit"]:hover {
-  background: #587175;
-  color: #ECF0F1;
-  font-size: large;
+  
+  input[type="text-input"]:focus,
+  input[type="date"]:focus,
+  textarea:focus {
+    outline: none; 
+    border-color: #002661; 
   }
-  .inputsForm{
-  width: 90%;
-  padding: 15px;
-  border: none;
-  border-radius: 50px;
-  background: #e0e0e0;
-  box-shadow: inset 3px 3px 5px #bebebe, inset -20px -20px 60px #ECF0F1;
+  
+  .button-forms{
+    border-radius: 100px;
+    background-color: #92FFC0;
+    padding: 2% 2%;
+    color: #000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
   }
-  .inputsFormDate{
-  background-color: #587175;
-  color: #e0e0e0;
-  width: 90%;
-  padding: 15px;
-  border: none;
-  border-radius: 10px;
+
+  .button-forms:hover{
+    background: #002661;
+    color: #ECF0F1;
   }

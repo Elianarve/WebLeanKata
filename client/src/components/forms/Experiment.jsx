@@ -40,7 +40,7 @@ const Experiment = () => {
       <h2>Experimento: </h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
-        <input type="text" {...register('description', { required: true })} />
+        <textarea type="text" {...register('description', { required: true })} />
         {errors.description && <p className="error-message">La descripción es requerida</p>}
       </div>
       <div className='items'>
@@ -98,7 +98,7 @@ const Experiment = () => {
         <input type="file" {...register('image')} />
         {errors.image && <p className="error-message">Por favor, adjunta una imagen</p>}
       </div>
-      <button type="submit">Enviar</button>
+      <button type="submit" className='button-forms'>Enviar</button>
     </form>
   )
 }

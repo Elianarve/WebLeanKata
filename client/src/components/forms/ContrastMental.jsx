@@ -30,7 +30,7 @@ const ContrastMetal = () => {
     try {
       const response = await postMentalContrast(data);
       console.log("Contraste mental creado correctamente:", response.data);
-      navigate('/obstacle'); 
+      navigate(`/card/${response.data.id}`);
     } catch (error) {
       console.error("Error al crear el contraste mental:", error);
     }
@@ -49,7 +49,7 @@ const ContrastMetal = () => {
         <input type="date" {...register('evaluation_date', { required: true, validate: validateEvaluationDate })} />
         {errors.evaluation_date && <p className="error-message">{errors.evaluation_date.message}</p>}
       </div>
-      <button type="submit">Enviar</button>
+      <button type="submit" className='button-forms'>Enviar</button>
     </form>
   )
 }
