@@ -19,7 +19,7 @@ const Nav = () => {
         <li className="nav-button" onClick={toggleMenu} >Proyecto/Reto</li>
         {openMenu && (
         <div className='nav-display'>
-        <a className='a-link' href="/actualstate">Nuevo</a>
+        <a className='a-link' href="/process">Nuevo</a>
         <hr className='line' />
         <a className='a-link' href="/card/:id">Existente</a>
         </div>
