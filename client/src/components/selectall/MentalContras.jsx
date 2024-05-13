@@ -38,9 +38,8 @@ const MentalContras = ({ targetState }) => {
                 <h3>CONTRASTE MENTAL</h3>
                     <div className="centered-table" >
                         <table className='container-table'>
-                            <tbody>
                                 {mentalContrasts.map((mentalContrast) => (
-                                    <tr key={mentalContrast.id}>
+                                    <tbody key={mentalContrast.id}>
                                         <tr>
                                         <td className='title-table'>Contraste mental ID</td>
                                         <td  className='tr-table'>{mentalContrast.id}</td>
@@ -65,9 +64,8 @@ const MentalContras = ({ targetState }) => {
                                             </button>
                                         </td>
                                         </tr>
-                                    </tr>
+                                    </tbody>
                                 ))}
-                            </tbody>
                         </table>
                     </div>
                 </>

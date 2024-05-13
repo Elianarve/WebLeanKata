@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { getOneActualState, getActualState} from "../../services/actualStateServices";
+import { getOneActualState } from "../../services/actualStateServices";
 import { useNavigate, useParams } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
 import { getOneChallenge } from '../../services/challengeServices';
 import TribeSelect from './TribeSelect';
-
 
 const SelectAllActualState = () => {
     const [actualStates, setActualStates] = useState(null);
@@ -31,11 +30,11 @@ const SelectAllActualState = () => {
         <div className='container-challenge'>
             {actualStates && (
                 <>
+                <TribeSelect tribuId={actualStates.tribe_id}/>
                     <h3>ESTADO ACTUAL</h3>
                     <div className="centered-table">
                         <table className='container-table'>
-                            <tbody>
-                                    <tr key={actualStates.id}>
+                                    <tbody key={actualStates.id}>
                                         <tr className='tr-table'>
                                             <td className='title-table'>Estado Actual ID</td>
                                             <td className='tr-table'>{actualStates.id}</td>
@@ -58,13 +57,11 @@ const SelectAllActualState = () => {
                                                 <button className='button-edit' onClick={() => navigate(`/editactualstate/${actualStates.id}`)}><img src={update} alt="logo-update" className='logo-edit' /></button>
                                             </td>
                                         </tr>
-                                    </tr>
-                            </tbody>
+                                    </tbody>
                         </table>
                     </div>
                 </>
             )}
-            <TribeSelect/>
         </div>
     );
 };

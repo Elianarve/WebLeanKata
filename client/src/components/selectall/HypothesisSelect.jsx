@@ -43,9 +43,8 @@ const HypothesisSelect = ({obstacle}) => {
         <h3>HIPOTESIS <button className='button-add-h' onClick={() => navigate(`/hypothesis`)}><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
             <div className="centered-table">
                 <table className='container-table'>
-                    <tbody>
                         {hypothesis.map((hypothes) => (
-                            <tr key={hypothes.id}>
+                            <tbody key={hypothes.id}>
                                 <tr>
                                 <td className='title-table'>Hipotesis ID</td>
                                 <td className='tr-table'>{hypothes.id}</td>
@@ -80,11 +79,8 @@ const HypothesisSelect = ({obstacle}) => {
                                     <td className='title-table'></td>
                                     <td></td>
                                 </tr>
-                            </tr>
+                            </tbody>
                         ))}
-                        
-                    </tbody>
-                    
                 </table>
             </div>
         </>

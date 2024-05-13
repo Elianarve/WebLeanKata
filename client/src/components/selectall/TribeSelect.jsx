@@ -1,41 +1,37 @@
 import { useState, useEffect } from 'react';
 import { getOneTribe } from "../../services/tribeServices";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
-import { getOneActualState } from '../../services/actualStateServices'; 
+import ProcessSelect from './ProcessSelect';
 
 
-const TribeSelect = () => {
+const TribeSelect = ({tribuId}) => {
     const [tribe, setTribe] = useState(null);
     const navigate = useNavigate();
-    const { id } = useParams();
-   
+  
 
     useEffect(() => {
         const fetchProcess = async () => {
             try {
-                const actualStateData = await getOneActualState(id); 
-                console.log(actualStateData)
-                const tribeId = actualStateData.data.tribe_id;  
-                const tribeData = await getOneTribe(tribeId);
+                const tribeData = await getOneTribe(tribuId);
                 setTribe(tribeData.data);
             } catch (error) {
-                console.error('Error fetching Challenges:', error);
+                console.error('Error:', error);
             }
         }
         fetchProcess();
-    }, [id]);
+    }, [tribuId]);
     
     return (
         <div className='container-challenge'>
             {tribe && (
                 <>
-                    <h3>PROCESO</h3>
+                <ProcessSelect processId={tribe.process_id}/>
+                    <h3>TRIBU</h3>
                     <div className="centered-table">
                         <table className='container-table'>
-                            <tbody>
-                                    <tr key={tribe.id}>
+                                    <tbody key={tribe.id}>
                                         <tr className='tr-table'>
                                             <td className='title-table'>Tribu ID</td>
                                             <td className='tr-table'>{tribe.id}</td>
@@ -58,8 +54,7 @@ const TribeSelect = () => {
                                                 <button className='button-edit' onClick={() => navigate(`/edittribe/${tribe.id}`)}><img src={update} alt="logo-update" className='logo-edit' /></button>
                                             </td>
                                         </tr>
-                                    </tr>
-                            </tbody>
+                                    </tbody>
                         </table>
                     </div>
                 </>
