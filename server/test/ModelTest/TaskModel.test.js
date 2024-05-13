@@ -8,10 +8,6 @@ describe('TaskModel', () => {
     await connection_db.sync();
   });
 
-  afterAll(async () => {
-    await connection_db.close();
-  });
-
   it('should define TaskModel correctly', () => {
     expect(TaskModel).toBeDefined();
   });

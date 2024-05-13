@@ -8,9 +8,6 @@ describe('HypothesisModel', () => {
     await connection_db.sync();
   });
 
-  afterAll(async () => {
-    await connection_db.close();
-  });
 
   it('should define HypothesisModel correctly', () => {
     expect(HypothesisModel).toBeDefined();

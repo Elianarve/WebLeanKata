@@ -8,10 +8,6 @@ describe('LearningModel', () => {
     await connection_db.sync();
   });
 
-  afterAll(async () => {
-    await connection_db.close();
-  });
-
   it('should define LearningModel correctly', () => {
     expect(LearningModel).toBeDefined();
   });

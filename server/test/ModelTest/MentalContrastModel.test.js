@@ -8,10 +8,6 @@ describe('MentalContrastModel', () => {
     await connection_db.sync();
   });
 
-  afterAll(async () => {
-    await connection_db.close();
-  });
-
   it('should define MentalContrastModel correctly', () => {
     expect(MentalContrastModel).toBeDefined();
   });

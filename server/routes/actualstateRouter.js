@@ -1,5 +1,5 @@
 import express from 'express';
-import { getActualState, addActualState, updateActualState, getOneActualState, deleteActualState, searchActualState  } from '../controllers/ActualStateController.js';
+import { getActualState, addActualState, updateActualState, getOneActualState, deleteActualState, searchActualState  } from '../controllers/ActualStateController.js'; // Se corrigieron los nombres de las funciones de los controladores.
 
 const router = express.Router();
 

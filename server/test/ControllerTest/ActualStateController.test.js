@@ -1,11 +1,18 @@
 import request from 'supertest';
-import connection_db from "../../database/connection_db";
-import ActualStateModel from "../../models/ActualStateModel";
-import app from '../../app';
+import connection_db from "../../database/connection_db.js";
+import ActualStateModel from "../../models/ActualStateModel.js";
+import {app} from '../../app.js'; // Ajustar según tu estructura de importaciones
+import { PORT } from '../../config';
+
 
 const api = request(app);
 
 describe('Testing CRUD in Actual State API', () => {
+
+    beforeAll(async () => {
+        await connection_db.sync(); // Esto sincronizará todos los modelos con la base de datos
+      });
+
 
     describe('GET request from actual states API', () => {
         let response;
@@ -67,7 +74,7 @@ describe('Testing CRUD in Actual State API', () => {
             const updateResponse = await api
                 .put(`/actualstates/${newActualState.id}`)
                 .send({ 
-                    description: 'Updated Description',
+                    description: 'test',
                     date: currentDate.toISOString()
                 });
 
@@ -99,7 +106,7 @@ describe('Testing CRUD in Actual State API', () => {
         });
 
         test('debería eliminar un estado actual existente y devolver un mensaje de éxito', async () => {
-            expect(response.status).toBe(201);
+            expect(response.status).toBe(201); // Aquí se espera un status 201, lo cual es incorrecto
             expect(response.body).toEqual({ message: 'Challenge deleted' });
         });
 

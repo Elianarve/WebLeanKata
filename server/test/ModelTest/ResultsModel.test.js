@@ -8,10 +8,6 @@ describe('ResultsModel', () => {
     await connection_db.sync();
   });
 
-  afterAll(async () => {
-    await connection_db.close();
-  });
-
   it('should define ResultsModel correctly', () => {
     expect(ResultsModel).toBeDefined();
   });

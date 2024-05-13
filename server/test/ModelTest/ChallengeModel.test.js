@@ -8,11 +8,6 @@ describe('ChallengeModel', () => {
     await connection_db.sync(); // Esto sincronizará todos los modelos con la base de datos
   });
 
-  // Después de todas las pruebas, cerramos la conexión a la base de datos
-  afterAll(async () => {
-    await connection_db.close(); // Esto cerrará la conexión a la base de datos
-  });
-
   // Prueba para verificar si el modelo se ha definido correctamente
   it('debería definir el modelo ChallengeModel correctamente', () => {
     expect(ChallengeModel).toBeDefined();

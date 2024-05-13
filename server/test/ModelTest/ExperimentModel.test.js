@@ -8,10 +8,6 @@ describe('ExperimentModel', () => {
     await connection_db.sync();
   });
 
-  afterAll(async () => {
-    await connection_db.close();
-  });
-
   it('should define ExperimentModel correctly', () => {
     expect(ExperimentModel).toBeDefined();
   });

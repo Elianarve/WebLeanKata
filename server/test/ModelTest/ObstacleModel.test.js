@@ -8,10 +8,6 @@ describe('ObstacleModel', () => {
     await connection_db.sync();
   });
 
-  afterAll(async () => {
-    await connection_db.close();
-  });
-
   it('should define ObstacleModel correctly', () => {
     expect(ObstacleModel).toBeDefined();
   });
