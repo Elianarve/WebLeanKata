@@ -41,9 +41,8 @@ const LearningSelect = ({ result }) => {
                     <h3>APRENDIZAJES</h3>
                     <div className="centered-table">
                         <table className='container-table'>
-                            <tbody>
                                 {learnings.map((learning) => (
-                                    <tr className='tr-table' key={learning.id}>
+                                    <tbody className='tr-table' key={learning.id}>
                                         <tr>
                                         <td className='title-table'>Aprendizaje ID</td>
                                         <td className='tr-table'>{learning.id}</td>
@@ -67,11 +66,9 @@ const LearningSelect = ({ result }) => {
                                                 <img src={update} alt="logo-update" className='logo-edit' />
                                             </button>
                                         </td>
-                                        </tr>
-                                        
-                                    </tr>
+                                        </tr> 
+                                    </tbody>
                                 ))}
-                            </tbody>
                         </table>
                     </div>
                 </>

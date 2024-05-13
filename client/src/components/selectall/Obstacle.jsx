@@ -47,9 +47,8 @@ const Obstacle = ({targetState}) => {
                     <h3>OBSTACULOS <button className='button-add-ob' onClick={() => navigate('/obstacle')}><img src={more} alt="logo-plus" className='img-plus-ob'/></button> </h3>
                     <div className="centered-table">
                         <table className='container-table'>
-                            <tbody>
                                 {obstacles.map((obstacle) => (
-                                    <tr key={obstacle.id}>
+                                    <tbody key={obstacle.id}>
                                         <tr>
                                             <td className='title-table'>Obstaculo ID</td>
                                             <td className='tr-table'>{obstacle.id}</td>
@@ -86,9 +85,8 @@ const Obstacle = ({targetState}) => {
                                             <td className='title-table'></td>
                                             <td></td>
                                         </tr>
-                                    </tr>
+                                    </tbody>
                                 ))}
-                            </tbody>
                         </table>
                     </div>
                 </>

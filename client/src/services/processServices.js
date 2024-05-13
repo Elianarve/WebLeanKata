@@ -38,7 +38,6 @@ export const deleteProcess = async (id) => {
 
 export const postProcess = async (data) => {
     const response = await axios.post(API_URL_AE, data);
-    alert("Proceso creado exitosamente")
     return response;
   }
 
@@ -47,7 +46,6 @@ export const postProcess = async (data) => {
     try {
         const response = await axios.put(`${API_URL_AE}/${id}`,data);
         if (response.status === 200) {
-            alert('Proceso actualizado correctamente');
             return response.data;
         }
     } catch (error) {

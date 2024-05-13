@@ -4,8 +4,6 @@ import { getOneActualState, updateActualState, deleteActualState } from '../../s
 import { useParams, useNavigate } from 'react-router-dom';
 import '../forms/css/Forms.css';
 
-
-
 const EditActualState = () => {
   const { id } = useParams();
   const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
