@@ -13,19 +13,18 @@ import Task from '../components/forms/Task';
 import Result from "../components/forms/Result";
 import Learning from "../components/forms/Learning";
 import EditActualState from "../components/edit/EditActualState";
-import EditChallenge from "../components/edit/EditChallenge";
-import EditExperiment from "../components/edit/EditExperiment";
-import EditTask from "../components/edit/EditTask";
+import EditLearning from '../components/edit/EditLearning';
+import EditObstacle from "../components/edit/EditObstacle";
 import EditResult from "../components/edit/EditResult";
 import EditTargetState from "../components/edit/EditTargetState";
+import EditTask from "../components/edit/EditTask";
+import EditChallenge from '../components/edit/EditChallenge';
+import EditExperiment from '../components/edit/EditExperiment';
 import EditMentalContrast from '../components/edit/EditContrastMental';
 import EditHypothesis from '../components/edit/EditHypothesis';
 import Process from '../components/forms/Process';
 import Tribe from '../components/forms/Tribe';
 
-import EditObstacle from '../components/edit/EditObstacle';
-import EditLearning from '../components/edit/EditLearning';
-import Detail from "../components/detail/Detail";
 
 export const router = createBrowserRouter([
   {
@@ -85,15 +84,7 @@ export const router = createBrowserRouter([
       element: <Learning/>
     },
     {
-      path: "/card/:id",
-      element: <Card/>
-    },
-    {
-      path: "/detail/:id",
-      element: <Detail/>
-    },
-    {
-      path:"/editActualState/:id",
+      path: "/editactualstate/:id",
       element: <EditActualState/>
     },
     {
@@ -133,8 +124,8 @@ export const router = createBrowserRouter([
       element: <EditHypothesis/>
     },
     {
-      path: "/editHypothesis/:id",
-      element: <EditHypothesis/>
+      path: "/card/:id",
+      element: <Card/>
     },
   ],
   }
