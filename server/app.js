@@ -12,6 +12,8 @@ import experimentRouter from './routes/experimentRouter.js';
 import taskRouter from './routes/taskRouter.js';
 import resultRouter from './routes/resultRouter.js';
 import learningRouter from './routes/learningRouter.js';
+import processRouter from './routes/processRouter.js';
+import tribeRouter from './routes/tribeRouter.js';
 
 // import ChallengeModel from './models/ChallengeModel.js';
 // import ActualStateModel from "./models/ActualStateModel.js";
@@ -28,6 +30,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use('/process', processRouter);
+app.use('/tribe', tribeRouter);
 app.use('/challenge', challengeRouter);
 app.use('/actualstates', actualstateRouter);
 app.use('/targetstate', targetStateRouter);

@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
-import TribeModel from "./TribeModel.js";
+import ProcessModel from "./ProcessModel.js";
 
-const ActualStateModel = connection_db.define('actualstate', { 
+const TribeModel = connection_db.define('tribe', { 
     id: {
         type: DataTypes.STRING,
         primaryKey: true,
@@ -10,26 +10,26 @@ const ActualStateModel = connection_db.define('actualstate', {
         unique: true,
         onDelete: 'CASCADE'
     },
-    description: { 
-        type: DataTypes.TEXT,
-        allowNull: false
-        },
-    date: {
-        type: DataTypes.DATEONLY,
+    name_tribe: {
+        type: DataTypes.STRING,
         allowNull: false,
-    }, 
-    tribe_id: {
+    },
+    team_members: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    process_id: {
         type: DataTypes.STRING,
         unique: true, 
         allowNull: false,
         references: {
-            model: TribeModel,
+            model: ProcessModel,
             key: 'id' 
         } 
     }
 },{
-    tableName: 'actualstates',
+    tableName: 'tribe',
     timestamps: false
 });
 
-export default ActualStateModel;
+export default TribeModel;
