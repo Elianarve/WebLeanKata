@@ -1,21 +1,19 @@
 .footer-container {
-    position: fixed; /* Fijar el footer */
-    bottom: 0; /* Alinearlo al pie de la página */
-    width: 100vw; /* Ancho completo de la ventana */
-  }
-
-.pFooter{
-  margin: 0;
+  margin-top: 1vw;
   text-align: center;
-  padding: 10px;
-  font-size: 17px;
 }
 
-.blue{
+.transparentFooter{
+  margin-top: 70px;
+}
+
+.blueFooter{
   background-color: #587175;
   color: #ECF0F1;
+  margin: 0;
+  padding: 18px 0;
 }
 
-.transparent{
-  background-color: transparent;
+body{
+  background-color: #ECF0F1;
 }

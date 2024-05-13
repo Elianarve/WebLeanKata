@@ -35,37 +35,40 @@ const LearningSelect = ({ result }) => {
 
 
     return (
-        <div className='container-challenge'>
+        <div className='container-challenge' >
             {learnings.length > 0 && (
                 <>
-                    <h3>Aprendizajes</h3>
+                    <h3>APRENDIZAJES</h3>
                     <div className="centered-table">
                         <table className='container-table'>
-                            <thead>
-                                <tr>
-                                    <th className='title-table'>Aprendizaje ID</th>
-                                    <th className='title-table'>Resultados ID</th>
-                                    <th className='title-table'>Descripción</th>
-                                    <th className='title-table'>Fecha de aprendizaje</th>
-                                    <th className='title-table'>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
                                 {learnings.map((learning) => (
-
-                                    <tr key={learning.id}>
-                                        <td>{learning.id}</td>
-                                        <td>{learning.results_id}</td>
-                                        <td>{learning.description}</td>
-                                        <td>{learning.learning_date}</td>
+                                    <tbody className='tr-table' key={learning.id}>
+                                        <tr>
+                                        <td className='title-table'>Aprendizaje ID</td>
+                                        <td className='tr-table'>{learning.id}</td>
+                                        </tr>
+                                        <tr>
+                                        <td className='title-table'>Resultados ID</td>
+                                        <td className='tr-table'>{learning.results_id}</td>
+                                        </tr>
+                                        <tr>
+                                        <td className='title-table'>Descripción</td>
+                                        <td className='tr-table'>{learning.description}</td>
+                                        </tr>
+                                        <tr>
+                                        <td className='title-table'>Fecha de aprendizaje</td>
+                                        <td className='tr-table'>{learning.learning_date}</td>
+                                        </tr>
+                                        <tr>
+                                        <td className='title-table'>Acciones</td>
                                         <td>
                                             <button className='button-edit' onClick={() => navigate(`/editlearning/${learning.id}`)}>
                                                 <img src={update} alt="logo-update" className='logo-edit' />
                                             </button>
                                         </td>
-                                    </tr>
+                                        </tr> 
+                                    </tbody>
                                 ))}
-                            </tbody>
                         </table>
                     </div>
                 </>

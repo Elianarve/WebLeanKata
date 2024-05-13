@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import LayoutPublic from "../components/layout/LayoutPublic";
 import Home from "../pages/home/Home";
-import Card from "../components/card/Card";
 import Challenge from '../components/forms/Challenge';
 import ActualState from "../components/forms/ActualState";
 import TargetState from "../components/forms/TargetState";
@@ -20,9 +19,11 @@ import EditResult from "../components/edit/EditResult";
 import EditTargetState from "../components/edit/EditTargetState";
 import EditMentalContrast from '../components/edit/EditContrastMental';
 import EditHypothesis from '../components/edit/EditHypothesis';
-import EditObstacle from '../components/edit/EditObstacle';
 import EditLearning from '../components/edit/EditLearning';
-import Detail from "../components/detail/Detail";
+import EditObstacle from '../components/edit/EditObstacle';
+import Process from '../components/forms/Process';
+import Tribe from '../components/forms/Tribe';
+import EditTribe from "../components/edit/EditTribe";
 
 export const router = createBrowserRouter([
   {
@@ -34,11 +35,15 @@ export const router = createBrowserRouter([
       element: <Home/>,
     },
     {
-      path: "/obstacle",
-      element: <Obstacle/>,
+      path: "/process",
+      element: <Process/>
     },
     {
-      path: "/challenge",
+      path: "/tribe",
+      element: <Tribe/>
+    },
+    {
+      path: "/reto",
       element: <Challenge/>,
     },
     {
@@ -78,15 +83,11 @@ export const router = createBrowserRouter([
       element: <Learning/>
     },
     {
-      path: "/card/:id",
-      element: <Card/>
+      path: "/edittribe/:id",
+      element: <EditTribe/>
     },
     {
-      path: "/detail/:id",
-      element: <Detail/>
-    },
-    {
-      path:"/editActualState/:id",
+      path: "/editactualstate/:id",
       element: <EditActualState/>
     },
     {

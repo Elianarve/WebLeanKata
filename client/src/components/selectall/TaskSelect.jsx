@@ -3,7 +3,7 @@ import { getTask, deleteTask } from '../../services/taskServices';
 import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
-// import more from '../../assets/img/Plus.svg';
+import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
 
 const TaskSelect = ({experiment}) => {
@@ -35,49 +35,61 @@ const TaskSelect = ({experiment}) => {
     }, [experiment]);
 
   return (
-    <div className='container-challenge'>
+    <div className='container-challenge' style={{ width: '100%' }}>
     {tasks.length > 0 && (
         <>
-        <h3>Tareas</h3>
+        <h3>TAREAS <button className='button-add-h' onClick={() => navigate(`/task`)}><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
             <div className="centered-table">
                 <table className='container-table'>
-                    <thead>
-                        <tr>
-                            <th className='title-table'>Tarea ID</th>
-                            <th className='title-table'>Experimento ID</th>
-                            <th className='title-table'>Descripción</th>
-                            <th className='title-table'>Responsable</th>
-                            <th className='title-table'>Fecha de inicio</th>
-                            <th className='title-table'>Fecha final prevista</th>
-                            <th className='title-table'>Fecha final real</th>
-                            <th className='title-table'>Estado</th>
-                            <th className='title-table'>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
                         {tasks.map((task) => (
-                            <tr key={task.id}>
-                                <td>{task.id}</td>
-                                <td>{task.experiment_id}</td>
-                                <td>{task.description}</td>
-                                <td>{task.responsible}</td>
-                                <td>{task.start_date}</td>
-                                <td>{task.end_date_prev}</td>
-                                <td>{task.end_date_real}</td>
-                                <td>{task.state}</td>
-                                <td>
+                            <tbody key={task.id}>
+                                <tr>
+                                <td className='title-table'>Tarea ID</td>
+                                <td className='tr-table'>{task.id}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Experimento ID</td>
+                                <td className='tr-table'>{task.experiment_id}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Descripción</td>
+                                <td className='tr-table'>{task.description}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Responsable</td>
+                                <td className='tr-table'>{task.responsible}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Fecha de inicio</td>
+                                <td className='tr-table'>{task.start_date}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Fecha final prevista</td>
+                                <td className='tr-table'>{task.end_date_prev}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Fecha final real</td>
+                                <td className='tr-table'>{task.end_date_real}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Estado</td>
+                                <td className='tr-table'>{task.state}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Acciones</td>
+                                <td className='container-button'>
                                     <button className='button-edit' onClick={() => navigate(`/edittask/${task.id}`)}>
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
-                                    {/* <button className='button-edit' onClick={() => navigate(`/experiment`)}><img src={more} alt="" /></button> */}
-                                    <button className='button-edit' onClick={() => deleteTask(task.id).then(() => navigate(0))}><img src={delte} alt="" /></button>
-
+                                    <button className='button-edit' onClick={() => deleteTask(task.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
                                 </td>
-                            </tr>
+                                </tr>
+                                <tr>
+                                    <td className='title-table'></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
                          ))} 
-                        
-                    </tbody>
-                    
                 </table>
             </div>
         </>

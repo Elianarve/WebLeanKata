@@ -1,5 +1,6 @@
 import ActualStateModel from "../models/ActualStateModel.js";
 import searchModel from "../helpers/searchHelper.js";
+import TribeModel from "../models/TribeModel.js";
 
 export const getActualState = async (request, response) =>{
     try {
@@ -20,9 +21,12 @@ export const addActualState = async (req, res) => {
             const numberId = parseInt(idChallenge.id.slice(2));
             count = numberId + 1;
         } 
+        let tribeId;
         const formatted_Id = 'EA' + count.toString().padStart(3, '0');
-        console.log(formatted_Id)
-        const addAcState = await ActualStateModel.create({  id: formatted_Id, ...req.body, });
+        const tribe = await TribeModel.findOne({order: [['id', 'DESC']]});
+        tribeId = tribe.id;
+
+        const addAcState = await ActualStateModel.create({  id: formatted_Id, ...req.body, tribe_id: tribeId });
         res.status(201).json(addAcState);
     }catch(error){
         console.log(error)

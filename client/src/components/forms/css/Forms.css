@@ -1,52 +1,70 @@
-/* Estilos base */
+/* Hay que meter los form-create dentro de un form-container y dentro hacer un form-center para centrar los formularios responsive y sacar el titulo del formulario */
+
+.form-container{
+  width: 100vw;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 .form-create {
-  border-radius: 20px;
-  background: #e0e0e0;
-  box-shadow: 5px 5px 30px #bebebe, -5px -5px 60px #ffffff;
-  padding: 40px;
-  max-width: 50%;
-  margin: 10% auto;
-  font-family: Arial, Helvetica, sans-serif;
-  }
-  .form-create h2 {
+  border-radius: 15px;
+  background: #ECF0F1;
+  padding: 20px 40px;
+  box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
+}
+
+.form-container h2 {
   color: #587175;
-  margin-bottom: 5%;
-  }
-  .items {
-  margin-bottom: 20px;
-  }
-  .label-item {
+  display: flex;
+  justify-content: center;
+}
+
+.form-container label {
   color: #587175;
   font-weight: bold;
-  }
-  button[type="submit"] {
-  border: none;
-  border-radius: 5px;
-  background: #ECF0F1;
-  color: #587175;
-  padding: 10px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.3s ease, color 0.3s ease;
-  }
-  button[type="submit"]:hover {
-  background: #587175;
-  color: #ECF0F1;
-  font-size: large;
-  }
-  .inputsForm{
-  width: 90%;
-  padding: 15px;
+  display: block;
+  margin: 10px 0;
+}
+
+input, textarea[type="text"]{
   border: none;
   border-radius: 50px;
-  background: #e0e0e0;
-  box-shadow: inset 3px 3px 5px #bebebe, inset -20px -20px 60px #ECF0F1;
-  }
-  .inputsFormDate{
-  background-color: #587175;
-  color: #e0e0e0;
+  background-color: #ECF0F1;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+  padding: 20px 30px;
   width: 90%;
-  padding: 15px;
+}
+
+input[type="text"], textarea:focus{
+  outline: none;
+}
+
+input[type="date"]{
+  width: 93%;
   border: none;
   border-radius: 10px;
-  }
+  padding: 20px;
+  background-color: #587175;
+  color: #fff;
+}
+
+button[type="submit"] {
+  border-radius: 10px;
+  border: none;
+  background: #ECF0F1;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+  padding: 15px 20px;
+  transition: 0.6s;
+  margin: 30px 0;
+  color: #587175;
+  font-weight: bold;
+}
+
+button[type="submit"]:hover {
+  background-color: #587175;
+  font-size: 15px;
+  color: #ECF0F1;
+
+}

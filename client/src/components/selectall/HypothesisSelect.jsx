@@ -40,40 +40,47 @@ const HypothesisSelect = ({obstacle}) => {
     <div className='container-challenge'>
     {hypothesis.length > 0 && (
         <>
-        <h3>Hipotesis<button className='button-edit' onClick={() => navigate(`/hypothesis`)}><img src={more} alt="" /></button></h3>
+        <h3>HIPOTESIS <button className='button-add-h' onClick={() => navigate(`/hypothesis`)}><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
             <div className="centered-table">
                 <table className='container-table'>
-                    <thead>
-                        <tr>
-                            <th className='title-table'>Hipotesis ID</th>
-                            <th className='title-table'>Descripción</th>
-                            <th className='title-table'>Fecha de plan</th>
-                            <th className='title-table'>Estado de la hipotesis</th>
-                            <th className='title-table'>Obtaculo ID</th>
-                            <th className='title-table'>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
                         {hypothesis.map((hypothes) => (
-                            <tr key={hypothes.id}>
-                                <td>{hypothes.id}</td>
-                                <td>{hypothes.description}</td>
-                                <td>{hypothes.plan_date}</td>
-                                <td>{hypothes.state_hypothesis}</td>
-                                <td>{hypothes.obstacle_id}</td>
-                                <td>
+                            <tbody key={hypothes.id}>
+                                <tr>
+                                <td className='title-table'>Hipotesis ID</td>
+                                <td className='tr-table'>{hypothes.id}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Descripción</td>
+                                <td className='tr-table'>{hypothes.description}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Fecha de plan</td>
+                                <td className='tr-table'>{hypothes.plan_date}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Estado de la hipotesis</td>
+                                <td className='tr-table'>{hypothes.state_hypothesis}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Obtaculo ID</td>
+                                <td className='tr-table'>{hypothes.obstacle_id}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Acciones</td>
+                                <td className='container-button'>
                                     <button className='button-edit' onClick={() => navigate(`/edithypothesis/${hypothes.id}`)}>
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
-                                    <button className='button-edit' onClick={() => navigate(`/experiment`)}>Añadir Experimento</button>
-                                    <button className='button-edit' onClick={() => deleteHypothesis(hypothes.id).then(() => navigate(0))}><img src={delte} alt="" /></button>
-
+                                    <button className='button-add-t' onClick={() => navigate(`/experiment`)}>Añadir Exp</button>
+                                    <button className='button-edit' onClick={() => deleteHypothesis(hypothes.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                 </td>
-                            </tr>
+                                </tr>
+                                <tr>
+                                    <td className='title-table'></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
                         ))}
-                        
-                    </tbody>
-                    
                 </table>
             </div>
         </>

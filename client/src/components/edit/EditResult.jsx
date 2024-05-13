@@ -40,8 +40,11 @@ const EditResult = () => {
   };
         
   return (
-      <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+    <div className="form-container">
       <h2>Resultado: </h2>
+    <div className="form-center">
+
+      <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <div className='items'>
           <label className='label-item'>Descripción: </label>
           <input type="text" name='description' defaultValue={ resultData.description } {...register('description', { required: true })} />
@@ -80,6 +83,8 @@ const EditResult = () => {
         <button onClick={() => deleteResult(id).then(() => navigate("/home")) }>Eliminar</button>
         <button type="submit">Editar</button>
       </form>
+      </div>
+      </div>
   );
 }
 

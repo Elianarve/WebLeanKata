@@ -4,8 +4,6 @@ import { getOneActualState, updateActualState, deleteActualState } from '../../s
 import { useParams, useNavigate } from 'react-router-dom';
 import '../forms/css/Forms.css';
 
-
-
 const EditActualState = () => {
   const { id } = useParams();
   const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
@@ -37,8 +35,11 @@ const EditActualState = () => {
   };
      
   return (
+    <div className="form-container">
+    <div className="form-center">
+    <h2>Editar estado actual</h2>
+
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-        <h2>Editar estado actual</h2>
         <div className='items'>
           <label className='label-item'>Descripción </label>
           <textarea type="text" rows="10" cols="50" name="description" defaultValue={actualStateData.description } {...register('description', { required: true })}/>
@@ -52,6 +53,8 @@ const EditActualState = () => {
         <button onClick={() => deleteActualState(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />
       </form>
+      </div>
+      </div>
   );
 }
 

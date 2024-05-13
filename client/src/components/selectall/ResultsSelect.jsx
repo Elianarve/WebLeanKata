@@ -40,48 +40,60 @@ const ResultsSelect = ({experiment}) => {
     <div className='container-challenge'>
     {results.length > 0 && (
         <>
-        <h3>Resultados</h3>
+        <h3>RESULTADOS</h3>
             <div className="centered-table">
                 <table className='container-table'>
-                    <thead>
-                        <tr>
-                            <th className='title-table'>Resultado ID</th>
-                            <th className='title-table'>Experimento ID</th>
-                            <th className='title-table'>Descripción</th>
-                            <th className='title-table'>Fecha</th>
-                            <th className='title-table'>Analisis</th>
-                            <th className='title-table'>Resultados esperados</th>
-                            <th className='title-table'>Resultados obtenidos</th>
-                            <th className='title-table'>Conclusion</th>
-                            <th className='title-table'>Siguiente paso</th>
-                            <th className='title-table'>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
                         {results.map((result) => (
-                            <tr key={result.id}>
-                                <td>{result.id}</td>
-                                <td>{result.experiment_id}</td>
-                                <td>{result.description}</td>
-                                <td>{result.date}</td>
-                                <td>{result.analysis}</td>
-                                <td>{result.expected_results}</td>
-                                <td>{result.results_obtained}</td>
-                                <td>{result.conclusion}</td>
-                                <td>{result.next_step}</td>
-                                <td>
+                            <tbody className='tr-table' key={result.id}>
+                                <tr>
+                                <td className='title-table'>Resultado ID</td>
+                                <td className='tr-table'>{result.id}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Experimento ID</td>
+                                <td className='tr-table'>{result.experiment_id}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Descripción</td>
+                                <td className='tr-table'>{result.description}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Fecha</td>
+                                <td className='tr-table'>{result.date}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Analisis</td>
+                                <td className='tr-table'>{result.analysis}</td> 
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Resultados esperados</td>
+                                <td className='tr-table'>{result.expected_results}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Resultados obtenidos</td>
+                                <td className='tr-table'>{result.results_obtained}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Conclusion</td>
+                                <td className='tr-table'>{result.conclusion}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Siguiente paso</td>
+                                <td className='tr-table'>{result.next_step}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Acciones</td>
+                                <td className='container-button'>
                                     <button className='button-edit' onClick={() => navigate(`/editresult/${result.id}`)}>
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
-                                    <button className='button-edit' onClick={() => navigate(`/learning`)}><img src={more} alt="" />Añadir aprendizaje</button>
-                                    <button className='button-edit' onClick={() => deleteResult(result.id).then(() => navigate(0))}><img src={delte} alt="" /></button>
+                                    <button className='button-add-t' onClick={() => navigate(`/learning`)}>Añadir Aprend</button>
+                                    <button className='button-edit' onClick={() => deleteResult(result.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
 
                                 </td>
-                            </tr>
+                                </tr>
+                            </tbody>
                          ))} 
-                        
-                    </tbody>
-                    
                 </table>
             </div>
         </>

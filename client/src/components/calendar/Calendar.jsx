@@ -38,23 +38,27 @@ const Calendar = ({ onDateSelect, challenges }) => {
   };
 
   return (
-    <div className="calendar-wrapper">
-      <div className="calendar-container">
+      <>
+
         <div className="calendar-header" onClick={toggleCalendar}>
           <span>{selectedDate ? selectedDate.toDateString() : 'Selecciona una fecha'}</span>
           <i className={`arrow ${isCalendarOpen ? 'up' : 'down'}`}></i>
         </div>
+        
         {isCalendarOpen && (
           <div className="calendar-days">
             {highlightedDates.map((date, index) => (
-              <div key={index} className={`day ${selectedDate && date.toDateString() === selectedDate.toDateString() ? 'selected' : ''} ${isHighlighted(date) ? 'highlighted' : ''}`} onClick={() => handleDateSelect(date)}>
+              <div key={index} 
+              className={`day ${selectedDate && date.toDateString() === selectedDate.toDateString() ?
+              'selected' : ''} ${isHighlighted(date) ? 'highlighted' : ''}`} 
+              onClick={() => handleDateSelect(date)}>
                 {date.getDate()}
               </div>
             ))}
           </div>
         )}
-      </div>
-    </div>
+        
+      </>
   );
 };
 

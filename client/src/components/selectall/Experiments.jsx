@@ -11,6 +11,14 @@ import ResultsSelect from './ResultsSelect';
 const Experiments = ({hypothesis}) => {
     const [experiments, setExperiments] = useState([]);
     const navigate = useNavigate();
+    const [imgZoom, setImgZoom] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const handleClick = (image) => {
+        setSelectedImage(image);
+        setImgZoom(true);
+        window.open(image, '_blank');
+    };
 
     useEffect(() => {
         const fetchExperiment = async () => {
@@ -36,58 +44,82 @@ const Experiments = ({hypothesis}) => {
         fetchExperiment();
     }, [hypothesis]);
 
+
   return (
     <div className='container-challenge'>
     {experiments.length > 0 && (
         <>
-        <h3>Experimentos <button className='button-edit' onClick={() => navigate(`/experiment`)}><img src={more} alt="" /></button></h3>
+        <h3>EXPERIMENTOS <button className='button-add' onClick={() => navigate(`/experiment`)}><img src={more} alt="logo-plus" className='img-plus-ex'/></button></h3>
             <div className="centered-table">
                 <table className='container-table'>
-                    <thead>
-                        <tr>
-                            <th className='title-table'>Experimento ID</th>
-                            <th className='title-table'>Hipotesis ID</th>
-                            <th className='title-table'>Descripción</th>
-                            <th className='title-table'>Fecha de inicio</th>
-                            <th className='title-table'>Metas</th>
-                            <th className='title-table'>Metodología</th>
-                            <th className='title-table'>Variables</th>
-                            <th className='title-table'>Grupo de control</th>
-                            <th className='title-table'>Criterios de exito</th>
-                            <th className='title-table'>Responsable</th>
-                            <th className='title-table'>Estado del experimento</th>
-                            <th className='title-table'>Imagen</th>
-                            <th className='title-table'>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
                         {experiments.map((experiment) => (
-                            <tr key={experiment.id}>
-                                <td>{experiment.id}</td>
-                                <td>{experiment.hiphotesis_id}</td>
-                                <td>{experiment.description}</td>
-                                <td>{experiment.start_date}</td>
-                                <td>{experiment.goals}</td>
-                                <td>{experiment.methodology}</td>
-                                <td>{experiment.variables}</td>
-                                <td>{experiment.control_group}</td>
-                                <td>{experiment.success_criteria}</td>
-                                <td>{experiment.responsible}</td>
-                                <td>{experiment.state_experiment}</td>
-                                <img className='img-form' src={experiment.image} alt="" />
-                                <td>
+                            <tbody key={experiment.id}>
+                                <tr>
+                                <td className='title-table'>Experimento ID</td>
+                                <td className='tr-table'>{experiment.id}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Hipotesis ID</td>
+                                <td className='tr-table'>{experiment.hiphotesis_id}</td>
+                                </tr>
+                               <tr>
+                               <td className='title-table'>Descripción</td>
+                               <td className='tr-table'>{experiment.description}</td>
+                               </tr>
+                                <tr>
+                                <td className='title-table'>Fecha de inicio</td>
+                                <td className='tr-table'>{experiment.start_date}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Metas</td>
+                                <td className='tr-table'>{experiment.goals}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Metodología</td>
+                                <td className='tr-table'>{experiment.methodology}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Variables</td>
+                                <td className='tr-table'>{experiment.variables}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Grupo de control</td>
+                                <td className='tr-table'>{experiment.control_group}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Criterios de exito</td>
+                                <td className='tr-table'>{experiment.success_criteria}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Responsable</td>
+                                <td className='tr-table'>{experiment.responsible}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Estado del experimento</td>
+                                <td className='tr-table'>{experiment.state_experiment}</td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Imagen</td>
+                                <td><img className='img-form' src={experiment.image} alt="img-form" onClick={() => handleClick(experiment.image)} /></td>
+                                </tr>
+                                <tr>
+                                <td className='title-table'>Acciones</td>
+                                <td className='container-button'>
                                     <button className='button-edit' onClick={() => navigate(`/editexperiment/${experiment.id}`)}>
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
-                                    <button className='button-edit' onClick={() => navigate(`/task`)}>Crear Tarea</button>
-                                    <button className='button-edit' onClick={() => navigate(`/result`)}>Crear Resultado</button>
-                                    <button className='button-edit' onClick={() => deleteExperiment(experiment.id).then(() => navigate(0))}><img src={delte} alt="" /></button>
+                                    <button className='button-add-t' onClick={() => navigate(`/task`)}>Crear Tarea</button>
+                                    <button className='button-add-t' onClick={() => navigate(`/result`)}>Crear Resultado</button>
+                                    <button className='button-edit' onClick={() => deleteExperiment(experiment.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
                                 </td>
-                            </tr>
+                                </tr>
+                                <tr>
+                                    <td className='title-table'></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
                          ))} 
-                        
-                    </tbody>
-                    
+                                           
                 </table>
             </div>
         </>

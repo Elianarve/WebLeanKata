@@ -33,8 +33,11 @@ const EditMentalContrast = () => {
     };
 
     return (
+        <div className="form-container">
+        <div className="form-center">
+        <h2>Editar Contraste Mental</h2>
+
         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-            <h2>Editar Contraste Mental</h2>
             <div className='items'>
                 <label className='label-item'>Puntos</label>
                 <textarea rows="10" cols="50" name="points" defaultValue={mentalContrastData.points} {...register('points', {required: true})}/>
@@ -48,6 +51,8 @@ const EditMentalContrast = () => {
             <button onClick={() => deleteMentalContrast(id).then(() => navigate("/home")) }>Eliminar</button>
             <button type="submit" className='button'>Guardar</button>
         </form>
+        </div>
+        </div>
     );
 }
 

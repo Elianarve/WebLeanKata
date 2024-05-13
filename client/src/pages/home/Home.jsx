@@ -78,45 +78,31 @@ const Home = () => {
 
   return (
     <div className="home-container">
-<div className='home-relief'>
-<SearchBar onSearch={handleSearch} />
-<div className="home-calendar">
-{/* Enlace o botón para abrir y cerrar el calendario */}
-<button onClick={toggleCalendar}>Calendario</button>
-{/* Renderizar el calendario solo si está abierto */}
-{isCalendarOpen && (
-<div ref={calendarRef} className="calendar-wrapper">
-<Calendar
-onChange={handleDateChange}
-value={selectedDate}
-/>
-</div>
-)}
-</div>
-<h3>
-<span>ID</span>
-<span>Descripción</span>
-<span>Estado</span>
-</h3>
-<div className="gallery-items">
-{error && <p className="error-message">{error}</p>}
-<div className="challenge-table">
-{filteredChallenges.map((challenge) => (
-<div key={challenge.id} className="challenge-wrapper">
-<div className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
-<span>{challenge.id}</span>
-<span>{challenge.name}</span>
-<span>{challenge.actual_state_id}</span>
-<div className='logos'>
-<img className='logo-update' src={update} alt="" />
-</div>
-</div>
-</div>
-))}
-</div>
-</div>
-</div>
-</div>
+    <SearchBar onSearch={handleSearch} />
+    
+      <div className="gallery-items">
+        <div className="challenge-container">
+          <div className="challenge-table">
+            <div className="table-row">
+              <div className="table-cell-title">ID</div>
+              <div className="table-cell-title">Nombre</div>
+              <div className="table-cell-title">Estado actual</div>
+              <div className="table-cell-title">Editar</div>
+            </div>
+              {filteredChallenges.map((challenge) => (
+              <div key={challenge.id} className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
+                <div className="table-cell">{challenge.id}</div>
+                <div className="table-cell">{challenge.name}</div>
+                <div className="table-cell">{challenge.actual_state}</div>
+                <div className='logos'>
+                <img className='logo-update' src={update} alt="" />
+              </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        </div>
+      </div>
   );
 };
 
