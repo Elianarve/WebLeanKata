@@ -1,0 +1,56 @@
+/* Login.css */
+
+/* Contenedor principal */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Formulario de inicio de sesión */
+  .login-form {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Etiquetas de los campos */
+  .login-form label {
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  /* Campos de entrada */
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Botón de inicio de sesión */
+  .login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1F1E1E;
+    color: #EEF0E5;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-form button:hover {
+    background-color: #7192A4;
+  }
+  
+  /* Mensaje de error */
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
