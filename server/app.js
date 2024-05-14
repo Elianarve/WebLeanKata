@@ -14,6 +14,10 @@ import resultRouter from './routes/resultRouter.js';
 import learningRouter from './routes/learningRouter.js';
 import processRouter from './routes/processRouter.js';
 import tribeRouter from './routes/tribeRouter.js';
+import usersRouter from './routes/usersRouter.js';
+import authRouter from './routes/authRouter.js';
+import UsersModel from "./models/userModel.js";
+
 
 
 // import ChallengeModel from './models/ChallengeModel.js';
@@ -45,6 +49,8 @@ app.use('/results', resultRouter);
 app.use('/learning', learningRouter);
 app.use('/search', challengeRouter);
 app.use('/search', actualstateRouter);
+app.use('/users', usersRouter);
+app.use('/auth', authRouter);
 
 try {
     await connection_db.authenticate();
@@ -62,6 +68,9 @@ try {
     // await TaskModel.sync();
     // await LearningsModel.sync();
     console.log('Models connected correctly 📋👏👏👏');
+
+    UsersModel.sync();
+    console.log('Model Users connected correctly 👤👤');
 
    } catch (error) {
     console.error('Unable to connect to the database:', error);
