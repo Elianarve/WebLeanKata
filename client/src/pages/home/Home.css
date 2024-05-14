@@ -8,6 +8,7 @@ body {
   display: grid;
   place-items: center;
   padding: 3vw;
+  min-height: 75vh;
 }
 
 .home-content {
@@ -89,6 +90,7 @@ h1 {
   padding: 0 1vw;
   display: flex;
   justify-content: space-between;
+  margin: 0;
 }
 
 .challenge-description {
