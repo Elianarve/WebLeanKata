@@ -44,50 +44,6 @@ export const router = createBrowserRouter([
       element: <ActualState/>,
     },
     {
-      path: "/obstacle",
-      element: <Obstacle/>,
-    },
-    // {
-    //   path: "/contrast",
-    //   element: <ContrastMental/>
-    // },
-    {
-      path: "/hypothesis",
-      element: <Hypothesis/>
-    },
-    {
-      path: "/experiment",
-      element: <Experiment/>
-    },
-    {
-      path: "/task",
-      element: <Task/>
-    },
-    {
-      path: "/result",
-      element: <Result/>
-    },
-    {
-      path:"/learning",
-      element: <Learning/>
-    },
-    {
-      path:"/editlearning/:id",
-      element: <EditLearning/>
-    },
-    {
-      path:"/editresult/:id",
-      element: <EditResult/>
-    },
-    {
-      path:"/editobstacle/:id",
-      element: <EditObstacle/>
-    },
-    {
-      path:"/edittask/:id",
-      element: <EditTask/>
-    },
-    {
       path: "/card/:id",
       element: <Card/>
     },

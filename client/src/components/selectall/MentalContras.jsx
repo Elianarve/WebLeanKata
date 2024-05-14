@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import { getMentalContrast, deleteMentalContrast } from '../../services/mentalContrastServices';
 import update from '../../assets/img/Edit-File.svg';
 import './SelectAllChallenges.css';
-import EditMentalContrast from '../edit/EditContrastMental';
 import delte from '../../assets/img/delete.svg';
 import { useNavigate } from 'react-router-dom';
+import EditContrastMental from '../edit/EditContrastMental';
 
 const MentalContras = ({ targetState }) => {
     const [mentalContrasts, setMentalContrasts] = useState([]);
-    const [editable, setEditable] = useState(false);
+    const [editMental, setEditMental] = useState(false);
+    const [editMentalId, setEditMentalId] = useState();
     const [loading, setLoading] = useState(false);  
     const navigate = useNavigate();
 
@@ -64,7 +65,7 @@ const MentalContras = ({ targetState }) => {
                                         <tr>
                                         <td className='title-table'>Acciones</td>
                                         <td className='container-button'>
-                                            <button className='button-edit' onClick={() => setEditable(true)}>
+                                            <button className='button-edit' onClick={() => {setEditMentalId(mentalContrast.id), setEditMental(true)}}>
                                                 <img src={update} alt="logo-update" className='logo-edit' />
                                             </button>
                                             <button className='button-edit' onClick={() => deleteMentalContrast(mentalContrast.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
@@ -80,9 +81,9 @@ const MentalContras = ({ targetState }) => {
                     </div>
                 </>
             )}
-            {editable && mentalContrasts.map((mentalContrast) => (                       
-                <EditMentalContrast key={mentalContrast.id} mentalId={mentalContrast.id} setLoading={setLoading} setEditable={setEditable}/>
-            ))}
+            {editMental &&  (                       
+                <EditContrastMental editMentalId={editMentalId} setLoading={setLoading} setEditMental={setEditMental}/>
+            )}
         </div>
     );
 }

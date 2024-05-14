@@ -3,27 +3,27 @@ import {useForm} from 'react-hook-form';
 import {getOneMentalContrast, updateMentalContrast} from '../../services/mentalContrastServices';
 import '../forms/css/Forms.css';
 
-const EditMentalContrast = ({mentalId, setLoading, setEditable}) => {
+const EditMentalContrast = ({editMentalId, setLoading, setEditMental}) => {
     const {register, formState: {errors}, handleSubmit,setValue} = useForm();
     const [mentalContrastData, setMentalContrastData] = useState({});
 
     useEffect (() => {
         const fetchData = async () => {
-            const response = await getOneMentalContrast(mentalId);
+            const response = await getOneMentalContrast(editMentalId);
             const mentalContrastData = response.data;
             setMentalContrastData(mentalContrastData);
             setValue("points", mentalContrastData.points);
             setValue("devaluation_date", mentalContrastData.evaluation_date);
         };
         fetchData();
-    }, [mentalId, setValue]); 
+    }, [editMentalId, setValue]); 
     
     const onSubmit = async (mentalContrastData) => {
         try {
-            await updateMentalContrast(mentalId, mentalContrastData);
+            await updateMentalContrast(editMentalId, mentalContrastData);
             alert('¡Los datos del contraste mental han sido actualizados correctamente!');
             setLoading(true);
-            setEditable(false);
+            setEditMental(false);
         } catch (error) {
             console.error('Error al actualizar el contraste mental:', error);
             alert('Error al actualizar el contraste mental. Por favor, intenta nuevamente.');
@@ -44,7 +44,7 @@ const EditMentalContrast = ({mentalId, setLoading, setEditable}) => {
                 {/* {errors.evaluation_date && <p className="error-message">La fecha de evaluación es requerida</p>} */}
             </div>
             <button type="submit" className='button'>Editar</button>
-            <button onClick={() => setEditable(false)}>Cerrar</button>
+            <button onClick={() => setEditMental(false)}>Cerrar</button>
         </form>
     );
 }
