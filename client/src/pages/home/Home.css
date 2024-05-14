@@ -1,83 +1,76 @@
-.home-container {
-  border: none; 
-  box-shadow: 2% 2% 4% #c9cccd, -2% -2% 4% #ffffff;
-  padding: 1.5% 2%;
-  margin-bottom: 2%;
-  margin-top: 3%;
-  border-radius: 5px;
-  font-family: Arial, Helvetica, sans-serif;
+
+body {
+  background-color: #ECF0F1;
+  margin: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.title {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2.5em;
-  color: #4d4d4d;
-  margin-bottom: 2%;
-  text-align: center;
+.home-container {
+  display: grid;
+  place-items: center;
+  padding: 3vw;
+}
+
+.search-container{
+  width: 100%;
+}
+
+.calendar{
+  padding: 10px 20px;
+  border-radius: 50px;
+  background-color: #81b496;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  margin: 20px 0;
+  transition: 0.6s;
+}
+
+.calendar:hover{
+  box-shadow: -3px 3px 0px #002661;
+}
+
+.titles-container{
+  width: 80vw;
+  font-size: 15px;
 }
 
 .gallery-items {
-  width: 100%;
-  border-collapse: collapse;
+  background-color: #ECF0F1;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: inset 8px 8px 16px #c9cccd, inset -8px -8px 16px #ffffff;
+}
+
+.challenge-wrapper {
+  margin: 15px 0;
+  border-radius: 5px;
+  background: #ECF0F1;
+  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 80vw;
+}
+
+.challenge-wrapper:hover{
+  background-color: #c9cccd;
+}
+
+.table-cell{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 20%;
+}
+
+.home-container h3 {
+  padding: 0 1vw;
+  display: flex;
+  justify-content: space-between;
 }
 
 .challenge-description {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 2%;
-}
-
-.challenge-description:hover {
-  background-color: #e0e0e0;
-}
-
-.challenge-table {
-  display: table;
-  width: 100%;
-}
-
-.table-row {
-  display: table-row;
-}
-
-.table-cell-title {
-  display: table-cell;
-  background-color: #f9f9f9;
-  padding: 1em;
-  font-weight: bold;
-  font-size: 1.1em;
-  color: #4d4d4d;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-.table-cell {
-  display: table-cell;
-  padding: 1em;
-  cursor: pointer;
-  border: 1px solid #ddd;
-}
-
-.table-cell-actualstate {
-  display: table-cell;
-  padding: 1em;
-  cursor: pointer;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
-  white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
-  overflow: hidden; /* Oculta el texto que sobresale del contenedor */
-  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto es recortado */
-  width: 100%; /* Opcional: para que el texto ocupe todo el ancho disponible */
-} 
-
-.logos{
+  padding: 0 2vw;
   display: flex;
-  justify-content: space-around;
-}
-
-.logo-update{
-  width: 8%;
+  justify-content: space-between;
 }

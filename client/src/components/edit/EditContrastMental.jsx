@@ -34,7 +34,6 @@ const EditMentalContrast = () => {
 
     return (
         <div className="form-container">
-        <div className="form-center">
         <h2>Editar Contraste Mental</h2>
 
         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
@@ -51,7 +50,6 @@ const EditMentalContrast = () => {
             <button onClick={() => deleteMentalContrast(id).then(() => navigate("/home")) }>Eliminar</button>
             <button type="submit" className='button'>Guardar</button>
         </form>
-        </div>
         </div>
     );
 }

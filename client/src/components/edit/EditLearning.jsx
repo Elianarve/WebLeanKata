@@ -36,7 +36,6 @@ const EditLearning = () => {
         
   return (
     <div className="form-container">
-    <div className="form-center">
     <h2>Editar el aprendizaje</h2>
 
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
@@ -54,7 +53,6 @@ const EditLearning = () => {
         <button onClick={() => deleteLearning(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />
       </form>
-      </div>
       </div>
   );
 }
