@@ -33,6 +33,5 @@ const HypothesisModel = connection_db.define('hypothesis', {
     timestamps: false
 });
 
-// ObstacleModel.hasMany(HypothesisModel, { foreingKey: 'obstacle_id' });
 
  export default HypothesisModel;

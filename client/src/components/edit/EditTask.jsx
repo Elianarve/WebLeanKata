@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 import { getOneTask, updateTask } from '../../services/taskServices';
 import '../forms/css/Forms.css';
 
-const EditTask = ({taskId, setLoading, setEditable}) => {
+const EditTask = ({editTaskId, setLoading, setEdiTask}) => {
   const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [ taskData, setTaskData ] = useState({});
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getOneTask(taskId);
+      const response = await getOneTask(editTaskId);
       const taskData = response.data;
       setTaskData(taskData);
       setValue('description', taskData.description);
@@ -21,14 +21,14 @@ const EditTask = ({taskId, setLoading, setEditable}) => {
     };
 
     fetchData();
-  }, [taskId, setValue]);
+  }, [editTaskId, setValue]);
 
   const onSubmit = async (taskData) => {
     try {
-      await updateTask(taskId, taskData);
+      await updateTask(editTaskId, taskData);
       alert('¡Los datos del elemento han sido actualizados correctamente!');
       setLoading(true);
-      setEditable(false);
+      setEdiTask(false);
     } catch (error) {
       console.error('Error al actualizar el elemento:', error);
       alert('Error al actualizar el elemento. Por favor, intenta nuevamente.');
@@ -40,6 +40,7 @@ const EditTask = ({taskId, setLoading, setEditable}) => {
     <h2>Tarea: </h2>
 
          <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+    <h2>Editar Tarea:</h2>
       <div className='items'>
           <label className='label-item'>Descripción: </label>
           <input type="text" name='description' defaultValue={taskData.description } {...register('description', { required: true })} />
@@ -71,7 +72,7 @@ const EditTask = ({taskId, setLoading, setEditable}) => {
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
         </div>
      <button type="submit">Editar</button>
-     <button onClick={() => setEditable(false)}>Cerrar</button>
+     <button onClick={() => setEdiTask(false)}>Cerrar</button>
 
          </form>
          </div>

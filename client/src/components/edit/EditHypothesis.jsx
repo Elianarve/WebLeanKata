@@ -1,17 +1,15 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { getOneHypothesis, updateHypothesis} from "../../services/hypothesisServices";
 import { useForm } from "react-hook-form";
 import '../forms/css/Forms.css';
 
-const EditHypothesis = ({hypothesisId, setLoading, setEditable }) => {
-    const navigate = useNavigate();
+const EditHypothesis = ({editHypothesisId, setLoading, setEditHypothesis }) => {
     const {register, formState: {errors}, handleSubmit, setValue} = useForm();
     const [hypothesisData, setHypothesisData] = useState({});
 
     useEffect(() => {
         const fetchHypothesis = async () => {
-                const reponse = await getOneHypothesis(hypothesisId);
+                const reponse = await getOneHypothesis(editHypothesisId);
                 const hypothesisData = reponse.data;
                 setHypothesisData(hypothesisData);
                 setValue("description", hypothesisData.description);
@@ -20,15 +18,14 @@ const EditHypothesis = ({hypothesisId, setLoading, setEditable }) => {
 
         }
         fetchHypothesis();
-    }, [hypothesisId, setValue]);
+    }, [editHypothesisId, setValue]);
 
     const onSubmit = async (hypothesisData) => {
         try {
-            await updateHypothesis(hypothesisId, hypothesisData);
+            await updateHypothesis(editHypothesisId, hypothesisData);
             alert("¡Los datos de la hipótesis han sido actualizados correctamente!");
-            navigate("/hypothesis");
             setLoading(true);
-            setEditable(false);
+            setEditHypothesis(false);
         }
         catch (error) {
             console.error("Error al actualizar la hipótesis:", error);
@@ -61,7 +58,7 @@ const EditHypothesis = ({hypothesisId, setLoading, setEditable }) => {
                 {errors.state_hypothesis && <p className="error-message">El estado de la hipótesis es requerido</p>}
             </div>
             <button type="submit" className='button'>Editar</button>
-            <button onClick={() => setEditable(false)}>Cerrar</button>
+            <button onClick={() => setEditHypothesis(false)}>Cerrar</button>
         </form>
         </div>
     );

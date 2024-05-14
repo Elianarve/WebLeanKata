@@ -49,6 +49,6 @@ const ResultsModel = connection_db.define('result', {
     timestamps: false
 });
 
-// ExperimentModel.hasOne(ResultsModel, { foreignKey: 'experiment_id' });
+
 
 export default ResultsModel;

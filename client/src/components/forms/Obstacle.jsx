@@ -18,9 +18,8 @@ const Obstacle = ({editTargetId, setLoading, setEditObstacle }) => {
         setImageUrl(responseImage.secure_url);
         data = { ...data, image: responseImage.secure_url};
       }
-      const dataF = {...data, target_state_id: editTargetId}
+      const dataF = {...data, target_state_id: editTargetId};
       const response = await postObstacle(dataF);
-      console.log(dataF)
       console.log("Obstaculo creado:", response.data);
       setLoading(true);
       setEditObstacle(false);

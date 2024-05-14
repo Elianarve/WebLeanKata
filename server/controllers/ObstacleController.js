@@ -1,5 +1,4 @@
 import ObstacleModel from '../models/ObstacleModel.js';
-import TargetStateModel from "../models/TargetStateModel.js";
 
 export const getObstacle = async (request, response) =>{
     try {
@@ -21,9 +20,7 @@ export const addObstacle = async (req, res) => {
             count = numberId + 1;
         } 
         const formatted_Id = 'OB' + count.toString().padStart(3, '0');
-        // const targetState = await TargetStateModel.findOne({order: [['id', 'DESC']]}); 
-        // const obstacleId = targetState.id;
-      
+
         const addObstacle = await ObstacleModel.create({ id: formatted_Id, ...req.body });
         res.status(201).json(addObstacle);
     }catch(error){

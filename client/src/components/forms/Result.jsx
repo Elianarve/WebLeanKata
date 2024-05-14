@@ -1,25 +1,31 @@
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { postResult } from '../../services/resultServices';
 
-const Result = () => {
-  const { handleSubmit, register, formState: { errors } } = useForm();
-  const navigate = useNavigate();
-  const onSubmit = async (data) => {
-    try {
-      const response = await postResult(data);
-      console.log("Resultado creado:", response.data);
-      navigate('/learning');
-    } catch (error) {
-      console.error("Error al crear el resultado:", error);
-    }
-  };
+const Result = ({editExperimentId, setLoading, setCreateResult}) => {
+    const { handleSubmit, register, formState: { errors }} = useForm();
+
+    const onSubmit = async (formData) => {
+        try {
+          const data = {...formData, experiment_id: editExperimentId};
+          const response = await postResult(data);
+          console.log("Resultado creada:", response.data);
+          setLoading(true);
+          setCreateResult(false);
+        } catch (error) {
+          console.error("Error al crear el resultado:", error);
+        }
+      };
+
+      const closeForm = () => {
+        setCreateResult(false);
+      };
+    
       
   return (
     <div className="form-container">
       <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Resultado:</h2>
+      <h2>Crear Resultado:</h2>
       <div className='items'>
         <label className='label-item'>Descripción:</label>
         <textarea type="text" {...register('description', { required: true })} />
@@ -56,6 +62,7 @@ const Result = () => {
         {errors.next_step && <p className="error-message">El siguiente paso es requerido</p>}
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
+     <button onClick={closeForm}>Cerrar</button>
     </form>
     </div>
     </div>    

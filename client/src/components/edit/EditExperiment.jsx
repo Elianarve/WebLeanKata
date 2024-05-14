@@ -4,13 +4,13 @@ import {getOneExperiment, updateExperiment} from '../../services/experimentServi
 import '../forms/css/Forms.css';
 
 
-const EditExperimet = ({experimentId, setLoading, setEditable}) => {
+const EditExperimet = ({editExperimentId, setLoading, setEditExperiment}) => {
     const {register, formState: {errors}, handleSubmit, setValue} = useForm();
     const [experimentData, setExperimentData] = useState({});
 
     useEffect (() => {
         const fetchData = async () => {
-            const response = await getOneExperiment(experimentId);
+            const response = await getOneExperiment(editExperimentId);
             const experimentData = response.data;
             setExperimentData(experimentData);
             setValue("description", experimentData.description);
@@ -26,14 +26,14 @@ const EditExperimet = ({experimentId, setLoading, setEditable}) => {
             setValue("image", experimentData.image);
         };
         fetchData();
-    }, [experimentId, setValue]);
+    }, [editExperimentId, setValue]);
 
     const onSubmit = async (experimentData) => {
         try {
-            await updateExperiment(experimentId, experimentData);
+            await updateExperiment(editExperimentId, experimentData);
             alert('¡Los datos del experimento han sido actualizados correctamente!');
             setLoading(true);
-            setEditable(false);
+            setEditExperiment(false);
         } catch (error) {
             console.error('Error al actualizar el experimento:', error);
             alert('Error al actualizar el experimento. Por favor, intenta nuevamente.');
@@ -99,7 +99,7 @@ const EditExperimet = ({experimentId, setLoading, setEditable}) => {
                 {/* {errors.state_experiment && <p className="error-message">El estado del experimento es requerido</p>} */}
             </div>
             <input type="submit" value="Editar" />
-            <button onClick={() => setEditable(false)}>Cerrar</button>
+            <button onClick={() => setEditExperiment(false)}>Cerrar</button>
         </form>
         </div>
     );

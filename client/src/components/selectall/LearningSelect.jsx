@@ -10,8 +10,10 @@ import EditLearning from '../edit/EditLearning';
 const LearningSelect = ({ result }) => {
     const [learnings, setLearnings] = useState([]);
     const navigate = useNavigate();
-    const [editable, setEditable] = useState(false);
+    const [editLearning, setEditLearning] = useState(false);
+    const [editLearningId, setEditLearningId] = useState();
     const [loading, setLoading] = useState(false);
+  
 
     useEffect(() => {
         const fetchMentalContrast = async () => {
@@ -66,21 +68,25 @@ const LearningSelect = ({ result }) => {
                                         <tr>
                                         <td className='title-table'>Acciones</td>
                                         <td className='container-button'>
-                                            <button className='button-edit' onClick={() => setEditable(true)}>
+                                            <button className='button-edit' onClick={() => {setEditLearningId(learning.id), setEditLearning(true) }}>
                                                 <img src={update} alt="logo-update" className='logo-edit' />
                                             </button>
                                             <button className='button-edit' onClick={() => deleteLearning(learning.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
                                         </td>
                                         </tr> 
+                                        <tr>
+                                    <td className='title-table-line'></td>
+                                    <td className='title-table-line'></td>
+                                </tr>
                                     </tbody>
                                 ))}
                         </table>
                     </div>
                 </>
             )}
-            {editable && learnings.map((learning) =>(
-                <EditLearning key={learning.id} learningId={learning.id} setLoading={setLoading} setEditable={setEditable}/>
-            ))}
+            {editLearning && (
+                <EditLearning editLearningId={editLearningId} setLoading={setLoading} setEditLearning={setEditLearning}/>
+            )}
         </div>
     );
 }

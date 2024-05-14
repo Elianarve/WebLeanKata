@@ -3,16 +3,10 @@ import LayoutPublic from "../components/layout/LayoutPublic";
 import Home from "../pages/home/Home";
 import Challenge from '../components/forms/Challenge';
 import ActualState from "../components/forms/ActualState";
-import Obstacle from "../components/forms/Obstacle";
-import Hypothesis from "../components/forms/Hypothesis";
-import Experiment from "../components/forms/Experiment";
-import Task from '../components/forms/Task';
-import Result from "../components/forms/Result";
-import Learning from "../components/forms/Learning";
-import Process from '../components/forms/Process';
 import Tribe from '../components/forms/Tribe';
 import Card from "../components/card/Card";
 import NotFound from "../pages/notfound/NotFound";
+import Process from "../components/forms/Process";
 
 export const router = createBrowserRouter([
   {
@@ -44,28 +38,8 @@ export const router = createBrowserRouter([
       element: <ActualState/>,
     },
     {
-      path: "/obstacle",
-      element: <Obstacle/>,
-    },
-    {
-      path: "/hypothesis",
-      element: <Hypothesis/>
-    },
-    {
-      path: "/experiment",
-      element: <Experiment/>
-    },
-    {
-      path: "/task",
-      element: <Task/>
-    },
-    {
-      path: "/result",
-      element: <Result/>
-    },
-    {
-      path:"/learning",
-      element: <Learning/>
+      path: "/card/:id",
+      element: <Card/>
     },
     {
       path: "*",

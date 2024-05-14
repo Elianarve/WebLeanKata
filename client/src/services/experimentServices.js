@@ -38,7 +38,6 @@ export const deleteExperiment = async (id) => {
 
 export const postExperiment = async (data) => {
     const response = await axios.post(API_URL, data);
-    alert("Experimento creado exitosamente")
     return response;
   }
 
@@ -46,7 +45,6 @@ export const postExperiment = async (data) => {
     try {
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
-            alert('Experiment actualizado correctamente');
             return response.data;
         }
     } catch (error) {

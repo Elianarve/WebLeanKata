@@ -1,15 +1,16 @@
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { postHypothesis } from '../../services/hypothesisServices'
 
-const Hypothesis = ({setLoadH, setEditHypothesis}) => {
+const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
   const { handleSubmit, register, formState: { errors } } = useForm();
-  const navigate = useNavigate();
-  const onSubmit = async (data) => {
+
+  const onSubmit = async (formData) => {
     try {
+      const data = {...formData, obstacle_id: editObstacleId}
+      console.log(data)
       const response = await postHypothesis(data);
       console.log("Hipotesis creada:", response.data);
-      setLoadH(true);
+      setLoading(true);
       setEditHypothesis(false);
     } catch (error) {
       console.error("Error al crear la hipotesis:", error);
@@ -23,7 +24,7 @@ const Hypothesis = ({setLoadH, setEditHypothesis}) => {
     <div className="form-container">
       <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Hipótesis: </h2>
+      <h2>Añadir Hipótesis: </h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
         <textarea type="text" {...register('description', { required: true })} />

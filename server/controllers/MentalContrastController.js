@@ -1,5 +1,4 @@
 import MentalContrast from '../models/MentalContrastModel.js';
-import TargetStateModel from "../models/TargetStateModel.js";
 
 export const getMentalContrast = async (request, response) =>{
     try {
