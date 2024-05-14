@@ -37,7 +37,7 @@ const EditObstacle = ({editObstacleId, setLoading, setEditObstacle}) => {
         <h2>Editar Obstaculo</h2>
         <div className='items'>
         <label className='label-item'>Descripción:</label>
-        <input type="text" name="description" defaultValue={ obstacleData.description }  {...register('description', { required: true })} />
+        <input type="text" name="description" defaultValue={ obstacleData.description } {...register('description', { required: true })} />
         {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
         </div>
         <button type="submit">Editar</button>

@@ -40,13 +40,13 @@ const Card = () => {
   }
   
   return (
-    <>
+    <div className="card-center">
     <div className="cardContainer">
       <SelectAllActualState/>
       <SelectAllChallenges challengeId={id} />
       <TargetSta challengeId={id}/>
     </div>
-    </>
+    </div>
   );
 };
 

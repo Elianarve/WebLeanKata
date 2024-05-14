@@ -24,8 +24,10 @@ const ActualState = () => {
   };
 
   return (
+    <div className="form-container">
+      <div className="form-center">
+      <h2>ESTADO ACTUAL: </h2>       
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>ESTADO ACTUAL: </h2>
       <div className='items'>
         <label className='label-item'>Descripción: </label>
         <textarea type="text" {...register('description', { required: 'La descripción es requerida'})} />
@@ -33,12 +35,13 @@ const ActualState = () => {
       </div>
       <div className='items'>
         <label>Fecha: </label>
-        <input type="date" {...register('date', { required: 'La fecha es requerida' })} />
+        <input type="date" {...register('date', { required: 'La fecha es requerida'})}/>
         {errors.date && <p className="error-message">{errors.date.message}</p>} 
       </div>
         <button className='button-forms' type="submit" disabled={!isDirty}>ENVIAR</button>
   </form>
-  )
-}
+  </div>
+  </div>
+  )}
 
 export default ActualState;

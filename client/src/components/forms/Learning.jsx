@@ -22,6 +22,8 @@ const Learning = ({editResultId, setLoading, setCreateLearning}) => {
 
 
   return (
+    <div className="form-container">
+      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Aprendizaje:</h2>
       <div className='items'>
@@ -37,7 +39,7 @@ const Learning = ({editResultId, setLoading, setCreateLearning}) => {
       <button type="submit" className='button-forms'>Enviar</button>
      <button onClick={closeForm}>Cerrar</button>
     </form>
-  )
-}
-
+    </div>
+    </div>
+  )}
 export default Learning

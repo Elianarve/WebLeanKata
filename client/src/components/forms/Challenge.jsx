@@ -33,9 +33,10 @@ const Challenge = () => {
   };
 
   return (
-    <>
+    <div className="form-container">
+      <div className="form-center">
+      <h2>RETO: </h2>
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-        <h2>RETO: </h2>
         <div className='items'>
           <label className='label-item'>Nombre</label> 
           <input type="text" {...register('name', { required: true })} />
@@ -58,7 +59,9 @@ const Challenge = () => {
         </div>
         <button className='button-forms' type="submit">ENVIAR</button>
       </form>
-    </>
+    </div>
+    </div>
+
   )
 }
 

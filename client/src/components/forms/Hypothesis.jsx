@@ -22,6 +22,8 @@ const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
   };
 
   return (
+    <div className="form-container">
+      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Añadir Hipótesis: </h2>
       <div className='items'>
@@ -43,7 +45,8 @@ const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
      <button onClick={closeForm}>Cerrar</button>
 
     </form>
-  )
-}
+    </div>
+    </div>
+  )}
 
 export default Hypothesis;
