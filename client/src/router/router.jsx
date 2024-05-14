@@ -12,13 +12,11 @@ import Task from '../components/forms/Task';
 import Result from "../components/forms/Result";
 import Learning from "../components/forms/Learning";
 import EditActualState from "../components/edit/EditActualState";
-import EditLearning from '../components/edit/EditLearning';
-import EditObstacle from "../components/edit/EditObstacle";
+import EditChallenge from "../components/edit/EditChallenge";
+import EditExperiment from "../components/edit/EditExperiment";
+import EditTask from "../components/edit/EditTask";
 import EditResult from "../components/edit/EditResult";
 import EditTargetState from "../components/edit/EditTargetState";
-import EditTask from "../components/edit/EditTask";
-import EditChallenge from '../components/edit/EditChallenge';
-import EditExperiment from '../components/edit/EditExperiment';
 import EditMentalContrast from '../components/edit/EditContrastMental';
 import EditHypothesis from '../components/edit/EditHypothesis';
 import EditLearning from '../components/edit/EditLearning';
@@ -136,8 +134,8 @@ export const router = createBrowserRouter([
       element: <EditHypothesis/>
     },
     {
-      path: "/card/:id",
-      element: <Card/>
+      path: "/editHypothesis/:id",
+      element: <EditHypothesis/>
     },
     {
       path: "*",

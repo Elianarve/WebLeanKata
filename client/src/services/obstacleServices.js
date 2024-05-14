@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:5003/obstacle';
+const API_URL = 'http://localhost:8000/obstacle';
 
 export const getObstacle = async () => {
     try {

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL_AE = 'http://localhost:5003/actualstates';
+const API_URL_AE = 'http://localhost:8000/actualstates';
 
 export const getActualState = async () => {
     try {
