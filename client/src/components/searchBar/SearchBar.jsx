@@ -9,13 +9,7 @@ const SearchBar = ({ onSearch }) => {
   };
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Buscar por ID o Nombre..."
-        value={searchTerm}
-        onChange={handleSearch}
-        className='searchBar'
-      />
+      <input placeholder="Estado actual y reto" value={searchTerm} onChange={handleSearch} className="search-bar"/>
     </div>
   );
 };

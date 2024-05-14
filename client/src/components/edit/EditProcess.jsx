@@ -31,8 +31,10 @@ const EditProcess = ({processId, setLoading, setEditable}) => {
   };
         
   return (
+    <div className="form-container">
+    <h2>Editar proceso</h2>
+
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-        <h2>Editar proceso</h2>
         <div className='items'>
           <label className='label-item'>Descripción </label>
           <textarea type="text" rows="10" cols="50" name="description" defaultValue={processData.description } {...register('description', { required: true })}/>
@@ -41,6 +43,7 @@ const EditProcess = ({processId, setLoading, setEditable}) => {
         <input type="submit" value="Editar" />
         <button onClick={() => setEditable(false)}>Cerrar</button>
       </form>
+      </div>
   );
 }
 

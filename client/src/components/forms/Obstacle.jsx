@@ -29,6 +29,8 @@ const Obstacle = () => {
   };
 
   return (
+    <div className="form-container">
+      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Obstáculo:</h2>
       <div className='items'>
@@ -43,7 +45,8 @@ const Obstacle = () => {
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
     </form>
-  )
-}
+    </div>
+    </div>
+  )}
 
 export default Obstacle;

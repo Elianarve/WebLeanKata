@@ -35,8 +35,10 @@ const EditActualState = () => {
   };
      
   return (
+    <div className="form-container">
+    <h2>Editar estado actual</h2>
+
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-        <h2>Editar estado actual</h2>
         <div className='items'>
           <label className='label-item'>Descripción </label>
           <textarea type="text" rows="10" cols="50" name="description" defaultValue={actualStateData.description } {...register('description', { required: true })}/>
@@ -50,6 +52,7 @@ const EditActualState = () => {
         <button onClick={() => deleteActualState(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />
       </form>
+      </div>
   );
 }
 

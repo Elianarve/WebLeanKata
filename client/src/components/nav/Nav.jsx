@@ -5,7 +5,6 @@ import logo from '../../assets/img/logo-lk.png';
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
-
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
   };
@@ -30,6 +29,17 @@ const Nav = () => {
         <li className="nav-button"><Link to="/">Inicio</Link></li>
         <li className="nav-button"><Link to="/detail/:id">Tablero Principal</Link></li>
       </ul>
+      <div className="menu-toggle" onClick={toggleMenu}>
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+      </div>
+      {openMenu && (
+        <div className='nav-display'>
+          <a className='a-link' href="/process">Nuevo</a>
+          <a className='a-link' href="/card/:id">Existente</a>
+        </div>
+      )}
     </nav>
   );
 };

@@ -1,53 +1,82 @@
-/* Estilos base */
-.form-create {
-  border-radius: 20px;
-  background: #e0e0e0;
-  box-shadow: 5px 5px 30px #bebebe, -5px -5px 60px #ffffff;
-  padding: 40px;
-  max-width: 50%;
-  margin: 10% auto;
-  font-family: Arial, Helvetica, sans-serif;
-  }
-  .form-create h2 {
-  color: #587175;
-  margin-bottom: 5%;
-  }
-  .items {
-  margin-bottom: 20px;
-  }
-  .label-item {
-    color: #002661;
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  input[type="text-input"],
-  input[type="date"],
-  textarea {
-    width: 100%;
-    padding: 2%;
-    border: 1px solid #ECF0F1;
-    border-radius: 2.5%;
-    margin-top: 1%; 
-  }
-  
-  input[type="text-input"]:focus,
-  input[type="date"]:focus,
-  textarea:focus {
-    outline: none; 
-    border-color: #002661; 
-  }
-  
-  .button-forms{
-    border-radius: 100px;
-    background-color: #92FFC0;
-    padding: 2% 2%;
-    color: #000;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: pointer;
-  }
+/* Hay que meter los form-create dentro de un form-container y dentro hacer un form-center para centrar los formularios responsive y sacar el titulo del formulario */
 
-  .button-forms:hover{
-    background: #002661;
-    color: #ECF0F1;
-  }
+.form-container{
+  display: grid;
+  place-items: center;
+  width: 80%;
+}
+
+.form-center{
+  width: 100vw;
+  display: grid;
+  place-items: center;
+}
+
+.form-create {
+  border-radius: 15px;
+  background: #ECF0F1;
+  box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
+  padding: 20px;
+}
+
+.form-container h2 {
+  color: #587175;
+  display: flex;
+  justify-content: center;
+}
+
+.form-container label {
+  color: #587175;
+  font-weight: bold;
+  display: block;
+  margin: 10px 0;
+}
+
+input[type="text"]{
+  padding: 13PX 0;
+  width: 98%;
+}
+
+textarea{
+  padding: 7px 0;
+  width: 98%;
+}
+
+input[type="text"], textarea{
+  border: none;
+  border-radius: 15px;
+  background-color: #ECF0F1;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+}
+
+input[type="text"], textarea:focus{
+  outline: none;
+}
+
+input[type="date"]{
+  border: none;
+  border-radius: 10px;
+  background-color: #587175;
+  color: #fff;
+  padding: 14px;
+  width: 85%;
+}
+
+button[type="submit"] {
+  border-radius: 10px;
+  border: none;
+  background: #ECF0F1;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+  padding: 15px 20px;
+  transition: 0.6s;
+  margin-top: 20px;
+  color: #587175;
+  font-weight: bold;
+}
+
+button[type="submit"]:hover {
+  background-color: #587175;
+  font-size: 15px;
+  color: #ECF0F1;
+
+}

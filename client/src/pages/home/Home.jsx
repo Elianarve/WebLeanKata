@@ -1,17 +1,35 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getChallenge } from '../../services/challengeServices'; 
-import '../../pages/home/Home.css';
 import SearchBar from '../../components/searchBar/SearchBar';
 import update from '../../assets/img/Edit-File.svg';
+import Calendar from 'react-calendar';
+import "./Home.css";
+import "../../components/calendar/Calendar";
 import {getActualState} from '../../services/actualStateServices';
+// import { searchLogo } from '../../assets/img/search.svg'
+import { io } from 'socket.io-client';
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
-  const [filteredChallenges, setFilteredChallenges] = useState([]); 
-  const navigate = useNavigate();
   const [error, setError] = useState(null);
-  
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [filteredChallenges, setFilteredChallenges] = useState([]); // Estado para almacenar los desafíos filtrados por fecha
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false); // Estado para controlar la visibilidad del calendario
+  const navigate = useNavigate();
+  const calendarRef = useRef(null); // Ref para el calendario
+
+  const socket = io();
+    socket.connect();
+
+    socket.on('message', (message) => {
+    console.log('Mensaje recibido:', message);
+  });
+
+    socket.on('connect', () => {
+    console.log('Cliente conectado al servidor WebSocket');
+  });
+
   useEffect(() => {
     const fetchChallenges = async () => {
       try {
@@ -31,6 +49,25 @@ const Home = () => {
     fetchChallenges();
   }, []);
 
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    const filtered = challenges.filter(challenge => {
+      const challengeDate = new Date(challenge.start_date);
+      return challengeDate.toDateString() === date.toDateString();
+    });
+    setFilteredChallenges(filtered);
+  };
+
+  const toggleCalendar = () => {
+    setIsCalendarOpen(!isCalendarOpen); // Alternar entre abierto y cerrado
+  };
+
+  const handleOutsideClick = (event) => {
+    if (calendarRef.current && !calendarRef.current.contains(event.target)) {
+      setIsCalendarOpen(false);
+    }
+  };
+
   const handleSearch = (searchTerm) => {
     const filteredResults = challenges.filter((challenge) => {
       return Object.values(challenge).some((value) =>
@@ -40,33 +77,47 @@ const Home = () => {
     setFilteredChallenges(filteredResults); 
   };
 
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
   return (
     <div className="home-container">
-    <SearchBar onSearch={handleSearch} />
-      <h3>RETOS</h3>
-      <div className="gallery-items">
-        <div className="challenge-container">
-          <div className="challenge-table">
-            <div className="table-row">
-              <div className="table-cell-title">ID del Reto</div>
-              <div className="table-cell-title">Nombre del Reto</div>
-              <div className="table-cell-title">Estado actual</div>
-              <div className="table-cell-title">Acciones</div>
-            </div>
-              {filteredChallenges.map((challenge) => (
-              <div key={challenge.id} className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
-                <div className="table-cell">{challenge.id}</div>
-                <div className="table-cell">{challenge.name}</div>
-                <div className="table-cell">{challenge.actual_state}</div>
-                <div className='logos'>
-                <img className='logo-update' src={update} alt="" />
-              </div>
-              </div>
-            ))}
-          </div>
+      <div className="search-container">
+        <SearchBar onSearch={handleSearch} />
+        <div className="home-calendar">
+        <button onClick={toggleCalendar} className='calendar'>Calendario</button>
+        {isCalendarOpen && (
+        <div ref={calendarRef} className="calendar-wrapper">
+        <Calendar onChange={handleDateChange} value={selectedDate}/>
         </div>
+        )}
         </div>
       </div>
+      <div className="titles-container">
+        <h3>
+          <h3>Reto</h3>
+          <h3>Nombre</h3>
+          <h3>Descripción</h3>
+          <h3>Editar</h3>
+        </h3>
+      </div>
+      <div className="gallery-items">
+            {filteredChallenges.map((challenge) => (
+              <div key={challenge.id} className="challenge-wrapper">
+                <div className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
+                  <p className='project-text'>{challenge.id}</p>
+                  <p className='project-text'>{challenge.name}</p>
+                  <p className="table-cell custom-title" title={challenge.actual_state}>{challenge.actual_state}</p>
+                  <img className='logo-update' src={update} alt="Edit logo"/>
+                </div>
+              </div>
+            ))}
+      </div>
+    </div>
   );
 };
 

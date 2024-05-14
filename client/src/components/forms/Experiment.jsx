@@ -7,7 +7,6 @@ const Experiment = () => {
   const { handleSubmit, register, formState: { errors }, watch } = useForm();
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState('');
-
   const onSubmit = async (data) => {
     try {
       if (data.image) {
@@ -36,6 +35,8 @@ const Experiment = () => {
   };
 
   return (
+    <div className="form-container">
+      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Experimento: </h2>
       <div className='items'>
@@ -100,6 +101,8 @@ const Experiment = () => {
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
     </form>
+    </div>
+    </div>
   )
 }
 
