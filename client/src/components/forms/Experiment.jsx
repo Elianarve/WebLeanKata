@@ -45,14 +45,14 @@ const Experiment = () => {
         {errors.description && <p className="error-message">La descripción es requerida</p>}
       </div>
       <div className='items'>
-        <label className='label-item'>Fecha de planteamiento de la hipótesis:</label>
-        <input type="date" {...register('hypothesis_date', { required: true })} />
-        {errors.hypothesis_date && <p className="error-message">La fecha de planteamiento de la hipótesis es requerida</p>}
-      </div>
-      <div className='items'>
         <label className='label-item'>Fecha de inicio:</label>
         <input type="date" {...register('start_date', { required: true, validate: value => validateHypothesisDate(value, watch('hypothesis_date')) })} />
         {errors.start_date && <p className="error-message">{errors.start_date.message}</p>}
+      </div>
+      <div className='items'>
+        <label className='label-item'>Fecha de planteamiento de la hipótesis:</label>
+        <input type="date" {...register('hypothesis_date', { required: true })} />
+        {errors.hypothesis_date && <p className="error-message">La fecha de planteamiento de la hipótesis es requerida</p>}
       </div>
       <div className='items'>
         <label className='label-item'>Fecha de fin:</label>

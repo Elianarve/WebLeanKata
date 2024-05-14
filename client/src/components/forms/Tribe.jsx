@@ -8,7 +8,7 @@ const Tribe = () => {
   const navigate = useNavigate(); 
   const onSubmit = (data) => { 
     postTribe(data).then(() => {
-        navigate(`/actualstate`); 
+        navigate('/actualstate'); 
     })
     .catch((error) => {
       console.error("Error al publicar:", error);

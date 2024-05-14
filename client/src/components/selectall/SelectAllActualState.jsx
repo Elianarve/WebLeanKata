@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 import { getOneActualState } from "../../services/actualStateServices";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
 import { getOneChallenge } from '../../services/challengeServices';
 import TribeSelect from './TribeSelect';
+import EditActualState from '../edit/EditActualState';
 
 const SelectAllActualState = () => {
     const [actualStates, setActualStates] = useState(null);
-    const navigate = useNavigate();
     const { id } = useParams();
+    const [editable, setEditable] = useState(false);
+    const [loading, setLoading] = useState(false);  
    
 
     useEffect(() => {
@@ -19,12 +21,13 @@ const SelectAllActualState = () => {
                 const actualStateId = challengeData.data.actual_state_id;  
                 const actualStateData = await getOneActualState(actualStateId);
                 setActualStates(actualStateData.data);
+                setLoading(false);
             } catch (error) {
-                console.error('Error fetching Challenges:', error);
+                console.error('Error fetching:', error);
             }
         }
         fetchActualState();
-    }, [id]);
+    }, [id, loading]);
     
     return (
         <div className='container-challenge'>
@@ -54,13 +57,16 @@ const SelectAllActualState = () => {
                                         <tr>
                                             <td className='title-table'>Acciones</td>
                                             <td className='tr-table'>
-                                                <button className='button-edit' onClick={() => navigate(`/editactualstate/${actualStates.id}`)}><img src={update} alt="logo-update" className='logo-edit' /></button>
+                                                <button className='button-edit' onClick={() => setEditable(true)}><img src={update} alt="logo-update" className='logo-edit' /></button>
                                             </td>
                                         </tr>
                                     </tbody>
                         </table>
                     </div>
                 </>
+            )}
+            {editable && (
+                <EditActualState actualStateId={actualStates.id} setLoading={setLoading} setEditable={setEditable}/>
             )}
         </div>
     );

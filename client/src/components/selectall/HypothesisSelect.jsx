@@ -6,10 +6,16 @@ import update from '../../assets/img/Edit-File.svg';
 import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
 import Experiments from './Experiments';
+import EditHypothesis from '../edit/EditHypothesis';
+import Hypothesis from '../forms/Hypothesis';
 
 const HypothesisSelect = ({obstacle}) => {
   const [hypothesis, setHypothesis] = useState([]);
   const navigate = useNavigate();
+  const [editable, setEditable] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [load, setLoad] = useState(false); 
+  const [edit, setEdit] = useState(false); 
 
   useEffect(() => {
     const fetchHypothesis = async () => {
@@ -26,13 +32,15 @@ const HypothesisSelect = ({obstacle}) => {
                 arrayHypothesisFiltered.push(...hipothesisfiltered); 
             })
             setHypothesis(arrayHypothesisFiltered);
+            setLoading(false);
+            setLoad(false);
         } catch (error) {
             console.error('Error fetching Challenges:', error);
         }
     };
 
     fetchHypothesis();
-}, [obstacle]);
+}, [obstacle, loading, load]);
 
     
 
@@ -40,7 +48,7 @@ const HypothesisSelect = ({obstacle}) => {
     <div className='container-challenge'>
     {hypothesis.length > 0 && (
         <>
-        <h3>HIPOTESIS <button className='button-add-h' onClick={() => navigate(`/hypothesis`)}><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
+        <h3>HIPOTESIS</h3>
             <div className="centered-table">
                 <table className='container-table'>
                         {hypothesis.map((hypothes) => (
@@ -68,7 +76,7 @@ const HypothesisSelect = ({obstacle}) => {
                                 <tr>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
-                                    <button className='button-edit' onClick={() => navigate(`/edithypothesis/${hypothes.id}`)}>
+                                    <button className='button-edit' onClick={() => setEditable(true)}>
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
                                     <button className='button-add-t' onClick={() => navigate(`/experiment`)}>Añadir Exp</button>
@@ -85,6 +93,10 @@ const HypothesisSelect = ({obstacle}) => {
             </div>
         </>
     )}
+    {editable && hypothesis.map((hypothesi) => (                       
+                <EditHypothesis key={hypothesi.id} hypothesisId={hypothesi.id} setLoading={setLoading} setEditable={setEditable}/>
+            ))}
+            {edit && <Hypothesis setLoad={setLoad} setEdit={setEdit}/>}
     <Experiments hypothesis={hypothesis}/>
 </div>
 

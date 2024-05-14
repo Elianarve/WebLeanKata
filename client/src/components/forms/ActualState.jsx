@@ -17,8 +17,9 @@ const ActualState = () => {
 
   const onSubmit = (data) => { 
     postActualState(data).then(() => {
-      navigate(`/challenge`); 
-    }).catch((error) => {
+        navigate('/challenge'); 
+    })
+    .catch((error) => {
       console.error("Error al publicar:", error);
     });
   };
@@ -30,7 +31,7 @@ const ActualState = () => {
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <div className='items'>
         <label className='label-item'>Descripción: </label>
-        <textarea type="text" {...register('description', {required: 'La descripción es requerida'})}/>
+        <textarea type="text" {...register('description', { required: 'La descripción es requerida'})} />
         {errors.description && <p className="error-message">{errors.description.message}</p>} 
       </div>
       <div className='items'>

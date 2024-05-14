@@ -1,27 +1,27 @@
 import { useState, useEffect } from 'react';
 import { getOneTribe } from "../../services/tribeServices";
-import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
 import ProcessSelect from './ProcessSelect';
-
+import EditTribe from '../edit/EditTribe';
 
 const TribeSelect = ({tribuId}) => {
     const [tribe, setTribe] = useState(null);
-    const navigate = useNavigate();
-  
+    const [editable, setEditable] = useState(false);
+    const [loading, setLoading] = useState(false);  
 
     useEffect(() => {
         const fetchProcess = async () => {
             try {
                 const tribeData = await getOneTribe(tribuId);
                 setTribe(tribeData.data);
+                setLoading(false);
             } catch (error) {
                 console.error('Error:', error);
             }
         }
         fetchProcess();
-    }, [tribuId]);
+    }, [tribuId, loading]);
     
     return (
         <div className='container-challenge'>
@@ -51,13 +51,16 @@ const TribeSelect = ({tribuId}) => {
                                         <tr>
                                             <td className='title-table'>Acciones</td>
                                             <td className='tr-table'>
-                                                <button className='button-edit' onClick={() => navigate(`/edittribe/${tribe.id}`)}><img src={update} alt="logo-update" className='logo-edit' /></button>
+                                                <button className='button-edit' onClick={() => setEditable(true)}><img src={update} alt="logo-update" className='logo-edit' /></button>
                                             </td>
                                         </tr>
                                     </tbody>
                         </table>
                     </div>
                 </>
+            )}
+              {editable && (
+                <EditTribe tribuId={tribuId} setLoading={setLoading} setEditable={setEditable}/>
             )}
         </div>
     );

@@ -1,15 +1,24 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getObstacle } from '../../services/obstacleServices';
+import { deleteObstacle, getObstacle } from '../../services/obstacleServices';
 import more from '../../assets/img/Plus.svg';
 import update from '../../assets/img/Edit-File.svg';
 import HypothesisSelect from './HypothesisSelect';
+import EditObstacle from '../edit/EditObstacle';
+import { useNavigate } from 'react-router-dom';
+import delte from '../../assets/img/delete.svg';
+import Obstacle from '../forms/Obstacle';
+import Hypothesis from '../forms/Hypothesis';
 
-const Obstacle = ({targetState}) => {
+const ObstacleSelect = ({targetState}) => {
     const [obstacles, setObstacles] = useState([]);
-    const navigate = useNavigate();
     const [imgZoom, setImgZoom] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [editable, setEditable] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate(); 
+    const [editHypothesis, setEditHypothesis] = useState(false);
+    const [loadH, setLoadH] = useState(false);
+    const [selectedObstacle, setSelectedObstacle] = useState(null);
 
     const handleClick = (image) => {
         setSelectedImage(image);
@@ -31,20 +40,27 @@ const Obstacle = ({targetState}) => {
                     const obstacleFilteredData =  obstacleData.filter(contrast => contrast.target_state_id ===  targetId );
                     arrayObstacleFiltered.push(...obstacleFilteredData);                    
                 })         
-                setObstacles(arrayObstacleFiltered)
+                setObstacles(arrayObstacleFiltered);
+                setLoading(false);
+                setLoadH(false);
             } catch (error){
-                console.error('Error fetching Challenges:', error);
+                console.error('Error fetching:', error);
             }
         };
 
         fetchObstacle();
-    }, [targetState]);
+    }, [targetState, loading, loadH]);
+
+    const handleAddHypothesis = (obstacleId) => {
+        setSelectedObstacle(obstacleId);
+        setEditHypothesis(true);
+    };
 
     return (
         <div className='container-challenge'>
             {obstacles.length > 0 && (
                 <>
-                    <h3>OBSTACULOS <button className='button-add-ob' onClick={() => navigate('/obstacle')}><img src={more} alt="logo-plus" className='img-plus-ob'/></button> </h3>
+                    <h3>OBSTACULOS</h3>
                     <div className="centered-table">
                         <table className='container-table'>
                                 {obstacles.map((obstacle) => (
@@ -75,10 +91,11 @@ const Obstacle = ({targetState}) => {
                                         <tr>
                                             <td className='title-table'>Acciones</td>
                                             <td className='container-button'>
-                                                <button className='button-edit' onClick={() => navigate(`/editobstacle/${obstacle.id}`)}>
+                                                <button className='button-edit' onClick={() => setEditable(obstacle.id)}>
                                                     <img src={update} alt="logo-update" className='logo-edit' />
                                                 </button>
-                                                <button className='button-add-t' onClick={() => navigate(`/hypothesis`)}>Añadir Hipotesis</button>
+                                                <button className='button-add-t' onClick={() => handleAddHypothesis(obstacle.id)}>Añadir Hipotesis</button>
+                                                <button className='button-edit' onClick={() => deleteObstacle(obstacle.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -91,9 +108,17 @@ const Obstacle = ({targetState}) => {
                     </div>
                 </>
             )}
+            {editable && obstacles.map((obstacle) => (    
+                obstacle.id === editable &&                    
+                <EditObstacle key={obstacle.id} obstacleId={obstacle.id} setLoading={setLoading} setEditable={setEditable}/>
+            ))}
+            {editHypothesis && <Hypothesis obstacle={obstacles} setLoadH={setLoadH}  setEditHypothesis={setEditHypothesis}/>}
             <HypothesisSelect obstacle={obstacles}/>
         </div>
     );
 }
 
-export default Obstacle;
+export default ObstacleSelect;
+
+
+
