@@ -5,7 +5,6 @@ import { postHypothesis } from '../../services/hypothesisServices'
 const Hypothesis = () => {
   const { handleSubmit, register, formState: { errors } } = useForm();
   const navigate = useNavigate();
-
   const onSubmit = async (data) => {
     try {
       const response = await postHypothesis(data);
@@ -13,8 +12,7 @@ const Hypothesis = () => {
       navigate('/experiment');
     } catch (error) {
       console.error("Error al crear la hipotesis:", error);
-    }
-  };
+    }};
 
   return (
     <div className="form-container">
@@ -40,7 +38,6 @@ const Hypothesis = () => {
     </form>
     </div>
     </div>
-  )
-}
+  )}
 
 export default Hypothesis;

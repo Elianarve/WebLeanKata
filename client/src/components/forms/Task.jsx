@@ -5,7 +5,6 @@ import { postTask } from '../../services/taskServices';
 function Task() {
   const { handleSubmit, register, formState: { errors, isDirty }, getValues } = useForm();
   const navigate = useNavigate();
-
   const onSubmit = async (data) => {
     try {
       const response = await postTask(data);
@@ -70,7 +69,6 @@ function Task() {
     </form>
     </div>
     </div>
-  )
-}
+  )}
 
 export default Task;

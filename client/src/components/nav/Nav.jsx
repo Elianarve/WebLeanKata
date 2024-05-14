@@ -5,7 +5,6 @@ import logo from '../../assets/img/logo-lk.png';
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
-
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
   };
@@ -40,7 +39,6 @@ const Nav = () => {
           <a className='a-link' href="/process">Nuevo</a>
           <a className='a-link' href="/card/:id">Existente</a>
         </div>
-        
       )}
     </nav>
   );

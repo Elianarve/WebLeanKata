@@ -5,7 +5,6 @@ import { postLearning } from '../../services/learningsServices';
 const Learning = () => {
   const { handleSubmit, register, formState: { errors } } = useForm();
   const navigate = useNavigate();
-
   const onSubmit = async (data) => {
     try {
       const response = await postLearning(data);
@@ -13,8 +12,7 @@ const Learning = () => {
       navigate('/');
     } catch (error) {
       console.error("Error al crear el aprendizaje:", error);
-    }
-  };
+    }};
 
   return (
     <div className="form-container">
@@ -35,7 +33,6 @@ const Learning = () => {
     </form>
     </div>
     </div>
-  )
-}
+  )}
 
 export default Learning;

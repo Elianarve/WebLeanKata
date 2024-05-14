@@ -8,16 +8,9 @@ const SearchBar = ({ onSearch }) => {
     onSearch(event.target.value); 
   };
   return (
-  <>
     <div>
-      <input
-        placeholder="Buscar..."
-        value={searchTerm}
-        onChange={handleSearch}
-        className="search-bar"
-      />
+      <input placeholder="Estado actual y reto" value={searchTerm} onChange={handleSearch} className="search-bar"/>
     </div>
-  </>
   );
 };
 export default SearchBar;

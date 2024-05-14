@@ -5,7 +5,6 @@ import { postResult } from '../../services/resultServices';
 const Result = () => {
   const { handleSubmit, register, formState: { errors } } = useForm();
   const navigate = useNavigate();
-
   const onSubmit = async (data) => {
     try {
       const response = await postResult(data);
@@ -59,9 +58,7 @@ const Result = () => {
       <button type="submit" className='button-forms'>Enviar</button>
     </form>
     </div>
-    </div>
-    
-  )
-}
+    </div>    
+  )}
 
 export default Result;

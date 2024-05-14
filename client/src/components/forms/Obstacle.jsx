@@ -47,7 +47,6 @@ const Obstacle = () => {
     </form>
     </div>
     </div>
-  )
-}
+  )}
 
 export default Obstacle;

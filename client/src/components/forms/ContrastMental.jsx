@@ -4,7 +4,6 @@ import { postMentalContrast } from '../../services/mentalContrastServices';
 
 const ContrastMetal = () => {
   const navigate = useNavigate();
-
   const getCurrentDate = () => {
     const today = new Date();
     const year = today.getFullYear();
@@ -14,9 +13,7 @@ const ContrastMetal = () => {
   };
 
   const { handleSubmit, register, formState: { errors } } = useForm({
-    defaultValues: {
-      evaluation_date: getCurrentDate()
-    }
+    defaultValues: {evaluation_date: getCurrentDate()}
   });
 
   const validateEvaluationDate = (value) => {
@@ -33,8 +30,7 @@ const ContrastMetal = () => {
       navigate(`/card/${response.data.id}`);
     } catch (error) {
       console.error("Error al crear el contraste mental:", error);
-    }
-  };
+    }};
 
   return (
     <div className="form-container">
@@ -55,7 +51,6 @@ const ContrastMetal = () => {
     </form>
     </div>
     </div>
-  )
-}
+  )}
 
 export default ContrastMetal;

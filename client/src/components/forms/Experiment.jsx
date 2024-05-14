@@ -7,7 +7,6 @@ const Experiment = () => {
   const { handleSubmit, register, formState: { errors }, watch } = useForm();
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState('');
-
   const onSubmit = async (data) => {
     try {
       if (data.image) {

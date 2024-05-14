@@ -6,7 +6,6 @@ import './css/Forms.css';
 const Process = () => {
   const { handleSubmit, register, formState: { errors } } = useForm();
   const navigate = useNavigate();
- 
   const onSubmit = (data) => { 
     postProcess(data).then(() => {
         navigate(`/tribe`); 
@@ -23,19 +22,13 @@ const Process = () => {
       <h2>PROCESO: </h2>
       <div className='items'>
         <label className='label-item'>Descripción: </label>
-        <textarea
-          type="text" 
-          {...register('description', { 
-            required: 'La descripción es requerida'
-          })} 
-        />
+        <textarea type="text" {...register('description', { required: 'La descripción es requerida'})}/>
         {errors.description && <p className="error-message">{errors.description.message}</p>} 
       </div>
         <button className='button-forms' type="submit">ENVIAR</button>
   </form>
   </div>
   </div>
-  )
-}
+  )}
 
 export default Process;

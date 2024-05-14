@@ -40,12 +40,7 @@ const TargetState = () => {
       </div>
       <div className='items'>
         <label className='label-item'>Fecha de Meta:</label>
-        <input type="date" {...register('date_goal', {
-          required: true,
-          validate: {
-            futureDate: validateDate
-          }
-        })} />
+        <input type="date" {...register('date_goal', {required: true, validate: {futureDate: validateDate}})} />
         {errors.date_goal && errors.date_goal.type === 'futureDate' && <p className="error-message">La fecha de meta debe ser posterior a la fecha de inicio</p>}
         {errors.date_goal && errors.date_goal.type !== 'futureDate' && <p className="error-message">La fecha de meta es requerida</p>}
       </div>
@@ -53,7 +48,6 @@ const TargetState = () => {
     </form>
     </div>
     </div>
-  )
-}
+  )}
 
 export default TargetState;

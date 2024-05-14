@@ -3,13 +3,11 @@ import { postChallenge } from '../../services/challengeServices';
 import { useForm } from 'react-hook-form';
 import './css/Forms.css';
 
-
 const Challenge = () => {
   const { handleSubmit, register, formState: { errors }, watch } = useForm();
   const navigate = useNavigate();
   const startDate = watch('start_date');
   const endDate = watch('end_date');
-
   const validateDateRange = () => {
     if (startDate && endDate) {
       return startDate <= endDate || "La fecha de inicio no puede ser posterior a la fecha de fin";

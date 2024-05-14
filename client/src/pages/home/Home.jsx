@@ -20,6 +20,15 @@ const Home = () => {
   const calendarRef = useRef(null); // Ref para el calendario
 
   const socket = io();
+    socket.connect();
+
+    socket.on('message', (message) => {
+    console.log('Mensaje recibido:', message);
+  });
+
+    socket.on('connect', () => {
+    console.log('Cliente conectado al servidor WebSocket');
+  });
 
   useEffect(() => {
     const fetchChallenges = async () => {
@@ -38,25 +47,10 @@ const Home = () => {
     };
 
     fetchChallenges();
-
-    // Connect to the WebSocket server
-    socket.connect();
-
-    // Add event listeners for the 'message' and 'connect' events
-    socket.on('message', (message) => {
-      console.log('Mensaje recibido:', message);
-    });
-
-    socket.on('connect', () => {
-      console.log('Cliente conectado al servidor WebSocket');
-    });
-
   }, []);
 
-  // Función para manejar cambios en la fecha seleccionada
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    // Filtrar los desafíos por la fecha seleccionada
     const filtered = challenges.filter(challenge => {
       const challengeDate = new Date(challenge.start_date);
       return challengeDate.toDateString() === date.toDateString();
@@ -64,19 +58,16 @@ const Home = () => {
     setFilteredChallenges(filtered);
   };
 
-  // Función para alternar el estado del calendario y controlar su visibilidad
   const toggleCalendar = () => {
     setIsCalendarOpen(!isCalendarOpen); // Alternar entre abierto y cerrado
   };
 
-  // Función para cerrar el calendario si se hace clic fuera de él
   const handleOutsideClick = (event) => {
     if (calendarRef.current && !calendarRef.current.contains(event.target)) {
       setIsCalendarOpen(false);
     }
   };
 
-  // Función para manejar la búsqueda
   const handleSearch = (searchTerm) => {
     const filteredResults = challenges.filter((challenge) => {
       return Object.values(challenge).some((value) =>
@@ -86,7 +77,6 @@ const Home = () => {
     setFilteredChallenges(filteredResults); 
   };
 
-  // Agregar un listener de eventos para cerrar el calendario cuando se hace clic fuera de él
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
     return () => {
@@ -96,11 +86,8 @@ const Home = () => {
 
   return (
     <div className="home-container">
-
       <div className="search-container">
         <SearchBar onSearch={handleSearch} />
-        {/* <img src={searchLogo} /> */}
-        
         <div className="home-calendar">
         <button onClick={toggleCalendar} className='calendar'>Calendario</button>
         {isCalendarOpen && (
@@ -110,38 +97,28 @@ const Home = () => {
         )}
         </div>
       </div>
-
       <div className="titles-container">
         <h3>
-          <h3>ID</h3>
+          <h3>Reto</h3>
           <h3>Nombre</h3>
           <h3>Descripción</h3>
           <h3>Editar</h3>
         </h3>
       </div>
-        
       <div className="gallery-items">
-
             {filteredChallenges.map((challenge) => (
               <div key={challenge.id} className="challenge-wrapper">
-
                 <div className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
                   <p className='project-text'>{challenge.id}</p>
                   <p className='project-text'>{challenge.name}</p>
                   <p className="table-cell custom-title" title={challenge.actual_state}>{challenge.actual_state}</p>
-
-                  <img className='logo-update' src={update} alt="Edit logo" />
+                  <img className='logo-update' src={update} alt="Edit logo"/>
                 </div>
-
               </div>
             ))}
-
-
       </div>
-
     </div>
   );
 };
 
 export default Home;
-
