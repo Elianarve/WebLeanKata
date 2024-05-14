@@ -98,14 +98,14 @@ const Home = () => {
       </div>
         {/* <h1>¡Explora nuestra tabla de retos y comienza tu viaje hacia la mejora continua con LeanKata!</h1> */}
         {/* <h1>¡Explora las Tablas de Desafíos de LeanKata!</h1> */}
-        <h1>Descubre la tabla de retos: ¡tu camino hacia la mejora continua con LeanKata!</h1>
+        <h1 className="home-title">Descubre la tabla de retos: ¡tu camino hacia la mejora continua con LeanKata!</h1>
       </div>
+      <div className="gallery-items">
       <div className="titles-container">
           <h3>Reto</h3>
           <h3>Nombre</h3>
           <h3>Descripción</h3>
       </div>
-      <div className="gallery-items">
             {filteredChallenges.map((challenge) => (
               <div key={challenge.id} className="challenge-wrapper">
                 <div className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>

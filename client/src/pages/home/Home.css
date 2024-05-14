@@ -28,7 +28,7 @@ body {
   box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
 }
 
-h1 {
+.home-title {
   text-align: right;
   color: #002661;
   text-shadow: 0 0 4px #92FFC0, 0 0 4px #002661;
@@ -54,7 +54,7 @@ h1 {
 }
 
 .titles-container {
-  width: 70vw;
+  width: 77vw;
   display: flex;
   justify-content: space-between;
   background-color: #ECF0F1;
@@ -85,6 +85,7 @@ h1 {
   cursor: pointer;
   transition: 0.3s;
   width: 80vw;
+  justify-items: center;
 }
 
 .challenge-wrapper:hover {

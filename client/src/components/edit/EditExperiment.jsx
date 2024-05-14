@@ -91,6 +91,11 @@ const EditExperimet = ({editExperimentId, setLoading, setEditExperiment}) => {
                 {/* {errors.responsible && <p className="error-message">El responsable es requerido</p>} */}
             </div>
             <div className='items'>
+                <label className='label-item'>Imagen</label>
+                <input type="file" name="image" defaultValue={experimentData.image} {...register('image', {required: true})}/>
+                {/* {errors.image && <p className="error-message">La imagen es requerida</p>} */}
+            </div>
+            <div className='items'>
                 <label className='label-item'>Estado del experimento</label>
                 <select name="state_experiment" defaultValue={experimentData.state_experiment} {...register('state_experiment', {required: true})}>
                     <option value="En proceso">En proceso</option>

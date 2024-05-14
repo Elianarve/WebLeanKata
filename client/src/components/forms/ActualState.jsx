@@ -30,12 +30,12 @@ const ActualState = () => {
       <h2>ESTADO ACTUAL: </h2>       
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <div className='items'>
-        <label className='label-item'>Descripción: </label>
+        <label className='label-item'>Descripción:</label>
         <textarea type="text" {...register('description', { required: 'La descripción es requerida'})} />
         {errors.description && <p className="error-message">{errors.description.message}</p>} 
       </div>
       <div className='items'>
-        <label>Fecha: </label>
+        <label>Fecha:</label>
         <input type="date" {...register('date', { required: 'La fecha es requerida'})}/>
         {errors.date && <p className="error-message">{errors.date.message}</p>} 
       </div>

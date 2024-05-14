@@ -38,10 +38,6 @@ export const router = createBrowserRouter([
       element: <ActualState/>,
     },
     {
-      path: "/card/:id",
-      element: <Card/>
-    },
-    {
       path: "*",
       element: <NotFound/>
     }

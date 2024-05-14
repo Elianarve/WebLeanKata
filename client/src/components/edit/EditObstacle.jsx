@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { getOneObstacle, updateObstacle} from '../../services/obstacleServices';
 import '../forms/css/Forms.css';
@@ -13,9 +13,8 @@ const EditObstacle = ({editObstacleId, setLoading, setEditObstacle}) => {
     const fetchData = async () => {
       const response = await getOneObstacle(editObstacleId);
       const  obstacleData = response.data;
-      setObstacleData( obstacleData);
+      setObstacleData(obstacleData);
       setValue('description',  obstacleData.description);
-      setValue('image',  obstacleData.image);
     };
 
     fetchData();
@@ -34,19 +33,16 @@ const EditObstacle = ({editObstacleId, setLoading, setEditObstacle}) => {
   };
         
   return (
-    <div className="form-container">
-    <h2>Editar Obstaculo</h2>
-
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+        <h2>Editar Obstaculo</h2>
         <div className='items'>
         <label className='label-item'>Descripción:</label>
-        <input type="text" name="description" defaultValue={ obstacleData.description }  {...register('description', { required: true })} />
+        <input type="text" name="description" defaultValue={obstacleData.description}  {...register('description', {required: true})} />
         {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
         </div>
         <button type="submit">Editar</button>
         <button onClick={() => setEditObstacle(false)}>Cerrar</button>
       </form>
-      </div>
   );
 }
 
