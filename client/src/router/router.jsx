@@ -25,6 +25,7 @@ import Process from '../components/forms/Process';
 import Tribe from '../components/forms/Tribe';
 import EditTribe from "../components/edit/EditTribe";
 import Card from "../components/card/Card";
+import NotFound from "../pages/notfound/NotFound";
 
 
 export const router = createBrowserRouter([
@@ -136,6 +137,10 @@ export const router = createBrowserRouter([
       path: "/editHypothesis/:id",
       element: <EditHypothesis/>
     },
+    {
+      path: "*",
+      element: <NotFound/>
+    }
   ],
   }
   ]);
