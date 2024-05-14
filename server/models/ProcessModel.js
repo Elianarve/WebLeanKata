@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
+import UsersModel from "./userModel.js";
 
 const ProcessModel = connection_db.define('process', { 
     id: {
@@ -17,5 +18,7 @@ const ProcessModel = connection_db.define('process', {
     tableName: 'process',
     timestamps: false
 });
+
+UsersModel.hasMany(ProcessModel, { foreignKey: 'Id' });
 
 export default ProcessModel;

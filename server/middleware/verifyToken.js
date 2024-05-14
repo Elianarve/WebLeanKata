@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { TK_SECRET } from '../config';
+import { TK_SECRET } from '../config.js';
 
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
