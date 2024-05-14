@@ -22,10 +22,10 @@ export const addTask = async (req, res) => {
         } 
         const formatted_Id = 'T' + count.toString().padStart(3, '0');
 
-        const experimentId = await ExperimentModel.findOne({order: [['id', 'DESC']]}); 
-        const taskId = experimentId.id;
+        // const experimentId = await ExperimentModel.findOne({order: [['id', 'DESC']]}); 
+        // const taskId = experimentId.id;
       
-        const addTask = await TaskModel.create({  id: formatted_Id, experiment_id: taskId, ...req.body });
+        const addTask = await TaskModel.create({  id: formatted_Id, ...req.body });
         res.status(201).json(addTask);
     }catch(error){
         console.log(error)

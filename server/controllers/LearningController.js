@@ -19,10 +19,10 @@ export const addLearnings = async (req, res) => {
             count = numberId + 1;
         }
         const formatted_Id = 'AP' + count.toString().padStart(3, '0');     
-        const result = await ResultsModel.findOne();   
-        const resutId = result.id;
+        // const result = await ResultsModel.findOne();   
+        // const resutId = result.id;
 
-        const addResults = await LearningsModel.create({  id: formatted_Id, results_id: resutId, ...req.body });
+        const addResults = await LearningsModel.create({  id: formatted_Id, ...req.body });
         res.status(201).json(addResults);
     }catch(error){
         return res.status(500).send({ error: 'Internal Server Error' });

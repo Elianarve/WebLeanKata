@@ -20,10 +20,7 @@ export const addResult = async (req, res) => {
         }
         const formatted_Id = 'RE' + count.toString().padStart(3, '0');
 
-        const experiment = await ExperimentModel.findOne();   
-        const resultId = experiment.id;
-
-        const addResult = await ResultsModel.create({  id: formatted_Id, experiment_id: resultId, ...req.body, });
+        const addResult = await ResultsModel.create({  id: formatted_Id, ...req.body, });
         res.status(201).json(addResult);
     }catch(error){
         console.log(error)

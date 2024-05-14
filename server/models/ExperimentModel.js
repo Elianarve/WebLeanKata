@@ -8,7 +8,7 @@ const ExperimentModel = connection_db.define('experiment', {
         primaryKey: true,
         onDelete: 'CASCADE'
     },
-    hiphotesis_id: {
+    hyphotesis_id: {
         type: DataTypes.STRING,
         allowNull: false,
         references: {
