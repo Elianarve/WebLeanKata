@@ -1,5 +1,4 @@
 import ResultsModel from '../models/ResultsModel.js';
-import ExperimentModel from '../models/ExperimentModel.js';
 
 export const getResults = async (request, response) =>{
     try {

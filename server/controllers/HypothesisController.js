@@ -22,8 +22,6 @@ export const addHypothesis = async (req, res) => {
             count = numberId + 1;
         } 
         const formatted_Id = 'H' + count.toString().padStart(3, '0');
-        // const obstacle = await ObstacleModel.findOne({order: [['id', 'DESC']]}); 
-        // const hypothesisId = obstacle.id;
       
         const addHypothesis = await HypothesisModel.create({  id: formatted_Id, ...req.body });
         res.status(201).json(addHypothesis);

@@ -1,5 +1,4 @@
 import ObstacleModel from '../models/ObstacleModel.js';
-import TargetStateModel from "../models/TargetStateModel.js";
 
 export const getObstacle = async (request, response) =>{
     try {
