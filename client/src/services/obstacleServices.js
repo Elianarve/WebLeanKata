@@ -26,7 +26,8 @@ export const getOneObstacle = async (id) => {
 export const deleteObstacle = async (id) => {
         try {
             const response = await axios.delete(`${API_URL}/${id}`);
-            if (response.status === 200) {
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el contraste mental?"); 
+            if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }
         } catch (error) {
@@ -39,7 +40,6 @@ export const deleteObstacle = async (id) => {
 export const postObstacle = async (data) => {
     const response = await axios.post(API_URL, data);
     console.log(response);
-    alert("Obstacle creado exitosamente");
     return response;
   };
 
@@ -48,7 +48,6 @@ export const postObstacle = async (data) => {
     try {
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
-            alert('Obstacle actualizado correctamente');
             return response.data;
         }
     } catch (error) {

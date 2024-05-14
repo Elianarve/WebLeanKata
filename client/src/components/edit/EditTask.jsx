@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { deleteTask, getOneTask, updateTask } from '../../services/taskServices';
-import { useNavigate, useParams } from 'react-router-dom';
+import { getOneTask, updateTask } from '../../services/taskServices';
 import '../forms/css/Forms.css';
 
-const EditTask = () => {
-  const { id } = useParams();
-  const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
+const EditTask = ({taskId, setLoading, setEditable}) => {
+  const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [ taskData, setTaskData ] = useState({});
-  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getOneTask(id);
+      const response = await getOneTask(taskId);
       const taskData = response.data;
       setTaskData(taskData);
       setValue('description', taskData.description);
@@ -24,13 +21,14 @@ const EditTask = () => {
     };
 
     fetchData();
-  }, [id, setValue]);
+  }, [taskId, setValue]);
 
   const onSubmit = async (taskData) => {
     try {
-      await updateTask(id, taskData);
+      await updateTask(taskId, taskData);
       alert('¡Los datos del elemento han sido actualizados correctamente!');
-      reset();
+      setLoading(true);
+      setEditable(false);
     } catch (error) {
       console.error('Error al actualizar el elemento:', error);
       alert('Error al actualizar el elemento. Por favor, intenta nuevamente.');
@@ -70,8 +68,9 @@ const EditTask = () => {
           <input type="text" name='state' defaultValue={taskData.state} {...register('state', { required: true })} />
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
         </div>
-     <button onClick={() => deleteTask(id).then(() => navigate("/home")) }>Eliminar</button>
      <button type="submit">Editar</button>
+     <button onClick={() => setEditable(false)}>Cerrar</button>
+
          </form>
      );
 }   

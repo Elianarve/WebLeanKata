@@ -3,12 +3,15 @@ import { getLearning, deleteLearning } from '../../services/learningsServices';
 import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
-// import more from '../../assets/img/Plus.svg';
-// import delte from '../../assets/img/delete.svg';
+import delte from '../../assets/img/delete.svg';
+import EditLearning from '../edit/EditLearning';
+
 
 const LearningSelect = ({ result }) => {
     const [learnings, setLearnings] = useState([]);
     const navigate = useNavigate();
+    const [editable, setEditable] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchMentalContrast = async () => {
@@ -24,14 +27,15 @@ const LearningSelect = ({ result }) => {
                     const mentalContrastfilteredData = learningData.filter(state => state.results_id === learningId);
                     arrayLearningFiltered.push(...mentalContrastfilteredData);
                 })
-                setLearnings(arrayLearningFiltered)
+                setLearnings(arrayLearningFiltered);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching Challenges:', error);
             }
         };
 
         fetchMentalContrast();
-    }, [result]);
+    }, [result, loading]);
 
 
     return (
@@ -61,10 +65,11 @@ const LearningSelect = ({ result }) => {
                                         </tr>
                                         <tr>
                                         <td className='title-table'>Acciones</td>
-                                        <td>
-                                            <button className='button-edit' onClick={() => navigate(`/editlearning/${learning.id}`)}>
+                                        <td className='container-button'>
+                                            <button className='button-edit' onClick={() => setEditable(true)}>
                                                 <img src={update} alt="logo-update" className='logo-edit' />
                                             </button>
+                                            <button className='button-edit' onClick={() => deleteLearning(learning.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
                                         </td>
                                         </tr> 
                                     </tbody>
@@ -73,9 +78,12 @@ const LearningSelect = ({ result }) => {
                     </div>
                 </>
             )}
+            {editable && learnings.map((learning) =>(
+                <EditLearning key={learning.id} learningId={learning.id} setLoading={setLoading} setEditable={setEditable}/>
+            ))}
         </div>
     );
 }
 
 
-export default LearningSelect
+export default LearningSelect;

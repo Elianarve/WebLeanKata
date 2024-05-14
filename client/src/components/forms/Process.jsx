@@ -9,7 +9,7 @@ const Process = () => {
  
   const onSubmit = (data) => { 
     postProcess(data).then(() => {
-        navigate(`/tribe`); 
+        navigate('/tribe'); 
     })
     .catch((error) => {
       console.error("Error al publicar:", error);

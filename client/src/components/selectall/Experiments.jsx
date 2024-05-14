@@ -7,12 +7,15 @@ import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
 import TaskSelect from './TaskSelect';
 import ResultsSelect from './ResultsSelect';
+import EditExperimet from '../edit/EditExperiment';
 
 const Experiments = ({hypothesis}) => {
     const [experiments, setExperiments] = useState([]);
     const navigate = useNavigate();
     const [imgZoom, setImgZoom] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [editable, setEditable] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleClick = (image) => {
         setSelectedImage(image);
@@ -36,13 +39,14 @@ const Experiments = ({hypothesis}) => {
                     arrayExperimentFiltered.push(...experimentfiltered); 
                 })
                 setExperiments(arrayExperimentFiltered);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching Challenges:', error);
             }
         };
     
         fetchExperiment();
-    }, [hypothesis]);
+    }, [hypothesis, loading]);
 
 
   return (
@@ -105,7 +109,7 @@ const Experiments = ({hypothesis}) => {
                                 <tr>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
-                                    <button className='button-edit' onClick={() => navigate(`/editexperiment/${experiment.id}`)}>
+                                    <button className='button-edit' onClick={() => setEditable(true)} >
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
                                     <button className='button-add-t' onClick={() => navigate(`/task`)}>Crear Tarea</button>
@@ -124,6 +128,9 @@ const Experiments = ({hypothesis}) => {
             </div>
         </>
     )}
+    {editable && experiments.map((experiment) => (                       
+                <EditExperimet key={experiment.id} experimentId={experiment.id} setLoading={setLoading} setEditable={setEditable}/>
+            ))}
     <TaskSelect experiment={experiments}/>
     <ResultsSelect experiment={experiments}/>
 </div>

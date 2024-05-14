@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { postHypothesis } from '../../services/hypothesisServices';
 
-const Hypothesis = () => {
+const Hypothesis = ({setLoadH, setEditHypothesis}) => {
   const { handleSubmit, register, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
@@ -10,10 +10,15 @@ const Hypothesis = () => {
     try {
       const response = await postHypothesis(data);
       console.log("Hipotesis creada:", response.data);
-      navigate('/experiment');
+      setLoadH(true);
+      setEditHypothesis(false);
     } catch (error) {
       console.error("Error al crear la hipotesis:", error);
     }
+  };
+
+  const closeForm = () => {
+    setEditHypothesis(false);
   };
 
   return (
@@ -35,6 +40,8 @@ const Hypothesis = () => {
         {errors.state_hypothesis && <p className="error-message">El estado de la hipótesis es requerido</p>}
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
+     <button onClick={closeForm}>Cerrar</button>
+
     </form>
   )
 }

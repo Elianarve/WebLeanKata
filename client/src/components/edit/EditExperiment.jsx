@@ -1,19 +1,16 @@
 import {useState, useEffect} from 'react';
-import {useParams, useNavigate} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
-import {getOneExperiment, updateExperiment, deleteExperiment} from '../../services/experimentServices';
+import {getOneExperiment, updateExperiment} from '../../services/experimentServices';
 import '../forms/css/Forms.css';
 
 
-const EditExperimet = () => {
-    const {id} = useParams();
-    const {register, formState: {errors}, handleSubmit, reset, setValue} = useForm();
+const EditExperimet = ({experimentId, setLoading, setEditable}) => {
+    const {register, formState: {errors}, handleSubmit, setValue} = useForm();
     const [experimentData, setExperimentData] = useState({});
-    const navigate = useNavigate();
 
     useEffect (() => {
         const fetchData = async () => {
-            const response = await getOneExperiment(id);
+            const response = await getOneExperiment(experimentId);
             const experimentData = response.data;
             setExperimentData(experimentData);
             setValue("description", experimentData.description);
@@ -28,13 +25,14 @@ const EditExperimet = () => {
             setValue("state_experiment", experimentData.state_experiment);
         };
         fetchData();
-    }, [id, setValue]);
+    }, [experimentId, setValue]);
 
     const onSubmit = async (experimentData) => {
         try {
-            await updateExperiment(id, experimentData);
+            await updateExperiment(experimentId, experimentData);
             alert('¡Los datos del experimento han sido actualizados correctamente!');
-            reset();
+            setLoading(true);
+            setEditable(false);
         } catch (error) {
             console.error('Error al actualizar el experimento:', error);
             alert('Error al actualizar el experimento. Por favor, intenta nuevamente.');
@@ -66,7 +64,7 @@ const EditExperimet = () => {
             </div>
             <div className='items'>
                 <label className='label-item'>Metodología</label>
-                <textarea rows="10" cols="50" name="methodology" defaultValue={experimentData.methodology} {...register('methodology', {required: true})}/>
+                <input rows="10" cols="50" name="methodology" defaultValue={experimentData.methodology} {...register('methodology', {required: true})}/>
                 {/* {errors.methodology && <p className="error-message">La metodología es requerida</p>} */}
             </div>
             <div className='items'>
@@ -76,7 +74,7 @@ const EditExperimet = () => {
             </div>
             <div className='items'>
                 <label className='label-item'>Grupo de control</label>
-                <textarea rows="10" cols="50" name="control_group" defaultValue={experimentData.control_group} {...register('control_group', {required: true})}/>
+                <input rows="10" cols="50" name="control_group" defaultValue={experimentData.control_group} {...register('control_group', {required: true})}/>
                 {/* {errors.control_group && <p className="error-message">El grupo de control es requerido</p>} */}
             </div>
             <div className='items'>
@@ -97,8 +95,8 @@ const EditExperimet = () => {
                 </select>
                 {/* {errors.state_experiment && <p className="error-message">El estado del experimento es requerido</p>} */}
             </div>
-            <button onClick={() => deleteExperiment(id).then(() => navigate("/home")) }>Eliminar</button>
             <input type="submit" value="Editar" />
+            <button onClick={() => setEditable(false)}>Cerrar</button>
         </form>
     );
 }

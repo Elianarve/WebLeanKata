@@ -1,17 +1,16 @@
 import { useForm } from 'react-hook-form';
 import './css/Forms.css';
 import { postTargetState } from '../../services/targetStateServices';
-import { useNavigate } from 'react-router-dom';
 
-const TargetState = () => {
+const TargetState = ({setLoading, setCreateTarget}) => {
   const { handleSubmit, register, formState: { errors }, watch  } = useForm();
-  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
       const response = await postTargetState(data);
       console.log("Desafío creado:", response.data);
-      navigate(`/card/${response.data.challenge_id}`);
+      setLoading(true);
+      setCreateTarget(false);
     } catch (error) {
       console.error("Error al crear el desafío:", error);
     }
@@ -23,13 +22,17 @@ const TargetState = () => {
     return startDate < endDate;
   };
 
+  const closeForm = () => {
+    setCreateTarget(false);
+  };
+
   return (
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Estado objetivo:</h2>
+      <h2>Crear Estado objetivo:</h2>
       <div className='items'>
-        <label className='label-item'>Descripción</label>
-        <textarea type="text" {...register('description', { required: true })} />
-        {errors.description && <p className="error-message">La descripción es requerida</p>}
+        <label className='label-item'>Descripción: </label>
+        <textarea type="text" {...register('description', { required: 'La descripción es requerida'})} />
+        {errors.description && <p className="error-message">{errors.description.message}</p>} 
       </div>
       <div className='items'>
         <label className='label-item'>Fecha de Inicio:</label>
@@ -48,6 +51,7 @@ const TargetState = () => {
         {errors.date_goal && errors.date_goal.type !== 'futureDate' && <p className="error-message">La fecha de meta es requerida</p>}
       </div>
       <button className='button-forms' type="submit">Enviar</button>
+     <button onClick={closeForm}>Cerrar</button>
     </form>
   )
 }

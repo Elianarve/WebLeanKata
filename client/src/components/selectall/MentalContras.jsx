@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getMentalContrast } from '../../services/mentalContrastServices';
+import { getMentalContrast, deleteMentalContrast } from '../../services/mentalContrastServices';
 import update from '../../assets/img/Edit-File.svg';
 import './SelectAllChallenges.css';
+import EditMentalContrast from '../edit/EditContrastMental';
+import delte from '../../assets/img/delete.svg';
+import { useNavigate } from 'react-router-dom';
 
 const MentalContras = ({ targetState }) => {
     const [mentalContrasts, setMentalContrasts] = useState([]);
+    const [editable, setEditable] = useState(false);
+    const [loading, setLoading] = useState(false);  
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,13 +27,14 @@ const MentalContras = ({ targetState }) => {
                     arrayMentalContratFiltered.push(...mentalContrastfilteredData);                    
                 })         
                 setMentalContrasts(arrayMentalContratFiltered)
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching Challenges:', error);
             }
         };
 
         fetchMentalContrast();
-    }, [targetState]);
+    }, [targetState, loading]);
 
     return (
         <div className='container-challenge' >
@@ -58,10 +63,11 @@ const MentalContras = ({ targetState }) => {
                                         </tr>
                                         <tr>
                                         <td className='title-table'>Acciones</td>
-                                        <td>
-                                            <button className='button-edit' onClick={() => navigate(`/editcontrastmental/${mentalContrast.id}`)}>
+                                        <td className='container-button'>
+                                            <button className='button-edit' onClick={() => setEditable(true)}>
                                                 <img src={update} alt="logo-update" className='logo-edit' />
                                             </button>
+                                            <button className='button-edit' onClick={() => deleteMentalContrast(mentalContrast.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                         </td>
                                         </tr>
                                     </tbody>
@@ -70,6 +76,9 @@ const MentalContras = ({ targetState }) => {
                     </div>
                 </>
             )}
+            {editable && mentalContrasts.map((mentalContrast) => (                       
+                <EditMentalContrast key={mentalContrast.id} mentalId={mentalContrast.id} setLoading={setLoading} setEditable={setEditable}/>
+            ))}
         </div>
     );
 }
