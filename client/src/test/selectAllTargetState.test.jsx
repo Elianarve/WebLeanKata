@@ -1,37 +1,54 @@
-// // SelectAllTargetState.test.js
-// import { render, fireEvent, waitFor } from '@testing-library/react';
-// import SelectAllTargetState from '../components/selectall/selectAlllTargetStates';
-// import { getTargetState } from '../../services/targetStateServices';
-// import jest from 'jest';
-// import { describe, test, expect } from 'jest';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { SelectAllTargetState } from '../components/selectall/selectAlllTargetStates';
+import { getTargetState } from '../services/targetStateServices';
+import { describe, it, expect } from '@jest/globals';
+import { jest } from '@jest/globals';
 
-// // Mock the getTargetState service function
-// jest.mock('../../services/targetStateServices' , () => ({
-//     getTargetState: jest.fn(),
-// }));
+jest.mock('../services/targetStateService');
 
-// describe('SelectAllTargetState', () => {
-//   test('renders and handles select change', async () => {
-//     const mockOnTargetStateSelect = jest.fn();
-//     const mockTargetStates = [
-//       { id: '1', description: 'Target State 1' },
-//       { id: '2', description: 'Target State 2' },
-//     ];
+describe('SelectAllTargetState component', () => {
+  it('should render the select element with the correct options', async () => {
+    const mockTargetStates = [
+      { id: 1, description: 'Target State 1' },
+      { id: 2, description: 'Target State 2' },
+    ];
+    getTargetState.mockResolvedValue(mockTargetStates);
 
-//     // Make getTargetState return the mock target states
-//     getTargetState.mockResolvedValueOnce(mockTargetStates);
+    render(<SelectAllTargetState onTargetStateSelect={jest.fn()} challengeId={1} />);
 
-//     const { getByText, getByRole } = render(
-//       <SelectAllTargetState onTargetStateSelect={mockOnTargetStateSelect} challengeId="1" />
-//     );
+    const selectElement = screen.getByRole('combobox');
+    expect(selectElement).toBeInTheDocument();
 
-//     // Wait for the target states to be loaded
-//     await waitFor(() => getByText('Target State 1'));
+    const options = screen.getAllByRole('option');
+    expect(options.length).toBe(3); // Includes the empty option
+    expect(options[1].text).toBe('Target State 1');
+    expect(options[2].text).toBe('Target State 2');
+  });
 
-//     // Simulate a change in the select element
-//     fireEvent.change(getByRole('combobox'), { target: { value: '2' } });
+  it('should call the onTargetStateSelect callback with the selected value', async () => {
+    const mockTargetStates = [
+      { id: 1, description: 'Target State 1' },
+      { id: 2, description: 'Target State 2' },
+    ];
+    getTargetState.mockResolvedValue(mockTargetStates);
 
-//     // Check that onTargetStateSelect was called with the correct target state
-//     expect(mockOnTargetStateSelect).toHaveBeenCalledWith(mockTargetStates[1]);
-//   });
-// });
+    const onTargetStateSelectMock = jest.fn();
+    render(<SelectAllTargetState onTargetStateSelect={onTargetStateSelectMock} challengeId={1} />);
+
+    const selectElement = screen.getByRole('combobox');
+    userEvent.selectOptions(selectElement, '2');
+
+    expect(onTargetStateSelectMock).toHaveBeenCalledWith(2);
+  });
+
+  it('should handle errors gracefully', async () => {
+    getTargetState.mockRejectedValue(new Error('Error fetching Target States'));
+
+    console.error = jest.fn(); // Mock console.error to avoid polluting the output
+
+    render(<SelectAllTargetState onTargetStateSelect={jest.fn()} challengeId={1} />);
+
+    expect(console.error).toHaveBeenCalledWith('Error fetching Target States:', new Error('Error fetching Target States'));
+  });
+});

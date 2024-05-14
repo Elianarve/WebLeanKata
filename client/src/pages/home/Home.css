@@ -54,8 +54,20 @@ h1 {
 }
 
 .titles-container {
-  width: 80vw;
-  font-size: 15px;
+  width: 70vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ECF0F1;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
+}
+
+.titles-container h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2em;
+  text-shadow: 0 0 4px #92FFC0, 0 0 4px #002661;
 }
 
 .gallery-items {

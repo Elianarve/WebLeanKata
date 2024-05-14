@@ -1,6 +1,5 @@
 import { getActualState, getOneActualState, deleteActualState, postActualState, updateActualState } from '../services/actualStateServices';
 import { describe, it, expect } from 'vitest';
-
 describe('actualStateServices', () => {
   describe('getActualState', () => {
     it('should return actual states on success', async () => {
@@ -17,14 +16,14 @@ describe('actualStateServices', () => {
 
   describe('getOneActualState', () => {
     it('should return actual state by ID on success', async () => {
-      const actualState = await getOneActualState(1);
+      const actualState = await getOneActualState("EA001");
 
       expect(actualState).toBeInstanceOf(Object);
-      expect(actualState.id).toBe(1);
+      expect(actualState.id).toBe("EA001");
     });
 
     it('should throw error on failure', async () => {
-      await expect(getOneActualState(1)).rejects.toThrowError();
+      await expect(getOneActualState(EA001)).rejects.toThrowError();
     });
   });
 
@@ -34,7 +33,7 @@ describe('actualStateServices', () => {
     });
 
     it('should throw error on failure', async () => {
-      await expect(deleteActualState(1)).rejects.toThrowError();
+      await expect(deleteActualState(EA001)).rejects.toThrowError();
     });
   });
 

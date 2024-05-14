@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ActualState } from '../components/ActualState';
-import '@testing-library/jest-dom/extend-expect';
-import { describe, it, expect } from '@jest/globals';
-import { jest } from '@jest/globals';
+import { ActualState } from '../components/forms/ActualState';
+import { describe, it, expect } from 'jest';
+import { jest } from 'jest';
 
 describe('ActualState component', () => {
   it('should render the form with description and date fields', () => {

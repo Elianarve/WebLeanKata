@@ -9,15 +9,10 @@ import Experiment from "../components/forms/Experiment";
 import Task from '../components/forms/Task';
 import Result from "../components/forms/Result";
 import Learning from "../components/forms/Learning";
-import EditTask from "../components/edit/EditTask";
-import EditResult from "../components/edit/EditResult";
-import EditLearning from '../components/edit/EditLearning';
-import EditObstacle from '../components/edit/EditObstacle';
 import Process from '../components/forms/Process';
 import Tribe from '../components/forms/Tribe';
 import Card from "../components/card/Card";
 import NotFound from "../pages/notfound/NotFound";
-
 
 export const router = createBrowserRouter([
   {
@@ -71,26 +66,6 @@ export const router = createBrowserRouter([
     {
       path:"/learning",
       element: <Learning/>
-    },
-    {
-      path:"/editlearning/:id",
-      element: <EditLearning/>
-    },
-    {
-      path:"/editresult/:id",
-      element: <EditResult/>
-    },
-    {
-      path:"/editobstacle/:id",
-      element: <EditObstacle/>
-    },
-    {
-      path:"/edittask/:id",
-      element: <EditTask/>
-    },
-    {
-      path: "/card/:id",
-      element: <Card/>
     },
     {
       path: "*",

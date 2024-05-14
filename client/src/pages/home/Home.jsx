@@ -101,11 +101,9 @@ const Home = () => {
         <h1>Descubre la tabla de retos: ¡tu camino hacia la mejora continua con LeanKata!</h1>
       </div>
       <div className="titles-container">
-        <h3>
           <h3>Reto</h3>
           <h3>Nombre</h3>
           <h3>Descripción</h3>
-        </h3>
       </div>
       <div className="gallery-items">
             {filteredChallenges.map((challenge) => (
