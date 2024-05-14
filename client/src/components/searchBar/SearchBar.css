@@ -6,6 +6,7 @@
     background-color: #ECF0F1;
     box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
     transition: 300ms ease-in-out;
+    width: 170px;
   }
   
   .search-bar:focus {

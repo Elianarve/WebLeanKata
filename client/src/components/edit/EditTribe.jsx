@@ -34,8 +34,10 @@ const EditTribe = () => {
   };
         
   return (
-      <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+    <div className="form-container">
         <h2>Editar proceso</h2>
+
+      <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
         <div className='items'>
           <label className='label-item'>Nombre de la Tribu</label>
           <input type="text" rows="10" cols="50" name="name_tribe" defaultValue={tribeData.name_tribe} {...register('name_tribe', { required: true })}/>
@@ -49,6 +51,7 @@ const EditTribe = () => {
         <button onClick={() => deleteTribe(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />
       </form>
+      </div>
   );
 }
 

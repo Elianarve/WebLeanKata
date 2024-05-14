@@ -38,7 +38,6 @@ const EditHypothesis = () => {
 
     return (
         <div className="form-container">
-        <div className="form-center">
         <h2>Editar Hipótesis</h2>
 
         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
@@ -64,7 +63,6 @@ const EditHypothesis = () => {
             <button onClick={() => deleteHypothesis(id).then(() => navigate("/home")) }>Eliminar</button>
             <button type="submit" className='button'>Guardar</button>
         </form>
-        </div>
         </div>
     );
 }

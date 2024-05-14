@@ -44,7 +44,6 @@ const EditExperimet = () => {
 
     return (
         <div className="form-container">
-        <div className="form-center">
         <h2>Editar Experimento</h2>
 
         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
@@ -109,7 +108,6 @@ const EditExperimet = () => {
             <button onClick={() => deleteExperiment(id).then(() => navigate("/home")) }>Eliminar</button>
             <input type="submit" value="Editar" />
         </form>
-        </div>
         </div>
     );
 }

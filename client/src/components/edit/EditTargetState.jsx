@@ -37,7 +37,6 @@ const EditTargetState = () => {
         
   return (
     <div className="form-container">
-    <div className="form-center">
     <h2>Estado objetivo: </h2>
 
          <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
@@ -59,7 +58,6 @@ const EditTargetState = () => {
      <button onClick={() => deleteTargetState(id).then(() => navigate("/home")) }>Eliminar</button>
      <button type="submit">Editar</button>
          </form>
-         </div>
          </div>
      );
 }   

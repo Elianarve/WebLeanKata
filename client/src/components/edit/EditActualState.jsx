@@ -36,7 +36,6 @@ const EditActualState = () => {
      
   return (
     <div className="form-container">
-    <div className="form-center">
     <h2>Editar estado actual</h2>
 
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +52,6 @@ const EditActualState = () => {
         <button onClick={() => deleteActualState(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />
       </form>
-      </div>
       </div>
   );
 }

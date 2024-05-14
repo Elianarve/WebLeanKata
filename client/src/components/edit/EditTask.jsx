@@ -39,7 +39,6 @@ const EditTask = () => {
         
   return (
     <div className="form-container">
-    <div className="form-center">
     <h2>Tarea: </h2>
 
          <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
@@ -76,7 +75,6 @@ const EditTask = () => {
      <button onClick={() => deleteTask(id).then(() => navigate("/home")) }>Eliminar</button>
      <button type="submit">Editar</button>
          </form>
-         </div>
          </div>
      );
 }   

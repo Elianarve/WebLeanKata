@@ -32,7 +32,6 @@ const EditProcess = ({processId, setLoading, setEditable}) => {
         
   return (
     <div className="form-container">
-    <div className="form-center">
     <h2>Editar proceso</h2>
 
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
@@ -44,7 +43,6 @@ const EditProcess = ({processId, setLoading, setEditable}) => {
         <input type="submit" value="Editar" />
         <button onClick={() => setEditable(false)}>Cerrar</button>
       </form>
-      </div>
       </div>
   );
 }

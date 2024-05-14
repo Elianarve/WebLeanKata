@@ -1,6 +1,7 @@
 .footer-container {
-  margin-top: 1vw;
   text-align: center;
+        bottom: 0;
+        width: 100%;
 }
 
 .transparentFooter{
