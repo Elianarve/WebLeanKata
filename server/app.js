@@ -63,11 +63,6 @@ try {
     console.error('Unable to connect to the database:', error);
    }
 
-   if (NODE_ENV !== "test"){
-    app.listen(PORT, () => {
-        console.log(`La API se esta escuchando en el puerto http://localhost:${PORT}`);
-    });
-   }
 
 
 export default app;

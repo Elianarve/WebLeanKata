@@ -15,6 +15,7 @@
     "mongoose": "^8.3.2",
     "mysql2": "^3.9.7",
     "nodemon": "^3.1.0",
+    "react-calendar": "^5.0.0",
     "sequelize": "^6.37.3",
     "socket.io": "^4.7.5"
   },
