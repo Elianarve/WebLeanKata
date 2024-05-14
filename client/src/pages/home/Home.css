@@ -20,9 +20,12 @@ body {
 
 
 h1 {
-  text-align: right;
-  color: #002661;
-  text-shadow: 0 0 4px #92FFC0, 0 0 4px #002661;
+    color: #002661; /* Color de texto */
+    text-shadow: 0.025em 0.025em 0.05em rgba(0, 0, 0, 0.5); 
+    font-size: 2.5vw; 
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5vh;
+    text-align: right;
 }
 
 .search-container {
@@ -58,7 +61,7 @@ h1 {
   margin: 0;
   padding: 0;
   font-size: 1.2em;
-  text-shadow: 0 0 4px #92FFC0, 0 0 4px #002661;
+  text-shadow: 0.025em 0.025em 0.05em rgba(0, 0, 0, 0.5);
 }
 
 .gallery-items {
