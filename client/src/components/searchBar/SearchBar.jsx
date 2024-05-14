@@ -9,7 +9,7 @@ const SearchBar = ({ onSearch }) => {
   };
   return (
     <div>
-      <input placeholder="Estado actual y reto" value={searchTerm} onChange={handleSearch} className="search-bar"/>
+      <input placeholder="Encuentra tu reto" value={searchTerm} onChange={handleSearch} className="search-bar"/>
     </div>
   );
 };
