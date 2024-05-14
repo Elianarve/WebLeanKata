@@ -16,7 +16,6 @@ const Learning = () => {
     }
   };
 
-
   return (
     <div className="form-container">
       <div className="form-center">
@@ -39,4 +38,4 @@ const Learning = () => {
   )
 }
 
-export default Learning
+export default Learning;

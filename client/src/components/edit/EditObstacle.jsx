@@ -17,6 +17,7 @@ const EditObstacle = () => {
       const  obstacleData = response.data;
       setObstacleData( obstacleData);
       setValue('description',  obstacleData.description);
+      setValue('image',  obstacleData.image);
     };
 
     fetchData();
@@ -42,6 +43,10 @@ const EditObstacle = () => {
         <label className='label-item'>Descripción:</label>
         <input type="text" name="description" defaultValue={ obstacleData.description }  {...register('description', { required: true })} />
         {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
+        </div>
+        <div className='items'>
+        <label className='label-item'>Archivo:</label>
+        <input type="file" name="image" defaultValue={ obstacleData.image }  {...register('image', { required: true })} />
         </div>
         <button onClick={() => deleteObstacle(id).then(() => navigate("/home")) }>Eliminar</button>
         <button type="submit">Editar</button>

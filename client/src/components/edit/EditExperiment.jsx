@@ -26,6 +26,7 @@ const EditExperimet = () => {
             setValue("success_criteria", experimentData.success_criteria);
             setValue("responsible", experimentData.responsible);
             setValue("state_experiment", experimentData.state_experiment);
+            setValue("image", experimentData.image);
         };
         fetchData();
     }, [id, setValue]);
@@ -98,6 +99,11 @@ const EditExperimet = () => {
                     <option value="Finalizado">Finalizado</option>
                 </select>
                 {/* {errors.state_experiment && <p className="error-message">El estado del experimento es requerido</p>} */}
+            </div>
+            <div className='items'>
+                <label className='label-item'>Archivo</label>
+                <input type="file" name="image" defaultValue={experimentData.image} {...register('image', {required: true})}/>
+                {/* {errors.image && <p className="error-message">El archivo es requerido</p>} */}
             </div>
             <button onClick={() => deleteExperiment(id).then(() => navigate("/home")) }>Eliminar</button>
             <input type="submit" value="Editar" />

@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import LayoutPublic from "../components/layout/LayoutPublic";
 import Home from "../pages/home/Home";
-import Card from "../components/card/Card";
 import Challenge from '../components/forms/Challenge';
 import ActualState from "../components/forms/ActualState";
 import TargetState from "../components/forms/TargetState";
@@ -13,18 +12,21 @@ import Task from '../components/forms/Task';
 import Result from "../components/forms/Result";
 import Learning from "../components/forms/Learning";
 import EditActualState from "../components/edit/EditActualState";
-import EditLearning from '../components/edit/EditLearning';
-import EditObstacle from "../components/edit/EditObstacle";
+import EditChallenge from "../components/edit/EditChallenge";
+import EditExperiment from "../components/edit/EditExperiment";
+import EditTask from "../components/edit/EditTask";
 import EditResult from "../components/edit/EditResult";
 import EditTargetState from "../components/edit/EditTargetState";
-import EditTask from "../components/edit/EditTask";
-import EditChallenge from '../components/edit/EditChallenge';
-import EditExperiment from '../components/edit/EditExperiment';
 import EditMentalContrast from '../components/edit/EditContrastMental';
 import EditHypothesis from '../components/edit/EditHypothesis';
+import EditLearning from '../components/edit/EditLearning';
+import EditObstacle from '../components/edit/EditObstacle';
 import Process from '../components/forms/Process';
 import Tribe from '../components/forms/Tribe';
 import EditTribe from "../components/edit/EditTribe";
+import Card from "../components/card/Card";
+import NotFound from "../pages/notfound/NotFound";
+
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +38,10 @@ export const router = createBrowserRouter([
       element: <Home/>,
     },
     {
+      path:"/card/:id",
+      element: <Card/>
+    },
+    {
       path: "/process",
       element: <Process/>
     },
@@ -44,7 +50,7 @@ export const router = createBrowserRouter([
       element: <Tribe/>
     },
     {
-      path: "/reto",
+      path: "/challenge",
       element: <Challenge/>,
     },
     {
@@ -128,9 +134,13 @@ export const router = createBrowserRouter([
       element: <EditHypothesis/>
     },
     {
-      path: "/card/:id",
-      element: <Card/>
+      path: "/editHypothesis/:id",
+      element: <EditHypothesis/>
     },
+    {
+      path: "*",
+      element: <NotFound/>
+    }
   ],
   }
   ]);

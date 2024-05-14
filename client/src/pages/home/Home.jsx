@@ -8,6 +8,7 @@ import "./Home.css";
 import "../../components/calendar/Calendar";
 import {getActualState} from '../../services/actualStateServices';
 // import { searchLogo } from '../../assets/img/search.svg'
+import { io } from 'socket.io-client';
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
@@ -17,6 +18,8 @@ const Home = () => {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false); // Estado para controlar la visibilidad del calendario
   const navigate = useNavigate();
   const calendarRef = useRef(null); // Ref para el calendario
+
+  const socket = io();
 
   useEffect(() => {
     const fetchChallenges = async () => {
@@ -35,6 +38,19 @@ const Home = () => {
     };
 
     fetchChallenges();
+
+    // Connect to the WebSocket server
+    socket.connect();
+
+    // Add event listeners for the 'message' and 'connect' events
+    socket.on('message', (message) => {
+      console.log('Mensaje recibido:', message);
+    });
+
+    socket.on('connect', () => {
+      console.log('Cliente conectado al servidor WebSocket');
+    });
+
   }, []);
 
   // Función para manejar cambios en la fecha seleccionada
@@ -128,3 +144,4 @@ const Home = () => {
 };
 
 export default Home;
+

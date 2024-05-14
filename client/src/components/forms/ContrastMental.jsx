@@ -35,6 +35,7 @@ const ContrastMetal = () => {
       console.error("Error al crear el contraste mental:", error);
     }
   };
+
   return (
     <div className="form-container">
       <div className="form-center">

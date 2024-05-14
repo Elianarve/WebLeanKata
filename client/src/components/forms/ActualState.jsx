@@ -1,8 +1,9 @@
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { postActualState } from '../../services/actualStateServices';
-import { useForm } from 'react-hook-form';
 import './css/Forms.css';
-import { useState, useEffect } from 'react';
 
 const ActualState = () => {
   const { handleSubmit, register, formState: { errors, isDirty }, setValue } = useForm();
@@ -16,9 +17,8 @@ const ActualState = () => {
 
   const onSubmit = (data) => { 
     postActualState(data).then(() => {
-        navigate(`/reto`); 
-    })
-    .catch((error) => {
+      navigate(`/challenge`); 
+    }).catch((error) => {
       console.error("Error al publicar:", error);
     });
   };
