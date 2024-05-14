@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { postHypothesis } from '../../services/hypothesisServices'
+import './css/Forms.css';
 
 const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
   const { handleSubmit, register, formState: { errors } } = useForm();

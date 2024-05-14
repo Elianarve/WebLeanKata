@@ -1,5 +1,3 @@
-/* Hay que meter los form-create dentro de un form-container y dentro hacer un form-center para centrar los formularios responsive y sacar el titulo del formulario */
-
 .form-container{
   display: grid;
   place-items: center;

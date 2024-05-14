@@ -3,10 +3,10 @@ import LayoutPublic from "../components/layout/LayoutPublic";
 import Home from "../pages/home/Home";
 import Challenge from '../components/forms/Challenge';
 import ActualState from "../components/forms/ActualState";
+import Process from '../components/forms/Process';
 import Tribe from '../components/forms/Tribe';
-import Card from "../components/card/Card";
 import NotFound from "../pages/notfound/NotFound";
-import Process from "../components/forms/Process";
+import Card from "../components/card/Card";
 
 export const router = createBrowserRouter([
   {

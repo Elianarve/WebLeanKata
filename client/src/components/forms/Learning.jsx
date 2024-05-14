@@ -42,5 +42,4 @@ const Learning = ({editResultId, setLoading, setCreateLearning}) => {
     </div>
     </div>
   )}
-
-export default Learning;
+export default Learning

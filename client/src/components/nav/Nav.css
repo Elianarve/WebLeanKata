@@ -3,6 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 1%;
  }
 
 .logo img {
@@ -67,9 +68,9 @@ box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
   border: solid black 1px;
   width: 90%;
 }
-/* Estilos para el menú hamburguesa */
+
 .menu-toggle {
-  display: none; /* Ocultar por defecto en pantallas grandes */
+  display: none; 
   cursor: pointer;
 }
 

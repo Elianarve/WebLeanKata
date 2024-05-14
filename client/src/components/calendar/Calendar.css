@@ -1,4 +1,4 @@
-
+/* 
 .calendar-wr {
     position: relative;
     color: #002661;
@@ -10,8 +10,10 @@
     cursor: pointer;
     box-shadow:  8px 8px 16px #c9cccd,
                 -8px -8px 16px #ffffff;
+
   }
-  
+   */
+
   .calendar-header {
     border: none;
     padding: 10px;
@@ -19,9 +21,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #92FFC0;
+    
   }
 
-
+  .calendar-wrapper{
+    margin-top: 1%;
+  }
 
   .arrow {
     width: 0;
@@ -55,9 +61,9 @@
     box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
   }
   
-  /* Estilo para los días resaltados */
+
   .day.highlighted {
-    background-color: #FFC0CB; /* Rosa */
+    background-color: #FFC0CB; 
   }
   .day.highlighted {
     background-color: pink;

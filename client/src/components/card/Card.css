@@ -1,15 +1,15 @@
 .cardContainer {
-  width: 70vw;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 16px 16px 32px #c9cccd, -16px -16px 32px #ffffff;
-}
-
-.card-center{
-  background-color: #ECF0F1;
-  width: 100vw;
-  display: grid;
-  place-items: center;
-  min-height: 85vh;
-
-}
+    width: 70vw;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 16px 16px 32px #c9cccd, -16px -16px 32px #ffffff;
+  }
+  
+  .card-center{
+    background-color: #ECF0F1;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    min-height: 85vh;
+  
+  }

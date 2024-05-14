@@ -36,4 +36,5 @@ const Tribe = () => {
   </div>
   )}
 
+
 export default Tribe;
