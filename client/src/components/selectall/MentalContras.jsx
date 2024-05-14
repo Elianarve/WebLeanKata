@@ -70,6 +70,10 @@ const MentalContras = ({ targetState }) => {
                                             <button className='button-edit' onClick={() => deleteMentalContrast(mentalContrast.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                         </td>
                                         </tr>
+                                        <tr>
+                                    <td className='title-table-line'></td>
+                                    <td className='title-table-line'></td>
+                                </tr>
                                     </tbody>
                                 ))}
                         </table>

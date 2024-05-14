@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getOneLearning, updateLearning, deleteLearning } from '../../services/learningsServices';
-import { useParams } from 'react-router-dom';
+import { getOneLearning, updateLearning } from '../../services/learningsServices';
 import '../forms/css/Forms.css';
 
 
-const EditLearning = ({learningId, setLoading, setEditable}) => {
+const EditLearning = ({editLearningId, setLoading, setEditLearning}) => {
   const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [ learningData, setLearningData] = useState({});
 
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getOneLearning(learningId);
+      const response = await getOneLearning(editLearningId);
       const learningData = response.data;
       setLearningData(learningData);
       setValue('description', learningData.description);
@@ -20,14 +19,14 @@ const EditLearning = ({learningId, setLoading, setEditable}) => {
     };
 
     fetchData();
-  }, [learningId, setValue]);
+  }, [editLearningId, setValue]);
 
   const onSubmit = async (learningData) => {
     try {
-      await updateLearning(learningId, learningData);
+      await updateLearning(editLearningId, learningData);
       alert('¡Los datos del elemento han sido actualizados correctamente!');
       setLoading(true);
-      setEditable(false);
+      setEditLearning(false);
     } catch (error) {
       console.error('Error al actualizar el elemento:', error);
       alert('Error al actualizar el elemento. Por favor, intenta nuevamente.');
@@ -49,7 +48,7 @@ const EditLearning = ({learningId, setLoading, setEditable}) => {
           {errors.speeds?.type === 'required' && <p className="error-message">El campo velocidades es requerido</p>} */}
         </div>
         <input type="submit" value="Editar" />
-        <button onClick={() => setEditable(false)}>Cerrar</button>
+        <button onClick={() => setEditLearning(false)}>Cerrar</button>
       </form>
   );
 }

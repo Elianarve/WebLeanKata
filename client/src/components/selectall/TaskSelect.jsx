@@ -10,7 +10,8 @@ import EditTask from '../edit/EditTask';
 const TaskSelect = ({experiment}) => {
     const [tasks, setTask] = useState([]);
     const navigate = useNavigate();
-    const [editable, setEditable] = useState(false);
+    const [editTask, setEdiTask] = useState(false);
+    const [editTaskId, setEditTaskId] = useState();
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -82,15 +83,15 @@ const TaskSelect = ({experiment}) => {
                                 <tr>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
-                                    <button className='button-edit' onClick={() => setEditable(true)} >
+                                    <button className='button-edit' onClick={() => {setEditTaskId(task.id), setEdiTask(true)}} >
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
                                     <button className='button-edit' onClick={() => deleteTask(task.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
                                 </td>
                                 </tr>
                                 <tr>
-                                    <td className='title-table'></td>
-                                    <td></td>
+                                    <td className='title-table-line'></td>
+                                    <td className='title-table-line'></td>
                                 </tr>
                             </tbody>
                          ))} 
@@ -98,9 +99,9 @@ const TaskSelect = ({experiment}) => {
             </div>
         </>
     )}
-    {editable && tasks.map((task) => (
-        <EditTask key={task.id} taskId={task.id} setLoading={setLoading} setEditable={setEditable}/>
-    ))}
+    {editTask &&  (
+        <EditTask editTaskId={editTaskId} setLoading={setLoading} setEdiTask={setEdiTask}/>
+    )}
 </div>
 
 );

@@ -3,19 +3,19 @@ import { getHypothesis, deleteHypothesis } from '../../services/hypothesisServic
 import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
-import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
-import Experiments from './Experiments';
+import Experiment from '../forms/Experiment';
 import EditHypothesis from '../edit/EditHypothesis';
-import Hypothesis from '../forms/Hypothesis';
+import ExperimentsSelect from './ExperimentsSelect';
+
 
 const HypothesisSelect = ({obstacle}) => {
+    const navigate = useNavigate();
   const [hypothesis, setHypothesis] = useState([]);
-  const navigate = useNavigate();
-  const [editable, setEditable] = useState(false);
+  const [editHypothesis, setEditHypothesis] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [load, setLoad] = useState(false); 
-  const [edit, setEdit] = useState(false); 
+  const [editHypothesisId, setEditHypothesisId] = useState(); 
+  const [editExperiment, setEditExperiment] = useState(false);
 
   useEffect(() => {
     const fetchHypothesis = async () => {
@@ -33,14 +33,13 @@ const HypothesisSelect = ({obstacle}) => {
             })
             setHypothesis(arrayHypothesisFiltered);
             setLoading(false);
-            setLoad(false);
         } catch (error) {
             console.error('Error fetching Challenges:', error);
         }
     };
 
     fetchHypothesis();
-}, [obstacle, loading, load]);
+}, [obstacle, loading]);
 
     
 
@@ -76,10 +75,10 @@ const HypothesisSelect = ({obstacle}) => {
                                 <tr>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
-                                    <button className='button-edit' onClick={() => setEditable(true)}>
+                                    <button className='button-edit' onClick={() => {setEditHypothesisId(hypothes.id), setEditHypothesis(true) }}>
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
-                                    <button className='button-add-t' onClick={() => navigate(`/experiment`)}>Añadir Exp</button>
+                                    <button className='button-add-t' onClick={() => {setEditHypothesisId(hypothes.id), setEditExperiment(true)}}>Añadir Exp</button>
                                     <button className='button-edit' onClick={() => deleteHypothesis(hypothes.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                 </td>
                                 </tr>
@@ -87,17 +86,21 @@ const HypothesisSelect = ({obstacle}) => {
                                     <td className='title-table'></td>
                                     <td></td>
                                 </tr>
+                                <tr>
+                                    <td className='title-table-line'></td>
+                                    <td className='title-table-line'></td>
+                                </tr>
                             </tbody>
                         ))}
                 </table>
             </div>
         </>
     )}
-    {editable && hypothesis.map((hypothesi) => (                       
-                <EditHypothesis key={hypothesi.id} hypothesisId={hypothesi.id} setLoading={setLoading} setEditable={setEditable}/>
-            ))}
-            {edit && <Hypothesis setLoad={setLoad} setEdit={setEdit}/>}
-    <Experiments hypothesis={hypothesis}/>
+    {editHypothesis && (                       
+                <EditHypothesis editHypothesisId={editHypothesisId} setLoading={setLoading} setEditHypothesis={setEditHypothesis}/>
+            )}
+    {editExperiment && <Experiment editHypothesisId={editHypothesisId} setLoading={setLoading} setEditExperiment={setEditExperiment}/> }
+    <ExperimentsSelect hypothesis={hypothesis}/>
 </div>
 
 );

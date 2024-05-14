@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { deleteObstacle, getObstacle } from '../../services/obstacleServices';
-import more from '../../assets/img/Plus.svg';
 import update from '../../assets/img/Edit-File.svg';
 import HypothesisSelect from './HypothesisSelect';
 import EditObstacle from '../edit/EditObstacle';
@@ -10,15 +9,14 @@ import Obstacle from '../forms/Obstacle';
 import Hypothesis from '../forms/Hypothesis';
 
 const ObstacleSelect = ({targetState}) => {
+    const navigate = useNavigate(); 
     const [obstacles, setObstacles] = useState([]);
     const [imgZoom, setImgZoom] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
-    const [editable, setEditable] = useState(false);
+    const [editObstacle, setEditObstacle] = useState(false);
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate(); 
     const [editHypothesis, setEditHypothesis] = useState(false);
-    const [loadH, setLoadH] = useState(false);
-    const [selectedObstacle, setSelectedObstacle] = useState(null);
+    const [editObstacleId, setEditObstacleId ] = useState();
 
     const handleClick = (image) => {
         setSelectedImage(image);
@@ -42,19 +40,14 @@ const ObstacleSelect = ({targetState}) => {
                 })         
                 setObstacles(arrayObstacleFiltered);
                 setLoading(false);
-                setLoadH(false);
             } catch (error){
                 console.error('Error fetching:', error);
             }
         };
 
         fetchObstacle();
-    }, [targetState, loading, loadH]);
+    }, [targetState, loading]);
 
-    const handleAddHypothesis = (obstacleId) => {
-        setSelectedObstacle(obstacleId);
-        setEditHypothesis(true);
-    };
 
     return (
         <div className='container-challenge'>
@@ -91,28 +84,27 @@ const ObstacleSelect = ({targetState}) => {
                                         <tr>
                                             <td className='title-table'>Acciones</td>
                                             <td className='container-button'>
-                                                <button className='button-edit' onClick={() => setEditable(obstacle.id)}>
+                                                <button className='button-edit' onClick={() => {setEditObstacleId(obstacle.id), setEditObstacle(true)}}>
                                                     <img src={update} alt="logo-update" className='logo-edit' />
                                                 </button>
-                                                <button className='button-add-t' onClick={() => handleAddHypothesis(obstacle.id)}>Añadir Hipotesis</button>
+                                                <button className='button-add-t' onClick={() => {setEditObstacleId(obstacle.id), setEditHypothesis(true)}}>Añadir Hipotesis</button>
                                                 <button className='button-edit' onClick={() => deleteObstacle(obstacle.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td className='title-table'></td>
-                                            <td></td>
-                                        </tr>
+                                    <td className='title-table-line'></td>
+                                    <td className='title-table-line'></td>
+                                </tr>
                                     </tbody>
                                 ))}
                         </table>
                     </div>
                 </>
             )}
-            {editable && obstacles.map((obstacle) => (    
-                obstacle.id === editable &&                    
-                <EditObstacle key={obstacle.id} obstacleId={obstacle.id} setLoading={setLoading} setEditable={setEditable}/>
-            ))}
-            {editHypothesis && <Hypothesis obstacle={obstacles} setLoadH={setLoadH}  setEditHypothesis={setEditHypothesis}/>}
+            {editObstacle && (                     
+                <EditObstacle editObstacleId={editObstacleId} setLoading={setLoading} setEditObstacle={setEditObstacle}/>
+            )}
+            {editHypothesis && <Hypothesis editObstacleId={editObstacleId} setLoading={setLoading}  setEditHypothesis={setEditHypothesis}/>}
             <HypothesisSelect obstacle={obstacles}/>
         </div>
     );

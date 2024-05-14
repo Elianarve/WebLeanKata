@@ -4,28 +4,28 @@ import { getOneObstacle, updateObstacle} from '../../services/obstacleServices';
 import '../forms/css/Forms.css';
 
 
-const EditObstacle = ({obstacleId, setLoading, setEditable}) => {
+const EditObstacle = ({editObstacleId, setLoading, setEditObstacle}) => {
   const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [ obstacleData, setObstacleData ] = useState({});
 
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getOneObstacle(obstacleId);
+      const response = await getOneObstacle(editObstacleId);
       const  obstacleData = response.data;
       setObstacleData( obstacleData);
       setValue('description',  obstacleData.description);
     };
 
     fetchData();
-  }, [obstacleId, setValue]);
+  }, [editObstacleId, setValue]);
 
-  const onSubmit = async ( obstacleData) => {
+  const onSubmit = async (obstacleData) => {
     try {
-      await updateObstacle(obstacleId, obstacleData);
+      await updateObstacle(editObstacleId, obstacleData);
       alert('¡Los datos del elemento han sido actualizados correctamente!');
       setLoading(true);
-      setEditable(false);
+      setEditObstacle(false);
     } catch (error) {
       console.error('Error al actualizar el elemento:', error);
       alert('Error al actualizar el elemento. Por favor, intenta nuevamente.');
@@ -41,7 +41,7 @@ const EditObstacle = ({obstacleId, setLoading, setEditable}) => {
         {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
         </div>
         <button type="submit">Editar</button>
-        <button onClick={() => setEditable(false)}>Cerrar</button>
+        <button onClick={() => setEditObstacle(false)}>Cerrar</button>
       </form>
   );
 }

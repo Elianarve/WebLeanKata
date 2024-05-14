@@ -1,19 +1,23 @@
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { postLearning } from '../../services/learningsServices';
 
-const Learning = () => {
+const Learning = ({editResultId, setLoading, setCreateLearning}) => {
   const { handleSubmit, register, formState: { errors } } = useForm();
-  const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (formData) => {
     try {
+      const data = {...formData, results_id:editResultId};
       const response = await postLearning(data);
       console.log("Aprendizaje creado:", response.data);
-      navigate('/');
+      setLoading(true);
+      setCreateLearning(false);
     } catch (error) {
       console.error("Error al crear el aprendizaje:", error);
     }
+  };
+
+  const closeForm = () => {
+    setCreateLearning(false);
   };
 
 
@@ -31,6 +35,7 @@ const Learning = () => {
         {errors.learning_date && <p className="error-message">{errors.learning_date.message}</p>}
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
+     <button onClick={closeForm}>Cerrar</button>
     </form>
   )
 }

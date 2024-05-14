@@ -81,6 +81,10 @@ const TargetSta = ({ challengeId }) => {
                                     <td className='title-table'></td>
                                     <td></td>
                                     </tr>
+                                    <tr>
+                                    <td className='title-table-line'></td>
+                                    <td className='title-table-line'></td>
+                                </tr>
                                 </tbody>
                                 ))}
                         </table>

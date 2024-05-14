@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 import { getOneResult, updateResult } from '../../services/resultServices';
 import '../forms/css/Forms.css';
 
-const EditResult = ({resultId, setLoading, setEditable}) => {
+const EditResult = ({editResultId, setLoading, setEditResult}) => {
   const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [ resultData, setResultData] = useState({});
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getOneResult(resultId);
+      const response = await getOneResult(editResultId);
       const resultData = response.data;
       setResultData(resultData);
       setValue('description', resultData.description);
@@ -22,14 +22,14 @@ const EditResult = ({resultId, setLoading, setEditable}) => {
     };
 
     fetchData();
-  }, [resultId, setValue]);
+  }, [editResultId, setValue]);
 
   const onSubmit = async (resultData) => {
     try {
-      await updateResult(resultId, resultData);
+      await updateResult(editResultId, resultData);
       alert('¡Los datos del elemento han sido actualizados correctamente!');
       setLoading(true);
-      setEditable(false);
+      setEditResult(false);
     } catch (error) {
       console.error('Error al actualizar el elemento:', error);
       alert('Error al actualizar el elemento. Por favor, intenta nuevamente.');
@@ -38,7 +38,7 @@ const EditResult = ({resultId, setLoading, setEditable}) => {
         
   return (
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Resultado: </h2>
+      <h2>Editar Resultado: </h2>
       <div className='items'>
           <label className='label-item'>Descripción: </label>
           <input type="text" name='description' defaultValue={ resultData.description } {...register('description', { required: true })} />
@@ -75,7 +75,7 @@ const EditResult = ({resultId, setLoading, setEditable}) => {
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
         </div>
         <button type="submit">Editar</button>
-        <button onClick={() => setEditable(false)}>Cerrar</button>
+        <button onClick={() => setEditResult(false)}>Cerrar</button>
       </form>
   );
 }
