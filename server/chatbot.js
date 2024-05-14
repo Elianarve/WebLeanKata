@@ -1,8 +1,8 @@
 const dialogflow = require('@google-cloud/dialogflow-cx');
 
 const projectId = 'leankata';
-const locationId = 'YOUR_LOCATION_ID';
-const agentId = 'YOUR_AGENT_ID';
+const locationId = 'es';
+const agentId = '97e9e179-9dc5-4129-8c15-76176d2ad81';
 const sessionId = 'YOUR_SESSION_ID';
 
 const sessionClient = new dialogflow.SessionsClient();
