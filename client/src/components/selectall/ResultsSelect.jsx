@@ -3,14 +3,19 @@ import { getResult, deleteResult } from '../../services/resultServices';
 import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
-import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
 import LearningSelect from './LearningSelect';
+import EditResult from '../edit/EditResult';
+import Learning from '../forms/Learning';
 
 
 const ResultsSelect = ({experiment}) => {
     const [results, setResults] = useState([]);
     const navigate = useNavigate();
+    const [editResult, setEditResult] = useState(false);
+    const [editResultId, setEditResultId] = useState();
+    const [createLearning, setCreateLearning] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchResult = async () => {
@@ -28,13 +33,14 @@ const ResultsSelect = ({experiment}) => {
                     arrayResultFiltered.push(...resultFiltered); 
                 })
                 setResults(arrayResultFiltered);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching Challenges:', error);
             }
         };
     
         fetchResult ();
-    }, [experiment]);
+    }, [experiment, loading]);
 
   return (
     <div className='container-challenge'>
@@ -84,13 +90,16 @@ const ResultsSelect = ({experiment}) => {
                                 <tr>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
-                                    <button className='button-edit' onClick={() => navigate(`/editresult/${result.id}`)}>
+                                    <button className='button-edit' onClick={() => {setEditResultId(result.id), setEditResult(true)}}>
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
-                                    <button className='button-add-t' onClick={() => navigate(`/learning`)}>Añadir Aprend</button>
+                                    <button className='button-add-t' onClick={() => {setEditResultId(result.id), setCreateLearning(true)}}>Añadir Aprend</button>
                                     <button className='button-edit' onClick={() => deleteResult(result.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
-
                                 </td>
+                                </tr>
+                                <tr>
+                                    <td className='title-table-line'></td>
+                                    <td className='title-table-line'></td>
                                 </tr>
                             </tbody>
                          ))} 
@@ -98,6 +107,10 @@ const ResultsSelect = ({experiment}) => {
             </div>
         </>
     )}
+    {editResult &&  (
+        <EditResult editResultId={editResultId} setLoading={setLoading} setEditResult={setEditResult}/>
+    )}
+    {createLearning && <Learning editResultId={editResultId} setLoading={setLoading} setCreateLearning={setCreateLearning}/>}
     <LearningSelect result={results}/>
 </div>
 

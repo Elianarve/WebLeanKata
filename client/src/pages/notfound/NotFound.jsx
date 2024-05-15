@@ -1,45 +1,40 @@
 import './NotFound.css';
 
-const NotFound = () => {
+const NotFound = ({ error }) => {
+  let message;
+  let code;
 
-  window.onerror = (_message, _source, _lineno, _colno, error) => {
-
-    console.error(error);
-
-    switch (error.code) {
-      case 404:
-        return (
-          <div className="not-found">
-            <h1>404 - Page Not Found</h1>
-            <p>The page you are looking for does not exist.</p>
-            <a href="/">TRY GOING BACK TO HOME PAGE</a>
-          </div>
-        );
-      case 500:
-        return (
-          <div className="not-found">
-            <h1>500 - Internal Server Error</h1>
-            <p>There was an error on the server. Please try again later.</p>
-            <a href="/">TRY GOING BACK TO HOME PAGE</a>
-          </div>
-        );
-      default:
-        return (
-          <div className="not-found">
-            <h1>An error occurred.</h1>
-            <p>Error Code: {error.code}</p>
-            <a href="/">TRY GOING BACK TO HOME PAGE</a>
-          </div>
-        );
-    }
-  };
+  if (error) {
+    // eslint-disable-next-line react/prop-types
+    message = error.message;
+    // eslint-disable-next-line react/prop-types
+    code = error.code;
+  } else {
+    message = '';
+    code = '';
+  }
 
   return (
     <div className="not-found">
-      <h1>404 - Page Not Found</h1>
-      <p>WE KEEP WORKING TO FIX THIS ISSUE.</p>
-      <a href="/">TRY GOING BACK TO HOME PAGE</a>
-    </div>
+       <div className='notfound-container'>
+      <img className='notfound-image' src="https://res.cloudinary.com/dpkll45y2/image/upload/v1715761508/LeanKata/Presentaci%C3%B3n_creada_a_partir_de_tu_documento_gplrvg.png" alt="" />
+      <h1> ALGO SALIÓ MAL {code}</h1>
+      </div>
+      <p>{message}</p>
+
+      {code === 404 && (
+        <p>
+          La página que estás buscando no existe. Es posible que la URL sea incorrecta o que la página haya sido eliminada.
+        </p>
+      )}
+
+      {code === 500 && (
+        <p>
+          Se ha producido un error interno del servidor. Intenta volver a cargar la página más tarde o contacta con el administrador del sitio web.
+        </p>
+      )}
+      <a href="/">Volver a la página de inicio</a>
+      </div>
   );
 };
 

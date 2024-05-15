@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Nav from '../components/nav/Nav';
 import { expect, test, describe } from 'vitest';
 import '@testing-library/jest-dom';

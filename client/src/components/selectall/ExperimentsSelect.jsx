@@ -3,16 +3,23 @@ import { getExperiment, deleteExperiment } from '../../services/experimentServic
 import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
-import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
 import TaskSelect from './TaskSelect';
 import ResultsSelect from './ResultsSelect';
+import EditExperiment from '../edit/EditExperiment';
+import Task from '../forms/Task';
+import Result from '../forms/Result';
 
-const Experiments = ({hypothesis}) => {
+const ExperimentsSelect = ({hypothesis}) => {
     const [experiments, setExperiments] = useState([]);
     const navigate = useNavigate();
     const [imgZoom, setImgZoom] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [editExperiment, setEditExperiment] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [editExperimentId, setEditExperimentId] = useState();
+    const [createTask, setCreateTask] = useState(false);
+    const [createResult, setCreateResult] = useState(false);
 
     const handleClick = (image) => {
         setSelectedImage(image);
@@ -27,29 +34,29 @@ const Experiments = ({hypothesis}) => {
                 const experimentData = await getExperiment();
                 hypothesis.map(item =>{ 
                     const hypothesisId = item.id
-
                     arrayHypothesisId.push(hypothesisId);  
                 });
                 const arrayExperimentFiltered = [];
                 arrayHypothesisId.map(hypothesisId => {
-                    const experimentfiltered = experimentData.filter(state => state.hiphotesis_id === hypothesisId );
+                    const experimentfiltered = experimentData.filter(state => state.hyphotesis_id === hypothesisId );
                     arrayExperimentFiltered.push(...experimentfiltered); 
                 })
                 setExperiments(arrayExperimentFiltered);
+                setLoading(false);
             } catch (error) {
-                console.error('Error fetching Challenges:', error);
+                console.error('Error:', error);
             }
         };
     
         fetchExperiment();
-    }, [hypothesis]);
+    }, [hypothesis, loading]);
 
 
   return (
     <div className='container-challenge'>
     {experiments.length > 0 && (
         <>
-        <h3>EXPERIMENTOS <button className='button-add' onClick={() => navigate(`/experiment`)}><img src={more} alt="logo-plus" className='img-plus-ex'/></button></h3>
+        <h3>EXPERIMENTOS</h3>
             <div className="centered-table">
                 <table className='container-table'>
                         {experiments.map((experiment) => (
@@ -60,7 +67,7 @@ const Experiments = ({hypothesis}) => {
                                 </tr>
                                 <tr>
                                 <td className='title-table'>Hipotesis ID</td>
-                                <td className='tr-table'>{experiment.hiphotesis_id}</td>
+                                <td className='tr-table'>{experiment.hyphotesis_id}</td>
                                 </tr>
                                <tr>
                                <td className='title-table'>Descripción</td>
@@ -105,17 +112,21 @@ const Experiments = ({hypothesis}) => {
                                 <tr>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
-                                    <button className='button-edit' onClick={() => navigate(`/editexperiment/${experiment.id}`)}>
+                                    <button className='button-edit' onClick={() => {setEditExperimentId(experiment.id), setEditExperiment(true)}} >
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
-                                    <button className='button-add-t' onClick={() => navigate(`/task`)}>Crear Tarea</button>
-                                    <button className='button-add-t' onClick={() => navigate(`/result`)}>Crear Resultado</button>
+                                    <button className='button-add-t' onClick={() => {setEditExperimentId(experiment.id),setCreateTask(true) }}>Crear Tarea</button>
+                                    <button className='button-add-t' onClick={() => {setEditExperimentId(experiment.id), setCreateResult(true)}}>Crear Resultado</button>
                                     <button className='button-edit' onClick={() => deleteExperiment(experiment.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
                                 </td>
                                 </tr>
                                 <tr>
                                     <td className='title-table'></td>
                                     <td></td>
+                                </tr>
+                                <tr>
+                                    <td className='title-table-line'></td>
+                                    <td className='title-table-line'></td>
                                 </tr>
                             </tbody>
                          ))} 
@@ -124,11 +135,17 @@ const Experiments = ({hypothesis}) => {
             </div>
         </>
     )}
+    {editExperiment && (                       
+            <EditExperiment editExperimentId={editExperimentId} setLoading={setLoading} setEditExperiment={setEditExperiment}/>
+    )}
+    {createTask && <Task editExperimentId={editExperimentId} setLoading={setLoading} setCreateTask={setCreateTask}/>}
     <TaskSelect experiment={experiments}/>
+    
+    {createResult && <Result editExperimentId={editExperimentId} setLoading={setLoading} setCreateResult={setCreateResult}/>}
     <ResultsSelect experiment={experiments}/>
 </div>
 
 );
 }
 
-export default Experiments;
+export default ExperimentsSelect;

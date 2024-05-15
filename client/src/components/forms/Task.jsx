@@ -1,15 +1,17 @@
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { postTask } from '../../services/taskServices';
 
-function Task() {
+function Task({editExperimentId, setLoading, setCreateTask}) {
   const { handleSubmit, register, formState: { errors, isDirty }, getValues } = useForm();
-  const navigate = useNavigate();
-  const onSubmit = async (data) => {
+
+
+  const onSubmit = async (formData) => {
     try {
+      const data = {...formData, experiment_id: editExperimentId};
       const response = await postTask(data);
       console.log("Tarea creada:", response.data);
-      navigate('/result');
+      setLoading(true);
+      setCreateTask(false);
     } catch (error) {
       console.error("Error al crear la tarea:", error);
     }
@@ -30,11 +32,15 @@ function Task() {
     return compareDates(value, startDate) && compareDates(value, endDatePrev) || "La fecha real debe ser posterior a la fecha de inicio y a la fecha final prevista";
   };
 
+  const closeForm = () => {
+    setCreateTask(false);
+  };
+
+
   return (
     <div className="form-container">
-      <div className="form-center">
+            <h2>Crear Tarea:</h2>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Tarea:</h2>
       <div className='items'>
         <label className='label-item'>Descripción:</label>
         <textarea type="text" {...register('description', { required: true })} />
@@ -66,8 +72,8 @@ function Task() {
         {errors.state && <p className="error-message">El estado es requerido</p>}
       </div>
       <button type="submit" disabled={!isDirty} className='button-forms'>Enviar</button>
+     <button onClick={closeForm}>Cerrar</button>
     </form>
-    </div>
     </div>
   )}
 

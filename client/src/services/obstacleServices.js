@@ -23,32 +23,30 @@ export const getOneObstacle = async (id) => {
 };
 
 export const deleteObstacle = async (id) => {
-    try {
-        const response = await axios.delete(`${API_URL}/${id}`);
-        if (response.status === 200) {
-            return { success: true, message: 'Eliminado correctamente' };
+        try {
+            const response = await axios.delete(`${API_URL}/${id}`);
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el contraste mental?"); 
+            if (confirmDelete && response.status === 200) {
+                alert('Eliminado correctamente');
+            }
+        } catch (error) {
+            console.error("Error al eliminar el Obstacle ", error);
+            throw error;
         }
-    } catch (error) {
-        console.error("Error al eliminar el Obstacle ", error);
-        throw error;
-    }
 };
 
 export const postObstacle = async (data) => {
-    try {
-        const response = await axios.post(API_URL, data);
-        return { success: true, message: 'Obstacle creado exitosamente', data: response.data };
-    } catch (error) {
-        console.error("Error al crear el Obstacle:", error);
-        throw error;
-    }
-};
+    const response = await axios.post(API_URL, data);
+    console.log(response);
+    return response;
+  };
+
 
 export const updateObstacle = async (id, data) => {
     try {
         const response = await axios.put(`${API_URL}/${id}`, data);
         if (response.status === 200) {
-            return { success: true, message: 'Obstacle actualizado correctamente', data: response.data };
+            return response.data;
         }
     } catch (error) {
         console.error("Error al actualizar el Obstacle:", error);

@@ -1,13 +1,22 @@
-/* Hay que meter los form-create dentro de un form-container y dentro hacer un form-center para centrar los formularios responsive y sacar el titulo del formulario */
-
-.form-container{
+.form-container {
   display: grid;
   place-items: center;
-  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; 
+  height: 100%; 
+  /* max-height: 100vh;  */
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
 }
+
+
 
 .form-center{
   width: 100vw;
+  min-height: 80vh;
   display: grid;
   place-items: center;
 }
@@ -17,6 +26,8 @@
   background: #ECF0F1;
   box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
   padding: 20px;
+  width: 60%;
+  max-width: 450px;
 }
 
 .form-container h2 {
@@ -79,4 +90,8 @@ button[type="submit"]:hover {
   font-size: 15px;
   color: #ECF0F1;
 
+}
+
+.title-table-line{
+  background-color: #002661;
 }

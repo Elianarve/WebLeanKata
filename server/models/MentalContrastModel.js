@@ -34,7 +34,5 @@ const MentalContrastModel = connection_db.define('mentalContrast', {
     timestamps: false
 });
 
-// TargetStateModel.hasOne(MentalContrastModel, { foreignKey: 'target_state_id' });
-
 
 export default MentalContrastModel;

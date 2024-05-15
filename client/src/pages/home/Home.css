@@ -1,7 +1,5 @@
-
 body {
   background-color: #ECF0F1;
-  margin: 0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -9,13 +7,36 @@ body {
   display: grid;
   place-items: center;
   padding: 3vw;
+  min-height: 75vh;
 }
 
-.search-container{
+.home-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15vh;
+  width: 80vw;
+  padding: 20px 0 0 0;
+}
+
+
+h1 {
+    color: #002661; /* Color de texto */
+    text-shadow: 0.025em 0.025em 0.05em rgba(0, 0, 0, 0.5); 
+    font-size: 2.5vw; 
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5vh;
+    text-align: right;
+}
+
+.search-container {
   width: 100%;
 }
 
-.calendar{
+.home-calendar{
+  margin-top: 5%;
+}
+
+.calendar {
   padding: 10px 20px;
   border-radius: 50px;
   background-color: #81b496;
@@ -26,13 +47,21 @@ body {
   transition: 0.6s;
 }
 
-.calendar:hover{
-  box-shadow: -3px 3px 0px #002661;
+.titles-container {
+  width: 77vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ECF0F1;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
 }
 
-.titles-container{
-  width: 80vw;
-  font-size: 15px;
+.titles-container h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2em;
+  text-shadow: 0.025em 0.025em 0.05em rgba(0, 0, 0, 0.5);
 }
 
 .gallery-items {
@@ -49,14 +78,13 @@ body {
   box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
   cursor: pointer;
   transition: 0.3s;
-  width: 80vw;
 }
 
-.challenge-wrapper:hover{
+.challenge-wrapper:hover {
   background-color: #c9cccd;
 }
 
-.table-cell{
+.table-cell {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -67,6 +95,7 @@ body {
   padding: 0 1vw;
   display: flex;
   justify-content: space-between;
+  margin: 0;
 }
 
 .challenge-description {

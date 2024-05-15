@@ -1,23 +1,22 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ActualState } from '../components/ActualState';
-import '@testing-library/jest-dom/extend-expect';
-import { describe, it, expect } from '@jest/globals';
-import { jest } from '@jest/globals';
+import { ActualState } from "../components/forms/ActualState.jsx";
+import { describe, it, expect } from 'vitest';
+import jest from 'jest-mock';
 
-describe('ActualState component', () => {
-  it('should render the form with description and date fields', () => {
+describe('ActualStateForm component', () => {
+  it('should display the form correctly', async () => {
     render(<ActualState />);
-
     expect(screen.getByLabelText('Descripción:')).toBeInTheDocument();
     expect(screen.getByLabelText('Fecha:')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'ENVIAR' })).toBeInTheDocument();
   });
 
   it('should display error messages for missing description and date', async () => {
     render(<ActualState />);
 
-    await userEvent.click(screen.getByRole('button', { name: 'ENVIAR' }));
-
+    const submitButton = screen.getByRole('button', { name: 'ENVIAR' });
+    await userEvent.click(submitButton);
     expect(screen.getByText('La descripción es requerida')).toBeInTheDocument();
     expect(screen.getByText('La fecha es requerida')).toBeInTheDocument();
   });
