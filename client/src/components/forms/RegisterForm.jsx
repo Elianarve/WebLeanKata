@@ -15,7 +15,7 @@ const RegisterForm = () => {
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
   const termsId = useId();
-const { userAuth, setUserAuth, user, setUser } = useUserContext();
+const {  setUserAuth, setUser } = useUserContext();
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('El nombre es requerido.').min(2, 'El nombre debe tener al menos dos caracteres.'),

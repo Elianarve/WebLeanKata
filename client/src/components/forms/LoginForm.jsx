@@ -5,6 +5,7 @@ import { loginUser } from '../../services/logReg';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
+
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,7 +20,8 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       const data = await loginUser(email, password);
-      Swal.fire("Bienvenid@ ${data.data.name} 👋");
+      Swal.fire(`Bienvenid@ ${data.data.name} 👋`);
+
       localStorage.setItem('authToken', data.token);
       setUser(data.data);
       setUserAuth(true);
