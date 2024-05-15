@@ -33,7 +33,9 @@
     "reactstrap": "^9.2.2",
     "socket.io-client": "^4.7.5",
     "styled-components": "^6.1.8",
-    "websocket": "^1.0.35"
+    "sweetalert2": "^11.11.0",
+    "websocket": "^1.0.35",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.3.4",
