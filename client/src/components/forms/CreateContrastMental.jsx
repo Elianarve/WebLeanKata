@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { postMentalContrast } from '../../services/mentalContrastServices';
+import './css/Forms.css';
 
 const ContrastMetal = ({editTargetId, setLoading, setEditContrast}) => {
 
@@ -41,8 +42,9 @@ const ContrastMetal = ({editTargetId, setLoading, setEditContrast}) => {
   };
 
   return (
-    <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+     <div className="form-container">
       <h2>Añadir Contraste mental: </h2>
+    <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <div className='items'>
         <label className='label-item'>Puntuación</label>
         <input type="number" min="1" max="10" {...register('points', { required: 'La puntuación es requerida', min: { value: 1, message: 'La puntuación mínima es 1' }, max: { value: 10, message: 'La puntuación máxima es 10' } })} />
@@ -55,8 +57,8 @@ const ContrastMetal = ({editTargetId, setLoading, setEditContrast}) => {
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
      <button onClick={closeForm}>Cerrar</button>
-
     </form>
+    </div>
   )
 }
 

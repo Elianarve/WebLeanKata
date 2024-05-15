@@ -42,9 +42,8 @@ const Experiment = ({editHypothesisId, setLoading, setEditExperiment}) => {
 
   return (
     <div className="form-container">
-      <div className="form-center">
+    <h2>Crear Experimento</h2>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Crear Experimento</h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
         <textarea type="text" {...register('description', { required: true })} />
@@ -108,7 +107,6 @@ const Experiment = ({editHypothesisId, setLoading, setEditExperiment}) => {
       <button type="submit" className='button-forms'>Enviar</button>
      <button onClick={closeForm}>Cerrar</button>
     </form>
-    </div>
     </div>
   )
 }

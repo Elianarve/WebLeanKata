@@ -36,7 +36,6 @@ const EditActualState = ({ actualStateId, setLoading, setEditable }) => {
   return (
     <div className="form-container">
     <h2>Editar estado actual</h2>
-
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
         <div className='items'>
           <label className='label-item'>Descripción </label>

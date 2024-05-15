@@ -23,9 +23,8 @@ const Result = ({editExperimentId, setLoading, setCreateResult}) => {
       
       return (
         <div className="form-container">
-          <div className="form-center">
+                    <h2>Crear Resultado:</h2>
         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-          <h2>Crear Resultado:</h2>
           <div className='items'>
             <label className='label-item'>Descripción:</label>
             <textarea type="text" {...register('description', { required: true })} />
@@ -65,7 +64,6 @@ const Result = ({editExperimentId, setLoading, setCreateResult}) => {
          <button onClick={closeForm}>Cerrar</button>
         </form>
         </div>
-        </div>    
       )}
 
 export default Result;
