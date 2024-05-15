@@ -15,6 +15,7 @@ import learningRouter from './routes/learningRouter.js';
 import processRouter from './routes/processRouter.js';
 import tribeRouter from './routes/tribeRouter.js';
 import usersRouter from './routes/usersRouter.js';
+import adminRouter from './routes/adminRouter.js';
 import authRouter from './routes/authRouter.js';
 import UsersModel from "./models/userModel.js";
 
@@ -47,6 +48,7 @@ server.listen(PORT, () => {
 });
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/admin', adminRouter);
 
 try {
     await connection_db.authenticate();
