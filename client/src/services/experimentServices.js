@@ -48,10 +48,11 @@ export const postExperiment = async (data) => {
             return response.data;
         }
     } catch (error) {
-        console.error("Error al actualizar el Experiment:", error);
+        console.error("Error al actualizar el Result:", error);
         throw error;
     }
 };
+
 
 export const uploadImage = async (imageData) => {
     try {

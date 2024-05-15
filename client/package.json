@@ -32,7 +32,8 @@
     "react-tsparticles": "^2.12.2",
     "reactstrap": "^9.2.2",
     "socket.io-client": "^4.7.5",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "websocket": "^1.0.35"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.3.4",
