@@ -7,6 +7,8 @@ import "./Home.css";
 import "../../components/calendar/Calendar";
 import {getActualState} from '../../services/actualStateServices';
 import { io } from 'socket.io-client';
+import { useUserContext } from '../../context/UserContext';
+
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
@@ -16,7 +18,7 @@ const Home = () => {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const navigate = useNavigate();
   const calendarRef = useRef(null); 
-
+  const { user, setUser  } = useUserContext();
   const socket = io();
     socket.connect();
 

@@ -1,117 +1,133 @@
-import { useState } from 'react'; // Importa el hook useState de React para manejar el estado en el componente
-import { Link, useNavigate } from 'react-router-dom'; // Importa Link y useNavigate de React Router DOM para la navegación y enlaces entre páginas
-import { useUserContext } from '../../context/UserContext'; // Importa el contexto del usuario desde UserContext.jsx
-import { loginUser } from '../../services/logReg'; // Importa la función de inicio de sesión desde el servicio logReg
+import  { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { useId } from 'react';
+import { useUserContext } from '../../context/UserContext';
+import { registerUser } from '../../services/logReg';
+import * as Yup from 'yup';
+import Swal from 'sweetalert2';
 
-const LoginForm = () => {
-  // Define el estado para el correo electrónico, la contraseña y los mensajes de error
+const RegisterForm = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-
-  // Obtiene la función de navegación para redirigir al usuario después del inicio de sesión
   const navigate = useNavigate();
+  const termsId = useId();
+const { userAuth, setUserAuth, user, setUser } = useUserContext();
 
-  // Obtiene el contexto del usuario para acceder al estado y funciones relacionadas con el usuario
-  const { setUserAuth, setUser } = useUserContext();
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('El nombre es requerido.').min(2, 'El nombre debe tener al menos dos caracteres.'),
+    email: Yup.string().email('El email debe ser válido.').required('El email es requerido.'),
+    password: Yup.string().required('La contraseña es requerida').min(8, 'La contraseña debe tener al menos 8 caracteres')
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/,
+        'La contraseña debe contener al menos una minúscula, una mayúscula, un número y un caracter especial (!@#$%^&*(),.?":{}|<>) y debe tener al menos 8 caracteres.'
+      ),
+  });
 
-  // Función que maneja el envío del formulario de inicio de sesión
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Evita el comportamiento predeterminado del formulario al enviar
-
+    e.preventDefault(); 
     try {
-      // Realiza la solicitud de inicio de sesión con el correo electrónico y la contraseña
-      const data = await loginUser(email, password);
-      
-      // Guarda el token de autenticación en el almacenamiento local
+      await validationSchema.validate({name, email, password}, {abortEarly: false});
+      const data = await registerUser(name, email, password);
+      Swal.fire(`Usuario registrado correctamente, bienvenid@ ${data.data.name} 👋`);
       localStorage.setItem('authToken', data.token);
-      
-      // Actualiza el estado del usuario en el contexto con los datos obtenidos de la solicitud
       setUser(data.data);
-      
-      // Establece la autenticación del usuario como verdadera
       setUserAuth(true);
-      
-      // Redirige al usuario a la página de inicio
       navigate('/home');
-    } catch (error) {
+    } catch (error){
       console.error('Error:', error);
-
-      // Manejo de errores durante el inicio de sesión
-      if (error.message.includes('Usuario no registrado.')) {
-        setEmailError('Usuario no registrado.');
-        setPasswordError('');
-      } else if (error.message.includes('Contraseña incorrecta.')) {
-        setPasswordError('Contraseña incorrecta.');
-        setEmailError('');
-      } else {
-        setPasswordError('Error en la solicitud de inicio de sesión');
-        setEmailError('');
-      }
+      
+      error.inner.forEach((err) => {
+        if (err.path === 'name') {
+          setNameError(err.message);
+        } else if (err.path === 'email') {
+          setEmailError(err.message);
+        } else if (err.path === 'password') {
+          setPasswordError(err.message)
+        }
+      });
     }
   };
 
   return (
-    <> {/* Fragmento de React para envolver múltiples elementos */}
-      <form onSubmit={handleSubmit} className="px-8 pb-8 mb-4"> {/* Formulario de inicio de sesión */}
-        {/* Campo para ingresar el correo electrónico */}
-        <div className="mb-4">
-          <label className="block text-white font-poppins mb-2 text-left" htmlFor="email">
-            Email
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setEmailError('');
-              }}
-              required
-              className="font-poppins shadow appearance-none bg-[#222222] rounded-lg text-slate-50 w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-12"
-              id="email"
-              placeholder="hola.soy.nuria@gmail.com"
-            />
-            {emailError && <p className="text-[#FB005A] text-xs mt-2">{emailError}</p>} {/* Muestra el mensaje de error del correo electrónico si existe */}
-          </label>
-        </div>
-
-        {/* Campo para ingresar la contraseña */}
-        <div className="mb-6">
-          <label className="font-poppins block text-white mb-2 text-left" htmlFor="password">
-            Contraseña
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setPasswordError('');
-              }}
-              required
-              className="font-poppins shadow appearance-none bg-[#222222] rounded-lg text-slate-50 w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-12"
-              id="password"
-              placeholder="Ingresa tu contraseña"
-            />
-            {passwordError && <p className="text-[#FB005A] text-xs">{passwordError}</p>} {/* Muestra el mensaje de error de la contraseña si existe */}
-          </label>
-        </div>
-
-        {/* Botón para enviar el formulario de inicio de sesión */}
-        <div className="flex flex-col items-center">
-          <button
-            className="w-full font-poppins bg-gradient-to-r rounded-lg from-[#B800B0] to-[#FB005A] hover:from-[#FB005A] hover:to-[#B800B0] text-white py-2 px-4 focus:outline-none focus:shadow-outline mb-5 h-12"
-            type="submit"
-          >
-            Iniciar sesión
-          </button>
-          
-          {/* Enlace para redirigir a los usuarios a la página de registro si no tienen una cuenta */}
-          <p className="font-poppins text-[#9E9E9E] justify-center">
-            ¿No tienes cuenta? <Link to="/registerform" className="text-white">Regístrate</Link>
-          </p>
-        </div>
-      </form>
-    </>
+    <form onSubmit={handleSubmit} className="px-8 pt-6 pb-8 mb-4">
+      <div className="">
+        <label className="block text-white font-poppins mb-2 text-left" htmlFor="name">
+          Nombre
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+              setNameError('');
+            }}
+            required
+            className="font-poppins shadow appearance-none rounded-lg w-full bg-[#222222] py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-12"
+            id="name"
+            placeholder="Escribe tu nombre completo"
+          />
+          {nameError && <p className="text-[#FB005A] text-xs">{nameError}</p>}
+        </label>
+      </div>
+      <div className="mb-4">
+        <label className="block text-white font-poppins mb-2 text-left" htmlFor="email">
+          Email
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setEmailError('');
+            }}
+            required
+            className="font-poppins shadow appearance-none rounded-lg w-full bg-[#222222] py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-12"
+            id="email"
+            placeholder="hola@gmail.com"
+          />
+          {emailError && <p className="text-[#FB005A] text-xs">{emailError}</p>}
+        </label>
+      </div>
+      <div className="mb-6">
+        <label className="font-poppins block text-white mb-2 text-left" htmlFor="password">
+          Contraseña
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setPasswordError('');
+            }}
+            required
+            className="font-poppins shadow appearance-none bg-[#222222] rounded-lg text-slate-50 w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline h-12"
+            id="password"
+            placeholder="Ingresa tu contraseña"
+          />
+          {passwordError && <p className="text-[#FB005A] w-80 text-xs">{passwordError}</p>}
+        </label>
+      </div>
+      <div className="terms-container">
+        <input
+          className="accent-[#FB005A]"
+          type="checkbox" id={termsId} name="terms" required
+        />
+        <label className="font-poppins text-white text-sm ml-2 " htmlFor={termsId}>
+          <span className="text-neutral-400">He leído y acepto</span> los términos y condiciones
+        </label>
+      </div>
+      <div className="flex flex-col items-center">
+        <button
+          className="w-full font-poppins bg-gradient-to-r rounded-lg from-[#B800B0] to-[#FB005A] hover:from-[#FB005A] hover:to-[#B800B0] text-white py-2 px-4 mt-4 focus:outline-none focus:shadow-outline mb-5 h-12"
+          type="submit"
+        >
+          Crea tu cuenta
+        </button>
+        <p className="font-poppins text-[#9E9E9E] justify-center">¿Ya tienes cuenta? <Link to="/login" className="text-white">Inicia sesión</Link></p>
+      </div>
+    </form>
   );
-};
+}
 
-export default LoginForm; // Exporta el componente LoginForm
+export default RegisterForm;
