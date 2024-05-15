@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import LayoutPublic from "../components/layout/LayoutPublic";
+import LayoutPrivate from "../components/layout/LayoutPrivate";
 import Home from "../pages/home/Home";
 import Challenge from '../components/forms/Challenge';
 import ActualState from "../components/forms/ActualState";
@@ -26,122 +27,145 @@ import Tribe from '../components/forms/Tribe';
 import EditTribe from "../components/edit/EditTribe";
 import Card from "../components/card/Card";
 import NotFound from "../pages/notfound/NotFound";
-
-
+import Landing from "../pages/Landing";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import RegisterForm from "../components/forms/RegisterForm"; 
 export const router = createBrowserRouter([
   {
-      path: "/",
-      element: <LayoutPublic />,
-      children: [
+    path: "/",
+    element: <LayoutPublic/>,
+    children: [
+        {
+            index: true,
+            element: <Landing/>,
+        },{
+          path: "register",
+          element: <Register/>
+        },
+        {
+          path: "RegisterForm", // Asegúrate de usar camelCase si deseas que coincida exactamente con la URL
+          element: <RegisterForm/>
+        },
+        
+        {
+            path: "login",
+            element: <Login/>
+        },
+      ]},
+{
+  path: "/home",
+  element: <LayoutPrivate/>,
+  children: [
     {
       index: true,
       element: <Home/>,
     },
     {
-      path:"/card/:id",
+      path:"card/:id",
       element: <Card/>
     },
     {
-      path: "/process",
+      path: "process",
       element: <Process/>
     },
     {
-      path: "/tribe",
+      path: "tribe",
       element: <Tribe/>
     },
     {
-      path: "/challenge",
+      path: "challenge",
       element: <Challenge/>,
     },
     {
-      path: "/actualstate",
+      path: "actualstate",
       element: <ActualState/>,
     },
     {
-      path: "/targetstate",
+      path: "targetstate",
       element: <TargetState/>,
     },
     {
-      path: "/obstacle",
+      path: "obstacle",
       element: <Obstacle/>,
     },
     {
-      path: "/contrast",
+      path: "contrast",
       element: <ContrastMental/>
     },
     {
-      path: "/hypothesis",
+      path: "hypothesis",
       element: <Hypothesis/>
     },
     {
-      path: "/experiment",
+      path: "experiment",
       element: <Experiment/>
     },
     {
-      path: "/task",
+      path: "task",
       element: <Task/>
     },
     {
-      path: "/result",
+      path: "result",
       element: <Result/>
     },
     {
-      path:"/learning",
+      path:"learning",
       element: <Learning/>
     },
     {
-      path: "/edittribe/:id",
+      path: "edittribe/:id",
       element: <EditTribe/>
     },
     {
-      path: "/editactualstate/:id",
+      path: "editactualstate/:id",
       element: <EditActualState/>
     },
     {
-      path:"/editlearning/:id",
+      path:"editlearning/:id",
       element: <EditLearning/>
     },
     {
-      path: "/editobstacle/:id",
+      path: "editobstacle/:id",
       element: <EditObstacle/>
     },
     {
-      path:"/editresult/:id",
+      path:"editresult/:id",
       element: <EditResult/>
     },
     {
-      path:"/edittargetstate/:id",
+      path:"edittargetstate/:id",
       element: <EditTargetState/>
     },
     {
-      path:"/edittask/:id",
+      path:"edittask/:id",
       element: <EditTask/>
     },
     {
-      path: "/editchallenge/:id",
+      path: "editchallenge/:id",
       element: <EditChallenge/>
     },
     {
-      path: "/editexperiment/:id",
+      path: "editexperiment/:id",
       element: <EditExperiment/>
     },
     {
-      path: "/editcontrastmental/:id",
+      path: "editcontrastmental/:id",
       element: <EditMentalContrast/>
     },
     {
-      path: "/edithypothesis/:id",
+      path: "edithypothesis/:id",
       element: <EditHypothesis/>
     },
     {
-      path: "/editHypothesis/:id",
+      path: "editHypothesis/:id",
       element: <EditHypothesis/>
     },
     {
       path: "*",
       element: <NotFound/>
-    }
-  ],
+    },
+  ]
   }
   ]);
 
