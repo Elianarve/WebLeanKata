@@ -5,10 +5,14 @@ import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
 import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
+import EditTask from '../edit/EditTask';
 
 const TaskSelect = ({experiment}) => {
     const [tasks, setTask] = useState([]);
     const navigate = useNavigate();
+    const [editTask, setEdiTask] = useState(false);
+    const [editTaskId, setEditTaskId] = useState();
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchTask = async () => {
@@ -26,13 +30,14 @@ const TaskSelect = ({experiment}) => {
                     arrayTaskFiltered.push(...taskFiltered); 
                 })
                 setTask(arrayTaskFiltered);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching Challenges:', error);
             }
         };
     
         fetchTask ();
-    }, [experiment]);
+    }, [experiment, loading]);
 
   return (
     <div className='container-challenge' style={{ width: '100%' }}>
@@ -78,21 +83,24 @@ const TaskSelect = ({experiment}) => {
                                 <tr>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
-                                    <button className='button-edit' onClick={() => navigate(`/edittask/${task.id}`)}>
+                                    <button className='button-edit' onClick={() => {setEditTaskId(task.id), setEdiTask(true)}} >
                                         <img src={update} alt="logo-update" className='logo-edit' />
                                     </button>
                                     <button className='button-edit' onClick={() => deleteTask(task.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
                                 </td>
                                 </tr>
                                 <tr>
-                                    <td className='title-table'></td>
-                                    <td></td>
+                                    <td className='title-table-line'></td>
+                                    <td className='title-table-line'></td>
                                 </tr>
                             </tbody>
                          ))} 
                 </table>
             </div>
         </>
+    )}
+    {editTask &&  (
+        <EditTask editTaskId={editTaskId} setLoading={setLoading} setEdiTask={setEdiTask}/>
     )}
 </div>
 

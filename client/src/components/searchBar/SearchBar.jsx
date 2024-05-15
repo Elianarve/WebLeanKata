@@ -9,8 +9,9 @@ const SearchBar = ({ onSearch }) => {
   };
   return (
     <div>
-      <input placeholder="Estado actual y reto" value={searchTerm} onChange={handleSearch} className="search-bar"/>
+      <input className="search-bar" placeholder="Buscar por ID o Nombre..." value={searchTerm} onChange={handleSearch}/>
     </div>
   );
 };
+
 export default SearchBar;

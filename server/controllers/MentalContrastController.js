@@ -1,5 +1,4 @@
 import MentalContrast from '../models/MentalContrastModel.js';
-import TargetStateModel from "../models/TargetStateModel.js";
 
 export const getMentalContrast = async (request, response) =>{
     try {
@@ -21,10 +20,8 @@ export const addMentalContrast = async (req, res) => {
             count = numberId + 1;
         } 
         const formatted_Id = 'CM' + count.toString().padStart(3, '0');
-        const targetState = await TargetStateModel.findOne({order: [['id', 'DESC']]}); 
-        const mentalContrastId = targetState.id;
-      
-        const addContrastMental = await MentalContrast.create({  id: formatted_Id, target_state_id: mentalContrastId, ...req.body });
+ 
+        const addContrastMental = await MentalContrast.create({  id: formatted_Id, ...req.body });
         res.status(201).json(addContrastMental);
     }catch(error){
         console.log(error)

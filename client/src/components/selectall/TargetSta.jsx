@@ -6,33 +6,42 @@ import '../selectall/SelectAllChallenges.css';
 import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
 import MentalContras from './MentalContras';
-import Obstacle from './Obstacle';
+import Obstacle from '../forms/Obstacle';
+import EditTargetState from '../edit/EditTargetState';
+import TargetState from '../forms/TargetState';
+import CreateContrastMental from '../forms/CreateContrastMental';
+import ObstacleSelect from './ObstacleSelect';
 
 const TargetSta = ({ challengeId }) => {
-    const [targetStates, setTargetState] = useState([]);
     const navigate = useNavigate();
-
-
+    const [targetStates, setTargetState] = useState([]);
+    const [createTarget, setCreateTarget] = useState(false); 
+    const [editTargetState, setEditTargetState] = useState(false);
+    const [editContrast, setEditContrast] = useState(false);
+    const [editObstacle, setEditObstacle] = useState(false);
+    const [editTargetId, setEditTargetId] = useState();
+    const [loading, setLoading] = useState(false);
+  
     useEffect(() => {
         const fetchTargetState = async () => {
             try {
-
                 const targetStateData = await getTargetState(challengeId);
                 const targetStatesfiltered = targetStateData.filter(state => state.challenge_id === challengeId);
                 setTargetState(targetStatesfiltered);
+                setLoading(false);
             } catch (error) {
-                console.error('Error fetching Challenges:', error);
+                console.error('Error fetching:', error);
             }
         };
 
         fetchTargetState();
-    }, [challengeId]);
+    }, [challengeId, loading]);
 
     return (
         <div className='container-challenge' >
             {targetStates && (
                 <>
-                    <h3>ESTADO OBJETIVO <button className='button-add' onClick={() => navigate(`/targetstate`)}><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
+                    <h3>ESTADO OBJETIVO <button className='button-add' onClick={()=> setCreateTarget(true)} ><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
                     <div className="centered-table">
                         <table className='container-table'>
                                 {targetStates.map((targetState) => (
@@ -54,17 +63,17 @@ const TargetSta = ({ challengeId }) => {
                                             <td className='tr-table'>{targetState.date_goal}</td>
                                         </tr>
                                         <tr>
-                                            <td className='title-table'>RetoID</td>
+                                            <td className='title-table'>Reto ID</td>
                                             <td className='tr-table'>{targetState.challenge_id}</td>
                                         </tr>
                                         <tr>
                                             <td className='title-table'>Acciones</td>
                                             <td className='container-button'>
-                                                <button className='button-edit' onClick={() => navigate(`/edittargetstate/${targetState.id}`)}>
+                                                <button className='button-edit' onClick={() => {setEditTargetId(targetState.id), setEditTargetState(true)}} >
                                                     <img src={update} alt="logo-update" className='logo-edit' />
                                                 </button>
-                                                <button className='button-add-t' onClick={() => navigate(`/contrast`)}>Añadir CM</button>
-                                                <button className='button-add-t' onClick={() => navigate(`/obstacle`)}>Añadir Obstaculo</button>
+                                                <button className='button-add-t' onClick={() => {setEditTargetId(targetState.id), setEditContrast(true)}}>Añadir CM</button>
+                                                <button className='button-add-t' onClick={() => {setEditTargetId(targetState.id), setEditObstacle(true)}}>Añadir Obstaculo</button>
                                                 <button className='button-edit' onClick={() => deleteTargetState(targetState.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                             </td>
                                         </tr>
@@ -72,16 +81,27 @@ const TargetSta = ({ challengeId }) => {
                                     <td className='title-table'></td>
                                     <td></td>
                                     </tr>
+                                    <tr>
+                                    <td className='title-table-line'></td>
+                                    <td className='title-table-line'></td>
+                                </tr>
                                 </tbody>
                                 ))}
                         </table>
                     </div>
                 </>
             )}
-            <MentalContras targetState={targetStates}/>
-            <Obstacle targetState={targetStates} />
-        </div>
+            {editTargetState && (
+                <EditTargetState  editTargetId={editTargetId} setLoading={setLoading} setEditTargetState={setEditTargetState}/>
+            )}
+            {createTarget && <TargetState setLoading={setLoading} setCreateTarget={setCreateTarget} />}
 
+            {editContrast && <CreateContrastMental editTargetId={editTargetId} setLoading={setLoading} setEditContrast={setEditContrast} />}
+            <MentalContras targetState={targetStates}/>
+
+            {editObstacle && <Obstacle editTargetId={editTargetId} setLoading={setLoading} setEditObstacle={setEditObstacle}/>}
+            <ObstacleSelect targetState={targetStates}/>
+        </div>
     );
 }
 

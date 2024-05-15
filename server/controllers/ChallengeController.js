@@ -70,15 +70,14 @@ export const deleteChallenge = async (req, res) => {
 };
 
 export const searchChallenge = async (req, res) => {
-    const searchText = req.query.texto; // Accedemos al parámetro de consulta 'texto' en la URL
+    const searchText = req.query.texto; 
 
     try {
         const challenges = await ChallengeModel.findAll({
             where: {
                 [Op.or]: [
-                    { name: { [Op.iLike]: `%${searchText}%` } }, // Buscar por nombre
-                    { description: { [Op.iLike]: `%${searchText}%` } } // Buscar por descripción
-                    // Agrega más campos aquí si deseas buscar en otros campos
+                    { name: { [Op.iLike]: `%${searchText}%`}},
+                    { description: { [Op.iLike]: `%${searchText}%`}}
                 ]
             }
         });

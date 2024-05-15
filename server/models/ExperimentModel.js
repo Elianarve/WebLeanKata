@@ -8,7 +8,7 @@ const ExperimentModel = connection_db.define('experiment', {
         primaryKey: true,
         onDelete: 'CASCADE'
     },
-    hiphotesis_id: {
+    hyphotesis_id: {
         type: DataTypes.STRING,
         allowNull: false,
         references: {
@@ -65,6 +65,5 @@ const ExperimentModel = connection_db.define('experiment', {
     timestamps: false
 });
 
-// HypothesisModel.hasMany(ExperimentModel, { foreingKey: 'hiphotesis_id' });
 
 export default ExperimentModel;

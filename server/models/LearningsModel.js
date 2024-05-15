@@ -30,6 +30,6 @@ const LearningModel = connection_db.define('learning', {
     timestamps: false
 });
 
-// ResultsModel.hasOne(LearningModel, { foreignKey: 'results_id' });
+
 
 export default LearningModel;

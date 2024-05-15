@@ -1,3 +1,9 @@
+nav {
+  z-index: 1500;
+  position: fixed;
+  width: 100%;
+  padding: 0,5%;
+}
 .navbar {
   background-color: #ECF0F1;
   display: flex;
@@ -67,9 +73,9 @@ box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
   border: solid black 1px;
   width: 90%;
 }
-/* Estilos para el menú hamburguesa */
+
 .menu-toggle {
-  display: none; /* Ocultar por defecto en pantallas grandes */
+  display: none; 
   cursor: pointer;
 }
 
