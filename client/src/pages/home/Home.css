@@ -13,6 +13,7 @@ body {
 .home-content {
   display: flex;
   justify-content: space-between;
+  margin-top: 15vh;
   width: 80vw;
   padding: 20px 0 0 0;
 }

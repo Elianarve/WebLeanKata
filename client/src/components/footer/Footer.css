@@ -5,16 +5,12 @@
           z-index: 1500;
           position: fixed;
   }
-  
-  .transparentFooter{
-    margin-top: 70px;
-  }
-  
+    
   .blueFooter{
     background-color: #587175;
     color: #ECF0F1;
     margin: 0;
-    padding: 18px 0;
+    padding: 8px 0;
   }
   
   body{
