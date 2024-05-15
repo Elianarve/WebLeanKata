@@ -19,7 +19,7 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       const data = await loginUser(email, password);
-      Swal.fire("Bienvenid@ ${data.data.name} 👋");
+      Swal.fire(`Bienvenid@ ${data.data.name} 👋`);
       localStorage.setItem('authToken', data.token);
       setUser(data.data);
       setUserAuth(true);
