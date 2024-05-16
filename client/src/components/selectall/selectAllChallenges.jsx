@@ -3,24 +3,27 @@ import { getChallenge } from "../../services/challengeServices";
 import { useNavigate } from 'react-router-dom';
 import '../selectall/SelectAllChallenges.css';
 import update from '../../assets/img/Edit-File.svg';
-// import SelectAllActualState from '../selectall/SelectAllActualState';
+import EditChallenge from '../edit/EditChallenge';
 
 const SelectAllChallenges = ({ challengeId }) => {
     const [challenges, setChallenges] = useState([]);
     const navigate = useNavigate();
+    const [editable, setEditable] = useState(false);
+    const [loading, setLoading] = useState(false);  
 
     useEffect(() => {
         const fetchChallenges = async () => {
             try {
                 const challengesData = await getChallenge();
                 setChallenges(challengesData);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching Challenges:', error);
             }
         };
 
         fetchChallenges();
-    }, []);
+    }, [challengeId, loading]);
 
     const handleChange = (event) => {
         const selectedChallengeId = event.target.value;
@@ -49,6 +52,10 @@ const SelectAllChallenges = ({ challengeId }) => {
                         <td className='tr-table'>{selectedChallenge?.id}</td>
                     </tr>
                     <tr>
+                        <td className='title-table'>Nombre:</td>
+                        <td className='tr-table'>{selectedChallenge?.name}</td>
+                    </tr>
+                    <tr>
                         <td className='title-table'>Descripción:</td>
                         <td className='tr-table'>{selectedChallenge?.description}</td>
                     </tr>
@@ -67,13 +74,16 @@ const SelectAllChallenges = ({ challengeId }) => {
                     <tr>
                     <td className='title-table'>Acciones</td>
                     <td>
-                        <button className='button-edit' onClick={()=> navigate(`/editchallenge/${selectedChallenge.id}`)}><img src={update} alt="logo-update" className='logo-edit' /></button>
+                        <button className='button-edit' onClick={() => setEditable(true)}><img src={update} alt="logo-update" className='logo-edit' /></button>
                     </td>
                     </tr>
                 </tbody>
             </table>
         </div>
               </>
+            )}
+             {editable && (
+                <EditChallenge challengeId={selectedChallenge?.id} setLoading={setLoading} setEditable={setEditable}/>
             )}
         </div>
     );

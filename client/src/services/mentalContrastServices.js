@@ -51,8 +51,6 @@ export const deleteMentalContrast = async (id) => {
 
 export const postMentalContrast = async (data) => {
     const response = await axios.post(API_URL, data);
-    console.log(response);
-    alert("MentalContrast creado exitosamente");
     return response;
   };
 
@@ -62,7 +60,6 @@ export const postMentalContrast = async (data) => {
         const headers = getHeaders();
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
-            alert('MentalContrast actualizado correctamente');
             return response.data;
         }
     } catch (error) {

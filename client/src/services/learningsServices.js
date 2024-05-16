@@ -38,7 +38,8 @@ export const getOneLearning = async (id) => {
 export const deleteLearning = async (id) => {
         try {
             const response = await axios.delete(`${API_URL}/${id}`);
-            if (response.status === 200) {
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el contraste mental?"); 
+            if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }
         } catch (error) {
@@ -51,7 +52,6 @@ export const deleteLearning = async (id) => {
 export const postLearning = async (data) => {
     const response = await axios.post(API_URL, data);
     console.log(response);
-    alert("Learning creado exitosamente");
     return response;
   };
 
@@ -61,7 +61,6 @@ export const postLearning = async (data) => {
         const headers = getHeaders();
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
-            alert('Learning actualizado correctamente');
             return response.data;
         }
     } catch (error) {

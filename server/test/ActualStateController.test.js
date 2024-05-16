@@ -1,18 +1,19 @@
 import request from 'supertest';
-import connection_db from "../../database/connection_db.js";
-import ActualStateModel from "../../models/ActualStateModel.js";
-import { app } from '../../app.js'; // Ajustar según tu estructura de importaciones
-
-
+import connection_db from "../database/connection_db.js";
+import ActualStateModel from "../models/ActualStateModel.js";
+import { app } from '../app.js'; // Ajustar según tu estructura de importaciones
+import UsersModel from '../models/userModel.js'; // Asegúrate de ajustar la ruta según tu estructura de proyecto
+import { testUserAdmin, testNew, updatedTestNew } from './helpers/testHelpers.js';
+import { tokenSign } from '../utils/token.js';
 
 const api = request(app);
 
 describe('Testing CRUD in Actual State API', () => {
 
     beforeAll(async () => {
-        await connection_db.authenticate(); // Esto sincronizará todos los modelos con la base de datos
-      });
-
+        await connection_db.authenticate(); // Esto autenticará la conexión con la base de datos
+        await connection_db.sync({ force: true }); // Esto sincronizará todos los modelos con la base de datos
+    });
 
     describe('GET request from actual states API', () => {
         let response;
@@ -21,7 +22,7 @@ describe('Testing CRUD in Actual State API', () => {
             response = await api.get('/actualstates');
         });
 
-        test('Response body must be an array', async () => {
+        test('Response body must be an array', () => {
             expect(Array.isArray(response.body)).toBe(true);
         });
 
@@ -43,11 +44,11 @@ describe('Testing CRUD in Actual State API', () => {
             response = await api.post('/actualstates').send(newActualState);
         });
 
-        test('Response should return status 201', async () => {
+        test('Response should return status 201', () => {
             expect(response.status).toBe(201);
         });
 
-        test('Response body should contain the newly added actual state', async () => {
+        test('Response body should contain the newly added actual state', () => {
             expect(response.body).toHaveProperty('id');
             expect(response.body.description).toBe(newActualState.description);
             expect(response.body.date).toBe(newActualState.date);
@@ -92,12 +93,11 @@ describe('Testing CRUD in Actual State API', () => {
         });
     });
 
-    describe('deleteActualState', () => {
+    describe('DELETE request to remove an actual state', () => {
         let response;
 
         beforeEach(async () => {
             const newActualState = await ActualStateModel.create({
-                id: '1',
                 description: 'Descripción del estado actual',
                 date: new Date()
             });
@@ -105,22 +105,18 @@ describe('Testing CRUD in Actual State API', () => {
             response = await api.delete(`/actualstates/${newActualState.id}`);
         });
 
-        test('debería eliminar un estado actual existente y devolver un mensaje de éxito', async () => {
-            expect(response.status).toBe(201); // Aquí se espera un status 201, lo cual es incorrecto
-            expect(response.body).toEqual({ message: 'Challenge deleted' });
+        test('should delete an existing actual state and return a success message', async () => {
+            expect(response.status).toBe(200); // El status debería ser 200 para eliminación exitosa
+            expect(response.body).toEqual({ message: 'Actual state deleted' });
         });
 
-        test('debería devolver un error 500 si hay un problema al eliminar el estado actual', async () => {
+        test('should return a 500 error if there is a problem deleting the actual state', async () => {
             // Puedes simular un problema aquí y ajustar el test según sea necesario
         });
-
- 
     });
 
-    afterAll( () =>{
-        connection_db.close();
-        // server.close();
+    afterAll(async () => {
+        await connection_db.close();
+        // server.close(); // Esto está comentado ya que no es necesario cerrar el servidor explícitamente en la mayoría de los casos
     });
 });
-
-

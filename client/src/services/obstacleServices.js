@@ -15,8 +15,9 @@ const getHeaders = () => {
 export const getObstacle = async () => {
     try {
         const headers = getHeaders();
-        const response = await axios.get(API_URL);
-        return response.data;
+        const response = await axios.get(`${API_URL}`);
+        const data = await response.data;
+        return data;
     } catch (error) {
         console.error("Error al obtener los Obstacle:", error);
         throw error;
@@ -35,15 +36,16 @@ export const getOneObstacle = async (id) => {
 };
 
 export const deleteObstacle = async (id) => {
-    try {
-        const response = await axios.delete(`${API_URL}/${id}`);
-        if (response.status === 200) {
-            return { success: true, message: 'Eliminado correctamente' };
+        try {
+            const response = await axios.delete(`${API_URL}/${id}`);
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el contraste mental?"); 
+            if (confirmDelete && response.status === 200) {
+                alert('Eliminado correctamente');
+            }
+        } catch (error) {
+            console.error("Error al eliminar el Obstacle ", error);
+            throw error;
         }
-    } catch (error) {
-        console.error("Error al eliminar el Obstacle ", error);
-        throw error;
-    }
 };
 
 export const postObstacle = async (data) => {
@@ -62,7 +64,7 @@ export const updateObstacle = async (id, data) => {
         const headers = getHeaders();
         const response = await axios.put(`${API_URL}/${id}`, data);
         if (response.status === 200) {
-            return { success: true, message: 'Obstacle actualizado correctamente', data: response.data };
+            return response.data;
         }
     } catch (error) {
         console.error("Error al actualizar el Obstacle:", error);
@@ -82,3 +84,15 @@ export const uploadImage = async (imageData) => {
         throw new Error("Error al cargar la imagen en Cloudinary: " + error.message);
     }
 };
+
+export const updateImage = async (imageData) => {
+    try {
+        const response = await axios.put(
+            "http://api.cloudinary.com/v1_1/dpkll45y2/image/upload",
+            imageData
+        );
+        return response.data;
+    } catch (error) {
+        throw new Error("Error al cargar la imagen en Cloudinary: " + error.message);
+    }
+}

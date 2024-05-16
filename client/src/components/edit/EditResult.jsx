@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getOneResult, updateResult, deleteResult } from '../../services/resultServices';
-import { useNavigate, useParams } from 'react-router-dom';
+import { getOneResult, updateResult } from '../../services/resultServices';
 import '../forms/css/Forms.css';
 
-
-const EditResult = () => {
-  const { id } = useParams();
-  const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
+const EditResult = ({editResultId, setLoading, setEditResult}) => {
+  const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [ resultData, setResultData] = useState({});
-  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getOneResult(id);
+      const response = await getOneResult(editResultId);
       const resultData = response.data;
       setResultData(resultData);
       setValue('description', resultData.description);
@@ -26,13 +22,14 @@ const EditResult = () => {
     };
 
     fetchData();
-  }, [id, setValue]);
+  }, [editResultId, setValue]);
 
   const onSubmit = async (resultData) => {
     try {
-      await updateResult(id, resultData);
+      await updateResult(editResultId, resultData);
       alert('¡Los datos del elemento han sido actualizados correctamente!');
-      reset();
+      setLoading(true);
+      setEditResult(false);
     } catch (error) {
       console.error('Error al actualizar el elemento:', error);
       alert('Error al actualizar el elemento. Por favor, intenta nuevamente.');
@@ -44,6 +41,7 @@ const EditResult = () => {
       <h2>Resultado: </h2>
 
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+      <h2>Editar Resultado: </h2>
       <div className='items'>
           <label className='label-item'>Descripción: </label>
           <input type="text" name='description' defaultValue={ resultData.description } {...register('description', { required: true })} />
@@ -79,8 +77,8 @@ const EditResult = () => {
           <input type="text" name='next_step' defaultValue={ resultData.next_step } {...register('next_step', { required: true })} />
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
         </div>
-        <button onClick={() => deleteResult(id).then(() => navigate("/home")) }>Eliminar</button>
         <button type="submit">Editar</button>
+        <button onClick={() => setEditResult(false)}>Cerrar</button>
       </form>
       </div>
   );

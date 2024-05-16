@@ -1,19 +1,17 @@
 import  { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getOneLearning, updateLearning, deleteLearning } from '../../services/learningsServices';
-import { useParams, useNavigate } from 'react-router-dom';
+import { getOneLearning, updateLearning } from '../../services/learningsServices';
 import '../forms/css/Forms.css';
 
 
-const EditLearning = () => {
-  const { id } = useParams();
-  const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
+const EditLearning = ({editLearningId, setLoading, setEditLearning}) => {
+  const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [ learningData, setLearningData] = useState({});
-  const navigate = useNavigate();
+
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getOneLearning(id);
+      const response = await getOneLearning(editLearningId);
       const learningData = response.data;
       setLearningData(learningData);
       setValue('description', learningData.description);
@@ -21,13 +19,14 @@ const EditLearning = () => {
     };
 
     fetchData();
-  }, [id, setValue]);
+  }, [editLearningId, setValue]);
 
   const onSubmit = async (learningData) => {
     try {
-      await updateLearning(id, learningData);
+      await updateLearning(editLearningId, learningData);
       alert('¡Los datos del elemento han sido actualizados correctamente!');
-      reset();
+      setLoading(true);
+      setEditLearning(false);
     } catch (error) {
       console.error('Error al actualizar el elemento:', error);
       alert('Error al actualizar el elemento. Por favor, intenta nuevamente.');
@@ -50,8 +49,8 @@ const EditLearning = () => {
           {/* {errors.speeds?.type === 'pattern' && <p className="error-message">La velocidad debe ser un valor numérico</p>}
           {errors.speeds?.type === 'required' && <p className="error-message">El campo velocidades es requerido</p>} */}
         </div>
-        <button onClick={() => deleteLearning(id).then(() => navigate("/home")) }>Eliminar</button>
         <input type="submit" value="Editar" />
+        <button onClick={() => setEditLearning(false)}>Cerrar</button>
       </form>
       </div>
   );

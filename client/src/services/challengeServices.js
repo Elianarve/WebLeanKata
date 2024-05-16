@@ -52,8 +52,6 @@ export const deleteChallenge = async (id) => {
 
 export const postChallenge = async (data) => {
     const response = await axios.post(API_URL_CHALLENGE, data);
-    console.log(response);
-    alert("Reto creado exitosamente");
     return response;
   };
 
@@ -63,7 +61,6 @@ export const postChallenge = async (data) => {
         const headers = getHeaders();
         const response = await axios.put(`${API_URL_CHALLENGE}/${id}`,data);
         if (response.status === 200) {
-            alert('Reto actualizado correctamente');
             return response.data;
         }
     } catch (error) {

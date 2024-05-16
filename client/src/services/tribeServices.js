@@ -49,7 +49,6 @@ export const deleteTribe = async (id) => {
 
 export const postTribe = async (data) => {
     const response = await axios.post(API_URL_AE, data);
-    alert("Tribu creada exitosamente")
     return response;
   }
 
@@ -59,7 +58,6 @@ export const postTribe = async (data) => {
         const headers = getHeaders();
         const response = await axios.put(`${API_URL_AE}/${id}`,data);
         if (response.status === 200) {
-            alert('Tribu actualizada correctamente');
             return response.data;
         }
     } catch (error) {

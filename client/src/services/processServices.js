@@ -12,6 +12,16 @@ const getHeaders = () => {
 };
 
 
+const getHeaders = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        throw new Error('Token no encontrado en el almacenamiento local');
+    }
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+};
+
 export const getProcess = async () => {
     try {
         const headers = getHeaders();
@@ -49,6 +59,7 @@ export const deleteProcess = async (id) => {
 };
 
 export const postProcess = async (data) => {
+    const headers = getHeaders();
     const response = await axios.post(API_URL_AE, data);
     return response;
   }
@@ -66,4 +77,3 @@ export const postProcess = async (data) => {
         throw error;
     }
 };
-

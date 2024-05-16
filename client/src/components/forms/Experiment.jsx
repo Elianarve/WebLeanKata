@@ -1,12 +1,12 @@
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { postExperiment, uploadImage } from '../../services/experimentServices';
+import { postExperiment, uploadImage } from '../../services/experimentServices'
 import { useState } from 'react';
+import './css/Forms.css';
 
-const Experiment = () => {
+const Experiment = ({editHypothesisId, setLoading, setEditExperiment}) => {
   const { handleSubmit, register, formState: { errors }, watch } = useForm();
-  const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState('');
+
   const onSubmit = async (data) => {
     try {
       if (data.image) {
@@ -18,9 +18,11 @@ const Experiment = () => {
         setImageUrl(responseImage.secure_url);
         data = { ...data, image: responseImage.secure_url };
       }
-      const response = await postExperiment(data);
+      const dataE = {...data, hyphotesis_id: editHypothesisId};
+      const response = await postExperiment(dataE);
       console.log("Experimento creado:", response.data);
-      navigate('/task');
+      setLoading(true);
+      setEditExperiment(false);
     } catch (error) {
       console.error("Error al crear el experimento:", error);
     }
@@ -34,25 +36,28 @@ const Experiment = () => {
     return hypothesisDate < startDate || "La fecha de planteamiento de la hipótesis debe ser anterior a la fecha de inicio";
   };
 
+  const closeForm = () => {
+    setEditExperiment(false);
+  };
+
   return (
     <div className="form-container">
-      <div className="form-center">
+    <h2>Crear Experimento</h2>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Experimento: </h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
         <textarea type="text" {...register('description', { required: true })} />
         {errors.description && <p className="error-message">La descripción es requerida</p>}
       </div>
       <div className='items'>
-        <label className='label-item'>Fecha de planteamiento de la hipótesis:</label>
-        <input type="date" {...register('hypothesis_date', { required: true })} />
-        {errors.hypothesis_date && <p className="error-message">La fecha de planteamiento de la hipótesis es requerida</p>}
-      </div>
-      <div className='items'>
         <label className='label-item'>Fecha de inicio:</label>
         <input type="date" {...register('start_date', { required: true, validate: value => validateHypothesisDate(value, watch('hypothesis_date')) })} />
         {errors.start_date && <p className="error-message">{errors.start_date.message}</p>}
+      </div>
+      <div className='items'>
+        <label className='label-item'>Fecha de planteamiento de la hipótesis:</label>
+        <input type="date" {...register('hypothesis_date', { required: true })} />
+        {errors.hypothesis_date && <p className="error-message">La fecha de planteamiento de la hipótesis es requerida</p>}
       </div>
       <div className='items'>
         <label className='label-item'>Fecha de fin:</label>
@@ -100,8 +105,8 @@ const Experiment = () => {
         {errors.image && <p className="error-message">Por favor, adjunta una imagen</p>}
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
+     <button onClick={closeForm}>Cerrar</button>
     </form>
-    </div>
     </div>
   )
 }

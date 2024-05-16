@@ -16,7 +16,6 @@ export const addTribe = async (req, res) => {
     try {
     
         const idTribe = await TribeModel.findOne({order: [['id', 'DESC']]});
-        console.log(idTribe)
         let count = 1;
         if (idTribe) {
             const numberId = parseInt(idTribe.id.slice(2));
@@ -24,7 +23,6 @@ export const addTribe = async (req, res) => {
         }
         let processId;
         const formatted_Id = 'TR' + count.toString().padStart(3, '0');    
-        console.log(formatted_Id) 
         const process = await ProcessModel.findOne({order: [['id', 'DESC']]});   
         processId = process.id;
         
@@ -49,7 +47,6 @@ export const updateTribe = async (req, res) => {
 
 export const getOneTribe = async (req, res) =>{
     const tribeId = req.params.id;
-    console.log(tribeId)
     try {
         const tribe = await TribeModel.findOne({ where: {id: tribeId }});
         res.status(200).json(tribe);

@@ -1,18 +1,15 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getOneHypothesis, updateHypothesis, deleteHypothesis } from "../../services/hypothesisServices";
+import { getOneHypothesis, updateHypothesis} from "../../services/hypothesisServices";
 import { useForm } from "react-hook-form";
-// import '../forms/css/Forms.css';
+import '../forms/css/Forms.css';
 
-const EditHypothesis = () => {
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const {register, formState: {errors}, handleSubmit, reset, setValue} = useForm();
+const EditHypothesis = ({editHypothesisId, setLoading, setEditHypothesis }) => {
+    const {register, formState: {errors}, handleSubmit, setValue} = useForm();
     const [hypothesisData, setHypothesisData] = useState({});
 
     useEffect(() => {
         const fetchHypothesis = async () => {
-                const reponse = await getOneHypothesis(id);
+                const reponse = await getOneHypothesis(editHypothesisId);
                 const hypothesisData = reponse.data;
                 setHypothesisData(hypothesisData);
                 setValue("description", hypothesisData.description);
@@ -21,14 +18,14 @@ const EditHypothesis = () => {
 
         }
         fetchHypothesis();
-    }, [id, setValue]);
+    }, [editHypothesisId, setValue]);
 
     const onSubmit = async (hypothesisData) => {
         try {
-            await updateHypothesis(id, hypothesisData);
+            await updateHypothesis(editHypothesisId, hypothesisData);
             alert("¡Los datos de la hipótesis han sido actualizados correctamente!");
-            navigate("/hypothesis");
-            reset();
+            setLoading(true);
+            setEditHypothesis(false);
         }
         catch (error) {
             console.error("Error al actualizar la hipótesis:", error);
@@ -54,14 +51,11 @@ const EditHypothesis = () => {
             </div>
             <div className='items'>
                 <label className='label-item'>Estado de la hipótesis</label>
-                <select name="state_hypothesis" defaultValue={hypothesisData.state_hypothesis} {...register('state_hypothesis', { required: true })}>
-                    <option value="true">Activa</option>
-                    <option value="false">Inactiva</option>
-                </select>
+                <input name="state_hypothesis" defaultValue={hypothesisData.state_hypothesis} {...register('state_hypothesis', { required: true })}/>
                 {errors.state_hypothesis && <p className="error-message">El estado de la hipótesis es requerido</p>}
             </div>
-            <button onClick={() => deleteHypothesis(id).then(() => navigate("/home")) }>Eliminar</button>
-            <button type="submit" className='button'>Guardar</button>
+            <button type="submit" className='button'>Editar</button>
+            <button onClick={() => setEditHypothesis(false)}>Cerrar</button>
         </form>
         </div>
     );

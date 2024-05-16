@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './Calendar.css';
+import '../calendar/Calendar.css';
 
 const Calendar = ({ onDateSelect, challenges }) => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -39,9 +39,8 @@ const Calendar = ({ onDateSelect, challenges }) => {
 
   return (
       <>
-
         <div className="calendar-header" onClick={toggleCalendar}>
-          <span>{selectedDate ? selectedDate.toDateString() : 'Selecciona una fecha'}</span>
+          <span className='calendar-container'>{selectedDate ? selectedDate.toDateString() : 'Selecciona una fecha'}</span>
           <i className={`arrow ${isCalendarOpen ? 'up' : 'down'}`}></i>
         </div>
         

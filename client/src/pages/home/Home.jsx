@@ -18,7 +18,7 @@ const Home = () => {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const navigate = useNavigate();
   const calendarRef = useRef(null); 
-  const { user, setUser  } = useUserContext();
+
   const socket = io();
     socket.connect();
 
@@ -59,7 +59,7 @@ const Home = () => {
   };
 
   const toggleCalendar = () => {
-    setIsCalendarOpen(!isCalendarOpen); // Alternar entre abierto y cerrado
+    setIsCalendarOpen(!isCalendarOpen);
   };
 
   const handleOutsideClick = (event) => {
@@ -84,44 +84,48 @@ const Home = () => {
     };
   }, []);
 
-  return (
-    <div className="home-container">
-      <div className="home-content">
-      <div className="search-container">
-        <SearchBar className="search-bar" onSearch={handleSearch} />
-        <div className="home-calendar">
-        <button onClick={toggleCalendar} className='calendar'>Calendario</button>
-        {isCalendarOpen && (
-        <div ref={calendarRef} className="calendar-wrapper">
-        <Calendar onChange={handleDateChange} value={selectedDate}/>
-        </div>
-        )}
-        </div>
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
+return (
+  <div className="home-container">
+    <div className="home-content">
+    <div className="search-container">
+      <SearchBar className="search-bar" onSearch={handleSearch} />
+      <div className="home-calendar">
+      <button onClick={toggleCalendar} className='calendar'>Calendario</button>
+      {isCalendarOpen && (
+      <div ref={calendarRef} className="calendar-wrapper">
+      <Calendar onChange={handleDateChange} value={selectedDate}/>
       </div>
-        {/* <h1>¡Explora nuestra tabla de retos y comienza tu viaje hacia la mejora continua con LeanKata!</h1> */}
-        {/* <h1>¡Explora las Tablas de Desafíos de LeanKata!</h1> */}
-        <h1>Descubre la tabla de retos: ¡tu camino hacia la mejora continua con LeanKata!</h1>
-      </div>
-      <div className="titles-container">
-        <h3>
-          <h3>Reto</h3>
-          <h3>Nombre</h3>
-          <h3>Descripción</h3>
-        </h3>
-      </div>
-      <div className="gallery-items">
-            {filteredChallenges.map((challenge) => (
-              <div key={challenge.id} className="challenge-wrapper">
-                <div className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
-                  <p className='project-text'>{challenge.id}</p>
-                  <p className='project-text'>{challenge.name}</p>
-                  <p className="table-cell custom-title" title={challenge.actual_state}>{challenge.actual_state}</p>
-                </div>
-              </div>
-            ))}
+      )}
       </div>
     </div>
-  );
+      <h1>Descubre la tabla de retos: ¡Tu camino hacia la mejora continua con LeanKata!</h1>
+    </div>
+
+    <div className="gallery-items">
+    <div className="titles-container">
+        <h3>Reto</h3>
+        <h3>Nombre</h3>
+        <h3>Descripción</h3>
+    </div>
+          {filteredChallenges.map((challenge) => (
+            <div key={challenge.id} className="challenge-wrapper">
+              <div className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
+                <p className='project-text'>{challenge.id}</p>
+                <p className='project-text'>{challenge.name}</p>
+                <p className="table-cell custom-title" title={challenge.actual_state}>{challenge.actual_state}</p>
+              </div>
+            </div>
+          ))}
+    </div>
+  </div>
+);
 };
 
 export default Home;

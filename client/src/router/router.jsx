@@ -6,7 +6,7 @@ import Challenge from '../components/forms/Challenge';
 import ActualState from "../components/forms/ActualState";
 import TargetState from "../components/forms/TargetState";
 import Obstacle from "../components/forms/Obstacle";
-import ContrastMental from "../components/forms/ContrastMental";
+import ContrastMental from "../components/forms/CreateContrastMental";
 import Hypothesis from "../components/forms/Hypothesis";
 import Experiment from "../components/forms/Experiment";
 import Task from '../components/forms/Task';

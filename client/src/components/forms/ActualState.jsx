@@ -16,7 +16,7 @@ const ActualState = () => {
 
   const onSubmit = (data) => { 
     postActualState(data).then(() => {
-        navigate(`/reto`); 
+        navigate('/challenge'); 
     })
     .catch((error) => {
       console.error("Error al publicar:", error);
@@ -26,11 +26,11 @@ const ActualState = () => {
   return (
     <div className="form-container">
       <div className="form-center">
-      <h2>ESTADO ACTUAL: </h2>       
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+      <h2>ESTADO ACTUAL: </h2>       
       <div className='items'>
-        <label className='label-item'>Descripción: </label>
-        <textarea type="text" {...register('description', {required: 'La descripción es requerida'})}/>
+        <label className='label-item'>Descripción:</label>
+        <textarea type="text" {...register('description', { required: 'La descripción es requerida'})} />
         {errors.description && <p className="error-message">{errors.description.message}</p>} 
       </div>
       <div className='items'>

@@ -17,20 +17,23 @@ const RegisterForm = () => {
   const navigate = useNavigate();
   const termsId = useId();
   const { setUserAuth, setUser } = useUserContext();
+  const { setUserAuth, setUser } = useUserContext();
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('El nombre es requerido.').min(2, 'El nombre debe tener al menos dos caracteres.'),
     email: Yup.string().email('El email debe ser válido.').required('El email es requerido.'),
     password: Yup.string().required('La contraseña es requerida').min(8, 'La contraseña debe tener al menos 8 caracteres')
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/,
+        /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[!@#$%^&*(),.?":{}|<>]).{8,}$/,
         'La contraseña debe contener al menos una minúscula, una mayúscula, un número y un caracter especial (!@#$%^&*(),.?":{}|<>) y debe tener al menos 8 caracteres.'
       ),
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.preventDefault();
     try {
+      await validationSchema.validate({ name, email, password }, { abortEarly: false });
       await validationSchema.validate({ name, email, password }, { abortEarly: false });
       const data = await registerUser(name, email, password);
       Swal.fire(`Usuario registrado correctamente, bienvenid@ ${data.data.name} 👋`);
@@ -39,7 +42,9 @@ const RegisterForm = () => {
       setUserAuth(true);
       navigate('/home');
     } catch (error) {
+    } catch (error) {
       console.error('Error:', error);
+
 
       error.inner.forEach((err) => {
         if (err.path === 'name') {

@@ -1,12 +1,10 @@
-import { useNavigate } from 'react-router-dom';
 import { postObstacle, uploadImage } from '../../services/obstacleServices';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import './css/Forms.css';
 
-const Obstacle = () => {
+const Obstacle = ({editTargetId, setLoading, setEditObstacle }) => {
   const { handleSubmit, register, formState: { errors } } = useForm();
-  const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState('');
 
   const onSubmit = async (data) => {
@@ -18,14 +16,20 @@ const Obstacle = () => {
 
         const responseImage = await uploadImage(imageData);
         setImageUrl(responseImage.secure_url);
-        data = { ...data, image: responseImage.secure_url };
+        data = { ...data, image: responseImage.secure_url};
       }
-      const response = await postObstacle(data);
-      console.log("Hipotesis creada:", response.data);
-      navigate(`/card/${response.data.id}`);
+      const dataF = {...data, target_state_id: editTargetId};
+      const response = await postObstacle(dataF);
+      console.log("Obstaculo creado:", response.data);
+      setLoading(true);
+      setEditObstacle(false);
     } catch (error) {
-      console.error("Error creating obstacle:", error);
+      console.error("Error:", error);
     }
+  };
+
+  const closeForm = () => {
+    setEditObstacle(false);
   };
 
   return (
@@ -40,10 +44,10 @@ const Obstacle = () => {
       </div>
       <div className='items'>
         <label className='label-item'>Archivo:</label>
-        <input type="file" {...register('image', { required: false })} />
-        {errors.image && <p className="error-message">Por favor adjunta un archivo</p>}
+        <input type="file" {...register('image')} />
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
+     <button onClick={closeForm}>Cerrar</button>
     </form>
     </div>
     </div>

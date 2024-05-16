@@ -51,8 +51,6 @@ export const deleteTargetState = async (id) => {
 
 export const postTargetState = async (data) => {
     const response = await axios.post(API_URL, data);
-    console.log(response);
-    alert("TargetState creado exitosamente");
     return response;
   };
 
@@ -62,7 +60,6 @@ export const postTargetState = async (data) => {
         const headers = getHeaders();
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
-            alert('TargetState actualizado correctamente');
             return response.data;
         }
     } catch (error) {
