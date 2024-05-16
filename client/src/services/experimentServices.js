@@ -41,7 +41,6 @@ export const postExperiment = async (data) => {
     return response;
   }
 
-
   export const updateExperiment = async (id, data) => {
     try {
         const response = await axios.put(`${API_URL}/${id}`,data);
@@ -49,10 +48,11 @@ export const postExperiment = async (data) => {
             return response.data;
         }
     } catch (error) {
-        console.error("Error al actualizar el Experiment:", error);
+        console.error("Error al actualizar el Result:", error);
         throw error;
     }
 };
+
 
 export const uploadImage = async (imageData) => {
     try {

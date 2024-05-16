@@ -1,8 +1,9 @@
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { postActualState } from '../../services/actualStateServices';
-import { useForm } from 'react-hook-form';
 import './css/Forms.css';
-import { useState, useEffect } from 'react';
 
 const ActualState = () => {
   const { handleSubmit, register, formState: { errors, isDirty }, setValue } = useForm();
@@ -29,7 +30,7 @@ const ActualState = () => {
       <h2>ESTADO ACTUAL: </h2>       
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <div className='items'>
-        <label className='label-item'>Descripción: </label>
+        <label className='label-item'>Descripción:</label>
         <textarea type="text" {...register('description', { required: 'La descripción es requerida'})} />
         {errors.description && <p className="error-message">{errors.description.message}</p>} 
       </div>

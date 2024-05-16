@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { postHypothesis } from '../../services/hypothesisServices';
+import { postHypothesis } from '../../services/hypothesisServices'
+import './css/Forms.css';
 
 const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
   const { handleSubmit, register, formState: { errors } } = useForm();
@@ -14,8 +15,7 @@ const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
       setEditHypothesis(false);
     } catch (error) {
       console.error("Error al crear la hipotesis:", error);
-    }
-  };
+    }};
 
   const closeForm = () => {
     setEditHypothesis(false);
@@ -23,9 +23,8 @@ const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
 
   return (
     <div className="form-container">
-      <div className="form-center">
+            <h2>Añadir Hipótesis: </h2>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Añadir Hipótesis: </h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
         <textarea type="text" {...register('description', { required: true })} />
@@ -43,9 +42,7 @@ const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
      <button onClick={closeForm}>Cerrar</button>
-
     </form>
-    </div>
     </div>
   )}
 

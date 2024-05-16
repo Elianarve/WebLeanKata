@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
-import { postExperiment, uploadImage } from '../../services/experimentServices';
+import { postExperiment, uploadImage } from '../../services/experimentServices'
 import { useState } from 'react';
+import './css/Forms.css';
 
 const Experiment = ({editHypothesisId, setLoading, setEditExperiment}) => {
   const { handleSubmit, register, formState: { errors }, watch } = useForm();
@@ -39,12 +40,10 @@ const Experiment = ({editHypothesisId, setLoading, setEditExperiment}) => {
     setEditExperiment(false);
   };
 
-
   return (
     <div className="form-container">
-      <div className="form-center">
+    <h2>Crear Experimento</h2>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Crear Experimento</h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
         <textarea type="text" {...register('description', { required: true })} />
@@ -108,7 +107,6 @@ const Experiment = ({editHypothesisId, setLoading, setEditExperiment}) => {
       <button type="submit" className='button-forms'>Enviar</button>
      <button onClick={closeForm}>Cerrar</button>
     </form>
-    </div>
     </div>
   )
 }

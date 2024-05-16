@@ -36,6 +36,9 @@ const EditTask = ({editTaskId, setLoading, setEdiTask}) => {
   };
         
   return (
+    <div className="form-container">
+    <h2>Tarea: </h2>
+
          <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
     <h2>Editar Tarea:</h2>
       <div className='items'>
@@ -72,6 +75,7 @@ const EditTask = ({editTaskId, setLoading, setEdiTask}) => {
      <button onClick={() => setEdiTask(false)}>Cerrar</button>
 
          </form>
+         </div>
      );
 }   
    

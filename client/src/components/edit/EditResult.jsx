@@ -37,6 +37,9 @@ const EditResult = ({editResultId, setLoading, setEditResult}) => {
   };
         
   return (
+    <div className="form-container">
+      <h2>Resultado: </h2>
+
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>Editar Resultado: </h2>
       <div className='items'>
@@ -77,6 +80,7 @@ const EditResult = ({editResultId, setLoading, setEditResult}) => {
         <button type="submit">Editar</button>
         <button onClick={() => setEditResult(false)}>Cerrar</button>
       </form>
+      </div>
   );
 }
 

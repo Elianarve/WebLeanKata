@@ -82,6 +82,13 @@ const Home = () => {
     };
   }, []);
 
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
 return (
   <div className="home-container">
     <div className="home-content">

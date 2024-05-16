@@ -54,4 +54,3 @@ export const postChallenge = async (data) => {
         throw error;
     }
 };
-

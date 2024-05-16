@@ -5,8 +5,7 @@ import './css/Forms.css';
 
 const Tribe = () => {
   const { handleSubmit, register, formState: { errors } } = useForm();
-  const navigate = useNavigate();
- 
+  const navigate = useNavigate(); 
   const onSubmit = (data) => { 
     postTribe(data).then(() => {
         navigate('/actualstate'); 

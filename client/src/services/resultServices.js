@@ -55,4 +55,3 @@ export const postResult = async (data) => {
         throw error;
     }
 };
-

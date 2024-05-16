@@ -6,7 +6,6 @@ import './css/Forms.css';
 const Process = () => {
   const { handleSubmit, register, formState: { errors } } = useForm();
   const navigate = useNavigate();
- 
   const onSubmit = (data) => { 
     postProcess(data).then(() => {
         navigate('/tribe'); 

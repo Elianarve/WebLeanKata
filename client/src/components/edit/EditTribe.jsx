@@ -33,6 +33,9 @@ const EditTribe = ({tribuId, setLoading, setEditable}) => {
   };
         
   return (
+    <div className="form-container">
+        <h2>Editar proceso</h2>
+
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
         <h2>Editar Tribu</h2>
         <div className='items'>
@@ -48,6 +51,7 @@ const EditTribe = ({tribuId, setLoading, setEditable}) => {
         <input type="submit" value="Editar" />
         <button onClick={() => setEditable(false)}>Cerrar</button>
       </form>
+      </div>
   );
 }
 

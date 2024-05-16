@@ -1,9 +1,14 @@
+nav {
+  z-index: 1500;
+  position: fixed;
+  width: 100%;
+  padding: 0,5%;
+}
 .navbar {
   background-color: #ECF0F1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1%;
  }
 
 .logo img {

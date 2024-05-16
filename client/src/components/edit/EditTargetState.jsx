@@ -34,6 +34,9 @@ const EditTargetState = ({editTargetId, setLoading, setEditTargetState}) => {
   };
         
   return (
+    <div className="form-container">
+    <h2>Estado objetivo: </h2>
+
          <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
     <h2>Editar Estado objetivo: </h2>
      <div className='items'>
@@ -55,6 +58,7 @@ const EditTargetState = ({editTargetId, setLoading, setEditTargetState}) => {
      <button onClick={() => setEditTargetState(false)}>Cerrar</button>
 
          </form>
+         </div>
      );
 }   
    
