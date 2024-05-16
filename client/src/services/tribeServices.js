@@ -1,9 +1,19 @@
 import axios from "axios";
 
 const API_URL_AE = 'http://localhost:8000/tribe';
+const getHeaders = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        throw new Error('Token no encontrado en el almacenamiento local');
+    }
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+};
 
 export const getTribe = async () => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL_AE}`);
         const data = await response.data
         return data;
@@ -15,6 +25,7 @@ export const getTribe = async () => {
 
 export const getOneTribe = async (id) => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL_AE}/${id}`);
         return response;
     } catch (error) {
@@ -45,6 +56,7 @@ export const postTribe = async (data) => {
 
   export const updateTribe = async (id, data) => {
     try {
+        const headers = getHeaders();
         const response = await axios.put(`${API_URL_AE}/${id}`,data);
         if (response.status === 200) {
             alert('Tribu actualizada correctamente');

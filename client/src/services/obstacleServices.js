@@ -1,9 +1,20 @@
 import axios from "axios";
 
 const API_URL = 'http://localhost:8000/obstacle';
+const getHeaders = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        throw new Error('Token no encontrado en el almacenamiento local');
+    }
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+};
+
 
 export const getObstacle = async () => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(API_URL);
         return response.data;
     } catch (error) {
@@ -14,6 +25,7 @@ export const getObstacle = async () => {
 
 export const getOneObstacle = async (id) => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL}/${id}`);
         return response.data;
     } catch (error) {
@@ -36,6 +48,7 @@ export const deleteObstacle = async (id) => {
 
 export const postObstacle = async (data) => {
     try {
+        const headers = getHeaders();
         const response = await axios.post(API_URL, data);
         return { success: true, message: 'Obstacle creado exitosamente', data: response.data };
     } catch (error) {
@@ -46,6 +59,7 @@ export const postObstacle = async (data) => {
 
 export const updateObstacle = async (id, data) => {
     try {
+        const headers = getHeaders();
         const response = await axios.put(`${API_URL}/${id}`, data);
         if (response.status === 200) {
             return { success: true, message: 'Obstacle actualizado correctamente', data: response.data };
@@ -58,6 +72,7 @@ export const updateObstacle = async (id, data) => {
 
 export const uploadImage = async (imageData) => {
     try {
+        const headers = getHeaders();
         const response = await axios.post(
             "http://api.cloudinary.com/v1_1/dpkll45y2/image/upload",
             imageData

@@ -1,9 +1,20 @@
 import axios from "axios";
 
 const API_URL = 'http://localhost:8000/results';
+const getHeaders = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        throw new Error('Token no encontrado en el almacenamiento local');
+    }
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+};
+
 
 export const getResult = async () => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL}`);
         const data = await response.data
         return data;
@@ -15,6 +26,7 @@ export const getResult = async () => {
 
 export const getOneResult = async (id) => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL}/${id}`);
         return response;
     } catch (error) {
@@ -46,6 +58,7 @@ export const postResult = async (data) => {
 
   export const updateResult = async (id, data) => {
     try {
+        const headers = getHeaders();
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
             alert('Result actualizado correctamente');

@@ -21,13 +21,15 @@ const Nav = () => {
         <li className="nav-button" onClick={toggleMenu} >Proyecto/Reto</li>
         {openMenu && (
         <div className='nav-display'>
-        <a className='a-link' href="/process">Nuevo</a>
+        <a className='a-link'><Link to="home/process">Nuevo</Link></a>
         <hr className='line' />
-        <a className='a-link' href="/card/:id">Existente</a>
+        <a className='a-link'><Link to="/card/:id">Existente</Link></a>
         </div>
-         )}
-        <li className="nav-button"><Link to="/">Inicio</Link></li>
-        <li className="nav-button"><Link to="/detail/:id">Tablero Principal</Link></li>
+          )}
+        <div>
+        <a className="a-link"><Link to="home/process">Inicio</Link></a>
+        </div>
+       
       </ul>
       <div className="menu-toggle" onClick={toggleMenu}>
         <div className="bar"></div>
@@ -36,8 +38,9 @@ const Nav = () => {
       </div>
       {openMenu && (
         <div className='nav-display'>
-          <a className='a-link' href="/process">Nuevo</a>
-          <a className='a-link' href="/card/:id">Existente</a>
+          <a className='a-link'><Link to="home/process">Nuevo</Link></a>
+          <a className='a-link'><Link to="/card/:id">Existente</Link></a>
+         
         </div>
       )}
     </nav>

@@ -2,8 +2,20 @@ import axios from "axios";
 
 const API_URL_CHALLENGE = 'http://localhost:8000/challenge';
 
+const getHeaders = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        throw new Error('Token no encontrado en el almacenamiento local');
+    }
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+};
+
+
 export const getChallenge = async () => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL_CHALLENGE}`);
         const data = await response.data
         return data;
@@ -15,6 +27,7 @@ export const getChallenge = async () => {
 
 export const getOneChallenge = async (id) => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL_CHALLENGE}/${id}`);
         return response;
     } catch (error) {
@@ -47,6 +60,7 @@ export const postChallenge = async (data) => {
 
   export const updateChallenge = async (id, data) => {
     try {
+        const headers = getHeaders();
         const response = await axios.put(`${API_URL_CHALLENGE}/${id}`,data);
         if (response.status === 200) {
             alert('Reto actualizado correctamente');

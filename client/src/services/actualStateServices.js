@@ -2,8 +2,20 @@ import axios from "axios";
 
 const API_URL_AE = 'http://localhost:8000/actualstates';
 
+const getHeaders = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        throw new Error('Token no encontrado en el almacenamiento local');
+    }
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+};
+
+
 export const getActualState = async () => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL_AE}`);
         const data = await response.data
         return data;
@@ -15,6 +27,7 @@ export const getActualState = async () => {
 
 export const getOneActualState = async (id) => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL_AE}/${id}`);
         return response;
     } catch (error) {
@@ -45,6 +58,7 @@ export const postActualState = async (data) => {
 
   export const updateActualState = async (id, data) => {
     try {
+        const headers = getHeaders();
         const response = await axios.put(`${API_URL_AE}/${id}`,data);
         if (response.status === 200) {
             alert('Estado actual actualizado correctamente');

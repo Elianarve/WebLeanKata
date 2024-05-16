@@ -3,6 +3,7 @@ import axios from 'axios'; // Importa axios para hacer solicitudes HTTP
 // Función para registrar un nuevo usuario
 export const registerUser = async (name, email, password) => {
   try {
+        
     const response = await axios.post('http://localhost:8000/auth/register', { // Realiza una solicitud POST al endpoint de registro
       name,
       email,

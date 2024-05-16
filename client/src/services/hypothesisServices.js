@@ -2,8 +2,19 @@ import axios from "axios";
 
 const API_URL = 'http://localhost:8000/hypothesis';
 
+const getHeaders = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        throw new Error('Token no encontrado en el almacenamiento local');
+    }
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+};
+
 export const getHypothesis = async () => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL}`);
         const data = await response.data
         return data;
@@ -15,6 +26,7 @@ export const getHypothesis = async () => {
 
 export const getOneHypothesis = async (id) => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL}/${id}`);
         return response;
     } catch (error) {
@@ -37,6 +49,7 @@ export const deleteHypothesis = async (id) => {
 
 export const postHypothesis = async (data) => {
     try {
+        const headers = getHeaders();
         const response = await axios.post(`${API_URL}`, data);
         if (response.status === 201) {
             alert('Hypothesis creado correctamente');
@@ -51,6 +64,7 @@ export const postHypothesis = async (data) => {
 
   export const updateHypothesis = async (id, data) => {
     try {
+        const headers = getHeaders();
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
             alert('Hypothesis actualizado correctamente');

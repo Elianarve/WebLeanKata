@@ -13,10 +13,12 @@
 .nav-links {
   list-style-type: none;
   display: flex;
+  
 }
 
 .nav-links li {
   margin: 0 0.7vw;
+  
 }
   
 .nav-links li a {
@@ -39,16 +41,18 @@ box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
 }
 
  .nav-display {
+  
   display: flex;
   position: absolute;
   top: 9.5%; 
   left: 69%; 
-  background-color: #ECF0F1; 
-  z-index: 1; 
+  z-index:1;
   border-radius: 8%;
+  flex-direction:column;
 }
 
 .a-link{ 
+  margin-bottom: 15px;
   color: black;
   transition: 0.6s;  
   border-radius: 52px;
@@ -67,15 +71,15 @@ box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
   border: solid black 1px;
   width: 90%;
 }
-/* Estilos para el menú hamburguesa */
+
 .menu-toggle {
-  display: none; /* Ocultar por defecto en pantallas grandes */
+  display: none; 
   cursor: pointer;
 }
 
 .bar {
   width: 25px;
-  height: 3px;
+  height: 4px;
   background-color: #000;
   margin: 6px 0;
   transition: 0.4s;
@@ -102,5 +106,22 @@ box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
 
   .menu-toggle.open + .nav-links {
     display: flex;
+  }
+}
+
+@media (min-width: 768px) { 
+  .nav-display {
+    left: 80%; 
+  }
+}
+@media (max-width: 767px) { /* Tamaño de pantalla pequeño */
+  .nav-display {
+    left: 85%; /* Mueve el menú más a la derecha en pantallas pequeñas */
+  }
+}
+@media (max-width: 767px) {
+  .a-link {
+    padding: 2px 16px; /* Reducir el relleno en pantallas pequeñas */
+    font-size: 14px; /* Reducir el tamaño de la fuente en pantallas pequeñas */
   }
 }

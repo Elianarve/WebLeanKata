@@ -1,9 +1,20 @@
 import axios from "axios";
 
 const API_URL = 'http://localhost:8000/mentalcontrast';
+const getHeaders = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        throw new Error('Token no encontrado en el almacenamiento local');
+    }
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+};
+
 
 export const getMentalContrast = async () => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL}`);
         const data = await response.data
         return data;
@@ -15,6 +26,7 @@ export const getMentalContrast = async () => {
 
 export const getOneMentalContrast = async (id) => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL}/${id}`);
         return response;
     } catch (error) {
@@ -47,6 +59,7 @@ export const postMentalContrast = async (data) => {
 
   export const updateMentalContrast = async (id, data) => {
     try {
+        const headers = getHeaders();
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
             alert('MentalContrast actualizado correctamente');

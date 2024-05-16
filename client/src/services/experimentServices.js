@@ -4,6 +4,7 @@ const API_URL = 'http://localhost:8000/experiment';
 
 export const getExperiment = async () => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL}`);
         const data = await response.data
         return data;
@@ -15,6 +16,7 @@ export const getExperiment = async () => {
 
 export const getOneExperiment = async (id) => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL}/${id}`);
         return response;
     } catch (error) {
@@ -43,6 +45,7 @@ export const postExperiment = async (data) => {
 
   export const updateExperiment = async (id, data) => {
     try {
+        const headers = getHeaders();
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
             alert('Experiment actualizado correctamente');
@@ -56,6 +59,7 @@ export const postExperiment = async (data) => {
 
 export const uploadImage = async (imageData) => {
     try {
+        const headers = getHeaders();
         const response = await axios.post(
             "http://api.cloudinary.com/v1_1/dpkll45y2/image/upload",
             imageData
