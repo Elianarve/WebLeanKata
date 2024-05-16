@@ -82,46 +82,43 @@ const Home = () => {
     };
   }, []);
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
 
 return (
   <div className="home-container">
-    <div className="home-content">
-    <div className="search-container">
-      <SearchBar className="search-bar" onSearch={handleSearch} />
-      <div className="home-calendar">
-      <button onClick={toggleCalendar} className='calendar'>Calendario</button>
+    <div className='container-principal'>
+    <div className="container-title">
+    <h1 className='title-home'>Descubre la tabla de retos: <br /> ¡Tu camino hacia la mejora continua con LeanKata!</h1>
+    </div>
+    <div className="home-container-calendar">
+      <SearchBar onSearch={handleSearch} />
+      <button onClick={toggleCalendar} className='button-calendar'>Calendario</button>
       {isCalendarOpen && (
       <div ref={calendarRef} className="calendar-wrapper">
       <Calendar onChange={handleDateChange} value={selectedDate}/>
       </div>
       )}
-      </div>
     </div>
-      <h1>Descubre la tabla de retos: ¡Tu camino hacia la mejora continua con LeanKata!</h1>
-    </div>
-
-    <div className="gallery-items">
-    <div className="titles-container">
-        <h3>Reto</h3>
-        <h3>Nombre</h3>
-        <h3>Descripción</h3>
-    </div>
+    </div>    
+    <table className="container-table-home">
+    <thead className='titles-container'>
+              <tr className='title-tr' >
+                <th className='title-th'>Reto</th>
+                <th className='title-th'>Nombre</th>
+                <th className='title-th'>Descripción</th>
+              </tr>
+    </thead>
+    <tbody>
           {filteredChallenges.map((challenge) => (
-            <div key={challenge.id} className="challenge-wrapper">
-              <div className="table-row challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
-                <p className='project-text'>{challenge.id}</p>
-                <p className='project-text'>{challenge.name}</p>
-                <p className="table-cell custom-title" title={challenge.actual_state}>{challenge.actual_state}</p>
-              </div>
-            </div>
+            <tr key={challenge.id} className="challenge-wrapper">
+              <tr className="challenge-description" onClick={() => navigate(`/card/${challenge.id}`)}>
+                <td className='project-text'>{challenge.id}</td>
+                <td className='project-text'>{challenge.name}</td>
+                <td className="table-cell">{challenge.actual_state}</td>
+              </tr>
+            </tr>
           ))}
-    </div>
+      </tbody>
+    </table>
   </div>
 );
 };

@@ -44,8 +44,8 @@ const EditMentalContrast = ({editMentalId, setLoading, setEditMental}) => {
                 <input type="date" name="evaluation_date" defaultValue={mentalContrastData.evaluation_date} {...register('evaluation_date', {required: true})}/>
                 {/* {errors.evaluation_date && <p className="error-message">La fecha de evaluación es requerida</p>} */}
             </div>
-            <button type="submit" className='button'>Editar</button>
-            <button onClick={() => setEditMental(false)}>Cerrar</button>
+            <button className="button-forms"type="submit">Editar</button>
+            <button  className="button-forms" onClick={() => setEditMental(false)}>Cerrar</button>
         </form>
         </div>
     );

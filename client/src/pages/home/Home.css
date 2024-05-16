@@ -4,72 +4,61 @@ body {
 }
 
 .home-container {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
   padding: 3vw;
   min-height: 80vh;
 }
 
-.home-content {
+.container-principal{
   display: flex;
-  justify-content: space-between;
-  margin-top: 15vh;
-  width: 80vw;
-  padding: 20px 0 0 0;
-}
-
-
-h1 {
-    color: #002661; /* Color de texto */
-    border-radius: 50px;
-    text-shadow:  1px 1px 5px #bebebe, -1px -1px 5px #fff;
-    font-size: 2.5vw; 
-    letter-spacing: 0.05em;
-    margin-bottom: 1.5vh;
-    text-align: right;
-}
-
-.search-container {
   width: 100%;
 }
 
-.home-calendar{
-  margin-top: 5%;
+.container-title{
+  width: 50%;
 }
 
-.calendar {
-  padding: 10px 20px;
-  border-radius: 50px;
-  background-color: #81b496;
-  border: none;
-  font-size: 17px;
-  cursor: pointer;
-  margin: 20px 0;
-  transition: 0.6s;
+.title-home {
+  color: #002661; 
+  font-size: 2.5vw; 
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5vh;
 }
 
-.titles-container {
-  width: 77vw;
+.home-container-calendar {
+  width: 50%;
   display: flex;
-  justify-content: space-between;
-  background-color: #ECF0F1;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 8px 8px 16px #81b496, -8px -8px 16px #ffffff;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-.titles-container h3 {
-  margin: 0;
-  padding: 0;
-  font-size: 1.2em;
-  text-shadow: 0.025em 0.025em 0.05em rgba(0, 0, 0, 0.5);
-}
 
-.gallery-items {
+.container-table-home {
   background-color: #ECF0F1;
   padding: 20px;
   border-radius: 15px;
   box-shadow: inset 8px 8px 16px #c9cccd, inset -8px -8px 16px #ffffff;
+  margin-top: 3%;
+}
+
+.titles-container{
+  font-size: 1.3em;
+  color: #002661;
+  background-color: #ECF0F1;
+  border-radius: 10px;
+  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
+}
+
+.title-tr{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.title-th{
+  border: none;
+  background-color: #ECF0F1;
 }
 
 .challenge-wrapper {
@@ -85,28 +74,15 @@ h1 {
   background-color: #c9cccd;
 }
 
-.table-cell {
+.challenge-description {
+  padding: 0% 5% 0% 1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .table-cell{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 20%;
-}
-
-.home-container h3 {
-  padding: 0 1vw;
-  display: flex;
-  justify-content: space-between;
-  margin: 0;
-}
-
-.challenge-description {
-  padding: 0 2vw;
-  display: flex;
-  justify-content: space-between;
-}
-
-.leters-3D{
-  color: #81b496;
-  border-radius: 50px;
-  text-shadow:  1px 1px 5px #bebebe, -1px -1px 5px #fff;
-}
+} */
