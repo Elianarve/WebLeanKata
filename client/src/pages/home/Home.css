@@ -9,7 +9,7 @@ body {
   display: grid;
   place-items: center;
   padding: 3vw;
-  min-height: 75vh;
+  min-height: 80vh;
 }
 
 .search-container{
