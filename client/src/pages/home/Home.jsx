@@ -109,6 +109,8 @@ const Home = () => {
         </div>
         )}
         </div>
+        <h2 className='leters-3D'>LeanKata</h2>
+
       </div>
 
       <div className="titles-container">

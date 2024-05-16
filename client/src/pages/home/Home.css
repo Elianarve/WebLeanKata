@@ -76,3 +76,9 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+.leters-3D{
+  color: #ECF0F1;
+  border-radius: 50px;
+  text-shadow:  1px 1px 5px #bebebe, -1px -1px 5px #fff;
+}
