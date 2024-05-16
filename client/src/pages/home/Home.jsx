@@ -109,7 +109,7 @@ const Home = () => {
         </div>
         )}
         </div>
-        <h2 className='leters-3D'>LeanKata</h2>
+        <h2 className='leters-3D'>¡Revisa tus proyectos anteriores!</h2>
 
       </div>
 

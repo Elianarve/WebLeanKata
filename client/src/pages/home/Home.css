@@ -33,8 +33,9 @@ body {
 
 .titles-container{
   width: 80vw;
-  font-size: 15px;
+  font-size: 100%;
 }
+
 
 .gallery-items {
   background-color: #ECF0F1;

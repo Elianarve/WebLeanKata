@@ -24,6 +24,7 @@
     border-collapse: collapse;
     width: 80%; 
     border: 2px solid #ddd; 
+    
 }
 
 th, td {
@@ -105,6 +106,7 @@ th {
 }
 
 .description{
-    max-width: 12vw;
+    max-width: 1vw;
     word-wrap: break-word;
+    overflow: auto;
 }

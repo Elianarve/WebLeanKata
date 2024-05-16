@@ -35,7 +35,7 @@ const ProcessSelect = ({processId}) => {
                                             <td className='tr-table'>{process.id}</td>
                                         </tr>
                                         <tr>
-                                            <td className='title-table'>Descripcion</td>
+                                            <td className='title-table description'>Descripcion</td>
                                             <td className='tr-table'>{process.description}</td>
                                         </tr>
                                         <tr>
