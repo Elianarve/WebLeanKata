@@ -6,37 +6,26 @@ import '../forms/css/Forms.css';
 const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
   const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [obstacleData, setObstacleData] = useState({});
+  const [url_image, setUrl_Image] = useState('');
+
 
   useEffect(() => {
-      const fetchData = async () => {
-          try {
-              const response = await getOneObstacle(editObstacleId);
-              const obstacleData = response;
-              console.log('obstacleData:', obstacleData);
-              setObstacleData(obstacleData);
-              setValue("description", obstacleData.description);
-              setValue("image", obstacleData.image);
+    const fetchData = async () => {
+      const response = await getOneObstacle(editObstacleId);
+      const  obstacleData = response;
+      setObstacleData( obstacleData);
+      setValue('description',  obstacleData.description);
+      setUrl_Image('image', obstacleData.image);
+      setUrl_Image(obstacleData.image);
+    };
 
-              Object.keys(obstacleData).forEach((key) => {
-                  setValue(key, obstacleData[key]);
-              });
-          } catch (error) {
-              console.error('Error fetching Obstacle data:', error);
-          }
-      };
-      fetchData();
+    fetchData();
   }, [editObstacleId, setValue]);
 
   const onSubmit = async (data) => {
+    data.image = url_image;
       try {
-          const imageData = new FormData();
-          imageData.append("file", data.image[0]);
-          imageData.append("upload_preset", "leankata");
-
-          const response = await updateImage(imageData);
-          const updatedData = { ...data, image: response.secure_url };
-
-          await updateObstacle(editObstacleId, updatedData);
+          await updateObstacle(editObstacleId, data);
           alert('¡Los datos del Obstáculo han sido actualizados correctamente!');
           setLoading(true);
           setEditObstacle(false);
@@ -46,27 +35,39 @@ const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
       }
   };
 
+  const changeUploadImage = async (e) => {
+    const file = e.target.files[0];
+    const imageData = new FormData();
+    imageData.append("file", file);
+    imageData.append("upload_preset", "leankata");
+    try{
+        const response = await updateImage(imageData);
+        setUrl_Image(response.data.secure_url);
+    } catch(error) {
+      console.error("Error al cargar la imagen a Cloudinary:", error);
+
+    }
+  }
+
   return (
-      <div className="form-container">
-          <h2>Editar Obstáculo</h2>
-          <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-              <div className='items'>
-                  <label className='label-item'>Descripción</label>
-                  <textarea rows="10" cols="50" name="description" defaultValue={obstacleData.description} {...register('description', { required: true })} />
-                  {errors.description && <p className="error-message">La descripción es requerida</p>}
-              </div>
-              <div className='items'>
+      <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+        <h2>Editar Obstaculo</h2>
+        <div className='items'>
+        <label className='label-item'>Descripción:</label>
+        <input type="text" name="description" defaultValue={ obstacleData.description } {...register('description', { required: true })} />
+        {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
+        </div>
+        <div className='items'>
                     <label className='label-item'>Imagen</label>
-                    <input type="file" name="image" {...register('image')} />
+                    <input type="file" id="image" name="image" {...register('image')} onChange={changeUploadImage}/>
                     {obstacleData.image && (
                     <div className='image-container'>
-                <img src={obstacleData.image} alt="experiment" />
+                <img className='label-item-img' src={obstacleData.image} alt="experiment" />
                 </div>)}
-                </div>   
-              <input type="submit" value="Editar" />
-              <button onClick={() => setEditObstacle(false)}>Cerrar</button>
-          </form>
-      </div>
+                </div> 
+        <button type="submit">Editar</button>
+        <button onClick={() => setEditObstacle(false)}>Cerrar</button>
+      </form>
   );
 }
 

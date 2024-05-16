@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getOneExperiment, updateExperiment, uploadImage } from '../../services/experimentServices';
+import { getOneExperiment, updateExperiment, updateImage } from '../../services/experimentServices';
 import '../forms/css/Forms.css';
 
 const EditExperiment = ({ editExperimentId, setLoading, setEditExperiment }) => {
     const { register, formState: { errors }, handleSubmit, setValue } = useForm();
     const [experimentData, setExperimentData] = useState({});
+    const [url_image, setUrl_Image] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,7 +24,8 @@ const EditExperiment = ({ editExperimentId, setLoading, setEditExperiment }) => 
                 setValue("success_criteria", experimentData.success_criteria);
                 setValue("responsible", experimentData.responsible);
                 setValue("state_experiment", experimentData.state_experiment);
-                setValue("image", experimentData.image);
+                setUrl_Image("image", experimentData.image);
+                setUrl_Image(experimentData.image);
 
                 Object.keys(experimentData).forEach((key) => {
                     setValue(key, experimentData[key]);
@@ -36,15 +38,9 @@ const EditExperiment = ({ editExperimentId, setLoading, setEditExperiment }) => 
     }, [editExperimentId, setValue]);
 
     const onSubmit = async (data) => {
+        data.image = url_image;
         try {
-            const imageData = new FormData();
-            imageData.append("file", data.image[0]);
-            imageData.append("upload_preset", "leankata");
-
-            const response = await uploadImage(imageData);
-            const updatedData = { ...data, image: response.secure_url };
-
-            await updateExperiment(editExperimentId, updatedData);
+            await updateExperiment(editExperimentId, data);
             alert('¡Los datos del experimento han sido actualizados correctamente!');
             setLoading(true);
             setEditExperiment(false);
@@ -53,6 +49,19 @@ const EditExperiment = ({ editExperimentId, setLoading, setEditExperiment }) => 
             alert('Error al actualizar el experimento. Por favor, intenta nuevamente.');
         }
     };
+
+    const changeUploadImage = async (e) => {
+        const file = e.target.files[0];
+        const imageData = new FormData();
+        imageData.append("file", file);
+        imageData.append("upload_preset", "leankata");
+        try {
+            const response = await updateImage(imageData);
+            setUrl_Image(response.secure_url);
+        } catch (error) {
+      console.error("Error al cargar la imagen a Cloudinary:", error);  
+        }
+    }
 
     return (
         <div className="form-container">
@@ -110,10 +119,10 @@ const EditExperiment = ({ editExperimentId, setLoading, setEditExperiment }) => 
                 </div>  
                 <div className='items'>
                     <label className='label-item'>Imagen</label>
-                    <input type="file" name="image" {...register('image')} />
+                    <input type="file" name="image" {...register('image')} onChange={changeUploadImage}/>
                     {experimentData.image && (
                     <div className='image-container'>
-                <img src={experimentData.image} alt="experiment" />
+                <img className='label-item-img' src={experimentData.image} alt="experiment" />
                 </div>)}
                 </div>
                 <input type="submit" value="Editar" />
