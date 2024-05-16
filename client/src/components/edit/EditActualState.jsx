@@ -35,8 +35,8 @@ const EditActualState = ({ actualStateId, setLoading, setEditable }) => {
      
   return (
     <div className="form-container">
-    <h2>Editar estado actual</h2>
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+        <h2>Editar Estado Actual:</h2>
         <div className='items'>
           <label className='label-item'>Descripción </label>
           <textarea type="text" rows="10" cols="50" name="description" defaultValue={actualStateData.description } {...register('description', { required: true })}/>

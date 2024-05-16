@@ -23,8 +23,8 @@ const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
 
   return (
     <div className="form-container">
-            <h2>Añadir Hipótesis: </h2>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+    <h2>Añadir Hipótesis: </h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
         <textarea type="text" {...register('description', { required: true })} />

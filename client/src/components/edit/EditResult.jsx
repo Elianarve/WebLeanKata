@@ -38,11 +38,9 @@ const EditResult = ({editResultId, setLoading, setEditResult}) => {
         
   return (
     <div className="form-container">
-      <h2>Resultado: </h2>
-
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Editar Resultado: </h2>
       <div className='items'>
+      <h2>Editar Resultado: </h2>
           <label className='label-item'>Descripción: </label>
           <input type="text" name='description' defaultValue={ resultData.description } {...register('description', { required: true })} />
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}

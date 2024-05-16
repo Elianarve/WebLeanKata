@@ -23,8 +23,8 @@ const Learning = ({editResultId, setLoading, setCreateLearning}) => {
 
   return (
     <div className="form-container">
-            <h2>Aprendizaje:</h2>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+    <h2>Aprendizaje:</h2>
       <div className='items'>
         <label className='label-item'>Descripción:</label>
         <textarea type="text" {...register('description', { required: true })} />

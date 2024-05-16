@@ -42,8 +42,8 @@ const Experiment = ({editHypothesisId, setLoading, setEditExperiment}) => {
 
   return (
     <div className="form-container">
-    <h2>Crear Experimento</h2>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+    <h2> Experimento</h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
         <textarea type="text" {...register('description', { required: true })} />
