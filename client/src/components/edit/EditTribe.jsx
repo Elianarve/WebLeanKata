@@ -48,8 +48,10 @@ const EditTribe = ({tribuId, setLoading, setEditable}) => {
           <textarea type="text" rows="10" cols="50" name="team_members" defaultValue={tribeData.team_members} {...register('team_members', { required: true })}/>
           {/* {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>}  */}
         </div>
-        <input type="submit" value="Editar" />
-        <button onClick={() => setEditable(false)}>Cerrar</button>
+        <div className='buttons-container'>
+        <input className="edit-button" type="submit" value="Editar" />
+        <button className='close-button' onClick={() => setEditable(false)}>Cerrar</button>
+       </div>
       </form>
       </div>
   );

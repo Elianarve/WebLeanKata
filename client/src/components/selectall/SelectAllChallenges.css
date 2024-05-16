@@ -103,3 +103,8 @@ th {
     color: #4d4d4d;
     width: 2%;
 }
+
+.description{
+    max-width: 12vw;
+    word-wrap: break-word;
+}

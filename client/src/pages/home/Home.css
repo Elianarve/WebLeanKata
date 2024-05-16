@@ -7,7 +7,7 @@ body {
   display: grid;
   place-items: center;
   padding: 3vw;
-  min-height: 75vh;
+  min-height: 80vh;
 }
 
 .home-content {
@@ -21,7 +21,8 @@ body {
 
 h1 {
     color: #002661; /* Color de texto */
-    text-shadow: 0.025em 0.025em 0.05em rgba(0, 0, 0, 0.5); 
+    border-radius: 50px;
+    text-shadow:  1px 1px 5px #bebebe, -1px -1px 5px #fff;
     font-size: 2.5vw; 
     letter-spacing: 0.05em;
     margin-bottom: 1.5vh;
@@ -54,7 +55,7 @@ h1 {
   background-color: #ECF0F1;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
+  box-shadow: 8px 8px 16px #81b496, -8px -8px 16px #ffffff;
 }
 
 .titles-container h3 {
@@ -102,4 +103,10 @@ h1 {
   padding: 0 2vw;
   display: flex;
   justify-content: space-between;
+}
+
+.leters-3D{
+  color: #81b496;
+  border-radius: 50px;
+  text-shadow:  1px 1px 5px #bebebe, -1px -1px 5px #fff;
 }

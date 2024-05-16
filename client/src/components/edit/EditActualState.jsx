@@ -47,8 +47,10 @@ const EditActualState = ({ actualStateId, setLoading, setEditable }) => {
           <input type="date" name="date" defaultValue={actualStateData.date } {...register('date', {required: true })}/>
           {errors.date?.type === 'required' && <p className="error-message">El campo fecha es requerido</p>}
         </div>
-        <input type="submit" value="Editar" />
-        <button onClick={() => setEditable(false)}>Cerrar</button>
+        <div className='buttons-container'>
+        <input className="edit button" type="submit" value="Editar" />
+        <button  className='close button' onClick={() => setEditable(false)}>Cerrar</button>
+        </div>
       </form>
       </div>
   );
