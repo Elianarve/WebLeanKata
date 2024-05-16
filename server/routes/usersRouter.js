@@ -6,10 +6,10 @@ import { authRol } from '../middleware/rolMiddleware.js';
 
 const userRouter = express.Router();
 
-userRouter.get('/', authRol(['user']), getUser);
-userRouter.post('/', authRol(['user']), userValidator, handleValidationResults, createUser);
-userRouter.put('/:id', authRol(['user']), updateUserValidator, handleValidationResults, updateUser);
-userRouter.get('/:id', authRol(['user']), getOneUser);
+userRouter.get('/', authRol(['admin']), getUser);
+userRouter.post('/', authRol(['admin']), userValidator, handleValidationResults, createUser);
+userRouter.put('/:id', authRol(['admin']), updateUserValidator, handleValidationResults, updateUser);
+userRouter.get('/:id', authRol(['admin']), getOneUser);
 
 export default userRouter;
 
