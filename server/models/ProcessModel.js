@@ -19,6 +19,6 @@ const ProcessModel = connection_db.define('process', {
     timestamps: false
 });
 
-UsersModel.hasMany(ProcessModel, { foreignKey: 'Id' });
+UsersModel.hasMany(ProcessModel, { foreignKey: 'userId' });
 
 export default ProcessModel;
