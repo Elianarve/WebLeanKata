@@ -22,7 +22,7 @@ const Nav = () => {
         <Link to="/process">Nuevo</Link> {/* Utiliza Link para ir a la ruta "/process" */}
         {openMenu && (
         <div className='nav-display'>
-        <a className='a-link' href="/process">Nuevo</a>
+        <a className='a-link' href="home/process">Nuevo</a>
         <hr className='line' />
         <a className='a-link' href="/card/:id">Existente</a>
         </div>
@@ -36,8 +36,10 @@ const Nav = () => {
       </div>
       {openMenu && (
         <div className='nav-display'>
-          <a className='a-link' href="/process">Nuevo</a>
+          <a className='a-link' href="home/process">Nuevo</a>
           <a className='a-link' href="/card/:id">Existente</a>
+         <Link to="home/process">Nuevo</Link>
+         <Link to="/home/process">Hola</Link>
         </div>
       )}
     </nav>
