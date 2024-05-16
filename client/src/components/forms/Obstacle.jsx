@@ -44,8 +44,7 @@ const Obstacle = ({editTargetId, setLoading, setEditObstacle }) => {
       </div>
       <div className='items'>
         <label className='label-item'>Archivo:</label>
-        <input type="file" {...register('image', { required: false })} />
-        {errors.image && <p className="error-message">Por favor adjunta un archivo</p>}
+        <input type="file" {...register('image')} />
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
      <button onClick={closeForm}>Cerrar</button>

@@ -67,4 +67,3 @@ export const postProcess = async (data) => {
         throw error;
     }
 };
-

@@ -4,8 +4,9 @@ const API_URL = 'http://localhost:8000/obstacle';
 
 export const getObstacle = async () => {
     try {
-        const response = await axios.get(API_URL);
-        return response.data;
+        const response = await axios.get(`${API_URL}`);
+        const data = await response.data;
+        return data;
     } catch (error) {
         console.error("Error al obtener los Obstacle:", error);
         throw error;
@@ -37,7 +38,6 @@ export const deleteObstacle = async (id) => {
 
 export const postObstacle = async (data) => {
     const response = await axios.post(API_URL, data);
-    console.log(response);
     return response;
   };
 
@@ -65,3 +65,15 @@ export const uploadImage = async (imageData) => {
         throw new Error("Error al cargar la imagen en Cloudinary: " + error.message);
     }
 };
+
+export const updateImage = async (imageData) => {
+    try {
+        const response = await axios.put(
+            "http://api.cloudinary.com/v1_1/dpkll45y2/image/upload",
+            imageData
+        );
+        return response.data;
+    } catch (error) {
+        throw new Error("Error al cargar la imagen en Cloudinary: " + error.message);
+    }
+}

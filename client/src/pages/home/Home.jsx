@@ -59,7 +59,7 @@ const Home = () => {
   };
 
   const toggleCalendar = () => {
-    setIsCalendarOpen(!isCalendarOpen); // Alternar entre abierto y cerrado
+    setIsCalendarOpen(!isCalendarOpen);
   };
 
   const handleOutsideClick = (event) => {
@@ -105,7 +105,7 @@ return (
       )}
       </div>
     </div>
-      <h1>Descubre la tabla de retos: ¡u camino hacia la mejora continua con LeanKata!</h1>
+      <h1>Descubre la tabla de retos: ¡Tu camino hacia la mejora continua con LeanKata!</h1>
     </div>
 
     <div className="gallery-items">
