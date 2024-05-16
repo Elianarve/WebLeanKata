@@ -46,7 +46,7 @@ const Experiment = ({editHypothesisId, setLoading, setEditExperiment}) => {
     <h2> CREAR EXPERIMENTO </h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
-        <textarea type="text" {...register('description', { required: true })} />
+        <textarea type="text" rows="10" cols="50"{...register('description', { required: true })} />
         {errors.description && <p className="error-message">La descripción es requerida</p>}
       </div>
       <div className='items'>

@@ -30,7 +30,7 @@ const ActualState = () => {
       <h2>ESTADO ACTUAL </h2>       
       <div className='items'>
         <label className='label-item'>Descripción:</label>
-        <textarea type="text" {...register('description', { required: 'La descripción es requerida'})} />
+        <textarea type="text" rows="10" cols="50" {...register('description', { required: 'La descripción es requerida'})} />
         {errors.description && <p className="error-message">{errors.description.message}</p>} 
       </div>
       <div className='items'>

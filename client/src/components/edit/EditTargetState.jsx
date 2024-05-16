@@ -38,7 +38,7 @@ const EditTargetState = ({editTargetId, setLoading, setEditTargetState}) => {
     <h2>EDITAR ESTADO OBJETIVO</h2>
      <div className='items'>
        <label className='label-item'>Descripción</label>
-       <textarea type="text" name='description' defaultValue={targetStateData.description } {...register('description', { required: true })} />
+       <textarea type="text" rows="10" cols="50" name='description' defaultValue={targetStateData.description } {...register('description', { required: true })} />
        {errors.name && <p className="error-message">El nombre es requerido</p>}
      </div>
      <div className='items'>

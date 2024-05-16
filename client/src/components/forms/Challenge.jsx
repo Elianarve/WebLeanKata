@@ -41,7 +41,7 @@ const Challenge = () => {
         </div>
         <div className='items'>
           <label className='label-item'>Descripción</label>
-          <textarea type="text" {...register('description', { required: 'La descripción es requerida', validate: validateText })} />
+          <textarea type="text" rows="10" cols="50" {...register('description', { required: 'La descripción es requerida', validate: validateText })} />
           {errors.description && <p className="error-message">{errors.description.message}</p>}
         </div>
         <div className='items'>
