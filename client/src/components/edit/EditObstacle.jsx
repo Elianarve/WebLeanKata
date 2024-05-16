@@ -42,7 +42,7 @@ const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
     imageData.append("upload_preset", "leankata");
     try{
         const response = await updateImage(imageData);
-        setUrl_Image(response.data.secure_url);
+        setUrl_Image(response.secure_url);
     } catch(error) {
       console.error("Error al cargar la imagen a Cloudinary:", error);
 
@@ -60,10 +60,9 @@ const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
         <div className='items'>
                     <label className='label-item'>Imagen</label>
                     <input type="file" id="image" name="image" {...register('image')} onChange={changeUploadImage}/>
-                    {obstacleData.image && (
                     <div className='image-container'>
                 <img className='label-item-img' src={obstacleData.image} alt="experiment" />
-                </div>)}
+                </div>
                 </div> 
         <button type="submit">Editar</button>
         <button onClick={() => setEditObstacle(false)}>Cerrar</button>

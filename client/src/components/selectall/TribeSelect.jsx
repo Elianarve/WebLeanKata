@@ -32,7 +32,7 @@ const TribeSelect = ({tribuId}) => {
                     <div className="centered-table">
                         <table className='container-table'>
                                     <tbody key={tribe.id}>
-                                        <tr className='tr-table'>
+                                        <tr>
                                             <td className='title-table'>Tribu ID</td>
                                             <td className='tr-table'>{tribe.id}</td>
                                         </tr>
