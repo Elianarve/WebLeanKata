@@ -43,7 +43,7 @@ const ContrastMetal = ({editTargetId, setLoading, setEditContrast}) => {
 
   return (
      <div className="form-container">
-      <h2>Añadir Contraste mental: </h2>
+      <h2> Contraste mental: </h2>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <div className='items'>
         <label className='label-item'>Puntuación</label>

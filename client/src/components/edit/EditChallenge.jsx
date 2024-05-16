@@ -37,10 +37,8 @@ const EditChallenge = ({ challengeId, setLoading, setEditable }) => {
   return (
 
     <div className="form-container">
-    <h2>Editar Reto</h2>
-
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-
+      <h2>Editar Reto</h2>
         <div className='items'>
           <label className='label-item'>Nombre</label>
           <input type="text" name="name" defaultValue={challengeData.name} {...register('name', {required: true })}/>

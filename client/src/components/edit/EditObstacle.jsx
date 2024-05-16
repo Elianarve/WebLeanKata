@@ -48,8 +48,8 @@ const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
 
   return (
       <div className="form-container">
-          <h2>Editar Obstáculo</h2>
           <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+          <h2>Editar Obstáculo</h2>
               <div className='items'>
                   <label className='label-item'>Descripción</label>
                   <textarea rows="10" cols="50" name="description" defaultValue={obstacleData.description} {...register('description', { required: true })} />

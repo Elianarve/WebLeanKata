@@ -35,9 +35,8 @@ const EditLearning = ({editLearningId, setLoading, setEditLearning}) => {
         
   return (
     <div className="form-container">
-    <h2>Editar el aprendizaje</h2>
-
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+      <h2>Editar el aprendizaje</h2>
         <div className='items'>
           <label className='label-item'>Descripción</label>
           <textarea type="text" rows="10" cols="50" name="description" defaultValue={learningData.description } {...register('description', { required: true })}/>

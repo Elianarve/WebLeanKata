@@ -56,8 +56,8 @@ const EditExperiment = ({ editExperimentId, setLoading, setEditExperiment }) => 
 
     return (
         <div className="form-container">
-            <h2>Editar Experimento</h2>
             <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+                <h2>Editar Experimento</h2>
                 <div className='items'>
                     <label className='label-item'>Descripción</label>
                     <textarea rows="10" cols="50" name="description" defaultValue={experimentData.description} {...register('description', { required: true })} />
