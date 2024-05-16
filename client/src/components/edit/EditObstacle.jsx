@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getOneObstacle, updateObstacle, uploadImage } from '../../services/obstacleServices';
+import { getOneObstacle, updateObstacle, updateImage } from '../../services/obstacleServices';
 import '../forms/css/Forms.css';
 
 const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
@@ -11,8 +11,11 @@ const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
       const fetchData = async () => {
           try {
               const response = await getOneObstacle(editObstacleId);
-              const obstacleData = response.data;
+              const obstacleData = response;
+              console.log('obstacleData:', obstacleData);
               setObstacleData(obstacleData);
+              setValue("description", obstacleData.description);
+              setValue("image", obstacleData.image);
 
               Object.keys(obstacleData).forEach((key) => {
                   setValue(key, obstacleData[key]);
@@ -30,7 +33,7 @@ const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
           imageData.append("file", data.image[0]);
           imageData.append("upload_preset", "leankata");
 
-          const response = await uploadImage(imageData);
+          const response = await updateImage(imageData);
           const updatedData = { ...data, image: response.secure_url };
 
           await updateObstacle(editObstacleId, updatedData);
@@ -53,10 +56,13 @@ const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
                   {errors.description && <p className="error-message">La descripción es requerida</p>}
               </div>
               <div className='items'>
-                  <label className='label-item'>Imagen</label>
-                  <input type="file" name="image" defaultValue={obstacleData.image} {...register('image', { required: true })} />
-                  {errors.image && <p className="error-message">La imagen es requerida</p>}
-              </div>    
+                    <label className='label-item'>Imagen</label>
+                    <input type="file" name="image" {...register('image')} />
+                    {obstacleData.image && (
+                    <div className='image-container'>
+                <img src={obstacleData.image} alt="experiment" />
+                </div>)}
+                </div>   
               <input type="submit" value="Editar" />
               <button onClick={() => setEditObstacle(false)}>Cerrar</button>
           </form>

@@ -52,6 +52,10 @@ const SelectAllChallenges = ({ challengeId }) => {
                         <td className='tr-table'>{selectedChallenge?.id}</td>
                     </tr>
                     <tr>
+                        <td className='title-table'>Nombre:</td>
+                        <td className='tr-table'>{selectedChallenge?.name}</td>
+                    </tr>
+                    <tr>
                         <td className='title-table'>Descripción:</td>
                         <td className='tr-table'>{selectedChallenge?.description}</td>
                     </tr>
