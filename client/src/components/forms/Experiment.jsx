@@ -43,7 +43,7 @@ const Experiment = ({editHypothesisId, setLoading, setEditExperiment}) => {
   return (
     <div className="form-container">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-    <h2> Experimento</h2>
+    <h2> CREAR EXPERIMENTO </h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
         <textarea type="text" {...register('description', { required: true })} />
@@ -101,11 +101,11 @@ const Experiment = ({editHypothesisId, setLoading, setEditExperiment}) => {
       </div>
       <div className='items'>
         <label className='label-item'>Imagen:</label>
-        <input type="file" {...register('image')} />
+        <input className='button-image' type="file" {...register('image')} />
         {errors.image && <p className="error-message">Por favor, adjunta una imagen</p>}
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
-     <button onClick={closeForm}>Cerrar</button>
+     <button className='button-forms' onClick={closeForm}>Cerrar</button>
     </form>
     </div>
   )

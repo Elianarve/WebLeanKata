@@ -26,9 +26,8 @@ const ActualState = () => {
 
   return (
     <div className="form-container">
-      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>ESTADO ACTUAL: </h2>       
+      <h2>ESTADO ACTUAL </h2>       
       <div className='items'>
         <label className='label-item'>Descripción:</label>
         <textarea type="text" {...register('description', { required: 'La descripción es requerida'})} />
@@ -41,7 +40,6 @@ const ActualState = () => {
       </div>
         <button className='button-forms' type="submit" disabled={!isDirty}>ENVIAR</button>
   </form>
-  </div>
   </div>
   )}
 

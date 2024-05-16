@@ -24,7 +24,7 @@ const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
   return (
     <div className="form-container">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-    <h2>Añadir Hipótesis: </h2>
+    <h2>CREAR HIPOTESIS</h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
         <textarea type="text" {...register('description', { required: true })} />
@@ -41,7 +41,7 @@ const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
         {errors.state_hypothesis && <p className="error-message">El estado de la hipótesis es requerido</p>}
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
-     <button onClick={closeForm}>Cerrar</button>
+     <button className='button-forms' onClick={closeForm}>Cerrar</button>
     </form>
     </div>
   )}

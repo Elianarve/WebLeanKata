@@ -20,11 +20,10 @@ const Learning = ({editResultId, setLoading, setCreateLearning}) => {
     setCreateLearning(false);
   };
 
-
   return (
     <div className="form-container">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-    <h2>Aprendizaje:</h2>
+    <h2>CREAR APRENDIZAJE</h2>
       <div className='items'>
         <label className='label-item'>Descripción:</label>
         <textarea type="text" {...register('description', { required: true })} />
@@ -36,7 +35,7 @@ const Learning = ({editResultId, setLoading, setCreateLearning}) => {
         {errors.learning_date && <p className="error-message">{errors.learning_date.message}</p>}
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
-     <button onClick={closeForm}>Cerrar</button>
+     <button className='button-forms' onClick={closeForm}>Cerrar</button>
     </form>
     </div>
   )}

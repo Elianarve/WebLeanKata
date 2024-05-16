@@ -17,9 +17,8 @@ const Tribe = () => {
 
   return (
     <div className="form-container">
-      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-    <h2>TRIBU: </h2>
+    <h2> CREAR TRIBU </h2>
       <div className='items'>
         <label className='label-item'>Nombre de la Tribu:</label>
         <textarea type="text" {...register('name_tribe', {required: 'El nombre de la tribu es requerido'})}/>
@@ -32,7 +31,6 @@ const Tribe = () => {
       </div>
         <button className='button-forms' type="submit">ENVIAR</button>
   </form>
-  </div>
   </div>
   )}
 

@@ -34,9 +34,8 @@ const Obstacle = ({editTargetId, setLoading, setEditObstacle }) => {
 
   return (
     <div className="form-container">
-      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Obstáculo:</h2>
+      <h2>CREAR OBSTACULO</h2>
       <div className='items'>
         <label className='label-item'>Descripción</label>
         <textarea type="text" {...register('description', { required: true })} />
@@ -44,13 +43,13 @@ const Obstacle = ({editTargetId, setLoading, setEditObstacle }) => {
       </div>
       <div className='items'>
         <label className='label-item'>Archivo:</label>
-        <input type="file" {...register('image')} />
+        <input className='button-image' type="file" {...register('image')} />
       </div>
       <button type="submit" className='button-forms'>Enviar</button>
-     <button onClick={closeForm}>Cerrar</button>
+     <button className='button-forms'onClick={closeForm}>Cerrar</button>
     </form>
     </div>
-    </div>
+
   )}
 
 export default Obstacle;

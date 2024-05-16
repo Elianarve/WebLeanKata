@@ -28,9 +28,8 @@ const TargetState = ({setLoading, setCreateTarget}) => {
 
   return (
     <div className="form-container">
-      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Crear Estado objetivo:</h2>
+      <h2>CREAR ESTADO OBJETIVO</h2>
       <div className='items'>
         <label className='label-item'>Descripción: </label>
         <textarea type="text" {...register('description', { required: 'La descripción es requerida'})} />
@@ -48,9 +47,8 @@ const TargetState = ({setLoading, setCreateTarget}) => {
         {errors.date_goal && errors.date_goal.type !== 'futureDate' && <p className="error-message">La fecha de meta es requerida</p>}
       </div>
       <button className='button-forms' type="submit">Enviar</button>
-     <button onClick={closeForm}>Cerrar</button>
+     <button className='button-forms' onClick={closeForm}>Cerrar</button>
     </form>
-    </div>
     </div>
   )}
 

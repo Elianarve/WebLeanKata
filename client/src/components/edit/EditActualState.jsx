@@ -7,7 +7,6 @@ const EditActualState = ({ actualStateId, setLoading, setEditable }) => {
   const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [actualStateData, setActualStateData] = useState({});
 
-  
   useEffect(() => {
     const fetchData = async () => {
       const response = await getOneActualState(actualStateId); 
@@ -19,7 +18,6 @@ const EditActualState = ({ actualStateId, setLoading, setEditable }) => {
 
     fetchData();
   }, [actualStateId, setValue]);
-
 
   const onSubmit = async (actualStateData) => {
     try {
@@ -36,7 +34,7 @@ const EditActualState = ({ actualStateId, setLoading, setEditable }) => {
   return (
     <div className="form-container">
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-        <h2>Editar Estado Actual:</h2>
+        <h2>EDITAR ESTADO ACTUAL</h2>
         <div className='items'>
           <label className='label-item'>Descripción </label>
           <textarea type="text" rows="10" cols="50" name="description" defaultValue={actualStateData.description } {...register('description', { required: true })}/>
@@ -47,10 +45,8 @@ const EditActualState = ({ actualStateId, setLoading, setEditable }) => {
           <input type="date" name="date" defaultValue={actualStateData.date } {...register('date', {required: true })}/>
           {errors.date?.type === 'required' && <p className="error-message">El campo fecha es requerido</p>}
         </div>
-        <div className='buttons-container'>
-        <input className="edit button" type="submit" value="Editar" />
-        <button  className='close button' onClick={() => setEditable(false)}>Cerrar</button>
-        </div>
+        <input className='button-forms' type="submit" value="Editar" />
+        <button  className='button-forms' onClick={() => setEditable(false)}>Cerrar</button>
       </form>
       </div>
   );

@@ -7,7 +7,6 @@ const EditTribe = ({tribuId, setLoading, setEditable}) => {
   const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [tribeData, setTribeData] = useState({});
  
-  
   useEffect(() => {
     const fetchData = async () => {
       const response = await getOneTribe(tribuId);
@@ -35,23 +34,20 @@ const EditTribe = ({tribuId, setLoading, setEditable}) => {
   return (
     <div className="form-container">
         <h2>Editar proceso</h2>
-
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-        <h2>Editar Tribu</h2>
+        <h2>EDITAR TRIBU</h2>
         <div className='items'>
           <label className='label-item'>Nombre de la Tribu</label>
           <input type="text" rows="10" cols="50" name="name_tribe" defaultValue={tribeData.name_tribe} {...register('name_tribe', { required: true })}/>
-          {/* {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>}  */}
+          {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>} 
         </div>
         <div className='items'>
           <label className='label-item'>Miembros de la tribu</label>
           <textarea type="text" rows="10" cols="50" name="team_members" defaultValue={tribeData.team_members} {...register('team_members', { required: true })}/>
-          {/* {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>}  */}
+          {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>} 
         </div>
-        <div className='buttons-container'>
-        <input className="edit-button" type="submit" value="Editar" />
-        <button className='close-button' onClick={() => setEditable(false)}>Cerrar</button>
-       </div>
+        <input className='button-forms' type="submit" value="Editar" />
+        <button className='button-forms' onClick={() => setEditable(false)}>Cerrar</button>
       </form>
       </div>
   );
