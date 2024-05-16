@@ -1,18 +1,22 @@
 import { DataTypes } from 'sequelize';
-import connection_db from '../../database/connection_db';
-import ObstacleModel from '../../models/ObstacleModel';
-import TargetStateModel from '../../models/TargetStateModel';
+import connection_db from '../../database/connection_db.js';
+import ObstacleModel from '../../models/ObstacleModel.js';
 
 describe('ObstacleModel', () => {
   beforeAll(async () => {
-    await connection_db.sync();
+    try {
+      await connection_db.authenticate(); // Autenticar la conexión
+      await connection_db.sync({ force: true }); // Sincronizar todos los modelos y forzar la creación de tablas
+    } catch (error) {
+      console.error('Unable to connect to the database:', error);
+    }
   });
 
   it('should define ObstacleModel correctly', () => {
     expect(ObstacleModel).toBeDefined();
   });
 
-  it('should have columns id, target_state_id, and description correctly defined', () => {
+  it('should have columns id, target_state_id, and description correctly defined', async () => {
     const columns = ObstacleModel.rawAttributes;
     expect(columns.id).toBeDefined();
     expect(columns.target_state_id).toBeDefined();
@@ -20,6 +24,6 @@ describe('ObstacleModel', () => {
   });
 
   it('should have the table "obstacles" correctly configured', () => {
-    expect(ObstacleModel.options.tableName).toBe('obstacles');
+    expect(ObstacleModel.getTableName()).toBe('obstacles');
   });
 });

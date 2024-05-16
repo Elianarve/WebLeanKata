@@ -22,6 +22,9 @@ import UsersModel from "./models/userModel.js";
 import http from 'http';
 
 export const app = express();
+
+
+
 app.use(cors());
 app.use(express.json());
 
