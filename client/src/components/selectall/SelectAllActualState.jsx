@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getOneActualState } from "../../services/actualStateServices";
 import { useParams } from 'react-router-dom';
-import '../selectall/SelectAllChallenges.css';
+import './css/SelectALl.css';
 import update from '../../assets/img/Edit-File.svg';
 import { getOneChallenge } from '../../services/challengeServices';
 import TribeSelect from './TribeSelect';
