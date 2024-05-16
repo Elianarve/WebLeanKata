@@ -40,7 +40,7 @@ const EditProcess = ({processId, setLoading, setEditable}) => {
           <textarea type="text" rows="10" cols="50" name="description" defaultValue={processData.description } {...register('description', { required: true })}/>
           {/* {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>}  */}
         </div>
-        <input type="submit" value="Editar" />
+        <input className="delete button" type="submit" value="Editar" />
         <button onClick={() => setEditable(false)}>Cerrar</button>
       </form>
       </div>

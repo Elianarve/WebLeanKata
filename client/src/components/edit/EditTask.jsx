@@ -72,8 +72,8 @@ const EditTask = () => {
           <input type="text" name='state' defaultValue={taskData.state} {...register('state', { required: true })} />
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
         </div>
-     <button onClick={() => deleteTask(id).then(() => navigate("/home")) }>Eliminar</button>
-     <button type="submit">Editar</button>
+     <button className="delete button" onClick={() => deleteTask(id).then(() => navigate("/home")) }>Eliminar</button>
+     <button className='edit button' type="submit">Editar</button>
          </form>
          </div>
      );

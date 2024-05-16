@@ -55,8 +55,8 @@ const EditTargetState = () => {
        <input type="date" name='date_goal' defaultValue={targetStateData.date_goal } {...register('date_goal', { required: true })} />
        {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
      </div>
-     <button onClick={() => deleteTargetState(id).then(() => navigate("/home")) }>Eliminar</button>
-     <button type="submit">Editar</button>
+     <button className="delete button" onClick={() => deleteTargetState(id).then(() => navigate("/home")) }>Eliminar</button>
+     <button className='edit button' type="submit">Editar</button>
          </form>
          </div>
      );

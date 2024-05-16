@@ -47,7 +47,7 @@ const EditMentalContrast = () => {
                 <input type="date" name="evaluation_date" defaultValue={mentalContrastData.evaluation_date} {...register('evaluation_date', {required: true})}/>
                 {/* {errors.evaluation_date && <p className="error-message">La fecha de evaluación es requerida</p>} */}
             </div>
-            <button onClick={() => deleteMentalContrast(id).then(() => navigate("/home")) }>Eliminar</button>
+            <button className="delete button" onClick={() => deleteMentalContrast(id).then(() => navigate("/home")) }>Eliminar</button>
             <button type="submit" className='button'>Guardar</button>
         </form>
         </div>

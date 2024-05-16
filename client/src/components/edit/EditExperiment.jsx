@@ -105,8 +105,8 @@ const EditExperimet = () => {
                 <input type="file" name="image" defaultValue={experimentData.image} {...register('image', {required: true})}/>
                 {/* {errors.image && <p className="error-message">El archivo es requerido</p>} */}
             </div>
-            <button onClick={() => deleteExperiment(id).then(() => navigate("/home")) }>Eliminar</button>
-            <input type="submit" value="Editar" />
+            <button className="delete button" onClick={() => deleteExperiment(id).then(() => navigate("/home")) }>Eliminar</button>
+            <input className='edit button' type="submit" value="Editar" />
         </form>
         </div>
     );

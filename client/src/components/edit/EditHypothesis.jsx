@@ -60,7 +60,7 @@ const EditHypothesis = () => {
                 </select>
                 {errors.state_hypothesis && <p className="error-message">El estado de la hipótesis es requerido</p>}
             </div>
-            <button onClick={() => deleteHypothesis(id).then(() => navigate("/home")) }>Eliminar</button>
+            <button className="delete button" onClick={() => deleteHypothesis(id).then(() => navigate("/home")) }>Eliminar</button>
             <button type="submit" className='button'>Guardar</button>
         </form>
         </div>

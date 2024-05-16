@@ -63,8 +63,8 @@ const EditChallenge = () => {
           <input type="date" name="end_date" defaultValue={challengeData.end_date} {...register('end_date', { required: true })}/>
           {/* {errors.end_date && <p className="error-message">La fecha de fin es requerida</p>} */}
         </div>
-        <button onClick={() => deleteChallenge(id).then(() => navigate("/home")) }>Eliminar</button>
-        <input type="submit" value="Editar" />
+        <button className="delete button" onClick={() => deleteChallenge(id).then(() => navigate("/home")) }>Eliminar</button>
+        <input className='edit button' type="submit" value="Editar" />
       </form>
       </div>
   );

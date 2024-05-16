@@ -79,8 +79,8 @@ const EditResult = () => {
           <input type="text" name='next_step' defaultValue={ resultData.next_step } {...register('next_step', { required: true })} />
           {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
         </div>
-        <button onClick={() => deleteResult(id).then(() => navigate("/home")) }>Eliminar</button>
-        <button type="submit">Editar</button>
+        <button className="delete button" onClick={() => deleteResult(id).then(() => navigate("/home")) }>Eliminar</button>
+        <button className='edit button' type="submit">Editar</button>
       </form>
       </div>
   );

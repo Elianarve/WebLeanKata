@@ -5,6 +5,7 @@
     padding: 30px;
     max-width: 90%;
     margin: 0 auto;
+    min-height: 75vh;
   }
   
   .not-found h1 {
