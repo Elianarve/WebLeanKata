@@ -19,6 +19,7 @@ const Nav = () => {
       </div>
       <ul className={`nav-links ${openMenu ? 'open' : ''}`}>
         <li className="nav-button" onClick={toggleMenu} >Proyecto/Reto</li>
+        <Link to="/process">Nuevo</Link> {/* Utiliza Link para ir a la ruta "/process" */}
         {openMenu && (
         <div className='nav-display'>
         <a className='a-link' href="/process">Nuevo</a>
