@@ -13,8 +13,9 @@ const EditObstacle = ({editObstacleId, setLoading, setEditObstacle}) => {
     const fetchData = async () => {
       const response = await getOneObstacle(editObstacleId);
       const  obstacleData = response.data;
-      setObstacleData( obstacleData);
+      setObstacleData(obstacleData);
       setValue('description',  obstacleData.description);
+      setValue('image', obstacleData.image)
     };
 
     fetchData();
@@ -38,8 +39,13 @@ const EditObstacle = ({editObstacleId, setLoading, setEditObstacle}) => {
         <div className='items'>
         <label className='label-item'>Descripción:</label>
         <input type="text" name="description" defaultValue={ obstacleData.description } {...register('description', { required: true })} />
-        {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
-        </div>
+          {errors.description && <p className="error-message">La descripción es requerida</p>}
+          </div>
+        <div className='items'>
+        <label className='label-item'>Archivo:</label>
+        <input type="file" {...register('image', { required: false })} />
+        {errors.image && <p className="error-message">Por favor adjunta un archivo</p>}
+      </div>
         <button type="submit">Editar</button>
         <button onClick={() => setEditObstacle(false)}>Cerrar</button>
       </form>

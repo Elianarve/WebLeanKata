@@ -49,10 +49,7 @@ const EditHypothesis = ({editHypothesisId, setLoading, setEditHypothesis }) => {
             </div>
             <div className='items'>
                 <label className='label-item'>Estado de la hipótesis</label>
-                <select name="state_hypothesis" defaultValue={hypothesisData.state_hypothesis} {...register('state_hypothesis', { required: true })}>
-                    <option value="true">Activa</option>
-                    <option value="false">Inactiva</option>
-                </select>
+                <input name="state_hypothesis" defaultValue={hypothesisData.state_hypothesis} {...register('state_hypothesis', { required: true })}/>
                 {errors.state_hypothesis && <p className="error-message">El estado de la hipótesis es requerido</p>}
             </div>
             <button type="submit" className='button'>Editar</button>

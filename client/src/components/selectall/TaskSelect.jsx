@@ -43,7 +43,7 @@ const TaskSelect = ({experiment}) => {
     <div className='container-challenge' style={{ width: '100%' }}>
     {tasks.length > 0 && (
         <>
-        <h3>TAREAS <button className='button-add-h' onClick={() => navigate(`/task`)}><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
+        <h3>TAREAS</h3>
             <div className="centered-table">
                 <table className='container-table'>
                         {tasks.map((task) => (

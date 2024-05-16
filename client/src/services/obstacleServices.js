@@ -5,7 +5,7 @@ const API_URL = 'http://localhost:5000/obstacle';
 export const getObstacle = async () => {
     try {
         const response = await axios.get(`${API_URL}`);
-        const data = await response.data
+        const data = await response.data;
         return data;
     } catch (error) {
         console.error("Error al obtener los Obstacle:", error);
@@ -39,7 +39,6 @@ export const deleteObstacle = async (id) => {
 
 export const postObstacle = async (data) => {
     const response = await axios.post(API_URL, data);
-    console.log(response);
     return response;
   };
 

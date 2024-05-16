@@ -89,10 +89,7 @@ const EditExperimet = ({editExperimentId, setLoading, setEditExperiment}) => {
             </div>
             <div className='items'>
                 <label className='label-item'>Estado del experimento</label>
-                <select name="state_experiment" defaultValue={experimentData.state_experiment} {...register('state_experiment', {required: true})}>
-                    <option value="En proceso">En proceso</option>
-                    <option value="Finalizado">Finalizado</option>
-                </select>
+                <input name="state_experiment" defaultValue={experimentData.state_experiment} {...register('state_experiment', {required: true})}/>
                 {/* {errors.state_experiment && <p className="error-message">El estado del experimento es requerido</p>} */}
             </div>
             <input type="submit" value="Editar" />
