@@ -49,8 +49,10 @@ const EditActualState = () => {
           <input type="date" name="date" defaultValue={actualStateData.date } {...register('date', {required: true })}/>
           {errors.date?.type === 'required' && <p className="error-message">El campo fecha es requerido</p>}
         </div>
-        <button onClick={() => deleteActualState(id).then(() => navigate("/home")) }>Eliminar</button>
-        <input type="submit" value="Editar" />
+        <div className='buttons-container'>
+        <button className="delete button" onClick={() => deleteActualState(id).then(() => navigate("/home")) }>Eliminar</button>
+        <input className='edit button' type="submit" value="Editar" />
+        </div>
       </form>
       </div>
   );

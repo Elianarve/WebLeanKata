@@ -48,8 +48,10 @@ const EditObstacle = () => {
         <label className='label-item'>Archivo:</label>
         <input type="file" name="image" defaultValue={ obstacleData.image }  {...register('image', { required: true })} />
         </div>
+        <div className='buttons-container'>
         <button className="delete button" onClick={() => deleteObstacle(id).then(() => navigate("/home")) }>Eliminar</button>
         <button className='edit button' type="submit">Editar</button>
+        </div>
       </form>
       </div>
   );

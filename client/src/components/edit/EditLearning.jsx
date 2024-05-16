@@ -50,8 +50,10 @@ const EditLearning = () => {
           {/* {errors.speeds?.type === 'pattern' && <p className="error-message">La velocidad debe ser un valor numérico</p>}
           {errors.speeds?.type === 'required' && <p className="error-message">El campo velocidades es requerido</p>} */}
         </div>
+        <div className='buttons-container'>
         <button className="delete button" onClick={() => deleteLearning(id).then(() => navigate("/home")) }>Eliminar</button>
         <input className='edit button' type="submit" value="Editar" />
+        </div>
       </form>
       </div>
   );

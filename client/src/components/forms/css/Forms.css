@@ -83,3 +83,29 @@ button[type="submit"]:hover {
   color: #ECF0F1;
 
 }
+
+.buttons-container{
+  display: flex;
+  margin:  15px 0 0 0;
+}
+
+.button{
+  border-radius: 50px;
+  border: none;
+  color: #ECF0F1;
+  font-size: 17px;
+  margin-right: 10px;
+  padding: 5px 15px;
+}
+
+.edit{
+  background-color: #587175;
+}
+
+.delete{
+  background-color: rgb(216, 132, 132);
+}
+
+.close{
+  background-color: #002661;
+}

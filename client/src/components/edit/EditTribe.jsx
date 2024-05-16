@@ -48,8 +48,10 @@ const EditTribe = () => {
           <textarea type="text" rows="10" cols="50" name="team_members" defaultValue={tribeData.team_members} {...register('team_members', { required: true })}/>
           {/* {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>}  */}
         </div>
+        <div className='buttons-container'>
         <button className="delete button" onClick={() => deleteTribe(id).then(() => navigate("/home")) }>Eliminar</button>
         <input className='edit button' type="submit" value="Editar" />
+        </div>
       </form>
       </div>
   );
