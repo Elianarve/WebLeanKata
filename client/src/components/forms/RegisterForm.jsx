@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useId } from 'react';
 import { useUserContext } from '../../context/UserContext';
@@ -23,16 +23,14 @@ const RegisterForm = () => {
     email: Yup.string().email('El email debe ser válido.').required('El email es requerido.'),
     password: Yup.string().required('La contraseña es requerida').min(8, 'La contraseña debe tener al menos 8 caracteres')
       .matches(
-        /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[!@#$%^&*(),.?":{}|<>]).{8,}$/,
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/,
         'La contraseña debe contener al menos una minúscula, una mayúscula, un número y un caracter especial (!@#$%^&*(),.?":{}|<>) y debe tener al menos 8 caracteres.'
       ),
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    e.preventDefault();
     try {
-      await validationSchema.validate({ name, email, password }, { abortEarly: false });
       await validationSchema.validate({ name, email, password }, { abortEarly: false });
       const data = await registerUser(name, email, password);
       Swal.fire(`Usuario registrado correctamente, bienvenid@ ${data.data.name} 👋`);
@@ -42,7 +40,6 @@ const RegisterForm = () => {
       navigate('/home');
     } catch (error) {
       console.error('Error:', error);
-
 
       error.inner.forEach((err) => {
         if (err.path === 'name') {
