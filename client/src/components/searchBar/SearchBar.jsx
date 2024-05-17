@@ -8,7 +8,10 @@ const SearchBar = ({ onSearch }) => {
     onSearch(event.target.value); 
   };
   return (
-      <input className="search-bar" placeholder="ID o Nombre..." value={searchTerm} onChange={handleSearch}/>
+    <>
+      <input className="search-bar" placeholder="Busca tu reto por ID, Nombre o Descripción..." value={searchTerm} onChange={handleSearch}/>
+
+    </>
   );
 };
 

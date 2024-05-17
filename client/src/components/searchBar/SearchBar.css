@@ -1,4 +1,3 @@
-
 .search-bar {
     border: none;
     outline: none;
@@ -8,8 +7,7 @@
     box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
     transition: 300ms ease-in-out;
     margin-top: 5%;
-    width: 60%;
-    width: 175px;
+    width: 20%;
   }
   
   .search-bar:focus {
@@ -18,3 +16,10 @@
     box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
   }
 
+  @media (max-width: 580px) {
+    .search-bar {
+    width: 40%;
+    margin-top: 10%;
+    }
+
+  }

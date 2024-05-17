@@ -85,7 +85,6 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className='container-principal'>
-        <div className="home-container-calendar">
           <SearchBar onSearch={handleSearch} />
           <button onClick={toggleCalendar} className='button-calendar'>Calendario</button>
           {isCalendarOpen && (
@@ -94,7 +93,6 @@ const Home = () => {
             </div>
           )}
         </div>
-      </div> 
 
       <div className="table-container">
         <table className="responsive-table">
