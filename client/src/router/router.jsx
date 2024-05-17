@@ -7,7 +7,7 @@ import Process from '../components/forms/Process';
 import Tribe from '../components/forms/Tribe';
 import NotFound from "../pages/notfound/NotFound";
 import Card from "../components/card/Card";
-import aboutUs from "../pages/AbouUs/AboutUs"
+import AboutUs from "../pages/AbouUs/AboutUs"
 
 export const router = createBrowserRouter([
   {
@@ -16,11 +16,11 @@ export const router = createBrowserRouter([
       children: [
     {
       index: true,
-      element: <Home/>,
+      element: <AboutUs/>,
     },
     {
-      path:"/aboutUs",
-      element: <aboutUs/>
+      path:"/home",
+      element: <Home/>
     },
     {
       path:"/card/:id",

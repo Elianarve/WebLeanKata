@@ -1,6 +1,5 @@
 body {
-  background-color: #ECF0F1;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .container-title button{
@@ -26,6 +25,7 @@ body {
 
 .container-principal {
   width: 100%;
+  margin-top: 7%;
 }
 
 .title-home {
@@ -57,6 +57,8 @@ body {
   padding: 20px; 
   word-break: break-word;
   overflow-wrap: break-word;
+  font-size: 1.1rem;
+  color: #002661;
 }
 
 .table-challenge {
@@ -74,6 +76,7 @@ body {
 
 .table-container {
   width: 100%;
+  margin-top: 5%;
 }
 
 .responsive-table {
@@ -85,6 +88,8 @@ body {
   .title-home {
     font-size: 2em;
   }
+  
+
 }
 
 @media (max-width: 768px) {
@@ -104,4 +109,8 @@ body {
     font-size: 0.9rem;
     padding: 12px;
   }
+
+  .home-container {
+    min-height: 70vh;
+    }
 }
