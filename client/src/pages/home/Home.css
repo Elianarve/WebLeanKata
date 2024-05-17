@@ -1,3 +1,4 @@
+/* Mantén tu CSS existente */
 body {
   background-color: #ECF0F1;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -13,18 +14,15 @@ body {
   padding: 20px;
 }
 
-.container-principal{
+.container-principal {
   display: flex;
   width: 100%;
   margin-top: 100px;
-
 }
 
 .title-home {
-  color: #002661; 
-  font-size: 2vw; 
+  color: #002661;
   letter-spacing: 0.05em;
-  margin-bottom: 1.5vh;
 }
 
 .home-container-calendar {
@@ -34,7 +32,7 @@ body {
   align-items: flex-end;
 }
 
-.title-th-home{
+.title-th-home {
   padding: 18px;
   background-color: #002661;
   color: #FFFF;
@@ -49,21 +47,42 @@ body {
   padding: 20px;
 }
 
-.table-challenge{
+.table-challenge {
   transition: 0.5s;
 }
 
-.table-challenge:hover{
+.table-challenge:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transform: scale(1.01);
   background-color: #0027613e;
   cursor: pointer;
 }
 
-.table-container{
-  max-width: 100%;
+.table-container {
+  width: 100%;
+  overflow-x: auto; 
 }
 
-.responsive-table{
+.responsive-table {
+  width: 100%;
   border-collapse: collapse;
+}
+
+@media (max-width: 768px) {
+  .title-home {
+    font-size: 4vw;
+  }
+
+  .home-container-calendar {
+    width: 100%;
+  }
+
+  .challenge-wrapper {
+    max-width: 80vw;
+  }
+
+  .title-th-home, .challenge-wrapper {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
 }
