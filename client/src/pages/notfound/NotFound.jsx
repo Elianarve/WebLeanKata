@@ -17,11 +17,9 @@ const NotFound = ({ error }) => {
   return (
     <div className="not-found">
        <div className='notfound-container'>
-      <img className='notfound-image' src="https://res.cloudinary.com/dpkll45y2/image/upload/v1715761508/LeanKata/Presentaci%C3%B3n_creada_a_partir_de_tu_documento_gplrvg.png" alt="" />
       <h1> ALGO SALIÓ MAL {code}</h1>
       </div>
       <p>{message}</p>
-
       {code === 404 && (
         <p>
           La página que estás buscando no existe. Es posible que la URL sea incorrecta o que la página haya sido eliminada.

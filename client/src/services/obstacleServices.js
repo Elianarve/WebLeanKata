@@ -88,7 +88,7 @@ export const uploadImage = async (imageData) => {
 export const updateImage = async (imageData) => {
     try {
         const response = await axios.put(
-            "http://api.cloudinary.com/v1_1/dpkll45y2/image/upload",
+            `http://api.cloudinary.com/v1_1/dpkll45y2/image/upload`,
             imageData
         );
         return response.data;
