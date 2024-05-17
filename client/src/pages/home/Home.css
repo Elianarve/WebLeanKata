@@ -48,6 +48,7 @@ body {
   text-overflow: ellipsis;
   word-break: break-all;
   hyphens: auto;
+  border-collapse: collapse;
 } 
 
 .table-challenge{
@@ -55,11 +56,12 @@ body {
 }
 
 .table-challenge:hover{
-  background-color: #506483;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.01);
+  background-color: #0027613e;
   cursor: pointer;
-  font-size: 18px;
 }
 
 .table-container{
-  margin-top: 3%;
+  max-width: 100%;
 }

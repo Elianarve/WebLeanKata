@@ -224,7 +224,8 @@ const Home = () => {
             </div>
           )}
         </div>
-      </div>    
+      </div> 
+
       <div className="table-container">
         <table className="responsive-table">
           <thead className='thead-home'>
@@ -245,6 +246,7 @@ const Home = () => {
           </tbody>
         </table>
       </div>
+      
     </div>
   );
 };
