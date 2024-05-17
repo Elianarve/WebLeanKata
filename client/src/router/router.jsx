@@ -7,6 +7,7 @@ import Process from '../components/forms/Process';
 import Tribe from '../components/forms/Tribe';
 import NotFound from "../pages/notfound/NotFound";
 import Card from "../components/card/Card";
+import AboutUs from "../pages/AbouUs/AboutUs"
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
     {
       index: true,
       element: <Home/>,
+    },
+    {
+      path:"/aboutUs",
+      element: <AboutUs/>
     },
     {
       path:"/card/:id",
