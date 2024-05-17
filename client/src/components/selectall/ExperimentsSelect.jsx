@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getExperiment, deleteExperiment } from '../../services/experimentServices'; 
 import { useNavigate } from 'react-router-dom';
-import '../selectall/SelectAllChallenges.css';
+import './css/SelectALl.css';
 import update from '../../assets/img/Edit-File.svg';
 import delte from '../../assets/img/delete.svg';
 import TaskSelect from './TaskSelect';

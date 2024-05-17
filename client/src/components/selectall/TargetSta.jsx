@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getTargetState, deleteTargetState } from '../../services/targetStateServices';
 import update from '../../assets/img/Edit-File.svg';
-import '../selectall/SelectAllChallenges.css';
+import './css/SelectALl.css';
 import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
 import MentalContras from './MentalContras';

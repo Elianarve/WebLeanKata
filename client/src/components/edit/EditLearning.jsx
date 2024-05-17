@@ -35,22 +35,21 @@ const EditLearning = ({editLearningId, setLoading, setEditLearning}) => {
         
   return (
     <div className="form-container">
-    <h2>Editar el aprendizaje</h2>
-
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+      <h2>EDITAR APRENDIZAJE</h2>
         <div className='items'>
           <label className='label-item'>Descripción</label>
           <textarea type="text" rows="10" cols="50" name="description" defaultValue={learningData.description } {...register('description', { required: true })}/>
-          {/* {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>}  */}
+          {errors.model?.type === 'required' && <p className="error-message">El campo modelo es requerido</p>} 
         </div>
         <div className='items'>
           <label className='label-item'>Fecha de aprendizaje</label>
           <input type="date" name="learning_date" defaultValue={learningData.learning_date} {...register('learning_date', {required: true })}/>
-          {/* {errors.speeds?.type === 'pattern' && <p className="error-message">La velocidad debe ser un valor numérico</p>}
-          {errors.speeds?.type === 'required' && <p className="error-message">El campo velocidades es requerido</p>} */}
+          {errors.speeds?.type === 'pattern' && <p className="error-message">La velocidad debe ser un valor numérico</p>}
+          {errors.speeds?.type === 'required' && <p className="error-message">El campo velocidades es requerido</p>}
         </div>
-        <input type="submit" value="Editar" />
-        <button onClick={() => setEditLearning(false)}>Cerrar</button>
+        <input className='button-forms' type="submit" value="Editar" />
+        <button className='button-forms' onClick={() => setEditLearning(false)}>Cerrar</button>
       </form>
       </div>
   );

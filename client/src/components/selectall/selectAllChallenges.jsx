@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getChallenge } from "../../services/challengeServices";
 import { useNavigate } from 'react-router-dom';
-import '../selectall/SelectAllChallenges.css';
+import './css/SelectALl.css';
 import update from '../../assets/img/Edit-File.svg';
 import EditChallenge from '../edit/EditChallenge';
 

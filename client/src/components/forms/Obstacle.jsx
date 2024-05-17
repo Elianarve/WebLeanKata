@@ -94,24 +94,22 @@ const Obstacle = ({ editTargetId, setLoading, setEditObstacle }) => {
 
   return (
     <div className="form-container">
-      <div className="form-center">
-        <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-          <h2>Obstáculo:</h2>
-          <div className='items'>
-            <label className='label-item'>Descripción</label>
-            <textarea type="text" {...register('description', { required: true })} />
-            {errors.description && <p className="error-message">La descripción es requerida</p>}
-          </div>
-          <div className='items'>
-            <label className='label-item'>Archivo:</label>
-            <input type="file" {...register('image')} />
-          </div>
-          <button type="submit" className='button-forms'>Enviar</button>
-          <button type="button" onClick={closeForm}>Cerrar</button>
-        </form>
+    <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+      <h2>CREAR OBSTACULO</h2>
+      <div className='items'>
+        <label className='label-item'>Descripción</label>
+        <textarea type="text" rows="10" cols="50" {...register('description', { required: true })} />
+        {errors.description && <p className="error-message">La descripción es requerida</p>}
       </div>
+      <div className='items'>
+        <label className='label-item'>Archivo:</label>
+        <input className='button-image' type="file" {...register('image')} />
+      </div>
+      <button type="submit" className='button-forms'>Enviar</button>
+     <button className='button-forms'onClick={closeForm}>Cerrar</button>
+    </form>
     </div>
-  );
-};
+
+  )}
 
 export default Obstacle;

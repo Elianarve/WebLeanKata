@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { getOneResult, updateResult } from '../../services/resultServices';
 import '../forms/css/Forms.css';
@@ -38,47 +38,45 @@ const EditResult = ({editResultId, setLoading, setEditResult}) => {
         
   return (
     <div className="form-container">
-      <h2>Resultado: </h2>
-
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Editar Resultado: </h2>
       <div className='items'>
+      <h2>EDITAR RESULTADO</h2>
           <label className='label-item'>Descripción: </label>
           <input type="text" name='description' defaultValue={ resultData.description } {...register('description', { required: true })} />
-          {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
+          {errors.name && <p className="error-message">El nombre es requerido</p>}
         </div>
     <div className='items'>
     <label className='label-item'>Fecha:</label>
     <input type="date" name='date' defaultValue={ resultData.date } {...register('date', { required: true })} />
-    {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
+    {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>}
   </div>
   <div className='items'>
           <label className='label-item'>Analisis:</label>
           <input type="text" name='analysis' defaultValue={ resultData.analysis } {...register('analysis', { required: true })} />
-          {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
+          {errors.name && <p className="error-message">El nombre es requerido</p>}
         </div>
         <div className='items'>
           <label className='label-item'>Resultados previstos:</label>
           <input type="text" name='expected_results' defaultValue={ resultData.expected_results } {...register('expected_results', { required: true })} />
-          {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
+          {errors.name && <p className="error-message">El nombre es requerido</p>}
         </div>
         <div className='items'>
           <label className='label-item'>Resultados obtenidos:</label>
           <input type="text" name='results_obtained' defaultValue={ resultData.results_obtained } {...register('results_obtained', { required: true })} />
-          {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
+          {errors.name && <p className="error-message">El nombre es requerido</p>}
         </div>
         <div className='items'>
           <label className='label-item'>Conclusión:</label>
           <input type="text" name='conclusion' defaultValue={ resultData.conclusion } {...register('conclusion', { required: true })} />
-          {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
+          {errors.name && <p className="error-message">El nombre es requerido</p>}
         </div>
         <div className='items'>
           <label className='label-item'>Siguiente paso:</label>
           <input type="text" name='next_step' defaultValue={ resultData.next_step } {...register('next_step', { required: true })} />
-          {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
+          {errors.name && <p className="error-message">El nombre es requerido</p>}
         </div>
-        <button type="submit">Editar</button>
-        <button onClick={() => setEditResult(false)}>Cerrar</button>
+        <button className='button-forms' type="submit">Editar</button>
+        <button className='button-forms' onClick={() => setEditResult(false)}>Cerrar</button>
       </form>
       </div>
   );

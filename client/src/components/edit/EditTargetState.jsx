@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import {  getOneTargetState, updateTargetState } from '../../services/targetStateServices';
 import '../forms/css/Forms.css';
-
 
 const EditTargetState = ({editTargetId, setLoading, setEditTargetState}) => {
   const { register, formState: { errors }, handleSubmit, setValue } = useForm();
@@ -35,28 +34,25 @@ const EditTargetState = ({editTargetId, setLoading, setEditTargetState}) => {
         
   return (
     <div className="form-container">
-    <h2>Estado objetivo: </h2>
-
          <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-    <h2>Editar Estado objetivo: </h2>
+    <h2>EDITAR ESTADO OBJETIVO</h2>
      <div className='items'>
        <label className='label-item'>Descripción</label>
-       <textarea type="text" name='description' defaultValue={targetStateData.description } {...register('description', { required: true })} />
-       {/* {errors.name && <p className="error-message">El nombre es requerido</p>} */}
+       <textarea type="text" rows="10" cols="50" name='description' defaultValue={targetStateData.description } {...register('description', { required: true })} />
+       {errors.name && <p className="error-message">El nombre es requerido</p>}
      </div>
      <div className='items'>
        <label className='label-item'>Fecha de Inicio:</label>
        <input type="date" name='start_date' defaultValue={targetStateData.start_date } {...register('start_date', { required: true })} />
-       {/* {errors.endDate && <p className="error-message">La fecha de fin es requerida</p>} */}
+       {errors.endDate && <p className="error-message">La fecha de fin es requerida</p>}
      </div>
      <div className='items'>
        <label className='label-item'>Fecha de Meta:</label>
        <input type="date" name='date_goal' defaultValue={targetStateData.date_goal } {...register('date_goal', { required: true })} />
-       {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
+       {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>}
      </div>
-     <button type="submit">Editar</button>
-     <button onClick={() => setEditTargetState(false)}>Cerrar</button>
-
+     <button className='button-forms' type="submit">Editar</button>
+     <button className='button-forms' onClick={() => setEditTargetState(false)}>Cerrar</button>
          </form>
          </div>
      );
