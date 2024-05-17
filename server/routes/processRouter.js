@@ -1,16 +1,21 @@
 import express from 'express';
 import { getProcess, addProcess, updateProcess, getOneProcess, deleteProcess } from '../controllers/ProcessController.js';
+import authToken from '../middleware/autMiddleware.js';
+import { authRol } from '../middleware/rolMiddleware.js';
+import handleValidationResults from '../helpers/validationHelper.js';
+import processValidator from '../validators/processValidator.js';
+
 
 const router = express.Router();
 
-router.get('/', getProcess);
+router.get('/', authToken, authRol(['user','admin']), getProcess);
 
-router.post('/', addProcess);
+router.post('/', authToken, authRol(['user','admin']), addProcess);
 
-router.put('/:id', updateProcess);
+router.put('/:id', authToken, authRol(['admin']), processValidator, handleValidationResults, updateProcess);
 
-router.delete('/:id', deleteProcess);
+router.delete('/:id',  authToken, authRol(['admin']), deleteProcess);
 
-router.get('/:id', getOneProcess);
+router.get('/:id', authToken, authRol(['user','admin']), getOneProcess);
 
 export default router;

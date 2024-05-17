@@ -1,9 +1,20 @@
 import axios from "axios";
 
-const API_URL_AE = 'http://localhost:5000/process';
+const API_URL_AE = 'http://localhost:8000/process';
+
+const getHeaders = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        throw new Error('Token no encontrado en el almacenamiento local');
+    }
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+};
 
 export const getProcess = async () => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL_AE}`);
         const data = await response.data
         return data;
@@ -15,6 +26,7 @@ export const getProcess = async () => {
 
 export const getOneProcess = async (id) => {
     try {
+        const headers = getHeaders();
         const response = await axios.get(`${API_URL_AE}/${id}`);
         return response;
     } catch (error) {
@@ -37,6 +49,7 @@ export const deleteProcess = async (id) => {
 };
 
 export const postProcess = async (data) => {
+    const headers = getHeaders();
     const response = await axios.post(API_URL_AE, data);
     return response;
   }
@@ -44,6 +57,7 @@ export const postProcess = async (data) => {
 
   export const updateProcess = async (id, data) => {
     try {
+        const headers = getHeaders();
         const response = await axios.put(`${API_URL_AE}/${id}`,data);
         if (response.status === 200) {
             return response.data;

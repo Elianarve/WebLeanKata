@@ -1,34 +1,45 @@
 import { DataTypes } from 'sequelize';
-import connection_db from '../../database/connection_db';
-import TaskModel from '../../models/TaskModel';
-import ExperimentModel from '../../models/ExperimentModel';
+import connection_db from '../../database/connection_db.js';
+import TaskModel from '../../models/TaskModel.js'; // Asegúrate de que la ruta sea correcta
+import ExperimentModel from '../../models/ExperimentModel.js'; // Asegúrate de que la ruta sea correcta
 
 describe('TaskModel', () => {
+  let modelDescription;
+
   beforeAll(async () => {
-    await connection_db.sync();
+    try {
+      await connection_db.authenticate(); // Autenticar la conexión
+      await connection_db.sync({ force: true }); // Sincronizar todos los modelos y forzar la creación de tablas
+      modelDescription = await TaskModel.describe(); // Obtener la descripción del modelo
+    } catch (error) {
+      console.error('Unable to connect to the database:', error);
+    }
   });
 
   afterAll(async () => {
-    await connection_db.close();
+    try {
+      await connection_db.close(); // Cerrar la conexión a la base de datos
+    } catch (error) {
+      console.error('Error closing the database connection:', error);
+    }
   });
 
-  it('should define TaskModel correctly', () => {
+  it('debería definir el modelo TaskModel correctamente', () => {
     expect(TaskModel).toBeDefined();
   });
 
-  it('should have columns id, experiment_id, description, responsible, start_date, end_date_prev, end_date_real, and state correctly defined', () => {
-    const columns = TaskModel.rawAttributes;
-    expect(columns.id).toBeDefined();
-    expect(columns.experiment_id).toBeDefined();
-    expect(columns.description).toBeDefined();
-    expect(columns.responsible).toBeDefined();
-    expect(columns.start_date).toBeDefined();
-    expect(columns.end_date_prev).toBeDefined();
-    expect(columns.end_date_real).toBeDefined();
-    expect(columns.state).toBeDefined();
+  it('debería tener las columnas id, experiment_id, description, responsible, start_date, end_date_prev, end_date_real y state correctamente definidas', () => {
+    expect(modelDescription.id).toBeDefined();
+    expect(modelDescription.experiment_id).toBeDefined();
+    expect(modelDescription.description).toBeDefined();
+    expect(modelDescription.responsible).toBeDefined();
+    expect(modelDescription.start_date).toBeDefined();
+    expect(modelDescription.end_date_prev).toBeDefined();
+    expect(modelDescription.end_date_real).toBeDefined();
+    expect(modelDescription.state).toBeDefined();
   });
 
-  it('should have the table "tasks" correctly configured', () => {
-    expect(TaskModel.options.tableName).toBe('tasks');
+  it('debería tener la tabla "tasks" correctamente configurada', () => {
+    expect(TaskModel.getTableName()).toBe('tasks');
   });
 });

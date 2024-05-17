@@ -1,6 +1,6 @@
 import connection_db from "./database/connection_db.js";
 import express from 'express';
-import { PORT } from './config.js';
+import { PORT, NODE_ENV } from './config.js';
 import cors from 'cors';
 import challengeRouter from './routes/challengeRouter.js';
 import targetStateRouter from './routes/targetStateRouter.js';
@@ -14,9 +14,17 @@ import resultRouter from './routes/resultRouter.js';
 import learningRouter from './routes/learningRouter.js';
 import processRouter from './routes/processRouter.js';
 import tribeRouter from './routes/tribeRouter.js';
+import usersRouter from './routes/usersRouter.js';
+import authRouter from './routes/authRouter.js';
+import UsersModel from "./models/userModel.js";
+
+
 import http from 'http';
 
-const app = express();
+export const app = express();
+
+
+
 app.use(cors());
 app.use(express.json());
 
@@ -40,6 +48,8 @@ const server = http.createServer(app);
 server.listen(PORT, () => {
     console.log(`La API se esta escuchando en el puerto http://localhost:${PORT}`);
 });
+app.use('/users', usersRouter);
+app.use('/auth', authRouter);
 
 try {
     await connection_db.authenticate();
@@ -49,8 +59,13 @@ try {
 
     console.log('Models connected correctly 📋👏👏👏');
 
+    UsersModel.sync();
+    console.log('Model Users connected correctly 👤👤');
+
    } catch (error) {
     console.error('Unable to connect to the database:', error);
    }
+
+
 
 export default app;

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import "./Nav.css";
 
-// import logo from "../../assets/LeanKata-logo.svg";
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const toggleMenu = () => {
@@ -18,15 +17,10 @@ const Nav = () => {
         <div className={`hamburger ${openMenu ? 'active' : ''}`}></div>
       </div>
       <ul className={`nav-links ${openMenu ? 'open' : ''}`}>
-        <li className="nav-button" onClick={toggleMenu} >Proyecto/Reto</li>
-        {openMenu && (
-        <div className='nav-display'>
-        <a className='a-link' href="/process">Nuevo</a>
-        <hr className='line' />
-        <a className='a-link' href="/card/:id">Existente</a>
-        </div>
-         )}
-        <li className="nav-button"><Link to="/">Inicio</Link></li>
+        <li className="nav-button" onClick={toggleMenu}>Proyecto/Reto</li>
+        <li className="nav-button">
+          <Link to="/" onClick={toggleMenu}>Inicio</Link>
+        </li>
       </ul>
       <div className="menu-toggle" onClick={toggleMenu}>
         <div className="bar"></div>
@@ -35,8 +29,9 @@ const Nav = () => {
       </div>
       {openMenu && (
         <div className='nav-display'>
-          <a className='a-link' href="/process">Nuevo</a>
-          <a className='a-link' href="/card/:id">Existente</a>
+          <Link className='a-link' to="home/process" onClick={toggleMenu}>Nuevo</Link>
+          <hr className='line' />
+          <Link className='a-link' to="/card/:id" onClick={toggleMenu}>Existente</Link>
         </div>
       )}
     </nav>
