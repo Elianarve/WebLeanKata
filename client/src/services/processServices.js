@@ -1,16 +1,6 @@
 import axios from "axios";
 
 const API_URL_AE = 'http://localhost:8000/process';
-const getHeaders = () => {
-    const token = localStorage.getItem('authToken');
-    if (!token) {
-        throw new Error('Token no encontrado en el almacenamiento local');
-    }
-    return {
-        'Authorization': `Bearer ${token}`
-    };
-};
-
 
 const getHeaders = () => {
     const token = localStorage.getItem('authToken');

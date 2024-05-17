@@ -17,7 +17,6 @@ const RegisterForm = () => {
   const navigate = useNavigate();
   const termsId = useId();
   const { setUserAuth, setUser } = useUserContext();
-  const { setUserAuth, setUser } = useUserContext();
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('El nombre es requerido.').min(2, 'El nombre debe tener al menos dos caracteres.'),
@@ -41,7 +40,6 @@ const RegisterForm = () => {
       setUser(data.data);
       setUserAuth(true);
       navigate('/home');
-    } catch (error) {
     } catch (error) {
       console.error('Error:', error);
 
