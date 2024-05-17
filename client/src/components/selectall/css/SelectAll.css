@@ -1,4 +1,4 @@
-/* .container-challenge {
+.container-challenge {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -12,17 +12,26 @@
     font-size: 2rem;
     text-shadow: 1px 1px 5px #002661, 1px 1px 5px #002661;
     font-weight: bold;
-}
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60vw;
+    padding: 20px; 
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
 
 .centered-table {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    border-radius: 1em;
     border-collapse: collapse;
-    width: 75%;
-    /* box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff; */
+    width: 100%;
+    border-radius: 3em;
+    padding: 2vh;
+    background-color: #88a5ce;
+    box-shadow: 16px 16px 16px #c9cccd, -8px -16px 16px #ffffff;
 }
 
 .container-table {
@@ -31,31 +40,34 @@
     border: 0.2em solid #002661;
     border-radius: 1em;
     overflow: hidden;
-    background: #002661;
     box-shadow: inset 16px 16px 16px #c9cccd, inset -8px -16px 16px #ffffff;
     border-radius: 1em;
+    background-color: #f9f9f9;
+}
+
+.title-table {
+    font-weight: bold;
+    width: 15%;
+    color: #002661;
+    font-size: 50px;
+    background-color: aqua;
 }
 
 .container-table th, .container-table td {
     background-color: #f9f9f9;
-    border: 0.1em solid #c9cccd; /*color rallas de la tabla*//
+    border: 0.1em solid #002661; /*color rallas de la tabla*//
     border-radius: 1em;
     padding: 1vw;
     text-align: left;
     font-size: 1rem;
     cursor: pointer;
-    transition: transform 0.1s ease-out;
+    transition: transform 0.1s ease;
     font-weight: bold;
 }
 
 .container-table th {
-    background-color: #002661;
-    color: #c5c5c5;
-    font-weight: bold;
-}
-
-.container-table th, .container-table td {
-    transition: transform 0.1s ease-out;
+    padding: 18px;
+    font-size: 1.1rem;
 }
 
 
@@ -98,14 +110,11 @@
     width: 100%;
 }
 .button-add-t {
-    cursor: pointer;
-    width: 8vw;
-    border-radius: 8%;
-    padding: 0.5vw;
+    width: 15%;
     background-color: #002661;
-    border: 0.1em solid black;
-    display: flex;
-    color:#c5c5c5;
+    border-radius: 5px;
+    color: #ECF0F1;
+    /*pendiente fijar que el contenido se quede dentro*/
 }
 
 .container-button {
@@ -115,14 +124,16 @@
     align-items: center;
 }
 
-
-.title-table {
-    font-weight: bold;
-    width: 15%;
-}
-
 .description {
     max-width: 12vw;
     word-wrap: break-word;
-} */
+} 
 
+.space-one-to-many{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    width:673%;
+    border-collapse: collapse;
+}

@@ -77,6 +77,10 @@ const TargetSta = ({ challengeId }) => {
                                                 <button className='button-edit' onClick={() => deleteTargetState(targetState.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                             </td>
                                         </tr>
+                                        <tr className='space-one-to-many'>
+                                            <td className='space-one-to-many'></td>  
+                                        </tr>
+                                        <tr className=''></tr>
                                 </tbody>
                                 ))}
                         </table>

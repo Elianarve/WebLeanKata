@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getTask, deleteTask } from '../../services/taskServices'; 
 import { useNavigate } from 'react-router-dom';
-import './css/SelectALl.css';
+import './css/SelectAll.css';
 import update from '../../assets/img/Edit-File.svg';
 import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';

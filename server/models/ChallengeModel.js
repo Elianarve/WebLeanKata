@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
-import ActualStateModel from "./ActualStateModel.js";
+import TribeModel from "./TribeModel.js";
 
 const ChallengeModel = connection_db.define('challenges', {
     id: {
@@ -24,12 +24,12 @@ const ChallengeModel = connection_db.define('challenges', {
         type: DataTypes.DATEONLY,
         allowNull: false,
          },
-      actual_state_id: {
+    tribe_id: {
         type: DataTypes.STRING,
         unique: true, 
         allowNull: false,
         references: {
-            model: ActualStateModel,
+            model: TribeModel,
             key: 'id' 
         } 
        },     

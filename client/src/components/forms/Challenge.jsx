@@ -24,7 +24,7 @@ const Challenge = () => {
     try {
       const response = await postChallenge(data);
       console.log("Desafío creado:", response.data);
-      navigate(`/card/${response.data.id}`);
+      navigate('/actualstate');
     } catch (error) {
       console.error("Error al crear el desafío:", error);
     }

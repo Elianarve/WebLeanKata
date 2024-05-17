@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getResult, deleteResult } from '../../services/resultServices'; 
 import { useNavigate } from 'react-router-dom';
-import './css/SelectALl.css';
+import './css/SelectAll.css';
 import update from '../../assets/img/Edit-File.svg';
 import delte from '../../assets/img/delete.svg';
 import LearningSelect from './LearningSelect';
