@@ -23,8 +23,8 @@ const AboutUs = () => {
         <div className="circle"></div>
         <div className="card-inner">
         <img src=""/>
-                <h4>Beneficio</h4>
-                <p>Descripcion</p>
+                <h4>Mejora</h4>
+                <p>Los equipos aprenden a identificar y abordar los problemas de manera sistemática</p>
         </div>
         </div>
 
@@ -33,8 +33,8 @@ const AboutUs = () => {
         <div className="circle"></div>
         <div className="card-inner">
         <img src=""/>
-                <h4>Beneficio</h4>
-                <p>Descripcion</p>
+                <h4>Aprendizaje</h4>
+                <p>Los equipos están constantemente experimentando y evaluando resultados.</p>
         </div>
         </div>
 
@@ -43,18 +43,19 @@ const AboutUs = () => {
         <div className="circle"></div>
         <div className="card-inner">
         <img src=""/>
-                <h4>Beneficio</h4>
-                <p>Descripcion</p>
+                <h4> Eficiencia </h4>
+                <p>Las organizaciones pueden mejorar significativamente su eficiencia operativa.</p>
         </div>
         </div>
     </div>
         <hr></hr>
         
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/L8k0OJjKWSI?si=USM3f5VW1JU0WTxY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <p>Descripcion del video</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat illum numquam pariatur provident hic inventore asperiores ad, labore tenetur alias quasi! Recusandae reiciendis, nulla adipisci laboriosam quis nisi temporibus quae!Lorem Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto necessitatibus error ipsum tempora dolore! Perspiciatis quas iure consequuntur necessitatibus, quasi corporis nostrum ipsum error, perferendis ullam commodi molestias fuga. Fuga.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi voluptate sint aliquam non maxime porro a hic quos eum voluptas culpa, eos quis autem numquam dolor ducimus? At, est aut. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore aperiam aliquam, repellat, similique cum beatae quaerat iusto fugit sit quas totam. Veniam soluta in ipsum aut optio porro maiores ab.</p>
-      </main>
+        <iframe src="https://www.youtube.com/embed/L8k0OJjKWSI?si=USM3f5VW1JU0WTxY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div className='leankataDescription'>
+        <p className='shortDescription'>La metodología Lean Kata es una forma de gestión y mejora continua inspirada en los principios del Lean Manufacturing y la filosofía Kaizen. Fue desarrollada por Mike Rother en su libro "Toyota Kata", donde analiza cómo Toyota ha logrado su éxito a través de la implementación de prácticas de mejora continua.</p>
+        <p className='shortDescription'>En esencia, Kata es un término japonés que se refiere a una forma de practicar algo de manera repetida y disciplinada hasta que se convierte en una habilidad natural. En el contexto del Lean Management, Kata se refiere a una serie de prácticas y rutinas que permiten a los equipos aprender, mejorar y resolver problemas de manera sistemática.</p>
+        </div>
+        </main>
     </div>
   )
 }
