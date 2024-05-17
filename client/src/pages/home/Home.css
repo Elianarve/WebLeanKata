@@ -1,4 +1,3 @@
-/* Mantén tu CSS existente */
 body {
   background-color: #ECF0F1;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -11,7 +10,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background-color: #ECF0F1;
-  padding: 20px;
+  padding: 5vw;
 }
 
 .container-principal {
@@ -23,6 +22,7 @@ body {
 .title-home {
   color: #002661;
   letter-spacing: 0.05em;
+  font-size: 1.5em;
 }
 
 .home-container-calendar {
@@ -60,12 +60,17 @@ body {
 
 .table-container {
   width: 100%;
-  overflow-x: auto; 
 }
 
 .responsive-table {
   width: 100%;
   border-collapse: collapse;
+}
+
+@media (min-width: 768px){
+  .title-home {
+    font-size: 2em;
+  }
 }
 
 @media (max-width: 768px) {
