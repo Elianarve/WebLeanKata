@@ -4,15 +4,15 @@ body {
 }
 
 .home-container {
-  display: flex;
-  flex-direction: column;
-  padding: 3vw;
+  display: grid;
+  place-content: center;
 }
 
 .container-principal{
   display: flex;
   width: 100%;
-  margin-top: 7%;
+  margin-top: 200px;
+
 }
 
 .container-title{
@@ -36,20 +36,18 @@ body {
 
 .title-th-home{
   padding: 18px;
-  border-radius: 5px; 
   background-color: #002661;
   color: #FFFF;
   font-size: 1.1rem;
 }
 
- .challenge-wrapper {
-  padding: 15px;
-  transition: 0.3s;
+.challenge-wrapper {
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
-  word-break: break-all;
-  hyphens: auto;
-  border-collapse: collapse;
-} 
+  max-width: 1000px;
+  padding: 20px;
+}
 
 .table-challenge{
   transition: 0.5s;
@@ -64,4 +62,8 @@ body {
 
 .table-container{
   max-width: 100%;
+}
+
+.responsive-table{
+  border-collapse: collapse;
 }
