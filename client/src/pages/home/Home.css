@@ -4,25 +4,25 @@ body {
 }
 
 .home-container {
-  display: grid;
-  place-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ECF0F1;
+  padding: 20px;
 }
 
 .container-principal{
   display: flex;
   width: 100%;
-  margin-top: 200px;
+  margin-top: 100px;
 
-}
-
-.container-title{
-  width: 50%;
-  margin-top: 1%;
 }
 
 .title-home {
   color: #002661; 
-  font-size: 2.2vw; 
+  font-size: 2vw; 
   letter-spacing: 0.05em;
   margin-bottom: 1.5vh;
 }
@@ -45,7 +45,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 1000px;
+  max-width: 60vw;
   padding: 20px;
 }
 
