@@ -3,8 +3,14 @@
     align-items: center;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
-    box-shadow: 2% 2% 4% #c9cccd, -2% -2% 4% #ffffff;
     width: 100%;
+}
+
+.container-challenge h3{
+    letter-spacing: 2px;
+    color: #ECF0F1;
+    text-shadow: 1px 1px 3px #bebebe,
+    -1px -1px 3px #ffffff;
 }
 
 .centered-table {
@@ -14,27 +20,67 @@
     width: 100%;
 } 
 
-.container-select{
-    margin: 1% 1%;
-    width: 30%;
-    padding: 4px;
+.container-select {
+    margin: 30px 0;
+    padding: 15px 10%;
+    text-align: center;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+    letter-spacing: 1.5px;
+    transition: 0.5s;
+  }
+  
+.container-select:hover {
+    border-radius: 0;
+    letter-spacing: 4px;
+    background-color: #92FFC0;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #92FFC0 0px 7px 29px 0px;
+  }
+
+.custom-options {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 99;
 }
+
+.custom-options .custom-option {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.custom-options .custom-option:hover {
+    background: #f0f0f0;
+}
+
 
 .container-table {
     border-collapse: collapse;
     width: 80%; 
     border: 0.1em solid #ddd; 
+    border-radius: 15px;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+
 }
 
 .container-table  th, td {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 1%;
+    background-color: #ECF0F1;
+    padding: 1.5%;
     text-align: left;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2;    
 }
 
 .button-edit{
