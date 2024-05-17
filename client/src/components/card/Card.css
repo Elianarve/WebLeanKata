@@ -2,14 +2,12 @@
     width: 60vw;
     border-radius: 15px;;
     padding: 0px;
-    margin-top: 12vh;;
-    box-shadow: inset 8px 8px 16px #c9cccd, inset -8px -16px 16px #ffffff;
+    margin-top: 20vh;;
+    /* box-shadow: inset 8px 8px 16px #c9cccd, inset 8px -16px 16px #ffffff; */
     margin-bottom: 10vh;
   }
   
   .card-center{
-    width: 100vw;
     display: grid;
     place-items: center;
-    min-height: 85vh;
   }

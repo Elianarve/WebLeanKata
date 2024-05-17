@@ -1,11 +1,17 @@
-.container-challenge {
+/* .container-challenge {
     display: flex;
     align-items: center;
     flex-direction: column;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     width: 100%;
     border-radius: 1em;
-    padding: 2vw;
+}
+
+.container-challenge h3{
+    color: #002661;
+    font-size: 2rem;
+    text-shadow: 1px 1px 5px #002661, 1px 1px 5px #002661;
+    font-weight: bold;
 }
 
 .centered-table {
@@ -14,99 +20,66 @@
     align-items: center;
     width: 100%;
     border-radius: 1em;
-    padding: 2vw;
-    margin-top: 0.5vw;
-    margin-bottom: 1vw;
     border-collapse: collapse;
     width: 75%;
-    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+    /* box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff; */
 }
 
 .container-table {
     border-collapse: collapse;
     width: 80%;
-    border: 0.4em solid #002661;
+    border: 0.2em solid #002661;
     border-radius: 1em;
     overflow: hidden;
     background: #002661;
     box-shadow: inset 16px 16px 16px #c9cccd, inset -8px -16px 16px #ffffff;
-}
-
-.container-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-
+    border-radius: 1em;
 }
 
 .container-table th, .container-table td {
     background-color: #f9f9f9;
-    border: 0.1em solid #ddd;
+    border: 0.1em solid #c9cccd; /*color rallas de la tabla*//
+    border-radius: 1em;
     padding: 1vw;
     text-align: left;
     font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.1s ease-out;
+    font-weight: bold;
 }
 
 .container-table th {
-    background-color: #f2f2f2;
-    font-size: 1.1rem;
+    background-color: #002661;
+    color: #c5c5c5;
+    font-weight: bold;
+}
+
+.container-table th, .container-table td {
+    transition: transform 0.1s ease-out;
+}
+
+
+.container-table th:hover, .container-table td:hover {
+    transform: scale(1.05);
+    background-color: #c9c8c8;
 }
 
 .button-edit {
     cursor: pointer;
-    width: 2vw;
+    width: 3vw;
     border-radius: 15%;
     padding: 0.5vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(91deg, #77e2b7 0.41%, #938fcb 22.24%, #6a97c8 50.06%, #90dbe0 98.15%);
-    border: 0.1em solid #ddd;
-
+    display: flex;
 }
-
 .logo-edit {
     width: 100%;
 }
 
-.edit {
-    display: flex;
-    justify-content: center;
-}
-
 .img-form {
-    width: 20%;
+    width: 40%;
     cursor: pointer;
     transition: transform 0.3s ease;
-}
-
-.img-form:hover {
-    transform: scale(1.1);
-}
-
-.button-add {
-    cursor: pointer;
-    width: 18vw;
-    border-radius: 0.5em;
-    padding: 0.5vw;
-    background-color: #f9f9f9;
-    border: 0.1em solid #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(91deg, #77e2b7 0.41%, #938fcb 22.24%, #6a97c8 50.06%, #90dbe0 98.15%);
-
-}
-
-.button-add:hover {
-    cursor: pointer;
-    width: 20vw;
-    border-radius: 0.5em;
-    padding: 0.5vw;
-    background-color: #f9f9f9;
-    border: 0.1em solid #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(91deg, #77e2b7 0.41%, #938fcb 22.24%, #6a97c8 50.06%, #90dbe0 98.15%);
 }
 
 .img-plus {
@@ -124,57 +97,32 @@
 .img-delete {
     width: 100%;
 }
-
-.button{
-    cursor: pointer;
-    width: 18vw;
-    border-radius: 0.5em;
-    padding: 0.5vw;
-    background-color: #f9f9f9;
-    border: 0.1em solid #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .button-add-t {
     cursor: pointer;
     width: 8vw;
     border-radius: 8%;
     padding: 0.5vw;
-    background-color: #f9f9f9;
-    border: 0.1em solid #ddd;
+    background-color: #002661;
+    border: 0.1em solid black;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(91deg, #77e2b7 0.41%, #938fcb 22.24%, #6a97c8 50.06%, #90dbe0 98.15%);
-
+    color:#c5c5c5;
 }
 
 .container-button {
     display: flex;
     justify-content: left;
+    justify-content: space-evenly;
     align-items: center;
 }
 
-.tr-table {
-    width: 40%;
-}
 
 .title-table {
     font-weight: bold;
-    color: #4d4d4d;
-    width: 20%;
+    width: 15%;
 }
 
 .description {
     max-width: 12vw;
     word-wrap: break-word;
-}
+} */
 
-.button-add {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(91deg, #77e2b7 0.41%, #938fcb 22.24%, #6a97c8 50.06%, #90dbe0 98.15%);
-}

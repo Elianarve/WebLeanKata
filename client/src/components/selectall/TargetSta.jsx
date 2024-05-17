@@ -38,7 +38,7 @@ const TargetSta = ({ challengeId }) => {
     }, [challengeId, loading]);
 
     return (
-        <div className='container-challenge' >
+        <div className='container-challenge'>
             {targetStates && (
                 <>
                     <h3>ESTADO OBJETIVO <button className='button-add' onClick={()=> setCreateTarget(true)} ><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
@@ -46,23 +46,23 @@ const TargetSta = ({ challengeId }) => {
                         <table className='container-table'>
                                 {targetStates.map((targetState) => (
                                     <tbody key={targetState.id}>
-                                        <tr className="tr-table">
+                                        <tr>
                                             <td className='title-table'>Estado Objetivo ID</td>
                                             <td className='tr-table'>{targetState.id}</td>
                                         </tr>
-                                        <tr className="tr-table">
+                                        <tr>
                                             <td className='title-table'>Descripción</td>
                                             <td className='tr-table'>{targetState.description}</td>
                                         </tr>
-                                        <tr className="tr-table">
+                                        <tr>
                                             <td className='title-table'>Fecha de Inicio</td>
                                             <td className='tr-table'>{targetState.start_date}</td>
                                         </tr>
-                                        <tr className="tr-table">
+                                        <tr>
                                             <td className='title-table'>Fecha de Meta</td>
                                             <td className='tr-table'>{targetState.date_goal}</td>
                                         </tr>
-                                        <tr className="tr-table">
+                                        <tr>
                                             <td className='title-table'>Reto ID</td>
                                             <td className='tr-table'>{targetState.challenge_id}</td>
                                         </tr>
