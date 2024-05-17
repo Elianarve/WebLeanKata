@@ -16,7 +16,7 @@ export const addChallenge = async (req, res) => {
     try {
     
         const idChallenge = await ChallengeModel.findOne({order: [['id', 'DESC']]});
-        console.log(idChallenge)
+
         let count = 1;
         if (idChallenge) {
             const numberId = parseInt(idChallenge.id.slice(1));
@@ -24,10 +24,10 @@ export const addChallenge = async (req, res) => {
         }
         let actualstateId;
         const formatted_Id = 'R' + count.toString().padStart(3, '0');    
-        console.log(formatted_Id) 
+
         const actState = await ActualStateModel.findOne({order: [['id', 'DESC']]});   
         actualstateId = actState.id;
-        console.log(actualstateId)
+
 
         const addChallenge = await ChallengeModel.create({ id: formatted_Id, ...req.body, actual_state_id: actualstateId });
         res.status(201).json(addChallenge);

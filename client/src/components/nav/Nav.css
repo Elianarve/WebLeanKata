@@ -1,24 +1,21 @@
-nav {
-  z-index: 1500;
-  position: fixed;
-  width: 100%;
-  padding: 0,5%;
-}
 .navbar {
   background-color: #ECF0F1;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  z-index: 2500;
+  position: fixed;
  }
 
-.logo img {
-  margin-left: 1vw;
-  width: 70%;
+.logo{
+  margin-left: 4vw;
 }
 
 .nav-links {
   list-style-type: none;
   display: flex;
+  margin-right: 4vw;
 }
 
 .nav-links li {
@@ -86,8 +83,6 @@ box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
   margin: 6px 0;
   transition: 0.4s;
 }
-
-
 
 .nav-links a {
   text-decoration: none;

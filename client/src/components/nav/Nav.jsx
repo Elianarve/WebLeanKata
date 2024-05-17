@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import "./Nav.css";
-import logo from '../../assets/img/logo-lk.png';
 
+// import logo from "../../assets/LeanKata-logo.svg";
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const toggleMenu = () => {
@@ -12,7 +12,7 @@ const Nav = () => {
   return (
     <nav className="navbar">
       <div className="logo">
-        <img src={logo} alt="logo" />
+        {/* <img src={logo} alt="logo" /> */}
       </div>
       <div className="menu-icon" onClick={toggleMenu}>
         <div className={`hamburger ${openMenu ? 'active' : ''}`}></div>

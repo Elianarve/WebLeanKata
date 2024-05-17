@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import delte from '../../assets/img/delete.svg';
 import Obstacle from '../forms/Obstacle';
 import Hypothesis from '../forms/Hypothesis';
+import './css/SelectALl.css';
 
 const ObstacleSelect = ({targetState}) => {
     const navigate = useNavigate(); 

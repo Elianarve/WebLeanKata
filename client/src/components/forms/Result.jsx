@@ -24,10 +24,10 @@ const Result = ({editExperimentId, setLoading, setCreateResult}) => {
       return (
         <div className="form-container">
         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-        <h2>Crear Resultado:</h2>
+        <h2>CREAR RESULTADO</h2>
           <div className='items'>
             <label className='label-item'>Descripción:</label>
-            <textarea type="text" {...register('description', { required: true })} />
+            <textarea type="text" rows="10" cols="50" {...register('description', { required: true })} />
             {errors.description && <p className="error-message">La descripción es requerida</p>}
           </div>
           <div className='items'>
@@ -60,8 +60,8 @@ const Result = ({editExperimentId, setLoading, setCreateResult}) => {
             <input type="text" {...register('next_step', { required: true })} />
             {errors.next_step && <p className="error-message">El siguiente paso es requerido</p>}
           </div>
-          <button type="submit" className='button-forms'>Enviar</button>
-         <button onClick={closeForm}>Cerrar</button>
+          <button className='button-forms' type="submit">Enviar</button>
+         <button className='button-forms' onClick={closeForm}>Cerrar</button>
         </form>
         </div>
       )}

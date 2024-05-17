@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getMentalContrast, deleteMentalContrast } from '../../services/mentalContrastServices';
 import update from '../../assets/img/Edit-File.svg';
-import './SelectAllChallenges.css';
+import './css/SelectALl.css';
 import delte from '../../assets/img/delete.svg';
 import { useNavigate } from 'react-router-dom';
 import EditContrastMental from '../edit/EditContrastMental';

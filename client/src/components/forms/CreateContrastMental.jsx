@@ -43,8 +43,8 @@ const ContrastMetal = ({editTargetId, setLoading, setEditContrast}) => {
 
   return (
      <div className="form-container">
-      <h2> Contraste mental: </h2>
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+      <h2> CREAR CONTRASTE MENTAL </h2>
       <div className='items'>
         <label className='label-item'>Puntuación</label>
         <input type="number" min="1" max="10" {...register('points', { required: 'La puntuación es requerida', min: { value: 1, message: 'La puntuación mínima es 1' }, max: { value: 10, message: 'La puntuación máxima es 10' } })} />
@@ -55,10 +55,10 @@ const ContrastMetal = ({editTargetId, setLoading, setEditContrast}) => {
         <input type="date" {...register('evaluation_date', { required: true, validate: validateEvaluationDate })} />
         {errors.evaluation_date && <p className="error-message">{errors.evaluation_date.message}</p>}
       </div>
-      <button type="submit" className='button-forms'>Enviar</button>
-     <button onClick={closeForm}>Cerrar</button>
+      <button className='button-forms' type="submit">Enviar</button>
+     <button className="button-forms" onClick={closeForm}>Cerrar</button>
     </form>
-    </div>
+    </div> 
   )
 }
 
