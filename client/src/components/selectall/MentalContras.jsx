@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getMentalContrast, deleteMentalContrast } from '../../services/mentalContrastServices';
 import update from '../../assets/img/Edit-File.svg';
-import './css/SelectALl.css';
+import './css/SelectAll.css';
 import delte from '../../assets/img/delete.svg';
 import { useNavigate } from 'react-router-dom';
 import EditContrastMental from '../edit/EditContrastMental';
@@ -46,23 +46,23 @@ const MentalContras = ({ targetState }) => {
                         <table className='container-table'>
                                 {mentalContrasts.map((mentalContrast) => (
                                     <tbody key={mentalContrast.id}>
-                                        <tr>
+                                        <tr className="tr-table">
                                         <td className='title-table'>Contraste mental ID</td>
                                         <td  className='tr-table'>{mentalContrast.id}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                         <td className='title-table'>Puntuación</td>
                                         <td className='tr-table'>{mentalContrast.points}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                         <td className='title-table'>Fecha de evaluacion</td>
                                         <td className='tr-table'>{mentalContrast.evaluation_date}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                         <td className='title-table'>EOID</td>
                                         <td className='tr-table'>{mentalContrast.target_state_id}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                         <td className='title-table'>Acciones</td>
                                         <td className='container-button'>
                                             <button className='button-edit' onClick={() => {setEditMentalId(mentalContrast.id), setEditMental(true)}}>
@@ -71,10 +71,6 @@ const MentalContras = ({ targetState }) => {
                                             <button className='button-edit' onClick={() => deleteMentalContrast(mentalContrast.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                         </td>
                                         </tr>
-                                        <tr>
-                                    <td className='title-table-line'></td>
-                                    <td className='title-table-line'></td>
-                                </tr>
                                     </tbody>
                                 ))}
                         </table>

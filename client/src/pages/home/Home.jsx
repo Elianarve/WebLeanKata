@@ -1,48 +1,122 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import Home from './Home';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getChallenge } from '../../services/challengeServices'; 
+import SearchBar from '../../components/searchBar/SearchBar';
+import Calendar from 'react-calendar';
+import "./Home.css";
+import "../../components/calendar/Calendar";
+import { getActualState } from '../../services/actualStateServices';
+import { io } from 'socket.io-client';
 
-// Mock de los servicios que utilizas en el componente
-jest.mock('../../services/challengeServices', () => ({
-  getChallenge: jest.fn(() => Promise.resolve([])),
-}));
-jest.mock('../../services/actualStateServices', () => ({
-  getActualState: jest.fn(() => Promise.resolve([])),
-}));
+const Home = () => {
+  const [challenges, setChallenges] = useState([]);
+  const [error, setError] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [filteredChallenges, setFilteredChallenges] = useState([]); 
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const navigate = useNavigate();
+  const calendarRef = useRef(null); 
 
-describe('Home component', () => {
-  it('renders the component correctly', async () => {
-    render(<Home />);
-    // Verifica que el título esté presente
-    expect(screen.getByText(/descubre la tabla de retos/i)).toBeInTheDocument();
-    // Verifica que el botón de calendario esté presente
-    expect(screen.getByRole('button', { name: /calendario/i })).toBeInTheDocument();
-    // Verifica que la tabla esté presente
-    expect(screen.getByRole('table')).toBeInTheDocument();
+  const socket = io();
+  socket.connect();
 
-    // Comprueba que el mensaje de error no esté presente
-    expect(screen.queryByText(/no se pudieron cargar los desafíos/i)).not.toBeInTheDocument();
-
-    // Espera a que se resuelvan las promesas de los servicios
-    await screen.findByText(/descripción no encontrada/i);
+  socket.on('message', (message) => {
+    console.log('Mensaje recibido:', message);
   });
 
-  it('handles search correctly', async () => {
-    render(<Home />);
-    // Simula la búsqueda
-    userEvent.type(screen.getByRole('textbox'), 'test');
-    // Verifica que el resultado de la búsqueda esté presente
-    expect(screen.queryByText(/descripción no encontrada/i)).not.toBeInTheDocument();
+  socket.on('connect', () => {
+    console.log('Cliente conectado al servidor WebSocket');
   });
 
-  it('toggles calendar visibility', () => {
-    render(<Home />);
-    // Verifica que el calendario esté oculto inicialmente
-    expect(screen.queryByRole('grid')).not.toBeInTheDocument();
-    // Simula hacer clic en el botón del calendario
-    userEvent.click(screen.getByRole('button', { name: /calendario/i }));
-    // Verifica que el calendario esté visible después de hacer clic en el botón
-    expect(screen.getByRole('grid')).toBeInTheDocument();
-  });
-});
+  useEffect(() => {
+    const fetchChallenges = async () => {
+      try {
+        const [challengesData, actualStatesData] = await Promise.all([getChallenge(), getActualState()]);
+        const challengesWithData = challengesData.map(challenge => ({
+          ...challenge,
+          actual_state: actualStatesData.find(actualState => actualState.id === challenge.actual_state_id)?.description || 'Descripción no encontrada'
+        }));
+        setChallenges(challengesWithData); 
+        setFilteredChallenges(challengesWithData); 
+      } catch (error) {
+        console.error('Error fetching retos:', error);
+        setError('No se pudieron cargar los desafíos. Por favor, inténtalo de nuevo más tarde.');
+      }
+    };
+
+    fetchChallenges();
+  }, []);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    const filtered = challenges.filter(challenge => {
+      const challengeDate = new Date(challenge.start_date);
+      return challengeDate.toDateString() === date.toDateString();
+    });
+    setFilteredChallenges(filtered);
+  };
+
+  const toggleCalendar = () => {
+    setIsCalendarOpen(!isCalendarOpen);
+  };
+
+  const handleOutsideClick = (event) => {
+    if (calendarRef.current && !calendarRef.current.contains(event.target)) {
+      setIsCalendarOpen(false);
+    }
+  };
+
+  const handleSearch = (searchTerm) => {
+    const filteredResults = challenges.filter((challenge) => {
+      return Object.values(challenge).some((value) =>
+        typeof value === 'string' && value.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
+    setFilteredChallenges(filteredResults); 
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
+  return (
+    <div className="home-container">
+      <div className='container-principal'>
+          <SearchBar onSearch={handleSearch} />
+          <button onClick={toggleCalendar} className='button-calendar'>Calendario</button>
+          {isCalendarOpen && (
+            <div ref={calendarRef} className="calendar-wrapper">
+              <Calendar onChange={handleDateChange} value={selectedDate}/>
+            </div>
+          )}
+        </div>
+
+      <div className="table-container">
+        <table className="responsive-table">
+          <thead className='thead-home'>
+            <tr className='title-tr-home'>
+              <th className='title-th-home'>RETO</th>
+              <th className='title-th-home'>NOMBRE</th>
+              <th className='title-th-home'>DESCRIPCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredChallenges.map((challenge) => (
+              <tr className='table-challenge' key={challenge.id} onClick={() => navigate(`/card/${challenge.id}`)}>
+                <td className='challenge-wrapper'>{challenge.id}</td>
+                <td className='challenge-wrapper'>{challenge.name}</td>
+                <td className='challenge-wrapper'>{challenge.description}</td> 
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  );
+};
+
+export default Home;

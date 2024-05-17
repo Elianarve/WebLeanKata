@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getChallenge } from "../../services/challengeServices";
 import { useNavigate } from 'react-router-dom';
-import './css/SelectALl.css';
+import './css/SelectAll.css';
 import update from '../../assets/img/Edit-File.svg';
 import EditChallenge from '../edit/EditChallenge';
 
@@ -47,7 +47,7 @@ const SelectAllChallenges = ({ challengeId }) => {
              <div className="centered-table">
             <table className='container-table'>
                 <tbody>
-                    <tr>
+                    <tr className='"tr-table"'>
                         <td className='title-table'>RetoID:</td>
                         <td className='tr-table'>{selectedChallenge?.id}</td>
                     </tr>
@@ -68,12 +68,12 @@ const SelectAllChallenges = ({ challengeId }) => {
                         <td className='tr-table'>{selectedChallenge?.end_date}</td>
                     </tr>
                     <tr>
-                        <td className='title-table'>Estado Actual ID:</td>
-                        <td className='tr-table'>{selectedChallenge?.actual_state_id}</td>
+                        <td className='title-table'>Tribe ID:</td>
+                        <td className='tr-table'>{selectedChallenge?.tribe_id}</td>
                     </tr>
                     <tr>
                     <td className='title-table'>Acciones</td>
-                    <td>
+                    <td className='tr-table'>
                         <button className='button-edit' onClick={() => setEditable(true)}><img src={update} alt="logo-update" className='logo-edit' /></button>
                     </td>
                     </tr>

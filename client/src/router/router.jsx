@@ -13,6 +13,7 @@ import Landing from "../pages/Landing";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import RegisterForm from "../components/forms/RegisterForm"; 
+import AboutUs from "../pages/AbouUs/AboutUs"
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +43,11 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Home/>,
+            element: <AboutUs/>,
+    },
+    {
+      path:"/home",
+      element: <Home/>
           },
           {
             path:"card/:id",

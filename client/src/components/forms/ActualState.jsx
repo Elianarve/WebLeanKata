@@ -12,15 +12,14 @@ const ActualState = () => {
   useEffect(() => {
     setValue('date', currentDate);
   }, [currentDate, setValue]);
-
-
-  const onSubmit = (data) => { 
-    postActualState(data).then(() => {
-        navigate('/challenge'); 
-    })
-    .catch((error) => {
+  
+  const onSubmit = async (data) => { 
+    try { 
+      const response = await postActualState(data);
+      navigate(`/card/${response.data.challenge_id}`);
+    } catch(error)  {
       console.error("Error al publicar:", error);
-    });
+    };
   };
 
   return (

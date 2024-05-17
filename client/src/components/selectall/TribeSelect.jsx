@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getOneTribe } from "../../services/tribeServices";
-import './css/SelectALl.css';
+import './css/SelectAll.css';
 import update from '../../assets/img/Edit-File.svg';
 import ProcessSelect from './ProcessSelect';
 import EditTribe from '../edit/EditTribe';
+import { getOneChallenge } from '../../services/challengeServices';
 
-const TribeSelect = ({tribuId}) => {
+const TribeSelect = ({challengeId}) => {
     const [tribe, setTribe] = useState(null);
     const [editable, setEditable] = useState(false);
     const [loading, setLoading] = useState(false);  
@@ -13,7 +14,9 @@ const TribeSelect = ({tribuId}) => {
     useEffect(() => {
         const fetchProcess = async () => {
             try {
-                const tribeData = await getOneTribe(tribuId);
+                const challengeData = await getOneChallenge(challengeId);  
+                const tribeId = challengeData.data.tribe_id;  
+                const tribeData = await getOneTribe(tribeId);
                 setTribe(tribeData.data);
                 setLoading(false);
             } catch (error) {
@@ -21,7 +24,7 @@ const TribeSelect = ({tribuId}) => {
             }
         }
         fetchProcess();
-    }, [tribuId, loading]);
+    }, [challengeId, loading]);
     
     return (
         <div className='container-challenge'>
@@ -32,7 +35,7 @@ const TribeSelect = ({tribuId}) => {
                     <div className="centered-table">
                         <table className='container-table'>
                                     <tbody key={tribe.id}>
-                                        <tr>
+                                        <tr className='tr-table'>
                                             <td className='title-table'>Tribu ID</td>
                                             <td className='tr-table'>{tribe.id}</td>
                                         </tr>
@@ -60,7 +63,7 @@ const TribeSelect = ({tribuId}) => {
                 </>
             )}
               {editable && (
-                <EditTribe tribuId={tribuId} setLoading={setLoading} setEditable={setEditable}/>
+                <EditTribe tribeId={tribe.id} setLoading={setLoading} setEditable={setEditable}/>
             )}
         </div>
     );

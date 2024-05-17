@@ -4,6 +4,7 @@ import { getOneChallenge} from '../../services/challengeServices';
 import SelectAllChallenges from '../selectall/selectAllChallenges';
 import TargetSta from '../selectall/TargetSta';
 import SelectAllActualState from '../selectall/SelectAllActualState';
+import TribeSelect from '../selectall/TribeSelect';
 import './Card.css'
 
 const Card = () => {
@@ -43,8 +44,9 @@ const Card = () => {
   return (
     <div className="card-center">
     <div className="cardContainer">
-      <SelectAllActualState/>
+      <TribeSelect challengeId={id}/>
       <SelectAllChallenges challengeId={id} />
+      <SelectAllActualState challengeId={id} />
       <TargetSta challengeId={id}/>
     </div>
     </div>
