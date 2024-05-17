@@ -1,35 +1,46 @@
 import { DataTypes } from 'sequelize';
-import connection_db from '../../database/connection_db';
-import ResultsModel from '../../models/ResultsModel';
-import ExperimentModel from '../../models/ExperimentModel';
+import connection_db from '../../database/connection_db.js';
+import ResultsModel from '../../models/ResultsModel.js'; // Asegúrate de que la ruta sea correcta
+import ExperimentModel from '../../models/ExperimentModel.js'; // Asegúrate de que la ruta sea correcta
 
 describe('ResultsModel', () => {
+  let modelDescription;
+
   beforeAll(async () => {
-    await connection_db.sync();
+    try {
+      await connection_db.authenticate(); // Autenticar la conexión
+      await connection_db.sync({ force: true }); // Sincronizar todos los modelos y forzar la creación de tablas
+      modelDescription = await ResultsModel.describe(); // Obtener la descripción del modelo
+    } catch (error) {
+      console.error('Unable to connect to the database:', error);
+    }
   });
 
   afterAll(async () => {
-    await connection_db.close();
+    try {
+      await connection_db.close(); // Cerrar la conexión a la base de datos
+    } catch (error) {
+      console.error('Error closing the database connection:', error);
+    }
   });
 
-  it('should define ResultsModel correctly', () => {
+  it('debería definir el modelo ResultsModel correctamente', () => {
     expect(ResultsModel).toBeDefined();
   });
 
-  it('should have columns id, experiment_id, description, date, analysis, expected_results, results_obtained, conclusion, and next_step correctly defined', () => {
-    const columns = ResultsModel.rawAttributes;
-    expect(columns.id).toBeDefined();
-    expect(columns.experiment_id).toBeDefined();
-    expect(columns.description).toBeDefined();
-    expect(columns.date).toBeDefined();
-    expect(columns.analysis).toBeDefined();
-    expect(columns.expected_results).toBeDefined();
-    expect(columns.results_obtained).toBeDefined();
-    expect(columns.conclusion).toBeDefined();
-    expect(columns.next_step).toBeDefined();
+  it('debería tener las columnas id, experiment_id, description, date, analysis, expected_results, results_obtained, conclusion y next_step correctamente definidas', () => {
+    expect(modelDescription.id).toBeDefined();
+    expect(modelDescription.experiment_id).toBeDefined();
+    expect(modelDescription.description).toBeDefined();
+    expect(modelDescription.date).toBeDefined();
+    expect(modelDescription.analysis).toBeDefined();
+    expect(modelDescription.expected_results).toBeDefined();
+    expect(modelDescription.results_obtained).toBeDefined();
+    expect(modelDescription.conclusion).toBeDefined();
+    expect(modelDescription.next_step).toBeDefined();
   });
 
-  it('should have the table "results" correctly configured', () => {
-    expect(ResultsModel.options.tableName).toBe('results');
+  it('debería tener la tabla "results" correctamente configurada', () => {
+    expect(ResultsModel.getTableName()).toBe('results');
   });
 });

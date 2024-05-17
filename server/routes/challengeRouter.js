@@ -1,5 +1,5 @@
 import express from 'express';
-import { getChallenge, addChallenge, updateChallenge, getOneChallenge, deleteChallenge, searchChallenge } from '../controllers/ChallengeController.js';
+import { getChallenge, addChallenge, updateChallenge, getOneChallenge, deleteChallenge, searchChallenge } from '../controllers/ChallengeController.js'; // Se corrigieron los nombres de las funciones de los controladores.
 
 const router = express.Router();
 

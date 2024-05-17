@@ -7,6 +7,8 @@ import "./Home.css";
 import "../../components/calendar/Calendar";
 import {getActualState} from '../../services/actualStateServices';
 import { io } from 'socket.io-client';
+import { useUserContext } from '../../context/UserContext';
+
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
@@ -15,7 +17,10 @@ const Home = () => {
   const [filteredChallenges, setFilteredChallenges] = useState([]); 
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const navigate = useNavigate();
+  const { userAuth } = useUserContext();
   const calendarRef = useRef(null); 
+
+  console.log(userAuth)
 
   const socket = io();
     socket.connect();
@@ -60,11 +65,11 @@ const Home = () => {
     setIsCalendarOpen(!isCalendarOpen);
   };
 
-  const handleOutsideClick = (event) => {
-    if (calendarRef.current && !calendarRef.current.contains(event.target)) {
-      setIsCalendarOpen(false);
-    }
-  };
+  // const handleOutsideClick = (event) => {
+  //   if (calendarRef.current && !calendarRef.current.contains(event.target)) {
+  //     setIsCalendarOpen(false);
+  //   }
+  // };
 
   const handleSearch = (searchTerm) => {
     const filteredResults = challenges.filter((challenge) => {
@@ -75,12 +80,12 @@ const Home = () => {
     setFilteredChallenges(filteredResults); 
   };
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.addEventListener('mousedown', handleOutsideClick);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleOutsideClick);
+  //   };
+  // }, []);
 
 
 return (

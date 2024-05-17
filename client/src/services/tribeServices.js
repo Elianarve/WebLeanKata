@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL_AE = 'http://localhost:5000/tribe';
+const API_URL_AE = 'http://localhost:8000/tribe';
 
 export const getTribe = async () => {
     try {
