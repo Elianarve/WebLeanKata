@@ -13,10 +13,12 @@ body {
 .container-principal{
   display: flex;
   width: 100%;
+  margin-top: 7%;
 }
 
 .container-title{
   width: 50%;
+  margin-top: 2%;
 }
 
 .title-home {
@@ -35,19 +37,21 @@ body {
 
 .title-th-home{
   background-color: #ECF0F1;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: inset 8px 8px 16px #c9cccd, inset -8px -8px 16px #ffffff;
+  padding: 18px;
+  /* border-radius: 15px;  */
+  /* box-shadow: inset 8px 8px 16px #c9cccd, inset -8px -8px 16px #ffffff; */
   margin-top: 3%;
+  border: 1px solid  #002661;
 }
 
  .challenge-wrapper {
   margin: 15px 0;
   border-radius: 5px;
   background: #ECF0F1;
-  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
+  /* box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff; */
   cursor: pointer;
   transition: 0.3s;
+  border: 1px solid  #002661;
 } 
 
 .challenge-wrapper:hover {
