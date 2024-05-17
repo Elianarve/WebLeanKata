@@ -85,9 +85,6 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className='container-principal'>
-        <div className="container-title-home">
-          <h1 className='title-home'>Descubre la tabla de retos: <br /> ¡Tu camino hacia la mejora continua con LeanKata!</h1>
-        </div>
         <div className="home-container-calendar">
           <SearchBar onSearch={handleSearch} />
           <button onClick={toggleCalendar} className='button-calendar'>Calendario</button>
@@ -97,8 +94,9 @@ const Home = () => {
             </div>
           )}
         </div>
-      </div>    
-      <div className="table-container-home">
+      </div> 
+
+      <div className="table-container">
         <table className="responsive-table">
           <thead className='thead-home'>
             <tr className='title-tr-home'>
@@ -109,7 +107,7 @@ const Home = () => {
           </thead>
           <tbody>
             {filteredChallenges.map((challenge) => (
-              <tr key={challenge.id} onClick={() => navigate(`/card/${challenge.id}`)}>
+              <tr className='table-challenge' key={challenge.id} onClick={() => navigate(`/card/${challenge.id}`)}>
                 <td className='challenge-wrapper'>{challenge.id}</td>
                 <td className='challenge-wrapper'>{challenge.name}</td>
                 <td className='challenge-wrapper'>{challenge.description}</td> 
@@ -118,6 +116,7 @@ const Home = () => {
           </tbody>
         </table>
       </div>
+      
     </div>
   );
 };

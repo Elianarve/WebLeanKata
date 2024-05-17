@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getOneTribe } from "../../services/tribeServices";
-import './css/SelectALl.css';
+import './css/SelectAll.css';
 import update from '../../assets/img/Edit-File.svg';
 import ProcessSelect from './ProcessSelect';
 import EditTribe from '../edit/EditTribe';

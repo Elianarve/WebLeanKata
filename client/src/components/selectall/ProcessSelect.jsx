@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getOneProcess } from "../../services/processServices";
-import "./css/SelectALl.css";
+import "./css/SelectAll.css";
 import update from "../../assets/img/Edit-File.svg";
 import EditProcess from "../edit/EditProcess";
 

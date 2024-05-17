@@ -9,12 +9,12 @@
     transition: 300ms ease-in-out;
     margin-top: 5%;
     width: 60%;
+    width: 175px;
   }
   
   .search-bar:focus {
     background-color: white;
     transform: scale(1.0);
-    box-shadow: 13px 13px 100px #969696,
-               -13px -13px 100px #ffffff;
+    box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
   }
 
