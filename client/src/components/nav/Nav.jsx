@@ -18,27 +18,28 @@ const Nav = () => {
         <div className={`hamburger ${openMenu ? 'active' : ''}`}></div>
       </div>
       <ul className={`nav-links ${openMenu ? 'open' : ''}`}>
-        <li className="nav-button" onClick={toggleMenu} >Proyecto/Reto</li>
+        <li className="nav-button"><Link to="/">Inicio</Link></li>
+
         {openMenu && (
         <div className='nav-display'>
-        <a className='a-link' href="/process">Nuevo</a>
+        <Link className='title-li-nav' to="/process">Nuevo</Link>
         <hr className='line' />
-        <a className='a-link' href="/card/:id">Existente</a>
+        <Link className='title-li-nav' to="/card/:id">Existente</Link>
         </div>
          )}
-        <li className="nav-button"><Link to="/">Inicio</Link></li>
+        <li className="nav-button" onClick={toggleMenu} >Proyecto / Reto</li>
       </ul>
       <div className="menu-toggle" onClick={toggleMenu}>
         <div className="bar"></div>
         <div className="bar"></div>
         <div className="bar"></div>
       </div>
-      {openMenu && (
+      {/* {openMenu && (
         <div className='nav-display'>
-          <a className='a-link' href="/process">Nuevo</a>
-          <a className='a-link' href="/card/:id">Existente</a>
+        <Link to="/process">Nuevo</Link>
+        <Link to="/card/:id">Existente</Link>
         </div>
-      )}
+      )} */}
     </nav>
   );
 };

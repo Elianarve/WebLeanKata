@@ -1,13 +1,9 @@
-body {
-  background-color: #ECF0F1;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
 .home-container {
   display: flex;
   flex-direction: column;
   padding: 3vw;
   min-height: 80vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .container-principal{
@@ -61,4 +57,8 @@ body {
 
 .table-container-home{
   margin-top: 3%;
+} 
+
+.responsive-table{
+  width: 100%;
 }
