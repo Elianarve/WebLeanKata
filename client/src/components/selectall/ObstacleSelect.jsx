@@ -5,7 +5,6 @@ import HypothesisSelect from './HypothesisSelect';
 import EditObstacle from '../edit/EditObstacle';
 import { useNavigate } from 'react-router-dom';
 import delte from '../../assets/img/delete.svg';
-import Obstacle from '../forms/Obstacle';
 import Hypothesis from '../forms/Hypothesis';
 import './css/SelectAll.css';
 
@@ -49,7 +48,6 @@ const ObstacleSelect = ({targetState}) => {
         fetchObstacle();
     }, [targetState, loading]);
 
-
     return (
         <div className='container-challenge'>
             {obstacles.length > 0 && (
@@ -59,21 +57,21 @@ const ObstacleSelect = ({targetState}) => {
                         <table className='container-table'>
                                 {obstacles.map((obstacle) => (
                                     <tbody key={obstacle.id}>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Obstaculo ID</td>
                                             <td className='tr-table'>{obstacle.id}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>EOID</td>
                                             <td className='tr-table'>{obstacle.target_state_id}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Descripción</td>
                                             <td className='tr-table'>{obstacle.description}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Imagen</td>
-                                            <td>
+                                            <td className="tr-table">
                                                 <img
                                                     className='img-form'
                                                     src={obstacle.image}
@@ -82,7 +80,7 @@ const ObstacleSelect = ({targetState}) => {
                                                 />
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Acciones</td>
                                             <td className='container-button'>
                                                 <button className='button-edit' onClick={() => {setEditObstacleId(obstacle.id), setEditObstacle(true)}}>
@@ -92,10 +90,6 @@ const ObstacleSelect = ({targetState}) => {
                                                 <button className='button-edit' onClick={() => deleteObstacle(obstacle.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                    <td className='title-table-line'></td>
-                                    <td className='title-table-line'></td>
-                                </tr>
                                     </tbody>
                                 ))}
                         </table>

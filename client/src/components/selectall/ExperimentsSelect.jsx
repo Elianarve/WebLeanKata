@@ -61,55 +61,55 @@ const ExperimentsSelect = ({hypothesis}) => {
                 <table className='container-table'>
                         {experiments.map((experiment) => (
                             <tbody key={experiment.id}>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Experimento ID</td>
                                 <td className='tr-table'>{experiment.id}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Hipotesis ID</td>
                                 <td className='tr-table'>{experiment.hyphotesis_id}</td>
                                 </tr>
-                               <tr>
+                               <tr className='tr-table'>
                                <td className='title-table'>Descripción</td>
                                <td className='tr-table'>{experiment.description}</td>
                                </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Fecha de inicio</td>
                                 <td className='tr-table'>{experiment.start_date}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Metas</td>
                                 <td className='tr-table'>{experiment.goals}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Metodología</td>
                                 <td className='tr-table'>{experiment.methodology}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Variables</td>
                                 <td className='tr-table'>{experiment.variables}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Grupo de control</td>
                                 <td className='tr-table'>{experiment.control_group}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Criterios de exito</td>
                                 <td className='tr-table'>{experiment.success_criteria}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Responsable</td>
                                 <td className='tr-table'>{experiment.responsible}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Estado del experimento</td>
                                 <td className='tr-table'>{experiment.state_experiment}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Imagen</td>
                                 <td><img className='img-form' src={experiment.image} alt="img-form" onClick={() => handleClick(experiment.image)} /></td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
                                     <button className='button-edit' onClick={() => {setEditExperimentId(experiment.id), setEditExperiment(true)}} >
@@ -120,17 +120,8 @@ const ExperimentsSelect = ({hypothesis}) => {
                                     <button className='button-edit' onClick={() => deleteExperiment(experiment.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
                                 </td>
                                 </tr>
-                                <tr>
-                                    <td className='title-table'></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td className='title-table-line'></td>
-                                    <td className='title-table-line'></td>
-                                </tr>
                             </tbody>
-                         ))} 
-                                           
+                         ))}              
                 </table>
             </div>
         </>

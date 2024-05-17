@@ -46,23 +46,23 @@ const TargetSta = ({ challengeId }) => {
                         <table className='container-table'>
                                 {targetStates.map((targetState) => (
                                     <tbody key={targetState.id}>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Estado Objetivo ID</td>
                                             <td className='tr-table'>{targetState.id}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Descripción</td>
                                             <td className='tr-table'>{targetState.description}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Fecha de Inicio</td>
                                             <td className='tr-table'>{targetState.start_date}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Fecha de Meta</td>
                                             <td className='tr-table'>{targetState.date_goal}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Reto ID</td>
                                             <td className='tr-table'>{targetState.challenge_id}</td>
                                         </tr>
@@ -77,14 +77,6 @@ const TargetSta = ({ challengeId }) => {
                                                 <button className='button-edit' onClick={() => deleteTargetState(targetState.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                             </td>
                                         </tr>
-                                    <tr>
-                                    <td className='title-table'></td>
-                                    <td></td>
-                                    </tr>
-                                    <tr>
-                                    <td className='title-table-line'></td>
-                                    <td className='title-table-line'></td>
-                                </tr>
                                 </tbody>
                                 ))}
                         </table>

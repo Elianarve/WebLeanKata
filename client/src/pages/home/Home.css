@@ -13,15 +13,17 @@ body {
 .container-principal{
   display: flex;
   width: 100%;
+  margin-top: 7%;
 }
 
 .container-title{
   width: 50%;
+  margin-top: 1%;
 }
 
 .title-home {
   color: #002661; 
-  font-size: 2.5vw; 
+  font-size: 2.2vw; 
   letter-spacing: 0.05em;
   margin-bottom: 1.5vh;
 }
@@ -33,56 +35,30 @@ body {
   align-items: flex-end;
 }
 
-
-.container-table-home {
+.title-th-home{
   background-color: #ECF0F1;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: inset 8px 8px 16px #c9cccd, inset -8px -8px 16px #ffffff;
+  padding: 18px;
+  border-radius: 8px; 
   margin-top: 3%;
+  background-color: #002661;
+  color: #FFFF;
+  font-size: 1.1rem;
 }
 
-.titles-container{
-  font-size: 1.3em;
-  color: #002661;
-  background-color: #ECF0F1;
-  border-radius: 10px;
-  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
-}
-
-.title-tr{
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
-}
-
-.title-th{
-  border: none;
-  background-color: #ECF0F1;
-}
-
-.challenge-wrapper {
+ .challenge-wrapper {
   margin: 15px 0;
+  padding: 15px;
   border-radius: 5px;
   background: #ECF0F1;
-  box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff;
   cursor: pointer;
   transition: 0.3s;
-}
+  border: 1px solid  #002661;
+} 
 
 .challenge-wrapper:hover {
   background-color: #c9cccd;
-}
+} 
 
-.challenge-description {
-  padding: 0% 5% 0% 1%;
-  display: flex;
-  justify-content: space-between;
+.table-container{
+  margin-top: 3%;
 }
-
-/* .table-cell{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 20%;
-} */
