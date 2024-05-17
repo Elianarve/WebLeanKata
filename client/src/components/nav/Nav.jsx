@@ -24,7 +24,7 @@ const Nav = () => {
         <li className="nav-button"><Link to="/" onClick={toggleMenu}>Lean <span className='letter-nav'>K</span>ata</Link></li>
         {/* <li className="nav-button"><Link to="/" onClick={toggleMenu}>Inicio</Link></li> */}
         <li className="nav-button"><Link to="/process" onClick={toggleMenu}>Crear Reto</Link></li>
-        <li className="nav-button"><Link to="/" onClick={toggleMenu}>Ver Existente</Link></li>
+        <li className="nav-button"><Link to="/home" onClick={toggleMenu}>Ver Existente</Link></li>
       </ul>
     </nav>
   );

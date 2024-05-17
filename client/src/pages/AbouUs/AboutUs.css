@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   background-color: #ECF0F1;
   padding: 0 5vw;
   text-align: center;
@@ -18,7 +18,7 @@ iframe{
   background-image: url(../../assets/img/futuristicHome.jpeg);
   background-position: center;
   background-size: cover;
-  width: 100vw;
+  width: 98.9vw;
   height: 300px;
   margin-top: 100px;
 }
