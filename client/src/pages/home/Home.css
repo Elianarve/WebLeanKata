@@ -16,7 +16,7 @@ body {
   margin-top: 7%;
 }
 
-.container-title{
+.container-title-home{
   width: 50%;
   margin-top: 1%;
 }
@@ -36,7 +36,6 @@ body {
 }
 
 .title-th-home{
-  background-color: #ECF0F1;
   padding: 18px;
   border-radius: 8px; 
   margin-top: 3%;
@@ -52,13 +51,14 @@ body {
   background: #ECF0F1;
   cursor: pointer;
   transition: 0.3s;
-  border: 1px solid  #002661;
+  border: 1px solid #002661;
+  color: #002661;
 } 
 
 .challenge-wrapper:hover {
   background-color: #c9cccd;
 } 
 
-.table-container{
+.table-container-home{
   margin-top: 3%;
 }

@@ -68,8 +68,8 @@ const SelectAllChallenges = ({ challengeId }) => {
                         <td className='tr-table'>{selectedChallenge?.end_date}</td>
                     </tr>
                     <tr>
-                        <td className='title-table'>Estado Actual ID:</td>
-                        <td className='tr-table'>{selectedChallenge?.actual_state_id}</td>
+                        <td className='title-table'>Tribe ID:</td>
+                        <td className='tr-table'>{selectedChallenge?.tribe_id}</td>
                     </tr>
                     <tr>
                     <td className='title-table'>Acciones</td>
