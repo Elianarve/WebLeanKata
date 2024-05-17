@@ -8,7 +8,7 @@
   text-align: center;
 }
 
-.aboutUs-container section{
+.aboutUs-container header{
   background-image: url(../../assets/img/futuristicHome.jpeg);
   background-position: center;
   background-size: cover;
@@ -33,4 +33,37 @@
 .leanKata-backdrop h1{
   color: #ECF0F1;
   font-size: 35px;
+}
+
+.aboutUs-container section{
+  display: flex;
+  text-align: left;
+  padding: 30px;
+}
+
+.aboutUs-container section p{
+  width: 300px;
+  margin: 10px 0;
+}
+
+section h3 span{
+  color: rgb(78, 177, 69);
+}
+
+main section h3{
+  font-size: 25px;
+  width: 350px;
+  margin: 0;
+  margin: 10px 0;
+}
+
+@media (max-width: 768px){
+
+  .aboutUs-container section{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    text-align: center;
+  }
+
 }
