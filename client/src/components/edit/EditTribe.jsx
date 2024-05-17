@@ -33,7 +33,6 @@ const EditTribe = ({tribuId, setLoading, setEditable}) => {
         
   return (
     <div className="form-container">
-        <h2>Editar proceso</h2>
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
         <h2>EDITAR TRIBU</h2>
         <div className='items'>

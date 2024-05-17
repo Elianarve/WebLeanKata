@@ -49,23 +49,23 @@ const LearningSelect = ({ result }) => {
                         <table className='container-table'>
                                 {learnings.map((learning) => (
                                     <tbody className='tr-table' key={learning.id}>
-                                        <tr>
+                                        <tr className='tr-table'>
                                         <td className='title-table'>Aprendizaje ID</td>
                                         <td className='tr-table'>{learning.id}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className='tr-table'>
                                         <td className='title-table'>Resultados ID</td>
                                         <td className='tr-table'>{learning.results_id}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className='tr-table'>
                                         <td className='title-table'>Descripción</td>
                                         <td className='tr-table'>{learning.description}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className='tr-table'>
                                         <td className='title-table'>Fecha de aprendizaje</td>
                                         <td className='tr-table'>{learning.learning_date}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className='tr-table' >
                                         <td className='title-table'>Acciones</td>
                                         <td className='container-button'>
                                             <button className='button-edit' onClick={() => {setEditLearningId(learning.id), setEditLearning(true) }}>
@@ -74,10 +74,6 @@ const LearningSelect = ({ result }) => {
                                             <button className='button-edit' onClick={() => deleteLearning(learning.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
                                         </td>
                                         </tr> 
-                                        <tr>
-                                    <td className='title-table-line'></td>
-                                    <td className='title-table-line'></td>
-                                </tr>
                                     </tbody>
                                 ))}
                         </table>
