@@ -42,7 +42,7 @@
   transition: 0.6s;
   border-radius: 40px;
   background: #ECF0F1;
-  padding: 15px 25px;
+  padding: 10px 25px;
   cursor: pointer;
   box-shadow: 5px 5px 32px #c9cccd, -5px -5px 32px #ffffff;
   font-family: Arial, Helvetica, sans-serif;
@@ -77,6 +77,11 @@
 .line {
   border: solid #002661 1px;
   width: 90%;
+}
+
+.letter-nav{
+  color: #024f22b7;
+  font-weight: bold;
 }
 
 .title-li-nav {

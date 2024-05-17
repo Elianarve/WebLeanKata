@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getActualState } from "../../services/actualStateServices";
-import './css/SelectALl.css';
+import './css/SelectAll.css';
 import update from '../../assets/img/Edit-File.svg';
 import EditActualState from '../edit/EditActualState';
 

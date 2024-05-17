@@ -1,0 +1,8 @@
+.container-title{
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background-image: url(../../assets/img/futuristicHome.jpeg);
+    background-position: center;
+    background-size: cover;
+  }
