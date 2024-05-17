@@ -3,10 +3,16 @@ import './AboutUs.css'
 
 const AboutUs = () => {
   return (
-    <div className="container-title">
-          <h1 className='title-home'>Descubre la tabla de retos: <br /> ¡Tu camino hacia la mejora continua con LeanKata!</h1>
-          <button>Conoce mas sobre nuestra tecnología</button>
-        </div>
+    <>
+      <header>
+        <h1>LeanKata</h1>
+      </header>
+      <main>
+        <h3>Conoce nuestra metodología</h3>
+        <p>Descripcion de la metodología</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/L8k0OJjKWSI?si=USM3f5VW1JU0WTxY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </main>
+    </>
   )
 }
 

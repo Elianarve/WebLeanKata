@@ -1,8 +1,6 @@
-.container-title{
-    display: grid;
-    place-items: center;
-    padding: 20px;
-    background-image: url(../../assets/img/futuristicHome.jpeg);
-    background-position: center;
-    background-size: cover;
-  }
+.aboutUs-title{
+  background-image: url(../../assets/img/futuristicHome.jpeg);
+  width: 100vw;
+  height: 300px;
+  margin-top: 300px;
+}
