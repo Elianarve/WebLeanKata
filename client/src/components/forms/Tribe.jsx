@@ -21,7 +21,7 @@ const Tribe = () => {
     <h2> CREAR TRIBU </h2>
       <div className='items'>
         <label className='label-item'>Nombre de la Tribu:</label>
-        <textarea type="text" rows="10" cols="50" {...register('name_tribe', {required: 'El nombre de la tribu es requerido'})}/>
+        <input type="text" rows="10" cols="50" {...register('name_tribe', {required: 'El nombre de la tribu es requerido'})}/>
         {errors.name_tribe && <p className="error-message">{errors.name_tribe.message}</p>} 
       </div>
       <div className='items'>
