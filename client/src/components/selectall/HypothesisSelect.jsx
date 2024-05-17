@@ -52,27 +52,27 @@ const HypothesisSelect = ({obstacle}) => {
                 <table className='container-table'>
                         {hypothesis.map((hypothes) => (
                             <tbody key={hypothes.id}>
-                                <tr>
+                                <tr className="tr-table">
                                 <td className='title-table'>Hipotesis ID</td>
                                 <td className='tr-table'>{hypothes.id}</td>
                                 </tr>
-                                <tr>
+                                <tr className="tr-table">
                                 <td className='title-table'>Descripción</td>
                                 <td className='tr-table'>{hypothes.description}</td>
                                 </tr>
-                                <tr>
+                                <tr className="tr-table">
                                 <td className='title-table'>Fecha de plan</td>
                                 <td className='tr-table'>{hypothes.plan_date}</td>
                                 </tr>
-                                <tr>
+                                <tr className="tr-table">
                                 <td className='title-table'>Estado de la hipotesis</td>
                                 <td className='tr-table'>{hypothes.state_hypothesis}</td>
                                 </tr>
-                                <tr>
+                                <tr className="tr-table"> 
                                 <td className='title-table'>Obtaculo ID</td>
                                 <td className='tr-table'>{hypothes.obstacle_id}</td>
                                 </tr>
-                                <tr>
+                                <tr className="tr-table">
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
                                     <button className='button-edit' onClick={() => {setEditHypothesisId(hypothes.id), setEditHypothesis(true) }}>
@@ -81,14 +81,6 @@ const HypothesisSelect = ({obstacle}) => {
                                     <button className='button-add-t' onClick={() => {setEditHypothesisId(hypothes.id), setEditExperiment(true)}}>Añadir Exp</button>
                                     <button className='button-edit' onClick={() => deleteHypothesis(hypothes.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
                                 </td>
-                                </tr>
-                                <tr>
-                                    <td className='title-table'></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td className='title-table-line'></td>
-                                    <td className='title-table-line'></td>
                                 </tr>
                             </tbody>
                         ))}
@@ -102,7 +94,6 @@ const HypothesisSelect = ({obstacle}) => {
     {editExperiment && <Experiment editHypothesisId={editHypothesisId} setLoading={setLoading} setEditExperiment={setEditExperiment}/> }
     <ExperimentsSelect hypothesis={hypothesis}/>
 </div>
-
 );
 }
 

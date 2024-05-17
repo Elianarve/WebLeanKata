@@ -48,39 +48,39 @@ const TaskSelect = ({experiment}) => {
                 <table className='container-table'>
                         {tasks.map((task) => (
                             <tbody key={task.id}>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Tarea ID</td>
                                 <td className='tr-table'>{task.id}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Experimento ID</td>
                                 <td className='tr-table'>{task.experiment_id}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Descripción</td>
                                 <td className='tr-table'>{task.description}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Responsable</td>
                                 <td className='tr-table'>{task.responsible}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Fecha de inicio</td>
                                 <td className='tr-table'>{task.start_date}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Fecha final prevista</td>
                                 <td className='tr-table'>{task.end_date_prev}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Fecha final real</td>
                                 <td className='tr-table'>{task.end_date_real}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Estado</td>
                                 <td className='tr-table'>{task.state}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
                                     <button className='button-edit' onClick={() => {setEditTaskId(task.id), setEdiTask(true)}} >
@@ -88,10 +88,6 @@ const TaskSelect = ({experiment}) => {
                                     </button>
                                     <button className='button-edit' onClick={() => deleteTask(task.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
                                 </td>
-                                </tr>
-                                <tr>
-                                    <td className='title-table-line'></td>
-                                    <td className='title-table-line'></td>
                                 </tr>
                             </tbody>
                          ))} 
