@@ -28,7 +28,7 @@
     border: 0.4em solid #002661;
     border-radius: 1em;
     overflow: hidden;
-    background: linear-gradient(91deg, #77e2b7 0.41%, #938fcb 22.24%, #6a97c8 50.06%, #90dbe0 98.15%);
+    background: #002661;
     box-shadow: inset 16px 16px 16px #c9cccd, inset -8px -16px 16px #ffffff;
 }
 

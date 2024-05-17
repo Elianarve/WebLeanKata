@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 import { getOneTribe, updateTribe } from '../../services/tribeServices';
 import '../forms/css/Forms.css';
 
-const EditTribe = ({tribuId, setLoading, setEditable}) => {
+const EditTribe = ({tribeId, setLoading, setEditable}) => {
   const { register, formState: { errors }, handleSubmit, setValue } = useForm();
   const [tribeData, setTribeData] = useState({});
  
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getOneTribe(tribuId);
+      const response = await getOneTribe(tribeId);
       const tribeData = response.data;
       setTribeData(tribeData);
       setValue('name_tribe', tribeData.name_tribe);
@@ -17,11 +17,11 @@ const EditTribe = ({tribuId, setLoading, setEditable}) => {
     };
 
     fetchData();
-  }, [tribuId, setValue]);
+  }, [tribeId, setValue]);
 
   const onSubmit = async (tribeData) => {
     try {
-      await updateTribe(tribuId, tribeData);
+      await updateTribe(tribeId, tribeData);
       alert('¡Los datos del elemento han sido actualizados correctamente!');
       setLoading(true);
       setEditable(false);

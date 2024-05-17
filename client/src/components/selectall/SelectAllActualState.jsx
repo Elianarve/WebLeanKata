@@ -1,39 +1,33 @@
 import { useState, useEffect } from 'react';
-import { getOneActualState } from "../../services/actualStateServices";
-import { useParams } from 'react-router-dom';
+import { getActualState } from "../../services/actualStateServices";
 import './css/SelectAll.css';
 import update from '../../assets/img/Edit-File.svg';
-import { getOneChallenge } from '../../services/challengeServices';
-import TribeSelect from './TribeSelect';
 import EditActualState from '../edit/EditActualState';
 
-const SelectAllActualState = () => {
+const SelectAllActualState = ({challengeId}) => {
     const [actualStates, setActualStates] = useState(null);
-    const { id } = useParams();
     const [editable, setEditable] = useState(false);
     const [loading, setLoading] = useState(false);  
    
-
     useEffect(() => {
         const fetchActualState = async () => {
             try {
-                const challengeData = await getOneChallenge(id);  
-                const actualStateId = challengeData.data.actual_state_id;  
-                const actualStateData = await getOneActualState(actualStateId);
-                setActualStates(actualStateData.data);
+                const actualStateData = await getActualState();
+                const actualStatefiltered = actualStateData.filter(state => state.challenge_id === challengeId);    
+                setActualStates(...actualStatefiltered);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching:', error);
             }
         }
         fetchActualState();
-    }, [id, loading]);
+    }, [challengeId, loading]);
+
     
     return (
         <div className='container-challenge'>
             {actualStates && (
                 <>
-                <TribeSelect tribuId={actualStates.tribe_id}/>
                     <h3>ESTADO ACTUAL</h3>
                     <div className="centered-table">
                         <table className='container-table'>
@@ -51,8 +45,8 @@ const SelectAllActualState = () => {
                                             <td className='tr-table'>{actualStates.date}</td>
                                         </tr> 
                                         <tr>
-                                            <td className='title-table'>Tribu ID</td>
-                                            <td className='tr-table'>{actualStates.tribe_id}</td>
+                                            <td className='title-table'>Challenge ID</td>
+                                            <td className='tr-table'>{actualStates.challenge_id}</td>
                                         </tr> 
                                         <tr>
                                             <td className='title-table'>Acciones</td>

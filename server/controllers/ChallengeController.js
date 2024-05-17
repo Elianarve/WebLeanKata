@@ -1,4 +1,4 @@
-import ActualStateModel from "../models/ActualStateModel.js";
+import TribeModel from "../models/TribeModel.js";
 import ChallengeModel from "../models/ChallengeModel.js";
 import { Op } from 'sequelize';
 
@@ -22,14 +22,13 @@ export const addChallenge = async (req, res) => {
             const numberId = parseInt(idChallenge.id.slice(1));
             count = numberId + 1;
         }
-        let actualstateId;
+        let tribeId;
         const formatted_Id = 'R' + count.toString().padStart(3, '0');    
 
-        const actState = await ActualStateModel.findOne({order: [['id', 'DESC']]});   
-        actualstateId = actState.id;
+        const tribe = await TribeModel.findOne({order: [['id', 'DESC']]});   
+        tribeId = tribe.id;
 
-
-        const addChallenge = await ChallengeModel.create({ id: formatted_Id, ...req.body, actual_state_id: actualstateId });
+        const addChallenge = await ChallengeModel.create({ id: formatted_Id, ...req.body, tribe_id: tribeId });
         res.status(201).json(addChallenge);
     }catch(error){
         return res.status(500).send({ error: 'Internal Server Error' + error});
