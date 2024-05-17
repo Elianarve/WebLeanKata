@@ -52,7 +52,9 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 60vw;
-  padding: 20px;
+  padding: 20px; 
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .table-challenge {

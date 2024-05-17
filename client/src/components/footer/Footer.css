@@ -10,7 +10,7 @@ body {
   right: 0;
   width: 100%;
   z-index: 1500;
-  position: fixed;
+  margin-top: 20px
 }
 
 .footer-container p {
