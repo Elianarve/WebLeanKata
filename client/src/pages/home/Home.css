@@ -51,7 +51,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 50vw;
+  max-width: 60vw;
   padding: 20px;
 }
 
