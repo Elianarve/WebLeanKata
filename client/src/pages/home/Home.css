@@ -3,6 +3,15 @@ body {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.container-title{
+  display: flex;
+  place-content: center;
+}
+
+.container-title img{
+  width: 50vw;
+}
+
 .home-container {
   display: flex;
   justify-content: center;
@@ -42,12 +51,13 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 60vw;
+  max-width: 50vw;
   padding: 20px;
 }
 
 .table-challenge {
   transition: 0.5s;
+  border: 1px solid #002661;
 }
 
 .table-challenge:hover {
@@ -55,6 +65,7 @@ body {
   transform: scale(1.01);
   background-color: #0027613e;
   cursor: pointer;
+  border: none;
 }
 
 .table-container {

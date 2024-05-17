@@ -134,6 +134,7 @@ import "./Home.css";
 import "../../components/calendar/Calendar";
 import { getActualState } from '../../services/actualStateServices';
 import { io } from 'socket.io-client';
+import homeImg from '../../assets/img/Presentation.png'
 
 const Home = () => {
   const [challenges, setChallenges] = useState([]);
@@ -213,6 +214,7 @@ const Home = () => {
     <div className="home-container">
       <div className='container-principal'>
         <div className="container-title">
+          {/* <img src={homeImg}/> */}
           <h1 className='title-home'>Descubre la tabla de retos: <br /> ¡Tu camino hacia la mejora continua con LeanKata!</h1>
         </div>
         <div className="home-container-calendar">
