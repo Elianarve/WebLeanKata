@@ -10,11 +10,7 @@ const LayoutPrivate = () => {  //HE METIDO AQUI TB LA NAV Y EL FOOTER
     <>
       {userAuth ? (
         <>
-          <Nav/>
-          <main>
             <Outlet />
-          </main>
-          <Footer />
         </>
       ) : ( 
         <Navigate to="/" />
