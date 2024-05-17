@@ -33,7 +33,6 @@ const TargetStateModel = connection_db.define('targetstate', {
     timestamps: false
 });
 
-// ChallengeModel.hasMany(TargetStateModel, { foreingKey: 'challenge_id' });
  ChallengeModel.hasMany(TargetStateModel, { foreignKey: 'challenge_id' });
 
 export default TargetStateModel;

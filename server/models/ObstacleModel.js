@@ -30,6 +30,5 @@ const ObstacleModel = connection_db.define('obstacle', {
     timestamps: false
 });
 
-// ObstacleModel.hasMany(TargetStateModel, { foreingKey: 'target_state_id' });
 
 export default ObstacleModel;

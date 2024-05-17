@@ -1,60 +1,99 @@
-import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { getOneObstacle, updateObstacle, deleteObstacle } from '../../services/obstacleServices';
-import { useParams, useNavigate } from 'react-router-dom';
-import '../forms/css/Forms.css';
+import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import {
+  getOneObstacle,
+  updateObstacle,
+  updateImage,
+} from "../../services/obstacleServices";
+import "../forms/css/Forms.css";
 
+const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    setValue,
+  } = useForm();
+  const [obstacleData, setObstacleData] = useState({});
+  const [url_image, setUrl_Image] = useState("");
 
-const EditObstacle = () => {
-  const { id } = useParams();
-  const { register, formState: { errors }, handleSubmit, reset, setValue } = useForm();
-  const [ obstacleData, setObstacleData ] = useState({});
-  const navigate = useNavigate();
-  
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getOneObstacle(id);
-      const  obstacleData = response.data;
-      setObstacleData( obstacleData);
-      setValue('description',  obstacleData.description);
-      setValue('image',  obstacleData.image);
+      const response = await getOneObstacle(editObstacleId);
+      const obstacleData = response;
+      setObstacleData(obstacleData);
+      setValue("description", obstacleData.description);
+      setUrl_Image("image", obstacleData.image);
+      setUrl_Image(obstacleData.image);
     };
 
     fetchData();
-  }, [id, setValue]);
+  }, [editObstacleId, setValue]);
 
-  const onSubmit = async ( obstacleData) => {
+  const onSubmit = async (data) => {
+    data.image = url_image;
     try {
-      await updateObstacle(id,  obstacleData);
-      alert('¡Los datos del elemento han sido actualizados correctamente!');
-      reset();
+      await updateObstacle(editObstacleId, data);
+      alert("¡Los datos del Obstáculo han sido actualizados correctamente!");
+      setLoading(true);
+      setEditObstacle(false);
     } catch (error) {
-      console.error('Error al actualizar el elemento:', error);
-      alert('Error al actualizar el elemento. Por favor, intenta nuevamente.');
+      console.error("Error al actualizar el Obstáculo:", error);
+      alert("Error al actualizar el Obstáculo. Por favor, intenta nuevamente.");
     }
   };
-        
+
+  const changeUploadImage = async (e) => {
+    const file = e.target.files[0];
+    const imageData = new FormData();
+    imageData.append("file", file);
+    imageData.append("upload_preset", "leankata");
+    try {
+      const response = await updateImage(imageData);
+      setUrl_Image(response.data.secure_url);
+    } catch (error) {
+      console.error("Error al cargar la imagen a Cloudinary:", error);
+    }
+  };
+
   return (
     <div className="form-container">
-    <h2>Editar Obstaculo</h2>
-
-      <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-        <div className='items'>
-        <label className='label-item'>Descripción:</label>
-        <input type="text" name="description" defaultValue={ obstacleData.description }  {...register('description', { required: true })} />
-        {/* {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>} */}
-        </div>
-        <div className='items'>
-        <label className='label-item'>Archivo:</label>
-        <input type="file" name="image" defaultValue={ obstacleData.image }  {...register('image', { required: true })} />
-        </div>
-        <div className='buttons-container'>
-        <button className="delete button" onClick={() => deleteObstacle(id).then(() => navigate("/home")) }>Eliminar</button>
-        <button className='edit button' type="submit">Editar</button>
-        </div>
-      </form>
+    <form className="form-create" onSubmit={handleSubmit(onSubmit)}>
+      <h2>EDITAR OBSTACULO</h2>
+      <div className="items">
+        <label className="label-item">Descripción:</label>
+        <input
+          type="text"
+          name="description"
+          defaultValue={obstacleData.description}
+          {...register("description", { required: true })}
+        />
+        {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>}
       </div>
+      <div className="items">
+        <label className="label-item">Imagen</label>
+        <input className='button-image'
+          type="file"
+          id="image"
+          name="image"
+          {...register("image")}
+          onChange={changeUploadImage}
+        />
+        {obstacleData.image && (
+          <div className="image-container">
+            <img
+              className="label-item-img"
+              src={obstacleData.image}
+              alt="obstacle image"
+            />
+          </div>
+        )}
+      </div>
+      <button className='button-forms' type="submit">Editar</button>
+      <button className='button-forms' onClick={() => setEditObstacle(false)}>Cerrar</button>
+    </form>
+    </div>
   );
-}
+};
 
 export default EditObstacle;

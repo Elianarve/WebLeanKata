@@ -1,9 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import { postMentalContrast } from '../../services/mentalContrastServices';
+import './css/Forms.css';
 
-const ContrastMetal = () => {
-  const navigate = useNavigate();
+const ContrastMetal = ({editTargetId, setLoading, setEditContrast}) => {
 
   const getCurrentDate = () => {
     const today = new Date();
@@ -26,21 +25,26 @@ const ContrastMetal = () => {
     }
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (formData) => {
     try {
+      const data = {...formData, target_state_id: editTargetId};
       const response = await postMentalContrast(data);
       console.log("Contraste mental creado correctamente:", response.data);
-      navigate(`/card/${response.data.id}`);
+      setLoading(true);
+      setEditContrast(false);
     } catch (error) {
       console.error("Error al crear el contraste mental:", error);
     }
   };
 
+  const closeForm = () => {
+    setEditContrast(false);
+  };
+
   return (
-    <div className="form-container">
-      <div className="form-center">
+     <div className="form-container">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Contraste mental: </h2>
+      <h2> CREAR CONTRASTE MENTAL </h2>
       <div className='items'>
         <label className='label-item'>Puntuación</label>
         <input type="number" min="1" max="10" {...register('points', { required: 'La puntuación es requerida', min: { value: 1, message: 'La puntuación mínima es 1' }, max: { value: 10, message: 'La puntuación máxima es 10' } })} />
@@ -51,10 +55,10 @@ const ContrastMetal = () => {
         <input type="date" {...register('evaluation_date', { required: true, validate: validateEvaluationDate })} />
         {errors.evaluation_date && <p className="error-message">{errors.evaluation_date.message}</p>}
       </div>
-      <button type="submit" className='button-forms'>Enviar</button>
+      <button className='button-forms' type="submit">Enviar</button>
+     <button className="button-forms" onClick={closeForm}>Cerrar</button>
     </form>
-    </div>
-    </div>
+    </div> 
   )
 }
 

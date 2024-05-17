@@ -38,7 +38,6 @@ export const deleteActualState = async (id) => {
 
 export const postActualState = async (data) => {
     const response = await axios.post(API_URL_AE, data);
-    alert("EA creado exitosamente")
     return response;
   }
 
@@ -47,7 +46,6 @@ export const postActualState = async (data) => {
     try {
         const response = await axios.put(`${API_URL_AE}/${id}`,data);
         if (response.status === 200) {
-            alert('Estado actual actualizado correctamente');
             return response.data;
         }
     } catch (error) {

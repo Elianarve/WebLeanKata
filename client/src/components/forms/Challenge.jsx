@@ -3,13 +3,11 @@ import { postChallenge } from '../../services/challengeServices';
 import { useForm } from 'react-hook-form';
 import './css/Forms.css';
 
-
 const Challenge = () => {
   const { handleSubmit, register, formState: { errors }, watch } = useForm();
   const navigate = useNavigate();
   const startDate = watch('start_date');
   const endDate = watch('end_date');
-
   const validateDateRange = () => {
     if (startDate && endDate) {
       return startDate <= endDate || "La fecha de inicio no puede ser posterior a la fecha de fin";
@@ -34,9 +32,8 @@ const Challenge = () => {
 
   return (
     <div className="form-container">
-      <div className="form-center">
-      <h2>RETO: </h2>
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
+      <h2>CREAR RETO</h2>
         <div className='items'>
           <label className='label-item'>Nombre</label> 
           <input type="text" {...register('name', { required: true })} />
@@ -44,7 +41,7 @@ const Challenge = () => {
         </div>
         <div className='items'>
           <label className='label-item'>Descripción</label>
-          <textarea type="text" {...register('description', { required: 'La descripción es requerida', validate: validateText })} />
+          <textarea type="text" rows="10" cols="50" {...register('description', { required: 'La descripción es requerida', validate: validateText })} />
           {errors.description && <p className="error-message">{errors.description.message}</p>}
         </div>
         <div className='items'>
@@ -59,7 +56,6 @@ const Challenge = () => {
         </div>
         <button className='button-forms' type="submit">ENVIAR</button>
       </form>
-    </div>
     </div>
 
   )

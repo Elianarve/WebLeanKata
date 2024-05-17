@@ -26,7 +26,8 @@ export const getOneExperiment = async (id) => {
 export const deleteExperiment = async (id) => {
         try {
             const response = await axios.delete(`${API_URL}/${id}`);
-            if (response.status === 200) {
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el contraste mental?"); 
+            if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }
         } catch (error) {
@@ -37,7 +38,6 @@ export const deleteExperiment = async (id) => {
 
 export const postExperiment = async (data) => {
     const response = await axios.post(API_URL, data);
-    alert("Experimento creado exitosamente")
     return response;
   }
 
@@ -45,14 +45,14 @@ export const postExperiment = async (data) => {
     try {
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
-            alert('Experiment actualizado correctamente');
             return response.data;
         }
     } catch (error) {
-        console.error("Error al actualizar el Experiment:", error);
+        console.error("Error al actualizar el Result:", error);
         throw error;
     }
 };
+
 
 export const uploadImage = async (imageData) => {
     try {
@@ -66,3 +66,14 @@ export const uploadImage = async (imageData) => {
     }
 };
 
+export const updateImage = async (imageData) => {
+    try {
+        const response = await axios.put(
+            "http://api.cloudinary.com/v1_1/dpkll45y2/image/upload",
+            imageData
+        );
+        return response.data;
+    } catch (error) {
+        throw new Error("Error al cargar la imagen en Cloudinary: " + error.message);
+    }
+}

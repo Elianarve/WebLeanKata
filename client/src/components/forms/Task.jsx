@@ -1,16 +1,17 @@
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { postTask } from '../../services/taskServices';
 
-function Task() {
+function Task({editExperimentId, setLoading, setCreateTask}) {
   const { handleSubmit, register, formState: { errors, isDirty }, getValues } = useForm();
-  const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
+
+  const onSubmit = async (formData) => {
     try {
+      const data = {...formData, experiment_id: editExperimentId};
       const response = await postTask(data);
       console.log("Tarea creada:", response.data);
-      navigate('/result');
+      setLoading(true);
+      setCreateTask(false);
     } catch (error) {
       console.error("Error al crear la tarea:", error);
     }
@@ -31,14 +32,18 @@ function Task() {
     return compareDates(value, startDate) && compareDates(value, endDatePrev) || "La fecha real debe ser posterior a la fecha de inicio y a la fecha final prevista";
   };
 
+  const closeForm = () => {
+    setCreateTask(false);
+  };
+
+
   return (
     <div className="form-container">
-      <div className="form-center">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-      <h2>Tarea:</h2>
+    <h2>CREAR TAREA</h2>
       <div className='items'>
         <label className='label-item'>Descripción:</label>
-        <textarea type="text" {...register('description', { required: true })} />
+        <textarea type="text" rows="10" cols="50" {...register('description', { required: true })} />
         {errors.description && <p className="error-message">La descripción es requerida</p>}
       </div>
       <div className='items'>
@@ -66,11 +71,10 @@ function Task() {
         <input type="text" {...register('state', { required: true })} />
         {errors.state && <p className="error-message">El estado es requerido</p>}
       </div>
-      <button type="submit" disabled={!isDirty} className='button-forms'>Enviar</button>
+      <button className='button-forms' type="submit" disabled={!isDirty} >Enviar</button>
+     <button className='button-forms' onClick={closeForm}>Cerrar</button>
     </form>
     </div>
-    </div>
-  )
-}
+  )}
 
 export default Task;

@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import "./Nav.css";
-import logo from '../../assets/img/logo-lk.png';
 
+// import logo from "../../assets/LeanKata-logo.svg";
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
-
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
   };
@@ -13,7 +12,7 @@ const Nav = () => {
   return (
     <nav className="navbar">
       <div className="logo">
-        <img src={logo} alt="logo" />
+        {/* <img src={logo} alt="logo" /> */}
       </div>
       <div className="menu-icon" onClick={toggleMenu}>
         <div className={`hamburger ${openMenu ? 'active' : ''}`}></div>
@@ -28,7 +27,6 @@ const Nav = () => {
         </div>
          )}
         <li className="nav-button"><Link to="/">Inicio</Link></li>
-        <li className="nav-button"><Link to="/detail/:id">Tablero Principal</Link></li>
       </ul>
       <div className="menu-toggle" onClick={toggleMenu}>
         <div className="bar"></div>
@@ -40,7 +38,6 @@ const Nav = () => {
           <a className='a-link' href="/process">Nuevo</a>
           <a className='a-link' href="/card/:id">Existente</a>
         </div>
-        
       )}
     </nav>
   );

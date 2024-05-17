@@ -1,20 +1,29 @@
+body {
+  background-color: #ecf0f1;
+}
+
 .footer-container {
   text-align: center;
-        bottom: 0;
-        width: 100%;
+  font-size: small;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1500;
+  position: fixed;
 }
 
-.transparentFooter{
-  margin-top: 70px;
-}
-
-.blueFooter{
-  background-color: #587175;
-  color: #ECF0F1;
+.footer-container p {
   margin: 0;
-  padding: 18px 0;
 }
 
-body{
-  background-color: #ECF0F1;
+
+.blueFooter {
+  background-color: #587175;
+  color: #ecf0f1;
+  margin: 0;
+}
+
+body {
+  background-color: #ecf0f1;
 }
