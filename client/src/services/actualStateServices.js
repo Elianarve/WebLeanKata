@@ -13,15 +13,15 @@ export const getActualState = async () => {
     }
 };
 
-export const getOneActualState = async (id) => {
-    try {
-        const response = await axios.get(`${API_URL_AE}/${id}`);
-        return response;
-    } catch (error) {
-        console.error("Error al obtener el EA por ID", error);
-        throw error;
-    }
-};
+// export const getOneActualState = async (id) => {
+//     try {
+//         const response = await axios.get(`${API_URL_AE}/${id}`);
+//         return response;
+//     } catch (error) {
+//         console.error("Error al obtener el EA por ID", error);
+//         throw error;
+//     }
+// };
 
 export const deleteActualState = async (id) => {
         try {

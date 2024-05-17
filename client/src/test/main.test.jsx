@@ -32,36 +32,47 @@
 //     expect(container.querySelector('NotFound')).toBeInTheDocument();
 //   });
 // });
-
 import React from 'react';
-import { render } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
+import { render, unmountComponentAtNode } from 'react-dom';
 import { RouterProvider } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import router from '../router/router.jsx';
-import ReactDOM from 'react-dom/client';
-import { describe, it, expect } from 'vitest';
-import jest from 'jest';
+import UserProvider from './context/UserContext';
+import router from './router/router.jsx';
 
-jest.mock('react-dom/client', () => ({
-  createRoot: jest.fn().mockReturnThis(),
-  render: jest.fn(),
-}));
+let container = null;
 
-describe('Main', () => {
-  it('renders RouterProvider with correct router', () => {
-    const history = createMemoryHistory();
-    const route = '/';
-    history.push(route);
+beforeEach(() => {
+  // Configura un nuevo elemento del DOM antes de cada prueba
+  container = document.createElement('div');
+  document.body.appendChild(container);
+});
 
+afterEach(() => {
+  // Limpia después de cada prueba
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
+
+test('renders main component with providers', () => {
+  // Crea un historial de memoria para usar con React Router
+  const history = createMemoryHistory();
+
+  act(() => {
+    // Renderiza el componente principal con los proveedores y el router
     render(
-      <RouterProvider history={history} router={router} />
-    );
-
-    expect(ReactDOM.createRoot).toHaveBeenCalledWith(document.getElementById('root'));
-    expect(ReactDOM.render).toHaveBeenCalledWith(
       <React.StrictMode>
-        <RouterProvider router={router} />
-      </React.StrictMode>
+        <UserProvider>
+          <RouterProvider router={router} history={history}>
+            <div id="root">Hello World</div>
+          </RouterProvider>
+        </UserProvider>
+      </React.StrictMode>,
+      container
     );
   });
+
+  // Verifica que se haya renderizado el texto "Hello World"
+  expect(container.textContent).toBe('Hello World');
 });
