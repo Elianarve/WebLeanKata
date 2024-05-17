@@ -18,7 +18,7 @@ body {
 
 .container-title{
   width: 50%;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 
 .title-home {
@@ -38,17 +38,18 @@ body {
 .title-th-home{
   background-color: #ECF0F1;
   padding: 18px;
-  /* border-radius: 15px;  */
-  /* box-shadow: inset 8px 8px 16px #c9cccd, inset -8px -8px 16px #ffffff; */
+  border-radius: 8px; 
   margin-top: 3%;
-  border: 1px solid  #002661;
+  background-color: #002661;
+  color: #FFFF;
+  font-size: 1.1rem;
 }
 
  .challenge-wrapper {
   margin: 15px 0;
+  padding: 15px;
   border-radius: 5px;
   background: #ECF0F1;
-  /* box-shadow: 8px 8px 16px #c9cccd, -8px -8px 16px #ffffff; */
   cursor: pointer;
   transition: 0.3s;
   border: 1px solid  #002661;
