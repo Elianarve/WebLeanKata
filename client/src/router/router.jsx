@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import LayoutPublic from "../components/layout";
-import Home from "../components/home/Home";
-import Edit from "../components/edit/Edit";
-import Card from "../components/card/Card";
+import LayoutPublic from "../components/layout/LayoutPublic";
+import Home from "../pages/home/Home";
 import Challenge from '../components/forms/Challenge';
 import ActualState from "../components/forms/ActualState";
-
+import Process from '../components/forms/Process';
+import Tribe from '../components/forms/Tribe';
+import NotFound from "../pages/notfound/NotFound";
+import Card from "../components/card/Card";
 
 export const router = createBrowserRouter([
   {
@@ -13,11 +14,23 @@ export const router = createBrowserRouter([
       element: <LayoutPublic />,
       children: [
     {
-      path: "/home",
+      index: true,
       element: <Home/>,
     },
     {
-      path: "/reto",
+      path:"/card/:id",
+      element: <Card/>
+    },
+    {
+      path: "/process",
+      element: <Process/>
+    },
+    {
+      path: "/tribe",
+      element: <Tribe/>
+    },
+    {
+      path: "/challenge",
       element: <Challenge/>,
     },
     {
@@ -25,12 +38,8 @@ export const router = createBrowserRouter([
       element: <ActualState/>,
     },
     {
-      path: "/Edit/:id",
-      element: <Edit/>
-    },
-    {
-      path: "/card/:id",
-      element: <Card/>
+      path: "*",
+      element: <NotFound/>
     }
   ],
   }

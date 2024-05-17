@@ -15,7 +15,7 @@ export const getChallenge = async () => {
 
 export const getOneChallenge = async (id) => {
     try {
-        const response = await axios.get(`${API_URL_CHALLENGE}`);
+        const response = await axios.get(`${API_URL_CHALLENGE}/${id}`);
         return response;
     } catch (error) {
         console.error("Error al obtener el reto por ID", error);
@@ -26,7 +26,8 @@ export const getOneChallenge = async (id) => {
 export const deleteChallenge = async (id) => {
         try {
             const response = await axios.delete(`${API_URL_CHALLENGE}/${id}`);
-            if (response.status === 200) {
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el estado objetivo?"); 
+            if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }
         } catch (error) {
@@ -38,8 +39,6 @@ export const deleteChallenge = async (id) => {
 
 export const postChallenge = async (data) => {
     const response = await axios.post(API_URL_CHALLENGE, data);
-    console.log(response);
-    alert("Reto creado exitosamente");
     return response;
   };
 
@@ -48,7 +47,6 @@ export const postChallenge = async (data) => {
     try {
         const response = await axios.put(`${API_URL_CHALLENGE}/${id}`,data);
         if (response.status === 200) {
-            alert('Reto actualizado correctamente');
             return response.data;
         }
     } catch (error) {
@@ -56,4 +54,3 @@ export const postChallenge = async (data) => {
         throw error;
     }
 };
-

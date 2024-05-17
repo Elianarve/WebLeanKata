@@ -1,39 +1,94 @@
 import { useState, useEffect } from 'react';
 import { getChallenge } from "../../services/challengeServices";
 import { useNavigate } from 'react-router-dom';
-
+import './css/SelectALl.css';
+import update from '../../assets/img/Edit-File.svg';
+import EditChallenge from '../edit/EditChallenge';
 
 const SelectAllChallenges = ({ challengeId }) => {
     const [challenges, setChallenges] = useState([]);
     const navigate = useNavigate();
-  
+    const [editable, setEditable] = useState(false);
+    const [loading, setLoading] = useState(false);  
+
     useEffect(() => {
-      const fetchChallenges = async () => {
-        try {
-          const challengesData = await getChallenge(); 
-          setChallenges(challengesData);
-        } catch (error) {
-          console.error('Error fetching Challenges:', error);
-        }
-      };
-  
-      fetchChallenges();
-    }, []);
+        const fetchChallenges = async () => {
+            try {
+                const challengesData = await getChallenge();
+                setChallenges(challengesData);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching Challenges:', error);
+            }
+        };
+
+        fetchChallenges();
+    }, [challengeId, loading]);
 
     const handleChange = (event) => {
-      const challengeId = event.target.value;
-      navigate(`/card/${challengeId}`);
+        const selectedChallengeId = event.target.value;
+        navigate(`/card/${selectedChallengeId}`);
     };
 
-  return (
-    <select value={challengeId} onChange={handleChange}>
-      {challenges.map((challenge) => (
-        <option key={challenge.id} value={challenge.id}>
-          {challenge.name} 
-        </option>
-      ))}
-    </select>
-  )
-}
+    const selectedChallenge = challenges.find(challenge => challenge.id === challengeId);
+
+    return (
+        <div className='container-challenge'>
+            <select value={challengeId} onChange={handleChange} className='container-select'>
+                {challenges.map((challenge) => (
+                    <option key={challenge.id} value={challenge.id}>
+                        {challenge.name}
+                    </option>
+                ))}
+            </select>
+            {selectedChallenge && (
+              <>
+            <h3>RETOS</h3>
+             <div className="centered-table">
+            <table className='container-table'>
+                <tbody>
+                    <tr>
+                        <td className='title-table'>RetoID:</td>
+                        <td className='tr-table'>{selectedChallenge?.id}</td>
+                    </tr>
+                    <tr>
+                        <td className='title-table'>Nombre:</td>
+                        <td className='tr-table'>{selectedChallenge?.name}</td>
+                    </tr>
+                    <tr>
+                        <td className='title-table'>Descripción:</td>
+                        <td className='tr-table'>{selectedChallenge?.description}</td>
+                    </tr>
+                    <tr>
+                        <td className='title-table'>Fecha Inicio:</td>
+                        <td className='tr-table'>{selectedChallenge?.start_date}</td>
+                    </tr>
+                    <tr>
+                        <td className='title-table'>Fecha Fin:</td>
+                        <td className='tr-table'>{selectedChallenge?.end_date}</td>
+                    </tr>
+                    <tr>
+                        <td className='title-table'>Estado Actual ID:</td>
+                        <td className='tr-table'>{selectedChallenge?.actual_state_id}</td>
+                    </tr>
+                    <tr>
+                    <td className='title-table'>Acciones</td>
+                    <td>
+                        <button className='button-edit' onClick={() => setEditable(true)}><img src={update} alt="logo-update" className='logo-edit' /></button>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+              </>
+            )}
+             {editable && (
+                <EditChallenge challengeId={selectedChallenge?.id} setLoading={setLoading} setEditable={setEditable}/>
+            )}
+        </div>
+    );
+};
 
 export default SelectAllChallenges;
+
+

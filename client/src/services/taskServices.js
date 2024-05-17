@@ -15,7 +15,7 @@ export const getTask = async () => {
 
 export const getOneTask  = async (id) => {
     try {
-        const response = await axios.get(`${API_URL}`);
+        const response = await axios.get(`${API_URL}/${id}`);
         return response;
     } catch (error) {
         console.error("Error al obtener el Task  por ID", error);
@@ -39,7 +39,6 @@ export const deleteTask  = async (id) => {
 export const postTask  = async (data) => {
     const response = await axios.post(API_URL, data);
     console.log(response);
-    alert("Task  creado exitosamente");
     return response;
   };
 
@@ -48,7 +47,6 @@ export const postTask  = async (data) => {
     try {
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
-            alert('Task  actualizado correctamente');
             return response.data;
         }
     } catch (error) {

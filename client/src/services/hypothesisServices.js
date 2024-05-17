@@ -6,7 +6,6 @@ export const getHypothesis = async () => {
     try {
         const response = await axios.get(`${API_URL}`);
         const data = await response.data
-        console.log(data)
         return data;
     } catch (error) {
         console.error("Error al obtener las Hypothesis:", error);
@@ -27,7 +26,8 @@ export const getOneHypothesis = async (id) => {
 export const deleteHypothesis = async (id) => {
         try {
             const response = await axios.delete(`${API_URL}/${id}`);
-            if (response.status === 200) {
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el contraste mental?"); 
+            if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }
         } catch (error) {
@@ -36,9 +36,8 @@ export const deleteHypothesis = async (id) => {
         }
 };
 
-export const postHypothesis= async (data) => {
+export const postHypothesis = async (data) => {
     const response = await axios.post(API_URL, data);
-    alert("Hypothesis creado exitosamente")
     return response;
   }
 
@@ -47,7 +46,6 @@ export const postHypothesis= async (data) => {
     try {
         const response = await axios.put(`${API_URL}/${id}`,data);
         if (response.status === 200) {
-            alert('Hypothesis actualizado correctamente');
             return response.data;
         }
     } catch (error) {

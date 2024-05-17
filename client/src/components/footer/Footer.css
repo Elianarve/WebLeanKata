@@ -1,0 +1,29 @@
+body {
+  background-color: #ecf0f1;
+}
+
+.footer-container {
+  text-align: center;
+  font-size: small;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1500;
+  position: fixed;
+}
+
+.footer-container p {
+  margin: 0;
+}
+
+
+.blueFooter {
+  background-color: #587175;
+  color: #ecf0f1;
+  margin: 0;
+}
+
+body {
+  background-color: #ecf0f1;
+}

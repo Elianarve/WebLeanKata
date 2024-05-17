@@ -11,7 +11,6 @@ const HypothesisModel = connection_db.define('hypothesis', {
     obstacle_id: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         references: {
             model: ObstacleModel,
             key: 'id' 
@@ -25,7 +24,7 @@ const HypothesisModel = connection_db.define('hypothesis', {
         type: DataTypes.DATEONLY,
         allowNull: false,
     },
-    state_hipothesis: {
+    state_hypothesis: {
         type: DataTypes.TEXT,
         allowNull: false
     }    
@@ -34,6 +33,5 @@ const HypothesisModel = connection_db.define('hypothesis', {
     timestamps: false
 });
 
-// ObstacleModel.hasMany(HypothesisModel, { foreingKey: 'obstacle_id' });
 
  export default HypothesisModel;

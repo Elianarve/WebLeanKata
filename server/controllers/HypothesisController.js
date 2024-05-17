@@ -15,17 +15,15 @@ export const addHypothesis = async (req, res) => {
     try {
         
         let count = 1;
-        const idHypothesis = await HypothesisModel.findOne({}, { sort: { 'created' : -1 } });
+        const idHypothesis = await HypothesisModel.findOne({order: [['id', 'DESC']]});
        
         if (idHypothesis) {
             const numberId = parseInt(idHypothesis.id.slice(1));
             count = numberId + 1;
         } 
         const formatted_Id = 'H' + count.toString().padStart(3, '0');
-        const obstacle = await ObstacleModel.findOne(); 
-        const hypothesisId = obstacle.id;
       
-        const addHypothesis = await HypothesisModel.create({  id: formatted_Id, obstacle_id: hypothesisId, ...req.body });
+        const addHypothesis = await HypothesisModel.create({  id: formatted_Id, ...req.body });
         res.status(201).json(addHypothesis);
     }catch(error){
         console.log(error)

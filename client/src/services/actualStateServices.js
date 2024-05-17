@@ -6,7 +6,6 @@ export const getActualState = async () => {
     try {
         const response = await axios.get(`${API_URL_AE}`);
         const data = await response.data
-        console.log(data)
         return data;
     } catch (error) {
         console.error("Error al obtener los retos:", error);
@@ -27,7 +26,8 @@ export const getOneActualState = async (id) => {
 export const deleteActualState = async (id) => {
         try {
             const response = await axios.delete(`${API_URL_AE}/${id}`);
-            if (response.status === 200) {
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el estado objetivo?"); 
+            if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }
         } catch (error) {
@@ -38,7 +38,6 @@ export const deleteActualState = async (id) => {
 
 export const postActualState = async (data) => {
     const response = await axios.post(API_URL_AE, data);
-    alert("EA creado exitosamente")
     return response;
   }
 
@@ -47,7 +46,6 @@ export const postActualState = async (data) => {
     try {
         const response = await axios.put(`${API_URL_AE}/${id}`,data);
         if (response.status === 200) {
-            alert('Estado actual actualizado correctamente');
             return response.data;
         }
     } catch (error) {

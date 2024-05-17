@@ -1,0 +1,102 @@
+.form-container {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  backdrop-filter: blur(6px);
+  height: 100vh;
+}
+
+.form-center{
+  display: grid;
+  place-items: center;
+}
+
+.form-create {
+  border-radius: 15px;
+  background: #ECF0F1;
+  box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
+  padding: 20px;
+  width: 60%;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.form-container h2 {
+  color: #587175;
+  display: flex;
+  justify-content: center;
+}
+
+.form-container label {
+  color: #587175;
+  font-weight: bold;
+  display: block;
+  margin: 10px 0 5px 0;
+}
+
+input[type="text"]{
+  padding: 13PX 0;
+  width: 98%;
+}
+
+textarea{
+  padding: 7px 0;
+  width: 98%;
+}
+
+input[type="text"], textarea{
+  border: none;
+  border-radius: 15px;
+  background-color: #ECF0F1;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+}
+
+input[type="text"], textarea:focus{
+  outline: none;
+}
+
+input[type="date"]{
+  border: none;
+  border-radius: 10px;
+  background-color: #587175;
+  color: #fff;
+  width: 98%;
+  padding: 13px 0;
+}
+
+.button-forms {
+  border-radius: 10px;
+  border: none;
+  background: #ECF0F1;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+  padding: 10px 20px;
+  margin-right: 2vw; 
+  transition: 0.6s;
+  margin-top: 20px;
+  color: #587175;
+  font-weight: bold;
+}
+
+.button-forms:hover {
+  background-color: #587175;
+  font-size: 15px;
+  color: #ECF0F1;
+}
+
+.label-item-img {
+  width: 15%;
+  height: 15%;
+}
+
+.button-image {
+  border: none;
+  border-radius: 10px;
+  background-color: #587175;
+  color: #fff;
+  width: 98%;
+  padding: 13px 0;
+}
