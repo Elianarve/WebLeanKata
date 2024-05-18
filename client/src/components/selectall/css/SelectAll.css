@@ -1,12 +1,10 @@
 .container-challenge {
   display: inline-table;
-  background-color: #ECF0F1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  padding: 2rem; /* Espaciado interior en unidades de altura relativa */
+  margin: 0 auto;padding: 2rem; /* Espaciado interior en unidades de altura relativa */
 }
 
 .container-challenge h3 {
@@ -26,7 +24,6 @@
   padding: 1rem 1rem;
   text-align: left;
   background-color: #002661;
-  cursor: pointer;
   margin-bottom: 2rem;
 }
 
@@ -34,12 +31,7 @@
   background-color: #f9f9f9;
   padding: 1rem 1rem;
   text-align: left;
-  cursor: pointer;
   margin-bottom: 2rem;
-}
-
-.tr-table:hover {
-  background-color: #e0e0e0;
 }
 
 .title-table, .tr-table {
@@ -54,7 +46,7 @@
 
 .button-edit, .button-add-t {
   cursor: pointer;
-  background-color: rgb(78, 177, 69);
+  background-color: #81ac2b;
   border: none;
   border-radius: 5px;
   color: #ECF0F1;
@@ -71,6 +63,26 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.container-select{
+  padding: 17px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  font-size: 15px;
+  transition: all 0.5s ease;
+}
+
+.container-select:hover {
+  border-radius: 0;
+  letter-spacing: 4px;
+  background-color: #9acd32;
+  color: hsl(0, 0%, 100%);
+  box-shadow: #9acd32 0px 7px 29px 0px;
 }
 
 @media (max-width: 48rem) {

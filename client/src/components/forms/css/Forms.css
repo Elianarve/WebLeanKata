@@ -23,7 +23,12 @@
   width: 60%;
   max-height: 50vh;
   overflow-y: auto;
+  /* transition: 0.6s; */
 }
+
+/* .form-create:active{
+  transform: scale(1.01);
+} */
 
 .form-container h2 {
   color: #587175;

@@ -1,0 +1,10 @@
+.card-center{
+    background-image: url(../../assets/img/Back3.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.cardContainer{
+    backdrop-filter: blur(5px);
+}
