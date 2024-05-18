@@ -1,16 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-// import Spline from '../components/Spline.jsx';
 import './Landing.css';
+import grow from '../../assets/img/grown.svg';
 
 const Landing = () => {
   return(
     <>
      <main className="landing">
-      <section className="section-left size-fit">
-          <h1 className='landing-title'>¡Tu camino<br/>hacia la mejora continua <br/><span className="text-[#FB005A]">con LeanKata!</span></h1>
-          <p className='landing-text'>Descubre nuevos <br/> retos .</p>
-          {/* <div  className='buttons'> */}
+      <section className="section-left">
+          <h1 className='landing-title'>¡Tu camino<br/>hacia la mejora <br/>continua con <br />Lean <span className="k-title-landing">K</span>ata!</h1>
             <Link to="/RegisterForm">
               <button className='register-btn'>
                 Regístrate
@@ -21,10 +19,9 @@ const Landing = () => {
                 Iniciar sesión
               </button>
             </Link>
-          {/* </div> */}
       </section>
       <section className='section-right'>
-          {/* <Spline/> */}
+          <img className='img-landing' src={grow} alt="img-landing" />
       </section>
   </main> 
     </>

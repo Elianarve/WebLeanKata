@@ -34,7 +34,6 @@ const RegisterForm = () => {
     try {
       await validationSchema.validate({ name, email, password }, { abortEarly: false });
       const data = await registerUser(name, email, password);
-      Swal.fire(`Usuario registrado correctamente, bienvenid@ ${data.data.name} 👋`);
       localStorage.setItem('authToken', data.token);
       setUser(data.data);
       setUserAuth(true);
