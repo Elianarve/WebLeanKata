@@ -1,6 +1,6 @@
 import express from 'express';
 import { getActualState, addActualState, updateActualState, getOneActualState, deleteActualState, searchActualState  } from '../controllers/ActualStateController.js';
-import authToken from '../middleware/autmiddleware.js';
+import authToken from '../middleware/autMiddleware.js';
 import { authRol } from '../middleware/rolMiddleware.js';
 import handleValidationResults from '../helpers/validationHelper.js';
 import processValidator from '../validators/processValidator.js';

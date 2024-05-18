@@ -13,4 +13,3 @@ const authToken = (req, res, next) => {
 };
 
 export default authToken;
-

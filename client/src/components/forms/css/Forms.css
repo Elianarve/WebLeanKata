@@ -20,24 +20,20 @@
   background: #ECF0F1;
   box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
   padding: 20px;
-  width: 60%;
+  width: 40%;
   max-height: 50vh;
   overflow-y: auto;
-  /* transition: 0.6s; */
+  margin-top: 5%;
 }
 
-/* .form-create:active{
-  transform: scale(1.01);
-} */
-
 .form-container h2 {
-  color: #587175;
+  color: #002661;
   display: flex;
   justify-content: center;
 }
 
 .form-container label {
-  color: #587175;
+  color: #002661;
   font-weight: bold;
   display: block;
   margin: 10px 0 5px 0;
@@ -46,11 +42,13 @@
 input[type="text"]{
   padding: 13PX 0;
   width: 98%;
+  text-indent: 20px;
 }
 
 textarea{
   padding: 7px 0;
   width: 98%;
+  text-indent: 20px;
 }
 
 input[type="text"], textarea{
@@ -67,10 +65,12 @@ input[type="text"], textarea:focus{
 input[type="date"]{
   border: none;
   border-radius: 10px;
-  background-color: #587175;
+  background-color: #002661;
   color: #fff;
   width: 98%;
   padding: 13px 0;
+  font-size: 1rem;
+  text-indent: 8px;
 }
 
 .button-forms {
@@ -82,12 +82,12 @@ input[type="date"]{
   margin-right: 2vw; 
   transition: 0.6s;
   margin-top: 20px;
-  color: #587175;
+  color: #002661;
   font-weight: bold;
 }
 
 .button-forms:hover {
-  background-color: #587175;
+  background-color: #002661;
   font-size: 15px;
   color: #ECF0F1;
 }
@@ -100,8 +100,62 @@ input[type="date"]{
 .button-image {
   border: none;
   border-radius: 10px;
-  background-color: #587175;
+  background-color: #002661;
   color: #fff;
   width: 98%;
   padding: 13px 0;
+  font-size: 1rem;
+}
+
+
+.date-input-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 95%;
+}
+
+.date-input-wrapper input[type="date"] {
+  width: 98%;
+  padding-right: 2rem; 
+}
+
+.date-input-wrapper .date-icon {
+  position: absolute;
+  right: 10px;
+  top: 45%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #FF5733; 
+  pointer-events: none;
+}
+
+.date-input-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0; 
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.date-input-wrapper input[type="date"]::-ms-clear {
+  display: none; 
+}
+
+.date-input-wrapper input[type="date"]::-ms-expand {
+  display: none;
+}
+
+.date-input-wrapper input[type="date"]::-moz-focus-inner {
+  border: 0;
+}
+
+.date-icon-hypothesis{
+  position: absolute;
+  right: 10px;
+  top: 68%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #FF5733; 
+  pointer-events: none;
 }

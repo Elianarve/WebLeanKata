@@ -105,7 +105,7 @@ const Home = () => {
           </thead>
           <tbody>
             {filteredChallenges.map((challenge) => (
-              <tr className='table-challenge' key={challenge.id} onClick={() => navigate(`/card/${challenge.id}`)}>
+              <tr className='table-challenge' key={challenge.id} onClick={() => navigate(`/home/card/${challenge.id}`)}>
                 <td className='challenge-wrapper'>{challenge.id}</td>
                 <td className='challenge-wrapper'>{challenge.name}</td>
                 <td className='challenge-wrapper'>{challenge.description}</td>

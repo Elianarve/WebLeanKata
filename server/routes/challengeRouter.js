@@ -1,6 +1,6 @@
 import express from 'express';
 import { getChallenge, addChallenge, updateChallenge, getOneChallenge, deleteChallenge, searchChallenge } from '../controllers/ChallengeController.js';
-import authToken from '../middleware/autmiddleware.js';
+import authToken from '../middleware/autMiddleware.js';
 import { authRol } from '../middleware/rolMiddleware.js';
 import handleValidationResults from '../helpers/validationHelper.js';
 import processValidator from '../validators/processValidator.js';

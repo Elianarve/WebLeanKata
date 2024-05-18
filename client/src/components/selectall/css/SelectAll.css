@@ -4,7 +4,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;padding: 2rem; /* Espaciado interior en unidades de altura relativa */
+}
+
+.marginNavbar{
+  margin-top: 130px;
 }
 
 .container-challenge h3 {

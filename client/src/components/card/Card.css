@@ -4,7 +4,3 @@
     background-position: center;
     background-size: cover;
 }
-
-.cardContainer{
-    backdrop-filter: blur(5px);
-}

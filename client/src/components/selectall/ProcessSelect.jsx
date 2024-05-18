@@ -23,7 +23,7 @@ const ProcessSelect = ({ processId }) => {
   }, [processId, loading]);
 
   return (
-    <div className="container-challenge">
+    <div className="container-challenge marginNavbar">
       {process && (
         <>
           <h3>PROCESO</h3>

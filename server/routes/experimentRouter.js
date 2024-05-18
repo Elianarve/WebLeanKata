@@ -1,6 +1,6 @@
 import express from 'express';
 import { getExperiment, addExperiment, updateExperiment, getOneExperiment, deleteExperiment } from '../controllers/ExperimentController.js';
-import authToken from '../middleware/autmiddleware.js';
+import authToken from '../middleware/autMiddleware.js';
 import { authRol } from '../middleware/rolMiddleware.js';
 import handleValidationResults from '../helpers/validationHelper.js';
 import processValidator from '../validators/processValidator.js';
