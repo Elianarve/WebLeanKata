@@ -25,7 +25,6 @@ const Challenge = () => {
   const onSubmit = async (data) => {
     try {
       const response = await postChallenge(data);
-      console.log("Desafío creado:", response.data);
       navigate('/home/actualstate');
     } catch (error) {
       console.error("Error al crear el desafío:", error);

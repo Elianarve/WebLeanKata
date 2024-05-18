@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { postResult } from '../../services/resultServices';
+import './css/Forms.css';
+
 
 const Result = ({editExperimentId, setLoading, setCreateResult}) => {
     const { handleSubmit, register, formState: { errors }} = useForm();
@@ -7,6 +9,7 @@ const Result = ({editExperimentId, setLoading, setCreateResult}) => {
     const onSubmit = async (formData) => {
         try {
           const data = {...formData, experiment_id: editExperimentId};
+          console.log(data)
           const response = await postResult(data);
           console.log("Resultado creada:", response.data);
           setLoading(true);

@@ -39,7 +39,7 @@ export const deleteResult = async (id) => {
         try {
             const headers = getHeaders();
             const response = await axios.delete(`${API_URL}/${id}`, {headers});
-            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el contraste mental?"); 
+            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el reultado?"); 
             if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
             }
@@ -53,7 +53,7 @@ export const deleteResult = async (id) => {
 export const postResult = async (data) => {
     const headers = getHeaders();
     const response = await axios.post(API_URL, data, {headers});
-    console.log(response);
+    console.log(response.data)
     return response;
   };
 
