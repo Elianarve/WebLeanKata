@@ -30,15 +30,30 @@ iframe{
   height: 100%;
   display: grid;
   place-items: center;
+  font-size: 1.5rem;
 }
 
 .leanKata-backdrop span{
   color: greenyellow;
 }
 
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .leanKata-backdrop h1{
   color: #ECF0F1;
-  font-size: 35px;
+  font-size: 3.5rem;
+  letter-spacing: 0.3rem;
+  margin-left: 3%;
+  animation: fadeInSlideUp 1.1s ease-out forwards;
 }
 
 .aboutUs-container section{
@@ -132,7 +147,7 @@ main section h3{
   background: radial-gradient(#b0e633, #53ef7d);
   border-radius: 50%;
   position: absolute;
-  animation: move-up6 2s ease-in infinite alternate-reverse;
+  animation: move-up6 1s ease-in infinite alternate-reverse;
 }
 
 .circle:nth-child(1) {

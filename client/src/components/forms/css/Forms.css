@@ -1,3 +1,13 @@
+body{
+  background-color: hsl(192, 15%, 94%);
+}
+
+.form-box{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
 .form-container {
   display: grid;
   place-items: center;
@@ -5,10 +15,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100vw;
+  width: 80vw;
   backdrop-filter: blur(6px);
   height: 100vh;
 }
+
+prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba
 
 .form-center{
   display: grid;
@@ -26,13 +38,13 @@
   margin-top: 5%;
 }
 
-.form-container h2 {
+.form-container h2, .form-box h2 {
   color: #002661;
   display: flex;
   justify-content: center;
 }
 
-.form-container label {
+.form-container label, .form-box label {
   color: #002661;
   font-weight: bold;
   display: block;
@@ -159,3 +171,4 @@ input[type="date"]{
   color: #FF5733; 
   pointer-events: none;
 }
+

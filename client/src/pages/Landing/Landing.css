@@ -1,17 +1,28 @@
 .landing{
-    background-color: #f8f6f6;
+    background-color: #ECF0F1;
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: center;
+    height: auto;
+}
+
+.k-title-landing{
+    color: yellowgreen;
 }
 
 .section-left{
     display: flex;
     flex-direction: column;
-    margin-left: 10%;
-    margin-top: 5%;
-    margin-bottom: 12%;
+    margin-left: 15%;
+    margin-top: 6%;
+    margin-bottom: 5.8%;
+    width: 60%;
+}
+
+
+.landing-title {
+    animation: slideInFromRight 2s ease-out forwards; 
 }
 
 .landing-title{
@@ -37,7 +48,17 @@
     margin-top: 10%;
     padding: 0.6em 6.5em; 
     border-radius: 0.5em;
-    background: linear-gradient(91deg, #77e2b7 0.41%, #938fcb 22.24%, #6a97c8 50.06%, #90dbe0 98.15%);
+    background: linear-gradient(80deg, yellowgreen, #002661);
+    color: #ECF0F1;
+    font-weight: bold;
+    cursor: pointer;
+    transition:0.3s ease, transform 0.3s ease;
+}
+
+.register-btn:hover, .login-btn:hover {
+    background: linear-gradient(5deg, #498dc1, #6ab67c);
+    transform: scale(1.05);
+    color: #002661;
 }
 
 .login-btn{
@@ -46,9 +67,69 @@
     padding: 0.6em 5.8em; 
     border-radius: 0.5em;
     background: white;
-    color: black;
+    background: linear-gradient(80deg, #002661, yellowgreen);
+    color: #ECF0F1;
+    font-weight: bold;
+    transition:0.3s ease, transform 0.3s ease;
 }
 
 .section-right{
-    width: 100vh;
+    width: 100%;
+    margin-top: 12%;
+    margin-left: 12%;
+    position: relative;
+}
+
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%); 
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0); 
+        opacity: 1; 
+    }
+}
+
+.img-landing{
+    width: 60%;
+    animation: slideInFromRight 2s ease-out forwards;
+}
+
+
+@media (min-width: 768px){
+
+}
+
+@media (max-width: 768px) {
+
+    .landing{
+        display: block;
+    }
+
+    .section-left {
+        width: 100%;
+        margin-left: 5%;
+    }
+
+    .landing-title{
+        font-size: 2.2rem;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 25%;
+    }
+
+    .register-btn, .login-btn{
+        font-size: 1rem;
+        margin-left: 10%;
+
+    }
+
+    .section-right{
+        width: 100%;
+        margin-top: 10%;
+        margin-left: 18%;
+    }
+
 }

@@ -53,17 +53,26 @@ function Task({editExperimentId, setLoading, setCreateTask}) {
       </div>
       <div className='items'>
         <label className='label-item'>Fecha de inicio:</label>
+        <div className='date-input-wrapper'>
         <input type="date" {...register('start_date', { required: true })} />
+        <span className='date-icon'>&#x1F4C5;</span>
+        </div>
         {errors.start_date && <p className="error-message">La fecha de inicio es requerida</p>}
       </div>
       <div className='items'>
         <label className='label-item'>Fecha final prevista:</label>
+        <div className='date-input-wrapper'>        
         <input type="date" {...register('end_date_prev', { required: true, validate: validateEndDate })} />
+        <span className='date-icon'>&#x1F4C5;</span>
+        </div>
         {errors.end_date_prev && <p className="error-message">{errors.end_date_prev.message}</p>}
       </div>
       <div className='items'>
         <label className='label-item'>Fecha real:</label>
+        <div className='date-input-wrapper'>
         <input type="date" {...register('end_date_real', { required: true, validate: validateRealEndDate })} />
+        <span className='date-icon'>&#x1F4C5;</span>
+        </div>
         {errors.end_date_real && <p className="error-message">{errors.end_date_real.message}</p>}
       </div>
       <div className='items'>

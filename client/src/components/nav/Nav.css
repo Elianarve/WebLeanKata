@@ -26,25 +26,25 @@
   align-items: center;
   margin: 0;
   padding: 0px;
-  width: 46%;
+  width: 60%;
   text-align: center;
-  margin-right: 3vw;
+  margin-right: 1vw;
 }
 
 .nav-links li {
   margin: 0 0.7vw;
   color: #002661;
-  padding: 14px;
+  padding: 10px;
   flex: 1; 
 }
 
 .nav-links li a {
   text-decoration: none;
   color: #002661;
-  padding: 30px 0;
 }
 
-.nav-button {
+.nav-button  {
+  display: block;
   transition: 0.6s;
   border-radius: 40px;
   background: #ECF0F1;
@@ -54,6 +54,11 @@
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
+
+ .nav-button a {
+  display: block;
+
+} 
 
 .nav-button:hover {
   box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
@@ -118,9 +123,20 @@
   transition: 0.4s;
 }
 
+.icon-profile {
+  width: 28%;
+} 
+
+.button-profile{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 1%;
+}
+
 @media (max-width: 580px) {
   .logo-img {
-    width: 30%;
+    width: 28%;
     margin-left: 3vw;
   }
 
@@ -148,7 +164,7 @@
   }
 
   .nav-links li {
-    margin: 10px 0;
+    margin: 5px 0;
   }
 
   .nav-links a {

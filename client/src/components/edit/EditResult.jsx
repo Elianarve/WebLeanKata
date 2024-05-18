@@ -47,7 +47,10 @@ const EditResult = ({editResultId, setLoading, setEditResult}) => {
         </div>
     <div className='items'>
     <label className='label-item'>Fecha:</label>
+    <div className='date-input-wrapper'>
     <input type="date" name='date' defaultValue={ resultData.date } {...register('date', { required: true })} />
+    <span className='date-icon'>&#x1F4C5;</span>
+        </div>
     {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>}
   </div>
   <div className='items'>

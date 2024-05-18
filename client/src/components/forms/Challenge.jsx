@@ -25,7 +25,6 @@ const Challenge = () => {
   const onSubmit = async (data) => {
     try {
       const response = await postChallenge(data);
-      console.log("Desafío creado:", response.data);
       navigate('/home/actualstate');
     } catch (error) {
       console.error("Error al crear el desafío:", error);
@@ -33,11 +32,11 @@ const Challenge = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-box">
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
         <h2>CREAR RETO</h2>
         <div className='items'>
-          <label className='label-item'>Nombre</label> 
+          <label className='label-item'>Nombre</label>
           <input type="text" {...register('name', { required: true })} />
           {errors.name && <p className="error-message">El nombre es requerido</p>}
         </div>
@@ -48,12 +47,18 @@ const Challenge = () => {
         </div>
         <div className='items'>
           <label className='label-item'>Fecha de inicio:</label>
-          <input type="date" {...register('start_date', { required: true, validate: validateDateRange })} />
-          {errors.start_date && <p className="error-message">{errors.start_date.message}</p>}
+          <div className='date-input-wrapper'>
+            <input type="date" {...register('start_date', { required: true, validate: validateDateRange })} />
+            <span className='date-icon'>&#x1F4C5;</span>
+          </div>
+          {errors.start_date && <p className="error-message">La fecha de inicio es requerida</p>}
         </div>
         <div className='items'>
           <label className='label-item'>Fecha de fin:</label>
-          <input type="date" {...register('end_date', { required: true })} />
+          <div className='date-input-wrapper'>
+            <input type="date" {...register('end_date', { required: true })} />
+            <span className='date-icon'>&#x1F4C5;</span>
+          </div>
           {errors.end_date && <p className="error-message">La fecha de fin es requerida</p>}
         </div>
         <button className='button-forms' type="submit">ENVIAR</button>

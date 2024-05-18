@@ -62,12 +62,10 @@ const EditHypothesis = ({
         </div>
         <div className="items">
           <label className="label-item">Fecha de planificación</label>
-          <input
-            type="date"
-            name="plan_date"
-            defaultValue={hypothesisData.plan_date}
-            {...register("plan_date", { required: true })}
-          />
+        <div className='date-input-wrapper'>
+          <input type="date" name="plan_date" defaultValue={hypothesisData.plan_date} {...register("plan_date", { required: true })}/>
+            <span className='date-icon'>&#x1F4C5;</span>
+            </div>
           {errors.plan_date && (
             <p className="error-message">
               La fecha de planificación es requerida
