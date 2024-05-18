@@ -41,6 +41,10 @@ const Home = () => {
             actualStatesData.find(
               (actualState) => actualState.challenge_id === challenge.id
             )?.description || "Descripción no encontrada",
+            actual_state_id:
+            actualStatesData.find(
+              (actualState) => actualState.challenge_id === challenge.id
+            )?.id || "ID no encontrado",
         }));
         setChallenges(challengesWithData);
         setFilteredChallenges(challengesWithData);
