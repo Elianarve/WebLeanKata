@@ -1,7 +1,7 @@
 import connection_db from '../../database/connection_db'; // Importa connection_db
-import ChallengeModel from '../../models/ChallengeModel.js';
+import TribeModel from '../../models/TribeModel.js';
 
-describe('ChallengeModel', () => {
+describe('TribeModel', () => {
   beforeAll(async () => {
     try {
       await connection_db.query('SET FOREIGN_KEY_CHECKS = 0');
@@ -24,21 +24,19 @@ describe('ChallengeModel', () => {
     }
   });
 
-  it('should define ChallengeModel correctly', () => {
-    expect(ChallengeModel).toBeDefined();
+  it('should define TribeModel correctly', () => {
+    expect(TribeModel).toBeDefined();
   });
 
-  it('should have columns id, name, description, start_date, end_date, and tribe_id correctly defined', () => {
-    const columns = ChallengeModel.rawAttributes;
+  it('should have columns id, name_tribe, team_members, and process_id correctly defined', () => {
+    const columns = TribeModel.rawAttributes;
     expect(columns.id).toBeDefined();
-    expect(columns.name).toBeDefined();
-    expect(columns.description).toBeDefined();
-    expect(columns.start_date).toBeDefined();
-    expect(columns.end_date).toBeDefined();
-    expect(columns.tribe_id).toBeDefined();
+    expect(columns.name_tribe).toBeDefined();
+    expect(columns.team_members).toBeDefined();
+    expect(columns.process_id).toBeDefined();
   });
 
-  it('should have the table "challenges" correctly configured', () => {
-    expect(ChallengeModel.options.tableName).toBe('challenges');
+  it('should have the table "tribe" correctly configured', () => {
+    expect(TribeModel.options.tableName).toBe('tribe');
   });
 });
