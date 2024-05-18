@@ -33,7 +33,7 @@ const Challenge = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-box">
       <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
         <h2>CREAR RETO</h2>
         <div className='items'>

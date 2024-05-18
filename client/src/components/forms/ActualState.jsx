@@ -24,7 +24,7 @@ const ActualState = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-box">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2>ESTADO ACTUAL </h2>       
       <div className='items'>

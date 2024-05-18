@@ -16,7 +16,7 @@ const Process = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-box">
     <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
       <h2> CREAR PROCESO </h2>
       <div className='items'>
@@ -27,7 +27,6 @@ const Process = () => {
         <button className='button-forms' type="submit">ENVIAR</button>
   </form>
   </div>
-
   )}
 
 export default Process;

@@ -1,5 +1,11 @@
 body{
-  background-color: #ECF0F1;
+  background-color: hsl(192, 15%, 94%);
+}
+
+.form-box{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
 }
 
 .form-container {
@@ -13,6 +19,8 @@ body{
   backdrop-filter: blur(6px);
   height: 100vh;
 }
+
+prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba
 
 .form-center{
   display: grid;
