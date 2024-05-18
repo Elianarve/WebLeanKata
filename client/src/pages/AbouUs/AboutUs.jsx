@@ -6,7 +6,7 @@ const AboutUs = () => {
     <div className='aboutUs-container'>
       <header>
         <div className='leanKata-backdrop'>
-          <h1>Lean<span>K</span>ata</h1>
+          <h1>Lean <span>K</span>ata</h1>
         </div>
       </header>
       <main>
