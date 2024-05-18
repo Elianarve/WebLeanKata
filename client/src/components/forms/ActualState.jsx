@@ -34,7 +34,10 @@ const ActualState = () => {
       </div>
       <div className='items'>
         <label>Fecha: </label>
+        <div className='date-input-wrapper'>
         <input type="date" {...register('date', { required: 'La fecha es requerida'})}/>
+        <span className='date-icon'>&#x1F4C5;</span>
+        </div>
         {errors.date && <p className="error-message">{errors.date.message}</p>} 
       </div>
         <button className='button-forms' type="submit" disabled={!isDirty}>ENVIAR</button>

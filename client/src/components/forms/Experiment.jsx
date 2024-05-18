@@ -51,17 +51,26 @@ const Experiment = ({editHypothesisId, setLoading, setEditExperiment}) => {
       </div>
       <div className='items'>
         <label className='label-item'>Fecha de inicio:</label>
+        <div className='date-input-wrapper'>
         <input type="date" {...register('start_date', { required: true, validate: value => validateHypothesisDate(value, watch('hypothesis_date')) })} />
+        <span className='date-icon'>&#x1F4C5;</span>
+        </div>
         {errors.start_date && <p className="error-message">{errors.start_date.message}</p>}
       </div>
       <div className='items'>
         <label className='label-item'>Fecha de planteamiento de la hipótesis:</label>
+        <div className='date-input-wrapper'>
         <input type="date" {...register('hypothesis_date', { required: true })} />
+        <span className='date-icon'>&#x1F4C5;</span>
+        </div>
         {errors.hypothesis_date && <p className="error-message">La fecha de planteamiento de la hipótesis es requerida</p>}
       </div>
       <div className='items'>
         <label className='label-item'>Fecha de fin:</label>
+        <div className='date-input-wrapper'>
         <input type="date" {...register('end_date', { required: true, validate: value => validateDateRange(watch('start_date'), value) })} />
+        <span className='date-icon'>&#x1F4C5;</span>
+        </div>
         {errors.end_date && <p className="error-message">{errors.end_date.message}</p>}
       </div>
       <div className='items'>

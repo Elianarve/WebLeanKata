@@ -50,7 +50,7 @@ const Challenge = () => {
             <input type="date" {...register('start_date', { required: true, validate: validateDateRange })} />
             <span className='date-icon'>&#x1F4C5;</span>
           </div>
-          {errors.end_date && <p className="error-message">La fecha de fin es requerida</p>}
+          {errors.start_date && <p className="error-message">La fecha de inicio es requerida</p>}
         </div>
         <div className='items'>
           <label className='label-item'>Fecha de fin:</label>

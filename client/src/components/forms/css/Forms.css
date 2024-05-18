@@ -100,11 +100,13 @@ input[type="date"]{
 .button-image {
   border: none;
   border-radius: 10px;
-  background-color: #587175;
+  background-color: #002661;
   color: #fff;
   width: 98%;
   padding: 13px 0;
+  font-size: 1rem;
 }
+
 
 .date-input-wrapper {
   position: relative;
@@ -113,7 +115,7 @@ input[type="date"]{
 }
 
 .date-input-wrapper input[type="date"] {
-  width: 100%;
+  width: 98%;
   padding-right: 2rem; 
 }
 
@@ -146,4 +148,14 @@ input[type="date"]{
 
 .date-input-wrapper input[type="date"]::-moz-focus-inner {
   border: 0;
+}
+
+.date-icon-hypothesis{
+  position: absolute;
+  right: 10px;
+  top: 68%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #FF5733; 
+  pointer-events: none;
 }

@@ -52,7 +52,10 @@ const ContrastMetal = ({editTargetId, setLoading, setEditContrast}) => {
       </div>
       <div className='items'>
         <label className='label-item'>Fecha de evaluación:</label>
+        <div className='date-input-wrapper'>
         <input type="date" {...register('evaluation_date', { required: true, validate: validateEvaluationDate })} />
+        <span className='date-icon'>&#x1F4C5;</span>
+        </div>
         {errors.evaluation_date && <p className="error-message">{errors.evaluation_date.message}</p>}
       </div>
       <button className='button-forms' type="submit">Enviar</button>
