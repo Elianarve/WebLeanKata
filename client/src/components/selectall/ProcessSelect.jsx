@@ -34,11 +34,11 @@ const ProcessSelect = ({ processId }) => {
                   <td className="title-table">Proceso ID</td>
                   <td className="tr-table">{process.id}</td>
                 </tr>
-                <tr>
+                <tr className="tr-table">
                   <td className="title-table">Descripcion</td>
                   <td className="tr-table">{process.description}</td>
                 </tr>
-                <tr>
+                <tr className="tr-table">
                   <td className="title-table">Acciones</td>
                   <td className="tr-table">
                     <button

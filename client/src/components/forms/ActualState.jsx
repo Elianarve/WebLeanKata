@@ -17,7 +17,7 @@ const ActualState = () => {
   const onSubmit = async (data) => { 
     try { 
       const response = await postActualState(data);
-      navigate(`/card/${response.data.challenge_id}`);
+      navigate(`/home/card/${response.data.challenge_id}`);
     } catch(error)  {
       console.error("Error al publicar:", error);
     };

@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
 import HypothesisModel from "./HypothesisModel.js";
+import UsersModel from "./userModel.js";
 
 const ExperimentModel = connection_db.define('experiment', {
     id: {
@@ -64,6 +65,8 @@ const ExperimentModel = connection_db.define('experiment', {
     tableName: 'experiments',
     timestamps: false
 });
+
+UsersModel.hasMany(ExperimentModel, { foreignKey: 'userId' });
 
 
 export default ExperimentModel;

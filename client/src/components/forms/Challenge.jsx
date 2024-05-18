@@ -6,8 +6,10 @@ import './css/Forms.css';
 const Challenge = () => {
   const { handleSubmit, register, formState: { errors }, watch } = useForm();
   const navigate = useNavigate();
+
   const startDate = watch('start_date');
   const endDate = watch('end_date');
+
   const validateDateRange = () => {
     if (startDate && endDate) {
       return startDate <= endDate || "La fecha de inicio no puede ser posterior a la fecha de fin";
@@ -24,7 +26,7 @@ const Challenge = () => {
     try {
       const response = await postChallenge(data);
       console.log("Desafío creado:", response.data);
-      navigate('/actualstate');
+      navigate('/home/actualstate');
     } catch (error) {
       console.error("Error al crear el desafío:", error);
     }
@@ -63,7 +65,6 @@ const Challenge = () => {
         <button className='button-forms' type="submit">ENVIAR</button>
       </form>
     </div>
-
   )
 }
 

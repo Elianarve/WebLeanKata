@@ -51,27 +51,27 @@ const SelectAllChallenges = ({ challengeId }) => {
                         <td className='title-table'>RetoID:</td>
                         <td className='tr-table'>{selectedChallenge?.id}</td>
                     </tr>
-                    <tr>
+                    <tr className="tr-table">
                         <td className='title-table'>Nombre:</td>
                         <td className='tr-table'>{selectedChallenge?.name}</td>
                     </tr>
-                    <tr>
+                    <tr className="tr-table">
                         <td className='title-table'>Descripción:</td>
                         <td className='tr-table'>{selectedChallenge?.description}</td>
                     </tr>
-                    <tr>
+                    <tr className="tr-table">
                         <td className='title-table'>Fecha Inicio:</td>
                         <td className='tr-table'>{selectedChallenge?.start_date}</td>
                     </tr>
-                    <tr>
+                    <tr className="tr-table">
                         <td className='title-table'>Fecha Fin:</td>
                         <td className='tr-table'>{selectedChallenge?.end_date}</td>
                     </tr>
-                    <tr>
+                    <tr className="tr-table">
                         <td className='title-table'>Tribe ID:</td>
                         <td className='tr-table'>{selectedChallenge?.tribe_id}</td>
                     </tr>
-                    <tr>
+                    <tr className="tr-table">
                     <td className='title-table'>Acciones</td>
                     <td className='tr-table'>
                         <button className='button-edit' onClick={() => setEditable(true)}><img src={update} alt="logo-update" className='logo-edit' /></button>

@@ -2,9 +2,20 @@ import axios from "axios";
 
 const API_URL = 'http://localhost:5000/experiment';
 
+const getHeaders = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        throw new Error('Token no encontrado en el almacenamiento local');
+    }
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+};
+
 export const getExperiment = async () => {
     try {
-        const response = await axios.get(`${API_URL}`);
+        const headers = getHeaders();
+        const response = await axios.get(`${API_URL}`, {headers});
         const data = await response.data
         return data;
     } catch (error) {
@@ -15,7 +26,8 @@ export const getExperiment = async () => {
 
 export const getOneExperiment = async (id) => {
     try {
-        const response = await axios.get(`${API_URL}/${id}`);
+        const headers = getHeaders();
+        const response = await axios.get(`${API_URL}/${id}`, {headers});
         return response;
     } catch (error) {
         console.error("Error al obtener el Experiment por ID", error);
@@ -25,7 +37,8 @@ export const getOneExperiment = async (id) => {
 
 export const deleteExperiment = async (id) => {
         try {
-            const response = await axios.delete(`${API_URL}/${id}`);
+            const headers = getHeaders();
+            const response = await axios.delete(`${API_URL}/${id}`, {headers});
             const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el contraste mental?"); 
             if (confirmDelete && response.status === 200) {
                 alert('Eliminado correctamente');
@@ -37,13 +50,15 @@ export const deleteExperiment = async (id) => {
 };
 
 export const postExperiment = async (data) => {
-    const response = await axios.post(API_URL, data);
+    const headers = getHeaders();
+    const response = await axios.post(API_URL, data, {headers});
     return response;
   }
 
   export const updateExperiment = async (id, data) => {
     try {
-        const response = await axios.put(`${API_URL}/${id}`,data);
+        const headers = getHeaders();
+        const response = await axios.put(`${API_URL}/${id}`,data, {headers});
         if (response.status === 200) {
             return response.data;
         }
@@ -56,6 +71,7 @@ export const postExperiment = async (data) => {
 
 export const uploadImage = async (imageData) => {
     try {
+        
         const response = await axios.post(
             "http://api.cloudinary.com/v1_1/dpkll45y2/image/upload",
             imageData

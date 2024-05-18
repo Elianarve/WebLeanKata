@@ -39,19 +39,19 @@ const TribeSelect = ({challengeId}) => {
                                             <td className='title-table'>Tribu ID</td>
                                             <td className='tr-table'>{tribe.id}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Nombre de la tribu</td>
                                             <td className='tr-table'>{tribe.name_tribe}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Miembro de la tribu</td>
                                             <td className='tr-table'>{tribe.team_members}</td>
                                         </tr> 
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Proceso ID</td>
                                             <td className='tr-table'>{tribe.process_id}</td>
                                         </tr> 
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Acciones</td>
                                             <td className='tr-table'>
                                                 <button className='button-edit' onClick={() => setEditable(true)}><img src={update} alt="logo-update" className='logo-edit' /></button>

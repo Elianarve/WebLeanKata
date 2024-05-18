@@ -104,8 +104,4 @@ const ObstacleSelect = ({targetState}) => {
         </div>
     );
 }
-
 export default ObstacleSelect;
-
-
-
