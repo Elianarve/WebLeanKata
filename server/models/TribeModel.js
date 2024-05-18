@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
 import ProcessModel from "./ProcessModel.js";
+import UsersModel from "./userModel.js";
 
 const TribeModel = connection_db.define('tribe', { 
     id: {
@@ -31,5 +32,8 @@ const TribeModel = connection_db.define('tribe', {
     tableName: 'tribe',
     timestamps: false
 });
+
+UsersModel.hasMany(TribeModel, { foreignKey: 'userId' });
+
 
 export default TribeModel;

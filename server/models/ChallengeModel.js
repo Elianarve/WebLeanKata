@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
 import TribeModel from "./TribeModel.js";
+import UsersModel from "./userModel.js";
 
 const ChallengeModel = connection_db.define('challenges', {
     id: {
@@ -37,6 +38,8 @@ const ChallengeModel = connection_db.define('challenges', {
     tableName: 'challenges',
     timestamps: false
 });
+
+UsersModel.hasMany(ChallengeModel, { foreignKey: 'userId' });
 
 export default ChallengeModel;
 
