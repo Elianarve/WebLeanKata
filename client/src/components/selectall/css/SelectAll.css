@@ -35,6 +35,7 @@
   padding: 1rem 1rem;
   text-align: left;
   margin-bottom: 2rem;
+  /* width: 75%; */
 }
 
 .title-table, .tr-table {
@@ -42,7 +43,7 @@
 }
 
 .img-form {
-  width: 20rem; 
+  width: 15rem; 
   max-width: 20rem; 
   margin-bottom: 1rem;
 }
