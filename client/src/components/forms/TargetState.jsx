@@ -12,7 +12,7 @@ const TargetState = ({setLoading, setCreateTarget}) => {
       setLoading(true);
       setCreateTarget(false);
     } catch (error) {
-      console.error("Error al crear el desafío:", error);
+      console.error("Error al crear el estado objetivo:", error);
     }
   };
 

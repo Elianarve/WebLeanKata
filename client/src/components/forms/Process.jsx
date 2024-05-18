@@ -25,6 +25,7 @@ const Process = () => {
         {errors.description && <p className="error-message">{errors.description.message}</p>} 
       </div>
         <button className='button-forms' type="submit">ENVIAR</button>
+        <button className='button-forms' onClick={()=> navigate('/home')}>VOLVER</button>
   </form>
   </div>
   )}
