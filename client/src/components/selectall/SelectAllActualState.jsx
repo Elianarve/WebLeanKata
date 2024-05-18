@@ -36,19 +36,19 @@ const SelectAllActualState = ({challengeId}) => {
                                             <td className='title-table'>Estado Actual ID</td>
                                             <td className='tr-table'>{actualStates.id}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className='tr-table'>
                                             <td className='title-table'>Descripción</td>
                                             <td className='tr-table description'>{actualStates.description}</td>
                                         </tr>
-                                        <tr>
+                                        <tr className='tr-table'>
                                             <td className='title-table'>Fecha</td>
                                             <td className='tr-table'>{actualStates.date}</td>
                                         </tr> 
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Challenge ID</td>
                                             <td className='tr-table'>{actualStates.challenge_id}</td>
                                         </tr> 
-                                        <tr>
+                                        <tr className='tr-table'>
                                             <td className='title-table'>Acciones</td>
                                             <td className='tr-table'>
                                                 <button className='button-edit' onClick={() => setEditable(true)}><img src={update} alt="logo-update" className='logo-edit' /></button>

@@ -51,43 +51,43 @@ const ResultsSelect = ({experiment}) => {
                 <table className='container-table'>
                         {results.map((result) => (
                             <tbody className='tr-table' key={result.id}>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Resultado ID</td>
                                 <td className='tr-table'>{result.id}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Experimento ID</td>
                                 <td className='tr-table'>{result.experiment_id}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Descripción</td>
                                 <td className='tr-table'>{result.description}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Fecha</td>
                                 <td className='tr-table'>{result.date}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Analisis</td>
                                 <td className='tr-table'>{result.analysis}</td> 
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Resultados esperados</td>
                                 <td className='tr-table'>{result.expected_results}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'> 
                                 <td className='title-table'>Resultados obtenidos</td>
                                 <td className='tr-table'>{result.results_obtained}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Conclusion</td>
                                 <td className='tr-table'>{result.conclusion}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Siguiente paso</td>
                                 <td className='tr-table'>{result.next_step}</td>
                                 </tr>
-                                <tr>
+                                <tr className='tr-table'>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
                                     <button className='button-edit' onClick={() => {setEditResultId(result.id), setEditResult(true)}}>
@@ -96,10 +96,6 @@ const ResultsSelect = ({experiment}) => {
                                     <button className='button-add-t' onClick={() => {setEditResultId(result.id), setCreateLearning(true)}}>Añadir Aprend</button>
                                     <button className='button-edit' onClick={() => deleteResult(result.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
                                 </td>
-                                </tr>
-                                <tr>
-                                    <td className='title-table-line'></td>
-                                    <td className='title-table-line'></td>
                                 </tr>
                             </tbody>
                          ))} 
