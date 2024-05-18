@@ -14,7 +14,7 @@ router.post('/', authToken, authRol(['user','admin']), addProcess);
 
 router.put('/:id', authToken, authRol(['user','admin']), processValidator, handleValidationResults, updateProcess);
 
-router.delete('/:id',  authToken, authRol(['admin']), deleteProcess);
+router.delete('/:id',  authToken, authRol(['user','admin']), deleteProcess);
 
 router.get('/:id', authToken, authRol(['user','admin']), getOneProcess);
 

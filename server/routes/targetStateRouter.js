@@ -14,7 +14,7 @@ router.post('/', authToken, authRol(['user','admin']),  addTargetState);
 
 router.put('/:id', authToken, authRol(['user','admin']), processValidator, handleValidationResults,  updateTargetState);
 
-router.delete('/:id', authToken, authRol(['admin']),  deleteTargetState);
+router.delete('/:id', authToken, authRol(['user','admin']),  deleteTargetState);
 
 router.get('/:id', authToken, authRol(['user','admin']),  getOneTargetState);
 

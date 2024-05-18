@@ -12,7 +12,7 @@ router.get('/', authToken, authRol(['user','admin']),  getResults);
 
 router.post('/', authToken, authRol(['user','admin']), processValidator, handleValidationResults,  addResult);
 
-router.put('/:id', authToken, authRol(['admin']),  updateResult);
+router.put('/:id', authToken, authRol(['user','admin']),  updateResult);
 
 router.delete('/:id', authToken, authRol(['user','admin']),  deleteResult);
 

@@ -14,7 +14,7 @@ router.post('/', authToken, authRol(['user','admin']),  addExperiment);
 
 router.put('/:id', authToken, authRol(['user','admin']), processValidator, handleValidationResults, updateExperiment);
 
-router.delete('/:id', authToken, authRol(['admin']),  deleteExperiment);
+router.delete('/:id', authToken, authRol(['user','admin']),  deleteExperiment);
 
 router.get('/:id', authToken, authRol(['user','admin']),  getOneExperiment);
 

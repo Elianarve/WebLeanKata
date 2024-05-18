@@ -15,7 +15,7 @@ router.post('/', authToken, authRol(['user','admin']),  addLearnings);
 
 router.put('/:id', authToken, authRol(['user','admin']), processValidator, handleValidationResults,  updateLearnings);
 
-router.delete('/:id', authToken, authRol(['admin']),  deleteLearning);
+router.delete('/:id', authToken, authRol(['user','admin']),  deleteLearning);
 
 router.get('/:id', authToken, authRol(['user','admin']),  getOneLearning);
 

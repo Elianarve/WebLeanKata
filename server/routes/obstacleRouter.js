@@ -14,7 +14,7 @@ router.post('/', authToken, authRol(['user','admin']),  addObstacle);
 
 router.put('/:id', authToken, authRol(['user','admin']), processValidator, handleValidationResults,  updateObstacle);
 
-router.delete('/:id', authToken, authRol(['admin']),  deleteObstacle);
+router.delete('/:id', authToken, authRol(['user','admin']),  deleteObstacle);
 
 router.get('/:id', authToken, authRol(['user','admin']),  getOneObstacle);
 

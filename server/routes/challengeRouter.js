@@ -14,7 +14,7 @@ router.post('/', authToken, authRol(['user','admin']),  addChallenge);
 
 router.put('/:id', authToken, authRol(['user','admin']), processValidator, handleValidationResults,  updateChallenge);
 
-router.delete('/:id', authToken, authRol(['admin']),  deleteChallenge);
+router.delete('/:id', authToken, authRol(['user','admin']),  deleteChallenge);
 
 router.get('/:id', authToken, authRol(['user','admin']),  getOneChallenge);
 

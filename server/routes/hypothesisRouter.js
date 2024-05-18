@@ -15,7 +15,7 @@ router.post('/', authToken, authRol(['user','admin']),  addHypothesis);
 
 router.put('/:id', authToken, authRol(['user','admin']), processValidator, handleValidationResults, updateHypothesis);
 
-router.delete('/:id', authToken, authRol(['admin']),  deleteHypothesis);
+router.delete('/:id', authToken, authRol(['user','admin']),  deleteHypothesis);
 
 router.get('/:id', authToken, authRol(['user','admin']),  getOneHypothesis);
 

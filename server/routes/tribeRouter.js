@@ -14,7 +14,7 @@ router.post('/', authToken, authRol(['user','admin']),  addTribe);
 
 router.put('/:id', authToken, authRol(['user','admin']), processValidator, handleValidationResults,  updateTribe);
 
-router.delete('/:id', authToken, authRol(['admin']),  deleteTribe);
+router.delete('/:id', authToken, authRol(['user','admin']),  deleteTribe);
 
 router.get('/:id', authToken, authRol(['user','admin']),  getOneTribe);
 

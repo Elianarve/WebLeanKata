@@ -14,7 +14,7 @@ router.post('/', authToken, authRol(['user','admin']),  addMentalContrast);
 
 router.put('/:id', authToken, authRol(['user','admin']), processValidator, handleValidationResults,  updateMentalContrast);
 
-router.delete('/:id', authToken, authRol(['admin']),  deleteMentalContrast);
+router.delete('/:id', authToken, authRol(['user','admin']),  deleteMentalContrast);
 
 router.get('/:id', authToken, authRol(['user','admin']),  getOneMentalContrast);
 
