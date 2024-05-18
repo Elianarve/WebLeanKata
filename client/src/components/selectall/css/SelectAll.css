@@ -1,139 +1,95 @@
 .container-challenge {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    width: 100%;
-    border-radius: 1em;
+  display: inline-table;
+  background-color: #ECF0F1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 2rem; /* Espaciado interior en unidades de altura relativa */
 }
 
-.container-challenge h3{
-    color: #002661;
-    font-size: 2rem;
-    text-shadow: 1px 1px 5px #002661, 1px 1px 5px #002661;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 60vw;
-    padding: 20px; 
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
-
-.centered-table {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    border-collapse: collapse;
-    width: 100%;
-    border-radius: 3em;
-    padding: 2vh;
-    background-color: #88a5ce;
-    box-shadow: 16px 16px 16px #c9cccd, -8px -16px 16px #ffffff;
+.container-challenge h3 {
+  color: rgb(78, 177, 69);
+  font-weight: bold;
+  margin-bottom: 0;
 }
 
 .container-table {
-    border-collapse: collapse;
-    width: 80%;
-    border: 0.2em solid #002661;
-    border-radius: 1em;
-    overflow: hidden;
-    box-shadow: inset 16px 16px 16px #c9cccd, inset -8px -16px 16px #ffffff;
-    border-radius: 1em;
-    background-color: #f9f9f9;
+  width: 50rem; 
+  padding: 2rem;
 }
 
 .title-table {
-    font-weight: bold;
-    width: 15%;
-    color: #002661;
-    font-size: 50px;
-    background-color: aqua;
+  color: #ECF0F1;
+  font-weight: bold;
+  padding: 1rem 1rem;
+  text-align: left;
+  background-color: #002661;
+  cursor: pointer;
+  margin-bottom: 2rem;
 }
 
-.container-table th, .container-table td {
-    background-color: #f9f9f9;
-    border: 0.1em solid #002661; /*color rallas de la tabla*//
-    border-radius: 1em;
-    padding: 1vw;
-    text-align: left;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.1s ease;
-    font-weight: bold;
+.tr-table {
+  background-color: #f9f9f9;
+  padding: 1rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: 2rem;
 }
 
-.container-table th {
-    padding: 18px;
-    font-size: 1.1rem;
+.tr-table:hover {
+  background-color: #e0e0e0;
 }
 
-
-.container-table th:hover, .container-table td:hover {
-    transform: scale(1.05);
-    background-color: #c9c8c8;
-}
-
-.button-edit {
-    cursor: pointer;
-    width: 3vw;
-    border-radius: 15%;
-    padding: 0.5vw;
-    display: flex;
-    display: flex;
-}
-.logo-edit {
-    width: 100%;
+.title-table, .tr-table {
+  border: 1px solid #ddd;
 }
 
 .img-form {
-    width: 40%;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+  width: 20rem; 
+  max-width: 20rem; 
+  margin-bottom: 1rem;
 }
 
-.img-plus {
-    width: 80%;
+.button-edit, .button-add-t {
+  cursor: pointer;
+  background-color: rgb(78, 177, 69);
+  border: none;
+  border-radius: 5px;
+  color: #ECF0F1;
+  padding: 0.3rem 0.5rem;
+  margin: 0.2rem;
+  font-size: 1rem;
 }
 
-.img-plus-ob {
-    width: 100%;
-}
-
-.img-plus-ex {
-    width: 100%;
-}
-
-.img-delete {
-    width: 100%;
-}
-.button-add-t {
-    width: 15%;
-    background-color: #002661;
-    border-radius: 5px;
-    color: #ECF0F1;
-    /*pendiente fijar que el contenido se quede dentro*/
+.tr-table .container-button {
+  border-bottom: 0.7rem solid #002661; 
 }
 
 .container-button {
-    display: flex;
-    justify-content: left;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.description {
-    max-width: 12vw;
-    word-wrap: break-word;
-} 
+@media (max-width: 48rem) {
+  .title-table, .tr-table {
+    display: block;
+    border: none;
+  }
 
-.space-one-to-many{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    width:673%;
-    border-collapse: collapse;
+  .tr-table {
+    margin-bottom: 2rem; 
+  }
+
+  .title-table {
+    margin-bottom: 1rem; 
+  }
+
+  .button-edit, .button-add-t {
+    width: 45%;
+    margin: 2rem 0;
+    font-size: 1rem;
+  }
 }

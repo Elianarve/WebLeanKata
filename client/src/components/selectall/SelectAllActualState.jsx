@@ -44,7 +44,7 @@ const SelectAllActualState = ({challengeId}) => {
                                             <td className='title-table'>Fecha</td>
                                             <td className='tr-table'>{actualStates.date}</td>
                                         </tr> 
-                                        <tr>
+                                        <tr className="tr-table">
                                             <td className='title-table'>Challenge ID</td>
                                             <td className='tr-table'>{actualStates.challenge_id}</td>
                                         </tr> 

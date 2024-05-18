@@ -65,7 +65,7 @@ const LearningSelect = ({ result }) => {
                                         <td className='title-table'>Fecha de aprendizaje</td>
                                         <td className='tr-table'>{learning.learning_date}</td>
                                         </tr>
-                                        <tr className='tr-table' >
+                                        <tr className='tr-table'>
                                         <td className='title-table'>Acciones</td>
                                         <td className='container-button'>
                                             <button className='button-edit' onClick={() => {setEditLearningId(learning.id), setEditLearning(true) }}>
