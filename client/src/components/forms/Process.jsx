@@ -8,7 +8,7 @@ const Process = () => {
   const navigate = useNavigate();
   const onSubmit = (data) => { 
     postProcess(data).then(() => {
-        navigate('/tribe'); 
+        navigate('/home/tribe'); 
     })
     .catch((error) => {
       console.error("Error al publicar:", error);
