@@ -1,3 +1,7 @@
+body{
+  background-color: #ECF0F1;
+}
+
 .form-container {
   display: grid;
   place-items: center;
@@ -159,3 +163,4 @@ input[type="date"]{
   color: #FF5733; 
   pointer-events: none;
 }
+

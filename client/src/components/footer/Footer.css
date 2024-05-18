@@ -1,13 +1,12 @@
 .footer-container {
   text-align: center;
   font-size: small;
-  position: fixed; /* esto lo he cambiado*/
+  /* position: fixed; */
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
   z-index: 1500;
-  margin-top: 20px
 }
 
 .footer-container p {
