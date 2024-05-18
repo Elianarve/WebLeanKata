@@ -14,6 +14,9 @@ import resultRouter from './routes/resultRouter.js';
 import learningRouter from './routes/learningRouter.js';
 import processRouter from './routes/processRouter.js';
 import tribeRouter from './routes/tribeRouter.js';
+import usersRouter from './routes/usersRouter.js';
+import authRouter from './routes/authRouter.js';
+import UsersModel from "./models/userModel.js";
 import http from 'http';
 
 const app = express();
@@ -41,6 +44,9 @@ server.listen(PORT, () => {
     console.log(`La API se esta escuchando en el puerto http://localhost:${PORT}`);
 });
 
+app.use('/users', usersRouter);
+app.use('/auth', authRouter);
+
 try {
     await connection_db.authenticate();
     console.log('Connection has been established successfully.👏👏');
@@ -48,6 +54,9 @@ try {
     connection_db.sync();
 
     console.log('Models connected correctly 📋👏👏👏');
+    
+    UsersModel.sync();
+    console.log('Model Users connected correctly 👤👤');
 
    } catch (error) {
     console.error('Unable to connect to the database:', error);

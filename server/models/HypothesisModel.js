@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
 import ObstacleModel from "./ObstacleModel.js";
+import UsersModel from "./userModel.js";
 
 const HypothesisModel = connection_db.define('hypothesis', {
     id: {
@@ -33,5 +34,6 @@ const HypothesisModel = connection_db.define('hypothesis', {
     timestamps: false
 });
 
+UsersModel.hasMany(HypothesisModel, { foreignKey: 'userId' });
 
  export default HypothesisModel;

@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
 import TargetStateModel from "./TargetStateModel.js";
+import UsersModel from "./userModel.js";
 
 const ObstacleModel = connection_db.define('obstacle', { 
     id: {
@@ -30,5 +31,6 @@ const ObstacleModel = connection_db.define('obstacle', {
     timestamps: false
 });
 
+UsersModel.hasMany(ObstacleModel, { foreignKey: 'userId' });
 
 export default ObstacleModel;
