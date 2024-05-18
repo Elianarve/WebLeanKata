@@ -1,4 +1,3 @@
-// tokens.js
 import jwt from 'jsonwebtoken';
 import { TK_SECRET } from '../config.js';
 

@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "RegisterForm", // Asegúrate de usar camelCase si deseas que coincida exactamente con la URL
+        path: "RegisterForm", 
         element: <RegisterForm/>,
       },
       {

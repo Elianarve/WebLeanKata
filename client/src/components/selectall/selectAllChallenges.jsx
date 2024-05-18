@@ -27,7 +27,8 @@ const SelectAllChallenges = ({ challengeId }) => {
 
     const handleChange = (event) => {
         const selectedChallengeId = event.target.value;
-        navigate(`/card/${selectedChallengeId}`);
+        console.log(selectedChallengeId)
+        navigate(`/home/card/${selectedChallengeId}`);
     };
 
     const selectedChallenge = challenges.find(challenge => challenge.id === challengeId);
