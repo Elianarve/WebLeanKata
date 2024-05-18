@@ -41,10 +41,10 @@
 .nav-links li a {
   text-decoration: none;
   color: #002661;
-  padding: 30px 0;
 }
 
-.nav-button {
+.nav-button  {
+  display: block;
   transition: 0.6s;
   border-radius: 40px;
   background: #ECF0F1;
@@ -54,6 +54,11 @@
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
+
+ .nav-button a {
+  display: block;
+
+} 
 
 .nav-button:hover {
   box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
