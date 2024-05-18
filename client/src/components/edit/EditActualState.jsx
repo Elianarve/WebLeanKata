@@ -42,7 +42,10 @@ const EditActualState = ({ actualStateId, setLoading, setEditable }) => {
         </div>
         <div className='items'>
           <label className='label-item'>Fecha</label>
+        <div className='date-input-wrapper'>
           <input type="date" name="date" defaultValue={actualStateData.date } {...register('date', {required: true })}/>
+          <span className='date-icon'>&#x1F4C5;</span>
+        </div>
           {errors.date?.type === 'required' && <p className="error-message">El campo fecha es requerido</p>}
         </div>
         <input className='button-forms' type="submit" value="Editar" />
