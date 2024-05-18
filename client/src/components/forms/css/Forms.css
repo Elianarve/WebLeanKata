@@ -38,13 +38,13 @@ prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba pru
   margin-top: 5%;
 }
 
-.form-container h2 {
+.form-container h2, .form-box h2 {
   color: #002661;
   display: flex;
   justify-content: center;
 }
 
-.form-container label {
+.form-container label, .form-box label {
   color: #002661;
   font-weight: bold;
   display: block;

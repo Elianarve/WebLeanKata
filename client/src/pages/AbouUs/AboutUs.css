@@ -147,7 +147,7 @@ main section h3{
   background: radial-gradient(#b0e633, #53ef7d);
   border-radius: 50%;
   position: absolute;
-  animation: move-up6 2s ease-in infinite alternate-reverse;
+  animation: move-up6 1s ease-in infinite alternate-reverse;
 }
 
 .circle:nth-child(1) {
