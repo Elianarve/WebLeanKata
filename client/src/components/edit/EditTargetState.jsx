@@ -43,12 +43,18 @@ const EditTargetState = ({editTargetId, setLoading, setEditTargetState}) => {
      </div>
      <div className='items'>
        <label className='label-item'>Fecha de Inicio:</label>
+       <div className='date-input-wrapper'>
        <input type="date" name='start_date' defaultValue={targetStateData.start_date } {...register('start_date', { required: true })} />
+       <span className='date-icon'>&#x1F4C5;</span>
+        </div>
        {errors.endDate && <p className="error-message">La fecha de fin es requerida</p>}
      </div>
      <div className='items'>
        <label className='label-item'>Fecha de Meta:</label>
+       <div className='date-input-wrapper'>
        <input type="date" name='date_goal' defaultValue={targetStateData.date_goal } {...register('date_goal', { required: true })} />
+       <span className='date-icon'>&#x1F4C5;</span>
+        </div>
        {errors.startDate && <p className="error-message">La fecha de inicio es requerida</p>}
      </div>
      <button className='button-forms' type="submit">Editar</button>

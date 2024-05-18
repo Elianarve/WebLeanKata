@@ -31,7 +31,10 @@ const Learning = ({editResultId, setLoading, setCreateLearning}) => {
       </div>
       <div className='items'>
         <label className='label-item'>Fecha de aprendizaje:</label>
+        <div className='date-input-wrapper'>
         <input type="date" {...register('learning_date', { required: true })} />
+        <span className='date-icon'>&#x1F4C5;</span>
+        </div>
         {errors.learning_date && <p className="error-message">{errors.learning_date.message}</p>}
       </div>
       <button type="submit" className='button-forms'>Enviar</button>

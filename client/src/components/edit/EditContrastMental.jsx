@@ -37,12 +37,15 @@ const EditMentalContrast = ({editMentalId, setLoading, setEditMental}) => {
             <div className='items'>
                 <label className='label-item'>Puntos</label>
                 <input rows="10" cols="50" name="points" defaultValue={mentalContrastData.points} {...register('points', {required: true})}/>
-                {/* {errors.points && <p className="error-message">Los puntos son requeridos</p>} */}
+                {errors.points && <p className="error-message">Los puntos son requeridos</p>}
             </div>
             <div className='items'>
                 <label className='label-item'>Fecha de evaluación</label>
+                <div className='date-input-wrapper'>
                 <input type="date" name="evaluation_date" defaultValue={mentalContrastData.evaluation_date} {...register('evaluation_date', {required: true})}/>
-                {/* {errors.evaluation_date && <p className="error-message">La fecha de evaluación es requerida</p>} */}
+                <span className='date-icon'>&#x1F4C5;</span>
+                </div>
+                {errors.evaluation_date && <p className="error-message">La fecha de evaluación es requerida</p>}
             </div>
             <button className="button-forms"type="submit">Editar</button>
             <button  className="button-forms" onClick={() => setEditMental(false)}>Cerrar</button>

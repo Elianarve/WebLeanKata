@@ -50,12 +50,18 @@ const EditChallenge = ({ challengeId, setLoading, setEditable }) => {
         </div>
         <div className='items'>
           <label className='label-item'>Fecha de inicio</label>
+        <div className='date-input-wrapper'>
           <input type="date" name="start_date" defaultValue={challengeData.start_date} {...register('start_date', { required: true })}/>
+          <span className='date-icon'>&#x1F4C5;</span>
+        </div>
           {errors.start_date && <p className="error-message">La fecha de inicio es requerida</p>}
         </div>
         <div className='items'>
           <label className='label-item'>Fecha de fin</label>
+        <div className='date-input-wrapper'>
           <input type="date" name="end_date" defaultValue={challengeData.end_date} {...register('end_date', { required: true })}/>
+          <span className='date-icon'>&#x1F4C5;</span>
+        </div>
           {errors.end_date && <p className="error-message">La fecha de fin es requerida</p>}
         </div>
         <input className='button-forms' type="submit" value="Editar" />

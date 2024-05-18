@@ -44,7 +44,10 @@ const EditLearning = ({editLearningId, setLoading, setEditLearning}) => {
         </div>
         <div className='items'>
           <label className='label-item'>Fecha de aprendizaje</label>
+        <div className='date-input-wrapper'>
           <input type="date" name="learning_date" defaultValue={learningData.learning_date} {...register('learning_date', {required: true })}/>
+          <span className='date-icon'>&#x1F4C5;</span>
+          </div>
           {errors.speeds?.type === 'pattern' && <p className="error-message">La velocidad debe ser un valor numérico</p>}
           {errors.speeds?.type === 'required' && <p className="error-message">El campo velocidades es requerido</p>}
         </div>

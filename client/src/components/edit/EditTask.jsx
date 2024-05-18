@@ -70,36 +70,45 @@ const EditTask = ({ editTaskId, setLoading, setEdiTask }) => {
         </div>
         <div className="items">
           <label className="label-item">Fecha de inicio:</label>
+        <div className='date-input-wrapper'>
           <input
             type="date"
             name="start_date"
             defaultValue={taskData.start_date}
             {...register("start_date", { required: true })}
           />
+           <span className='date-icon'>&#x1F4C5;</span>
+            </div>
           {errors.startDate && (
             <p className="error-message">La fecha de inicio es requerida</p>
           )}
         </div>
         <div className="items">
           <label className="label-item">Fecha final prevista:</label>
+        <div className='date-input-wrapper'>
           <input
             type="date"
             name="end_date_prev"
             defaultValue={taskData.end_date_prev}
             {...register("end_date_prev", { required: true })}
           />
+           <span className='date-icon'>&#x1F4C5;</span>
+        </div>
           {errors.startDate && (
             <p className="error-message">La fecha de inicio es requerida</p>
           )}
         </div>
         <div className="items">
           <label className="label-item">Fecha real:</label>
+        <div className='date-input-wrapper'>
           <input
             type="date"
             name="end_date_real"
             defaultValue={taskData.end_date_real}
             {...register("end_date_real", { required: true })}
           />
+          <span className='date-icon'>&#x1F4C5;</span>
+        </div>
           {errors.startDate && (
             <p className="error-message">La fecha de inicio es requerida</p>
           )}
