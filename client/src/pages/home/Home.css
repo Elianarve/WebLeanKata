@@ -58,6 +58,7 @@ body {
   word-break: break-word;
   overflow-wrap: break-word;
   font-size: 1.1rem;
+  text-align: center;
   color: #002661;
 }
 
