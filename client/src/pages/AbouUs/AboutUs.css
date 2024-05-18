@@ -62,6 +62,8 @@ section h3 span{
 .shortDescription{
   width: 50vw;
   margin: 40px 0;
+  color: rgb(87, 87, 87);
+  
 }
 
 .leankataDescription{
@@ -72,7 +74,7 @@ section h3 span{
 main hr{
   border: none;
   height: 1px;
-  background-color: yellowgreen;
+  background-color: #9acd32;
   margin: 20px 0;
   width: 50%;
   margin: 0 25%;
