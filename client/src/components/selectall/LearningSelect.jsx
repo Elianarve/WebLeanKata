@@ -68,10 +68,10 @@ const LearningSelect = ({ result }) => {
                                         <tr className='tr-table'>
                                         <td className='title-table'>Acciones</td>
                                         <td className='container-button'>
-                                            <button className='button-edit' onClick={() => {setEditLearningId(learning.id), setEditLearning(true) }}>
-                                                <img src={update} alt="logo-update" className='logo-edit' />
+                                            <button title='Editar' className='CardActionButtonContainer' onClick={() => {setEditLearningId(learning.id), setEditLearning(true) }}>
+                                                <img src={update} alt="logo-update" className='edit' />
                                             </button>
-                                            <button className='button-edit' onClick={() => deleteLearning(learning.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
+                                            <button title='Eliminar' className='CardActionButtonContainer' onClick={() => deleteLearning(learning.id).then(() => navigate(0))}><img src={delte} alt="delete" className='delete'/></button>
                                         </td>
                                         </tr> 
                                     </tbody>
