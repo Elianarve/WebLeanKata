@@ -59,7 +59,7 @@
 }
 
 .container-select{
-  padding: 17px 40px;
+  padding: 15px 40px;
   border-radius: 50px;
   cursor: pointer;
   border: 0;
@@ -72,13 +72,16 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 30vw;
+  min-width: 30vw;
+  color: #002661;
 }
 
 .container-select option{
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 30vw;
-  background-color: #002661;
+  background-color: #ECF0F1;
+  color: #002661;
 }
 
 .container-select:hover {
@@ -88,26 +91,6 @@
   color: hsl(0, 0%, 100%);
   box-shadow: #9acd32 0px 7px 29px 0px;
 }
-
-@media (max-width: 768px){
-
-  .container-button{
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .container-challenge {
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    width: 100vw;
-  }
-  
-  .centered-table{
-    width: 80%;
-  }
-  
-  }
 
   .CardActionButtonContainer{
     border: none;
@@ -123,7 +106,6 @@
     min-width: 30px;
     max-width: 30px;
     transition: 0.2;
-    /* background-color: #e2e2e2; */
     background-color: #9acd32;
   }
 
@@ -154,7 +136,7 @@
   }
 
   .createTargetState{
-    background-color: #63cd328f;
+    background-color: #9acd32;
     border-radius: 50px;
     padding: 5px;
     transition: 0.2s;
@@ -164,14 +146,26 @@
     transform: scale(0.9);
   }
 
-  /* button .edit:hover{
-    background-color: rgb(101, 179, 111);
-  }
+  
+@media (max-width: 768px){
 
-  button .addCM:hover{
-    background-color: rgb(87, 143, 207);
+  .container-button{
+    display: flex;
+    flex-direction: column;
   }
-
-  button .addObstacle:hover{
-    background-color: hsl(172, 62%, 38%);
-  } */
+  
+  .container-challenge {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    width: 100vw;
+  }
+  
+  .centered-table{
+    width: 80%;
+  }
+  
+  .container-select{
+    max-width: 60vw;
+  }
+  }
