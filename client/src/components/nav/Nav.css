@@ -78,3 +78,52 @@ box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
   border: solid black 1px;
   width: 90%;
 }
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .hamburger-icon {
+    display: block; /* Esto mostrará el ícono de hamburguesa en pantallas pequeñas */
+    position: absolute;
+    top: 15px; /* Ajusta esto según la altura de tu barra de navegación */
+    right: 20px;
+  }
+
+  .hamburger-icon span {
+    display: block;
+    width: 25px; /* Ajusta el ancho del ícono de hamburguesa */
+    height: 3px; /* Ajusta el alto del ícono de hamburguesa */
+    background-color: white;
+    margin: 5px 0; /* Espacio entre las líneas del ícono de hamburguesa */
+  }
+
+  .nav-links {
+    display: none; /* Esto ocultará los enlaces en pantallas pequeñas hasta que se haga clic en el ícono de hamburguesa */
+    flex-direction: column;
+    gap: 0;
+    background-color: #333;
+    position: absolute;
+    width: 100%;
+    top: 60px; /* Ajusta esto según la altura de tu barra de navegación */
+    left: 0;
+  }
+
+  .nav-links.open {
+    display: flex; /* Esto mostrará los enlaces cuando se haga clic en el ícono de hamburguesa */
+  }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 769px) {
+  .hamburger-icon {
+    display: none; /* Esto ocultará el ícono de hamburguesa en pantallas grandes */
+  }
+}
+
+/* Añade una transición suave para el menú */
+.nav-links {
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-links.open {
+  transform: translateY(0);
+}
