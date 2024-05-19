@@ -35,8 +35,8 @@ const Nav = () => {
         <li className="nav-button"><Link to="home" onClick={toggleMenu}>Ver Existente</Link></li>
         <Logout/>
         <div className='button-profile'>
-        <p className="nav-button-profile">{user && user.name}</p>&nbsp;
-        <img className="icon-profile" src={profile}/>
+          <select name="profile" id="">
+          </select>
         </div>
       </ul>
       )}

@@ -1,58 +1,61 @@
+.landing-container{
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
 .landing{
-    background-color: #ECF0F1;
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
-    height: auto;
 }
 
-.k-title-landing{
-    color: yellowgreen;
-}
-
-.section-left{
-    display: flex;
-    flex-direction: column;
-    margin-left: 15%;
-    margin-top: 6%;
-    margin-bottom: 5.8%;
-    width: 60%;
-}
-
-
-.landing-title {
-    animation: slideInFromRight 2s ease-out forwards; 
+.landing-title span{
+    color: rgb(129, 175, 38);
 }
 
 .landing-title{
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 2.9rem;
+    width: 100%;
+    text-align: center;
 }
 
-.landing-text{
-    font-size: 1.1rem;
-    margin-top: 2%;
+.section-left{
+    display: grid;
+    place-items: center;
 }
 
-.buttons{
+.section-right{
+    display: grid;
+    place-items: center;
+    width: 30vw;
+}
+
+.bton-landing-container{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 10%;
-    margin-bottom: 30%;
 }
 
 .register-btn{
     font-size: 1.1rem;
-    margin-top: 10%;
     padding: 0.6em 6.5em; 
     border-radius: 0.5em;
     background: linear-gradient(80deg, yellowgreen, #002661);
     color: #ECF0F1;
-    font-weight: bold;
     cursor: pointer;
     transition:0.3s ease, transform 0.3s ease;
+    border: none;
+}
+
+.login-btn{
+    font-size: 1.1rem;
+    margin-top: 10px;
+    padding: 0.6em 5.8em; 
+    border-radius: 0.5em;
+    background: linear-gradient(80deg, #002661, yellowgreen);
+    color: #ECF0F1;
+    cursor: pointer;
+    transition:0.3s ease, transform 0.3s ease;
+    border: none;
 }
 
 .register-btn:hover, .login-btn:hover {
@@ -60,26 +63,6 @@
     transform: scale(1.05);
     color: #002661;
 }
-
-.login-btn{
-    font-size: 1.1rem;
-    margin-top: 3%;
-    padding: 0.6em 5.8em; 
-    border-radius: 0.5em;
-    background: white;
-    background: linear-gradient(80deg, #002661, yellowgreen);
-    color: #ECF0F1;
-    font-weight: bold;
-    transition:0.3s ease, transform 0.3s ease;
-}
-
-.section-right{
-    width: 100%;
-    margin-top: 12%;
-    margin-left: 12%;
-    position: relative;
-}
-
 
 @keyframes slideInFromRight {
     0% {
@@ -93,43 +76,35 @@
 }
 
 .img-landing{
-    width: 60%;
     animation: slideInFromRight 2s ease-out forwards;
+    width: 80%;
 }
 
 
-@media (min-width: 768px){
+@media (max-width: 860px){
 
+.img-landing{
+    width: 150%;
 }
 
-@media (max-width: 768px) {
+.landing-title{
+    font-size:  150%;
+}
 
-    .landing{
-        display: block;
-    }
+.landing{
+    display: grid;
+    width: 100%;
+    place-items: center;
+    font-size: 1rem;
+}
 
-    .section-left {
-        width: 100%;
-        margin-left: 5%;
-    }
+.login-btn{
+    padding: 10px 35px;
+    margin-bottom: 30px;
+}
 
-    .landing-title{
-        font-size: 2.2rem;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 25%;
-    }
-
-    .register-btn, .login-btn{
-        font-size: 1rem;
-        margin-left: 10%;
-
-    }
-
-    .section-right{
-        width: 100%;
-        margin-top: 10%;
-        margin-left: 18%;
-    }
+.register-btn{
+    padding: 10px 45px;
+}
 
 }

@@ -5,10 +5,11 @@ import grow from '../../assets/img/grown.svg';
 
 const Landing = () => {
   return(
-    <>
+     <div className='landing-container'>
      <main className="landing">
       <section className="section-left">
-          <h1 className='landing-title'>¡Tu camino<br/>hacia la mejora <br/>continua con <br />Lean <span className="k-title-landing">K</span>ata!</h1>
+          <h1 className='landing-title'>¡Tu camino<br/>hacia la mejora <br/>continua con <br />Lean <span>K</span>ata!</h1>
+            <div className='bton-landing-container'>
             <Link to="/RegisterForm">
               <button className='register-btn'>
                 Regístrate
@@ -19,12 +20,13 @@ const Landing = () => {
                 Iniciar sesión
               </button>
             </Link>
+            </div>
       </section>
       <section className='section-right'>
           <img className='img-landing' src={grow} alt="img-landing" />
       </section>
   </main> 
-    </>
+     </div>
   )
 
 }
