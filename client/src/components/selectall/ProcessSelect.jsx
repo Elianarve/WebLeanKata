@@ -3,11 +3,15 @@ import { getOneProcess } from "../../services/processServices";
 import "./css/SelectAll.css";
 import update from "../../assets/img/EditButton.svg";
 import EditProcess from "../edit/EditProcess";
+import { getChallenge } from "../../services/challengeServices";
+import ChallengeSelect from "../ChallengeSelect/ChallengeSelect";
 
 const ProcessSelect = ({ processId }) => {
   const [process, setProcess] = useState(null);
   const [editable, setEditable] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [challenges, setChallenges] = useState([]);
+  const [selectedChallengeId, setSelectedChallengeId] = useState(null);
 
   useEffect(() => {
     const fetchProcess = async () => {
@@ -22,8 +26,26 @@ const ProcessSelect = ({ processId }) => {
     fetchProcess();
   }, [processId, loading]);
 
+  useEffect(() => {
+    const fetchChallenges = async () => {
+      try {
+        const challengesData = await getChallenge();
+        setChallenges(challengesData);
+      } catch (error) {
+        console.error('Error fetching Challenges:', error);
+      }
+    };
+
+    fetchChallenges();
+  }, []);
+
   return (
     <div className="container-challenge marginNavbar">
+      <ChallengeSelect 
+        challenges={challenges} 
+        selectedChallengeId={selectedChallengeId} 
+        onSelectChange={(id) => setSelectedChallengeId(id)}
+      />
       {process && (
         <>
           <h3>PROCESO</h3>

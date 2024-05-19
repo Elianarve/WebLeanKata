@@ -11,7 +11,7 @@
   }
   
   .search-bar:focus {
-    background-color: white;
+    background-color: #f9f9f9;
     transform: scale(1.0);
     box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
   }
