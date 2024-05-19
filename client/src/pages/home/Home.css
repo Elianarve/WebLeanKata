@@ -18,20 +18,13 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
   background-color: #ECF0F1;
   padding: 0 5vw;
+  min-height: 45vw;
 }
 
 .container-principal {
   width: 100%;
-  margin-top: 7%;
-}
-
-.title-home {
-  color: #002661;
-  letter-spacing: 0.05em;
-  font-size: 1.5em;
 }
 
 .home-container-calendar {
@@ -53,13 +46,17 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 60vw;
+  max-width: 2vw;
   padding: 20px; 
   word-break: break-word;
   overflow-wrap: break-word;
   font-size: 1.1rem;
   text-align: center;
   color: #002661;
+  text-align: left;
+}
+
+.idWrapper{
   text-align: center;
 }
 

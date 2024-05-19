@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* min-height: 100vh; */
   background-color: #ECF0F1;
   padding: 0 5vw;
   text-align: center;
@@ -20,7 +19,7 @@ iframe{
   background-size: cover;
   width: 98.9vw;
   height: 300px;
-  margin-top: 100px;
+  margin-top: 120px;
 }
 
 .leanKata-backdrop{
