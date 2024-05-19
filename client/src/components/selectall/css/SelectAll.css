@@ -37,6 +37,10 @@
   margin-bottom: 2rem;
   width: 70%;
   color: #002661;
+  overflow: hidden;
+  white-space: normal;
+  word-break: break-word;
+  text-overflow: ellipsis;
 }
 
 .title-table, .tr-table {
@@ -77,9 +81,11 @@
 }
 
 .container-select option{
+  width: 100%;
   overflow: hidden;
+  white-space: normal;
+  word-break: break-word;
   text-overflow: ellipsis;
-  max-width: 30vw;
   background-color: #ECF0F1;
   color: #002661;
 }
