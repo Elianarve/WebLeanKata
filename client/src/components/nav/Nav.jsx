@@ -4,7 +4,6 @@ import { useState } from 'react';
 import "./Nav.css";
 import logo from "../../assets/img/logotipo2.png";
 import Logout from '../../components/logOut/Logout';
-import profile from '../../assets/img/profile.png';
 
 const Nav = () => {
    const { user, userAuth } = useUserContext(); 
@@ -33,10 +32,9 @@ const Nav = () => {
         <li className="nav-button"><Link to="/home" onClick={toggleMenu}>Lean <span className='letter-nav'>K</span>ata</Link></li>
         <li className="nav-button"><Link to="process" onClick={toggleMenu}>Crear Reto</Link></li>
         <li className="nav-button"><Link to="home" onClick={toggleMenu}>Ver Existente</Link></li>
-        <Logout/>
         <div className='button-profile'>
-          <select name="profile" id="">
-          </select>
+        <p className="nav-button-profile">{user && user.name}</p>&nbsp;
+        <Logout/>
         </div>
       </ul>
       )}

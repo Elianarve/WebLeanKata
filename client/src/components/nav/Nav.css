@@ -123,10 +123,6 @@
   transition: 0.4s;
 }
 
-.icon-profile {
-  width: 28%;
-} 
-
 .button-profile{
   display: flex;
   flex-direction: row;
