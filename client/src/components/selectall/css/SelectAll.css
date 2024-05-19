@@ -11,7 +11,7 @@
 }
 
 .container-challenge h3 {
-  color: rgb(78, 177, 69);
+  color: #002661;
   font-weight: bold;
   margin-bottom: 0;
 }
@@ -36,6 +36,7 @@
   text-align: left;
   margin-bottom: 2rem;
   width: 70%;
+  color: #002661;
 }
 
 .title-table, .tr-table {
