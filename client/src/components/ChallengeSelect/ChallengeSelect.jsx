@@ -11,13 +11,14 @@ const ChallengeSelect = ({ challenges, selectedChallengeId, onSelectChange }) =>
     };
 
     return (
+        <>
         <select value={selectedChallengeId} onChange={handleChange} className='container-select'>
-            {challenges.map((challenge) => (
-                <option key={challenge.id} value={challenge.id}>
-                    {challenge.name}
+            {challenges.map((challenge) => (                                
+                <option key={challenge.id} value={challenge.id} >{challenge.name}
                 </option>
             ))}
         </select>
+        </>
     );
 };
 
