@@ -125,7 +125,7 @@ const Home = () => {
                 className="table-challenge"
                 key={challenge.id}
                 onClick={() => navigate(`/home/card/${challenge.id}`)}>
-                <td className="challenge-wrapper">{challenge.id}</td>
+                <td className="challenge-wrapper idWrapper">{challenge.id}</td>
                 <td className="challenge-wrapper">{challenge.name}</td>
                 <td className="challenge-wrapper">{challenge.actual_state}</td>
               </tr>
