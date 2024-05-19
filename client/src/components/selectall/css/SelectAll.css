@@ -119,10 +119,11 @@
     padding: 0.3rem 0.5rem;
     margin: 0.2rem;
     transition: 0.5s;
-    min-width: 40px;
-    max-width: 40px;
+    min-width: 30px;
+    max-width: 30px;
     transition: 0.2;
-    background-color: #e2e2e2;
+    /* background-color: #e2e2e2; */
+    background-color: #9acd32;
   }
 
   .CardActionButtonContainer img:hover{
@@ -135,7 +136,7 @@
     box-shadow: none;
   }
 
-  button .delete:hover{
+  button .delete{
     background-color: #df4747;
   }
 
