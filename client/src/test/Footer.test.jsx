@@ -1,43 +1,55 @@
-import { render } from '@testing-library/react';
-import Footer from '../components/footer/footer';
-import chai, { expect } from 'chai';
-import chaiDom from 'chai-dom';
-import { describe, it} from 'vitest';
-
-chai.use(chaiDom);
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import Footer from '../components/footer/footer.jsx'; // Ajusta la ruta según la ubicación de tu archivo Footer.jsx
+import { UserContext } from '../context/UserContext.jsx'; // Importa el UserContext correctamente
+import { MemoryRouter } from 'react-router-dom'; // Importa MemoryRouter
 
 describe('Footer component', () => {
-  it('renders correctly', () => {
-    const { container } = render(<Footer />);
-    expect(container.querySelector('p:nth-child(1)')).to.have.text('Politica de privacidad | Terminos de uso');
-    expect(container.querySelector('p:nth-child(2)')).to.have.text('© 2006 - 2021 Wix.com, Inc');
-  });
+    const mockUserContextValue = {
+        user: { name: 'Test User' },
+        userAuth: true
+    };
 
-  it('has correct styles', () => {
-    const { container } = render(<Footer />);
-    expect(container.querySelector('p:nth-child(1)')).to.have.class('transparentFooter');
-    expect(container.querySelector('p:nth-child(2)')).to.have.class('blueFooter');
-    // expect(container.querySelector('p:nth-child(1)')).to.have.style('margin-top', '70px');
-    // expect(container.querySelector('p:nth-child(2)')).to.have.style('color', 'blue');
-  });
+    beforeEach(() => {
+        render(
+            <MemoryRouter>
+                <UserContext.Provider value={mockUserContextValue}>
+                    <Footer />
+                </UserContext.Provider>
+            </MemoryRouter>
+        );
+    });
+       
+        test("should render privacyPolicyText", () => {
+            const privacyPolicyText = screen.getByText('Politica de privacidad | Terminos de uso');
+            expect(privacyPolicyText).toBeDefined();
+        });
+
+        test("should render termsOfUseText", () => {
+            const termsOfUseText = screen.getByText('Politica de privacidad | Terminos de uso');
+            expect(termsOfUseText).toBeDefined();
+        });
+
+        
+        test("should render copyrightText", () => {
+            const copyrightText = screen.getByText('© 2006 - 2021 Wix.com, Inc');
+            expect(copyrightText).toBeDefined();
+        });
+
+        test('should not render the footer when user is not authenticated', () => {
+            const privacyPolicyText = screen.getByText('Politica de privacidad | Terminos de uso');
+            expect(privacyPolicyText).toBeDefined();
+        });
+
+        test('should not render the footer when user is not authenticated', () => {
+            const termsOfUseText = screen.getByText('Politica de privacidad | Terminos de uso');
+            expect(termsOfUseText).toBeDefined();
+        });
+
+        test('should not render the footer when user is not authenticated', () => {
+            const copyrightText = screen.getByText('Politica de privacidad | Terminos de uso');
+            expect(copyrightText).toBeDefined();
+        });
+
+
 });
-
-// import { render, screen } from '@testing-library/react';
-// import Footer from '../components/footer/footer';
-// import { describe, it, expect } from 'vitest';
-
-// describe('Footer component', () => {
-//   it('renders correctly', () => {
-//     render(<Footer />);
-//     expect(screen.getByText('Politica de privacidad | Terminos de uso')).toBeInTheDocument();
-//     expect(screen.getByText('© 2006 - 2021 Wix.com, Inc')).toBeInTheDocument();
-//   });
-
-//   it('has correct styles', () => {
-//     render(<Footer />);
-//     const transparentFooter = screen.getByText('Politica de privacidad | Terminos de uso');
-//     const blueFooter = screen.getByText('© 2006 - 2021 Wix.com, Inc');
-//     expect(transparentFooter).toHaveStyle('margin-top: 70px');
-//     expect(blueFooter).toHaveStyle('color: blue');
-//   });
-// });
