@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getActualState } from "../../services/actualStateServices";
 import './css/SelectAll.css';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import EditActualState from '../edit/EditActualState';
 
 const SelectAllActualState = ({challengeId}) => {

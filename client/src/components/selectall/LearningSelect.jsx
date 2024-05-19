@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getLearning, deleteLearning } from '../../services/learningsServices';
 import { useNavigate } from 'react-router-dom';
 import './css/SelectAll.css';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import delte from '../../assets/img/delete.svg';
 import EditLearning from '../edit/EditLearning';
 

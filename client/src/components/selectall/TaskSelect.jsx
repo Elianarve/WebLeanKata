@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getTask, deleteTask } from '../../services/taskServices'; 
 import { useNavigate } from 'react-router-dom';
 import './css/SelectAll.css';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
 import EditTask from '../edit/EditTask';

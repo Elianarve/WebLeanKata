@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getMentalContrast, deleteMentalContrast } from '../../services/mentalContrastServices';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import './css/SelectAll.css';
 import delte from '../../assets/img/delete.svg';
 import { useNavigate } from 'react-router-dom';

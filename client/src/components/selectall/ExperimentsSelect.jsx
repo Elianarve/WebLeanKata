@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getExperiment, deleteExperiment } from '../../services/experimentServices'; 
 import { useNavigate } from 'react-router-dom';
 import './css/SelectAll.css';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import delte from '../../assets/img/delete.svg';
 import TaskSelect from './TaskSelect';
 import ResultsSelect from './ResultsSelect';

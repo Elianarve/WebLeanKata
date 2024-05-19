@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { deleteObstacle, getObstacle } from '../../services/obstacleServices';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import HypothesisSelect from './HypothesisSelect';
 import EditObstacle from '../edit/EditObstacle';
 import { useNavigate } from 'react-router-dom';
