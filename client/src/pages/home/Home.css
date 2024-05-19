@@ -105,11 +105,24 @@ body {
   }
 
   .title-th-home, .challenge-wrapper {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     padding: 12px;
+    max-width: 1vw;
   }
 
   .home-container {
-    min-height: 70vh;
+    min-height: 94vh;
+    }
+}
+
+@media (min-height: 1100px){
+  .home-container {
+    min-height: 100vh;
+    }
+}
+
+@media (min-width: 1100px){
+  .home-container {
+    min-height: 100vh;
     }
 }

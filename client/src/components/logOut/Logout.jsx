@@ -14,14 +14,14 @@ const Logout = () => {
 }
 
   return (
-    <button class="Btn" onClick={deleteDataUser}>
+    <button className="Btn" onClick={deleteDataUser}>
   <img className="icon-profile" src={profile}/>
   
-  <div class="sign">
+  <div className="sign">
 
       </div>
   
-  <div class="text">Cerrar sesión</div>
+  <div className="text">Cerrar sesión</div>
 
 </button>
   )
