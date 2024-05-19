@@ -20,8 +20,6 @@ body{
   height: 100vh;
 }
 
-prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba
-
 .form-center{
   display: grid;
   place-items: center;
@@ -115,10 +113,13 @@ input[type="date"]{
   background-color: #002661;
   color: #fff;
   width: 98%;
-  padding: 13px 0;
+  padding: 10px 0;
   font-size: 1rem;
 }
 
+.image-container{
+  margin-top: 3%;
+}
 
 .date-input-wrapper {
   position: relative;

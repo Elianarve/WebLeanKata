@@ -215,7 +215,7 @@ const EditExperiment = ({
         </div>
         <div className="items">
           <label className="label-item">Imagen</label>
-          <input
+          <input className='button-image'
             type="file"
             name="image"
             {...register("image")}

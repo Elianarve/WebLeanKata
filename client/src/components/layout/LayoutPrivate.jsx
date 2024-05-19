@@ -2,6 +2,7 @@ import { Outlet, Navigate } from "react-router-dom";
 import { useUserContext } from "../../context/UserContext";
 import Nav from "../nav/Nav";
 import Footer from "../footer/footer";
+import Chatbot from "../chatbot/Chatbot";
 
 const LayoutPrivate = () => {  
   const { userAuth } = useUserContext();
@@ -14,6 +15,7 @@ const LayoutPrivate = () => {
           <main>
             <Outlet />
           </main>
+          <Chatbot/>
           <Footer />
         </>
       ) : ( 
