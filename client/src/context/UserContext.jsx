@@ -1,8 +1,6 @@
-/* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react/prop-types */
-import { createContext, useContext, useState } from "react"; // Importa las funciones necesarias de React
+import { createContext, useContext, useState } from "react"; 
 
-export const UserContext = createContext(); // Crea un contexto de usuario
+export const UserContext = createContext(); 
 
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
