@@ -43,7 +43,13 @@ const TargetSta = ({ challengeId }) => {
         <div className='container-challenge'>
             {targetStates && (
                 <>
-                    <h3>ESTADO OBJETIVO <button className='button-add' onClick={()=> setCreateTarget(true)} ><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
+                    <div className='titleAling'>
+                    <h3>ESTADO OBJETIVO 
+                        <button title='Crar un nuevo estado objetivo' className='targetState' onClick={()=> setCreateTarget(true)} >
+                            <img src={more} className='createTargetState' />
+                        </button>
+                    </h3>
+                    </div>
                     <div className="centered-table">
                         <table className='container-table'>
                                 {targetStates.map((targetState) => (
