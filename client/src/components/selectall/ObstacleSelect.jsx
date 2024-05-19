@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import delte from '../../assets/img/delete.svg';
 import Hypothesis from '../forms/Hypothesis';
 import './css/SelectAll.css';
+import HypothesisLogo from '../../assets/img/hypothesisButton.svg'
 
 const ObstacleSelect = ({targetState}) => {
     const navigate = useNavigate(); 
@@ -83,11 +84,15 @@ const ObstacleSelect = ({targetState}) => {
                                         <tr className="tr-table">
                                             <td className='title-table'>Acciones</td>
                                             <td className='container-button'>
-                                                <button className='button-edit' onClick={() => {setEditObstacleId(obstacle.id), setEditObstacle(true)}}>
+                                                <button title='Editar' className='CardActionButtonContainer' onClick={() => {setEditObstacleId(obstacle.id), setEditObstacle(true)}}>
                                                     <img src={update} alt="logo-update" className='logo-edit' />
                                                 </button>
-                                                <button className='button-add-t' onClick={() => {setEditObstacleId(obstacle.id), setEditHypothesis(true)}}>Añadir Hipotesis</button>
-                                                <button className='button-edit' onClick={() => deleteObstacle(obstacle.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
+                                                <button title='Añadir hipotesis' className='CardActionButtonContainer' onClick={() => {setEditObstacleId(obstacle.id), setEditHypothesis(true)}}>
+                                                    <img src={HypothesisLogo}/>
+                                                </button>
+                                                <button title='Eliminar' className='CardActionButtonContainer' onClick={() => deleteObstacle(obstacle.id).then(() => navigate(0))}>
+                                                    <img src={delte} alt="img-delete" className='delete' />
+                                                </button>
                                             </td>
                                         </tr>
                                     </tbody>
