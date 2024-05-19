@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import LayoutPublic from "../components/layout/LayoutPublic";
 import LayoutPrivate from "../components/layout/LayoutPrivate";
 import Landing from '../pages/Landing/Landing.jsx';
-import Login from '../pages/Login.jsx';
 import Register from '../pages/Register.jsx';
 import Home from "../pages/home/Home";
 import Challenge from '../components/forms/Challenge';
@@ -13,6 +12,7 @@ import NotFound from "../pages/notfound/NotFound";
 import Card from "../components/card/Card";
 import AboutUs from "../pages/AbouUs/AboutUs"
 import RegisterForm from "../components/forms/RegisterForm.jsx";
+import Login from "../pages/login/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         element: <Landing />
       },
       {
-        path: "register",
+        path: "Register",
         element: <Register />,
       },
       {
