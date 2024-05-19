@@ -21,7 +21,7 @@ const Logout = () => {
 
       </div>
   
-  <div class="text">Logout</div>
+  <div class="text">Cerrar sesión</div>
 
 </button>
   )
