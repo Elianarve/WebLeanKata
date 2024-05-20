@@ -8,7 +8,6 @@ import { deleteActualState } from '../services/actualStateServices'; // Ajusta l
 
 describe('deleteActualState', () => {
   beforeEach(() => {
-    // Configurar el token de autenticación en localStorage antes de cada prueba
     localStorage.setItem('authToken', 'test-token');
     vi.resetAllMocks();
   });
@@ -18,7 +17,6 @@ describe('deleteActualState', () => {
     const mockConfirm = vi.fn().mockReturnValue(true);
     window.confirm = mockConfirm;
 
-    // Simular la respuesta de axios.delete
     vi.spyOn(axios, 'delete').mockResolvedValue({ data: {} });
 
     await deleteActualState(id);

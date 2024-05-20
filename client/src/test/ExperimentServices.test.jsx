@@ -57,16 +57,13 @@ describe('deleteExperiment', () => {
     const mockDelete = vi.fn();
     window.confirm = mockDelete;
 
-    // Simula una solicitud de eliminación exitosa
     const mockDeleteRequest = vi.spyOn(axios, 'delete').mockResolvedValue({ status: 200 });
     
-    // Definir el objeto de headers
     const headers = { Authorization: 'Bearer test-token' };
     
     await deleteExperiment(id);
     
     expect(mockDelete).toHaveBeenCalledWith("¿Estás seguro que deseas borrar el contraste mental?");
-    // Pasar headers a la llamada a axios.delete
     expect(mockDeleteRequest).toHaveBeenCalledWith(`http://localhost:5000/experiment/${id}`, { headers });
   });
 
@@ -97,9 +94,6 @@ describe('postExperiment', () => {
     const mockResponse = { status: 201 };
     axiosPostStub.resolves({ data: mockResponse });
 
-    // const response = await postExperiment(data);
-    // expect(response.status).toEqual(201);
-    // sinon.assert.calledOnceWithExactly(axiosPostStub, expect.any(String), data);
   });
 
   it('should throw an error if the request fails', async () => {

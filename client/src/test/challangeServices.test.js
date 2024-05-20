@@ -36,7 +36,6 @@ import axios from 'axios';
 import { describe, it, beforeEach, afterEach, vi } from 'vitest';
 import Sinon from 'sinon';
 import { getChallenge, getOneChallenge, deleteChallenge, postChallenge, updateChallenge } from '../services/challengeServices';
-// challengeServices.test.js
 
 import sinon from 'sinon';
 import * as challengeServices from '../../src/services/challengeServices';
@@ -55,18 +54,7 @@ describe('challengeServices', () => {
 
     describe('updateChallenge', () => {
         it('should update an existing challenge successfully', async () => {
-            // Configura el token en el almacenamiento local
             localStorage.setItem('authToken', 'mockToken');
-
-            // // Simula una solicitud de actualización exitosa
-            // const axiosStub = sinon.stub(axios, 'put').resolves({ data: 'Updated challenge' });
-
-            // const result = await challengeServices.updateChallenge('challengeId', { /* datos actualizados del desafío */ });
-            // expect(result).toEqual('Challenge updated successfully');
-
-            // sinon.assert.calledOnceWithExactly(axiosStub, 'http://localhost:5000/challenge/challengeId', { /* datos actualizados del desafío */ }, {
-            //     headers: { Authorization: 'Bearer mockToken' }
-            // });
         });
 
         it('should throw an error when the request fails', async () => {
