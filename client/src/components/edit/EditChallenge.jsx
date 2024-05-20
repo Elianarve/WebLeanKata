@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { getOneChallenge, updateChallenge } from '../../services/challengeServices';
 import '../forms/css/Forms.css';
+import Swal from 'sweetalert2';
 
 const EditChallenge = ({ challengeId, setLoading, setEditable }) => {
   const { register, formState: {errors}, handleSubmit,  setValue } = useForm();
@@ -25,7 +26,7 @@ const EditChallenge = ({ challengeId, setLoading, setEditable }) => {
   const onSubmit = async (challengeData) => {
     try {
       await updateChallenge(challengeId, challengeData);
-      alert('¡Los datos del reto han sido actualizados correctamente!');
+      Swal.fire('¡Los datos del reto han sido actualizados correctamente!');
       setLoading(true);
       setEditable(false);
     } catch (error) {

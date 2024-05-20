@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { getOneProcess, updateProcess } from "../../services/processServices";
 import "../forms/css/Forms.css";
+import Swal from 'sweetalert2';
+
 
 const EditProcess = ({ processId, setLoading, setEditable }) => {
   const {
@@ -26,7 +28,7 @@ const EditProcess = ({ processId, setLoading, setEditable }) => {
   const onSubmit = async (processData) => {
     try {
       await updateProcess(processId, processData);
-      alert("¡Los datos del elemento han sido actualizados correctamente!");
+      Swal.fire("¡Los datos del elemento han sido actualizados correctamente!");
       setLoading(true);
       setEditable(false);
     } catch (error) {

@@ -22,7 +22,7 @@ export const registerUser = async (name, email, password) => {
 
 export const loginUser = async (email, password) => {
   try {
-    const response = await axios.post('http://localhost:5000//auth/login', { 
+    const response = await axios.post('http://localhost:5000/auth/login', { 
       email,
       password,
     });

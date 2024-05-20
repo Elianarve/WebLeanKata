@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { getOneActualState, updateActualState, } from '../../services/actualStateServices';
 import '../forms/css/Forms.css';
+import Swal from 'sweetalert2';
 
 const EditActualState = ({ actualStateId, setLoading, setEditable }) => { 
   const { register, formState: { errors }, handleSubmit, setValue } = useForm();
@@ -22,7 +23,7 @@ const EditActualState = ({ actualStateId, setLoading, setEditable }) => {
   const onSubmit = async (actualStateData) => {
     try {
       await updateActualState(actualStateId, actualStateData);
-      alert('¡Los datos del elemento han sido actualizados correctamente!');
+      Swal.fire('¡Los datos del elemento han sido actualizados correctamente!');
       setLoading(true);
       setEditable(false);
     } catch (error) {
