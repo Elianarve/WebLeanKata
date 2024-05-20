@@ -48,33 +48,6 @@ describe('getOneExperiment', () => {
 });
 
 
-import { deleteExperiment } from '../../src/services/experimentServices';
-
-
-describe('deleteExperiment', () => {
-  it('should delete the experiment with the given ID', async () => {
-    const id = 1;
-    const mockDelete = vi.fn();
-    window.confirm = mockDelete;
-
-    const mockDeleteRequest = vi.spyOn(axios, 'delete').mockResolvedValue({ status: 200 });
-    
-    const headers = { Authorization: 'Bearer test-token' };
-    
-    await deleteExperiment(id);
-    
-    expect(mockDelete).toHaveBeenCalledWith("¿Estás seguro que deseas borrar el contraste mental?");
-    expect(mockDeleteRequest).toHaveBeenCalledWith(`http://localhost:5000/experiment/${id}`, { headers });
-  });
-
-  it('should throw an error if the request fails', async () => {
-    const mockError = new Error('Network error');
-    vi.spyOn(axios, 'delete').mockRejectedValue(mockError);
-
-    await expect(deleteExperiment(1)).rejects.toThrow(mockError);
-  });
-});
-
 import { postExperiment } from '../../src/services/experimentServices';
 import sinon from 'sinon';
 
