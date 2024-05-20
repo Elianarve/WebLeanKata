@@ -10,10 +10,10 @@
      color: #FFFF;
      float: right;
    }
-
+/* 
    .button-calendar:hover{
     box-shadow: 5px 5px 1px #002761;
-   }
+   } */
 
    .react-calendar__navigation__arrow,
    .react-calendar__navigation__label {
