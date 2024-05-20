@@ -1,4 +1,6 @@
 import axios from "axios";
+import Swal from 'sweetalert2';
+
 
 const API_URL_AE = 'http://localhost:5000/actualstates';
 
@@ -39,9 +41,16 @@ export const deleteActualState = async (id) => {
         try {
             const headers = getHeaders();
             const response = await axios.delete(`${API_URL_AE}/${id}`, {headers});
-            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el estado objetivo?"); 
+            const confirmDelete = await Swal.fire({
+                title: '¿Estás seguro que deseas borrar el estado objetivo?',
+                showCancelButton: true,
+                confirmButtonColor: '#fb005a',
+                cancelButtonColor: '#171717',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            });
             if (confirmDelete && response.status === 200) {
-                alert('Eliminado correctamente');
+                Swal.fire('Eliminado correctamente');
             }
         } catch (error) {
             console.error("Error al eliminar el EA ", error);

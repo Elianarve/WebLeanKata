@@ -86,7 +86,7 @@ const TargetSta = ({ challengeId }) => {
                                                 <button title='Añadir obstaculo' className='CardActionButtonContainer' onClick={() => {setEditTargetId(targetState.id), setEditObstacle(true)}}>
                                                     <img src={AddObstacleLogo} className='addObstacle'/>
                                                 </button>
-                                                <button title='Eliminar' className='CardActionButtonContainer' onClick={() => deleteTargetState(targetState.id).then(() => navigate(0))}>
+                                                <button title='Eliminar' className='CardActionButtonContainer' onClick={() => {deleteTargetState(targetState.id), setLoading(true)}}>
                                                     <img src={delte} alt="img-delete" className='delete' />
                                                 </button>
                                             </td>
