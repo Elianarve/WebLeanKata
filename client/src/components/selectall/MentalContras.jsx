@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getMentalContrast, deleteMentalContrast } from '../../services/mentalContrastServices';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import './css/SelectAll.css';
 import delte from '../../assets/img/delete.svg';
 import { useNavigate } from 'react-router-dom';
@@ -65,10 +65,12 @@ const MentalContras = ({ targetState }) => {
                                         <tr className="tr-table">
                                         <td className='title-table'>Acciones</td>
                                         <td className='container-button'>
-                                            <button className='button-edit' onClick={() => {setEditMentalId(mentalContrast.id), setEditMental(true)}}>
+                                            <button title='Editar' className='CardActionButtonContainer' onClick={() => {setEditMentalId(mentalContrast.id), setEditMental(true)}}>
                                                 <img src={update} alt="logo-update" className='logo-edit' />
                                             </button>
-                                            <button className='button-edit' onClick={() => deleteMentalContrast(mentalContrast.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
+                                            <button title='Eliminar' className='CardActionButtonContainer'onClick={() => deleteMentalContrast(mentalContrast.id).then(() => navigate(0))}>
+                                                <img src={delte} alt="img-delete" className='delete' />
+                                            </button>
                                         </td>
                                         </tr>
                                     </tbody>

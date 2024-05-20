@@ -28,7 +28,7 @@ body{
 .form-create {
   border-radius: 15px;
   background: #ECF0F1;
-  box-shadow: 0 0 10px #92FFC0, 0 0 10px #002661;
+  box-shadow: 0 0 10px #002661;
   padding: 20px;
   width: 40%;
   max-height: 50vh;

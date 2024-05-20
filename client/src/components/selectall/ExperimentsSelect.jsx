@@ -2,13 +2,15 @@ import { useState, useEffect } from 'react';
 import { getExperiment, deleteExperiment } from '../../services/experimentServices'; 
 import { useNavigate } from 'react-router-dom';
 import './css/SelectAll.css';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import delte from '../../assets/img/delete.svg';
 import TaskSelect from './TaskSelect';
 import ResultsSelect from './ResultsSelect';
 import EditExperiment from '../edit/EditExperiment';
 import Task from '../forms/Task';
 import Result from '../forms/Result';
+import taskLogo from '../../assets/img/taskButton.svg'
+import experienceLogo from '../../assets/img/experienceButton.svg'
 
 const ExperimentsSelect = ({hypothesis}) => {
     const [experiments, setExperiments] = useState([]);
@@ -112,12 +114,18 @@ const ExperimentsSelect = ({hypothesis}) => {
                                 <tr className='tr-table'>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
-                                    <button className='button-edit' onClick={() => {setEditExperimentId(experiment.id), setEditExperiment(true)}} >
-                                        <img src={update} alt="logo-update" className='logo-edit' />
+                                    <button title='Editar' className='CardActionButtonContainer' onClick={() => {setEditExperimentId(experiment.id), setEditExperiment(true)}} >
+                                        <img src={update} alt="logo-update" className='edit' />
                                     </button>
-                                    <button className='button-add-t' onClick={() => {setEditExperimentId(experiment.id),setCreateTask(true) }}>Crear Tarea</button>
-                                    <button className='button-add-t' onClick={() => {setEditExperimentId(experiment.id), setCreateResult(true)}}>Crear Resultado</button>
-                                    <button className='button-edit' onClick={() => deleteExperiment(experiment.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
+                                    <button title='Añadir tarea' className='CardActionButtonContainer' onClick={() => {setEditExperimentId(experiment.id),setCreateTask(true) }}>
+                                        <img src={taskLogo}/>
+                                    </button>
+                                    <button title='Añadir resultado' className='CardActionButtonContainer' onClick={() => {setEditExperimentId(experiment.id), setCreateResult(true)}}>
+                                        <img src={experienceLogo}/>
+                                    </button>
+                                    <button title='Eliminar' className='CardActionButtonContainer' onClick={() => deleteExperiment(experiment.id).then(() => navigate(0))}>
+                                        <img src={delte} alt="img-delete" className='delete'/>
+                                    </button>
                                 </td>
                                 </tr>
                             </tbody>

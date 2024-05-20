@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { getResult, deleteResult } from '../../services/resultServices'; 
 import { useNavigate } from 'react-router-dom';
 import './css/SelectAll.css';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import delte from '../../assets/img/delete.svg';
 import LearningSelect from './LearningSelect';
 import EditResult from '../edit/EditResult';
 import Learning from '../forms/Learning';
+import learningLogo from '../../assets/img/learningButton.svg'
 
 
 const ResultsSelect = ({experiment}) => {
@@ -90,11 +91,13 @@ const ResultsSelect = ({experiment}) => {
                                 <tr className='tr-table'>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
-                                    <button className='button-edit' onClick={() => {setEditResultId(result.id), setEditResult(true)}}>
-                                        <img src={update} alt="logo-update" className='logo-edit' />
+                                    <button title='Editar' className='CardActionButtonContainer' onClick={() => {setEditResultId(result.id), setEditResult(true)}}>
+                                        <img src={update} alt="logo-update" className='edit' />
                                     </button>
-                                    <button className='button-add-t' onClick={() => {setEditResultId(result.id), setCreateLearning(true)}}>Añadir Aprend</button>
-                                    <button className='button-edit' onClick={() => deleteResult(result.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
+                                    <button title='Añadir aprendizaje' className='CardActionButtonContainer' onClick={() => {setEditResultId(result.id), setCreateLearning(true)}}>
+                                        <img src={learningLogo}/>
+                                    </button>
+                                    <button title='Eliminar' className='CardActionButtonContainer' onClick={() => deleteResult(result.id).then(() => navigate(0))}><img src={delte} alt="delete" className='delete'/></button>
                                 </td>
                                 </tr>
                             </tbody>

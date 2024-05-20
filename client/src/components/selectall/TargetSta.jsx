@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getTargetState, deleteTargetState } from '../../services/targetStateServices';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import './css/SelectAll.css';
 import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
@@ -11,6 +11,8 @@ import EditTargetState from '../edit/EditTargetState';
 import TargetState from '../forms/TargetState';
 import CreateContrastMental from '../forms/CreateContrastMental';
 import ObstacleSelect from './ObstacleSelect';
+import AddCMLogo from '../../assets/img/CMButton.svg'
+import AddObstacleLogo from '../../assets/img/ObstacleButton.svg'
 
 const TargetSta = ({ challengeId }) => {
     const navigate = useNavigate();
@@ -41,7 +43,13 @@ const TargetSta = ({ challengeId }) => {
         <div className='container-challenge'>
             {targetStates && (
                 <>
-                    <h3>ESTADO OBJETIVO <button className='button-add' onClick={()=> setCreateTarget(true)} ><img src={more} alt="logo-plus" className='img-plus' /></button></h3>
+                    <div className='titleAling'>
+                    <h3>ESTADO OBJETIVO 
+                        <button title='Crar un nuevo estado objetivo' className='targetState' onClick={()=> setCreateTarget(true)} >
+                            <img src={more} className='createTargetState' />
+                        </button>
+                    </h3>
+                    </div>
                     <div className="centered-table">
                         <table className='container-table'>
                                 {targetStates.map((targetState) => (
@@ -69,12 +77,18 @@ const TargetSta = ({ challengeId }) => {
                                         <tr className='tr-table'>
                                             <td className='title-table'>Acciones</td>
                                             <td className='container-button'>
-                                                <button className='button-edit' onClick={() => {setEditTargetId(targetState.id), setEditTargetState(true)}} >
-                                                    <img src={update} alt="logo-update" className='logo-edit' />
+                                                <button title='Editar' className='CardActionButtonContainer' onClick={() => {setEditTargetId(targetState.id), setEditTargetState(true)}} >
+                                                    <img src={update} alt="update" className='edit' />
                                                 </button>
-                                                <button className='button-add-t' onClick={() => {setEditTargetId(targetState.id), setEditContrast(true)}}>Añadir CM</button>
-                                                <button className='button-add-t' onClick={() => {setEditTargetId(targetState.id), setEditObstacle(true)}}>Añadir Obstaculo</button>
-                                                <button className='button-edit' onClick={() => deleteTargetState(targetState.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
+                                                <button title='Añadir CM' className='CardActionButtonContainer' onClick={() => {setEditTargetId(targetState.id), setEditContrast(true)}}>
+                                                    <img src={AddCMLogo} className='addCM'/>
+                                                </button>
+                                                <button title='Añadir obstaculo' className='CardActionButtonContainer' onClick={() => {setEditTargetId(targetState.id), setEditObstacle(true)}}>
+                                                    <img src={AddObstacleLogo} className='addObstacle'/>
+                                                </button>
+                                                <button title='Eliminar' className='CardActionButtonContainer' onClick={() => deleteTargetState(targetState.id).then(() => navigate(0))}>
+                                                    <img src={delte} alt="img-delete" className='delete' />
+                                                </button>
                                             </td>
                                         </tr>
                                 </tbody>

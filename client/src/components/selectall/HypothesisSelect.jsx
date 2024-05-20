@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { getHypothesis, deleteHypothesis } from '../../services/hypothesisServices'; 
 import { useNavigate } from 'react-router-dom';
 import './css/SelectAll.css';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import delte from '../../assets/img/delete.svg';
 import Experiment from '../forms/Experiment';
 import EditHypothesis from '../edit/EditHypothesis';
 import ExperimentsSelect from './ExperimentsSelect';
-
+import addExpLogo from '../../assets/img/experienceButton.svg'
 
 const HypothesisSelect = ({obstacle}) => {
     const navigate = useNavigate();
@@ -75,11 +75,15 @@ const HypothesisSelect = ({obstacle}) => {
                                 <tr className="tr-table">
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
-                                    <button className='button-edit' onClick={() => {setEditHypothesisId(hypothes.id), setEditHypothesis(true) }}>
-                                        <img src={update} alt="logo-update" className='logo-edit' />
+                                    <button title='Editar' className='CardActionButtonContainer' onClick={() => {setEditHypothesisId(hypothes.id), setEditHypothesis(true) }}>
+                                        <img src={update} className='edit' />
                                     </button>
-                                    <button className='button-add-t' onClick={() => {setEditHypothesisId(hypothes.id), setEditExperiment(true)}}>Añadir Exp</button>
-                                    <button className='button-edit' onClick={() => deleteHypothesis(hypothes.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete' /></button>
+                                    <button title='Añadir experiencia' className='CardActionButtonContainer' onClick={() => {setEditHypothesisId(hypothes.id), setEditExperiment(true)}}>
+                                        <img src={addExpLogo}/>
+                                    </button>
+                                    <button title='Eliminar' className='CardActionButtonContainer' onClick={() => deleteHypothesis(hypothes.id).then(() => navigate(0))}>
+                                        <img src={delte} alt="delete" className='delete' />
+                                    </button>
                                 </td>
                                 </tr>
                             </tbody>

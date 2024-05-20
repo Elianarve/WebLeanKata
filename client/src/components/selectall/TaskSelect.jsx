@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getTask, deleteTask } from '../../services/taskServices'; 
 import { useNavigate } from 'react-router-dom';
 import './css/SelectAll.css';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import more from '../../assets/img/Plus.svg';
 import delte from '../../assets/img/delete.svg';
 import EditTask from '../edit/EditTask';
@@ -83,10 +83,10 @@ const TaskSelect = ({experiment}) => {
                                 <tr className='tr-table'>
                                 <td className='title-table'>Acciones</td>
                                 <td className='container-button'>
-                                    <button className='button-edit' onClick={() => {setEditTaskId(task.id), setEdiTask(true)}} >
-                                        <img src={update} alt="logo-update" className='logo-edit' />
+                                    <button title='Editar' className='CardActionButtonContainer' onClick={() => {setEditTaskId(task.id), setEdiTask(true)}} >
+                                        <img src={update} alt="logo-update" className='edit' />
                                     </button>
-                                    <button className='button-edit' onClick={() => deleteTask(task.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='img-delete'/></button>
+                                    <button title='Eliminar' className='CardActionButtonContainer' onClick={() => deleteTask(task.id).then(() => navigate(0))}><img src={delte} alt="img-delete" className='delete'/></button>
                                 </td>
                                 </tr>
                             </tbody>

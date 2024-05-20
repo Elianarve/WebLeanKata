@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useUserContext } from '../../context/UserContext';
 import { loginUser } from '../../services/logReg';
-import './css/RegForm.css';
+import '../../components/forms/css/RegForm.css';
 
-const LoginForm = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -78,4 +78,4 @@ const LoginForm = () => {
   );
 }
 
-export default LoginForm;
+export default Login;

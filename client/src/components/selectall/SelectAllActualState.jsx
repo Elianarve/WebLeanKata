@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getActualState } from "../../services/actualStateServices";
 import './css/SelectAll.css';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import EditActualState from '../edit/EditActualState';
 
 const SelectAllActualState = ({challengeId}) => {
@@ -51,7 +51,9 @@ const SelectAllActualState = ({challengeId}) => {
                                         <tr className='tr-table'>
                                             <td className='title-table'>Acciones</td>
                                             <td className='tr-table'>
-                                                <button className='button-edit' onClick={() => setEditable(true)}><img src={update} alt="logo-update" className='logo-edit' /></button>
+                                                <button title='Editar' className='CardActionButtonContainer' onClick={() => setEditable(true)}>
+                                                    <img src={update} alt="logo-update" className='edit' />
+                                                </button>
                                             </td>
                                         </tr>
                                     </tbody>

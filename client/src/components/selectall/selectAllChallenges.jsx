@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getChallenge } from "../../services/challengeServices";
-import { useNavigate } from 'react-router-dom';
 import './css/SelectAll.css';
-import update from '../../assets/img/Edit-File.svg';
+import update from "../../assets/img/EditButton.svg";
 import EditChallenge from '../edit/EditChallenge';
 
 const SelectAllChallenges = ({ challengeId }) => {
     const [challenges, setChallenges] = useState([]);
-    const navigate = useNavigate();
     const [editable, setEditable] = useState(false);
     const [loading, setLoading] = useState(false);  
 
@@ -25,23 +23,10 @@ const SelectAllChallenges = ({ challengeId }) => {
         fetchChallenges();
     }, [challengeId, loading]);
 
-    const handleChange = (event) => {
-        const selectedChallengeId = event.target.value;
-        console.log(selectedChallengeId)
-        navigate(`/home/card/${selectedChallengeId}`);
-    };
-
     const selectedChallenge = challenges.find(challenge => challenge.id === challengeId);
 
     return (
         <div className='container-challenge'>
-            <select value={challengeId} onChange={handleChange} className='container-select'>
-                {challenges.map((challenge) => (
-                    <option key={challenge.id} value={challenge.id}>
-                        {challenge.name}
-                    </option>
-                ))}
-            </select>
             {selectedChallenge && (
               <>
             <h3>RETOS</h3>
@@ -75,7 +60,9 @@ const SelectAllChallenges = ({ challengeId }) => {
                     <tr className="tr-table">
                     <td className='title-table'>Acciones</td>
                     <td className='tr-table'>
-                        <button className='button-edit' onClick={() => setEditable(true)}><img src={update} alt="logo-update" className='logo-edit' /></button>
+                        <button title='Editar' className='CardActionButtonContainer' onClick={() => setEditable(true)}>
+                            <img src={update} alt="logo-update" className='logo-edit' />
+                        </button>
                     </td>
                     </tr>
                 </tbody>
