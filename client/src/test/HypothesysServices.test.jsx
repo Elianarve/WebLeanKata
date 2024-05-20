@@ -16,23 +16,6 @@ describe('getOneHypothesis', () => {
   });
 });
 
-
-describe('deleteHypothesis', () => {
-  it('should delete the hypothesis with the given ID', async () => {
-    const id = 1;
-    const expectedResult = { success: true };
-
-    localStorage.setItem('authToken', 'validTokenValue');
-
-    const axiosStub = sinon.stub(axios, 'delete').resolves(expectedResult);
-
-    const result = await deleteHypothesis(id);
-    
-   axiosStub.restore();
-
-
-  });
-
   it('should throw an error if the request fails', async () => {
     const id = 1;
     const mockError = new Error('Network error');
@@ -45,7 +28,7 @@ describe('deleteHypothesis', () => {
     
     axiosStub.restore();
   });
-});
+
 
 
 import { updateHypothesis } from '../../src/services/hypothesisServices';

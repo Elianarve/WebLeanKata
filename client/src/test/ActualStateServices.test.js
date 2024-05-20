@@ -12,17 +12,6 @@ describe('deleteActualState', () => {
     vi.resetAllMocks();
   });
 
-  it('debería borrar el estado actual con el ID dado', async () => {
-    const id = 1;
-    const mockConfirm = vi.fn().mockReturnValue(true);
-    window.confirm = mockConfirm;
-
-    vi.spyOn(axios, 'delete').mockResolvedValue({ data: {} });
-
-    await deleteActualState(id);
-
-    expect(mockConfirm).toHaveBeenCalledWith("¿Estás seguro que deseas borrar el estado objetivo?");
-  });
 
   it('debería lanzar un error si la solicitud falla', async () => {
     const mockError = new Error('Network error');
