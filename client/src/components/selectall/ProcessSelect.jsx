@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { getOneProcess } from "../../services/processServices";
+import { getOneProcess, deleteProcess } from "../../services/processServices";
 import "./css/SelectAll.css";
 import update from "../../assets/img/EditButton.svg";
 import EditProcess from "../edit/EditProcess";
 import { getChallenge } from "../../services/challengeServices";
 import ChallengeSelect from "../ChallengeSelect/ChallengeSelect";
+import delte from '../../assets/img/delete.svg';
 
 const ProcessSelect = ({ processId }) => {
   const [process, setProcess] = useState(null);
@@ -72,6 +73,9 @@ const ProcessSelect = ({ processId }) => {
                         src={update}
                         alt="logo-update"
                       />
+                    </button>
+                    <button title='Eliminar' className='CardActionButtonContainer' onClick={() => {deleteProcess(process.id), setLoading(true)}}>
+                    <img src={delte} alt="img-delete" className='delete' />
                     </button>
                   </td>
                 </tr>

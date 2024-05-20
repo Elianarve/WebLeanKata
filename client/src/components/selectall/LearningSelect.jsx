@@ -71,7 +71,7 @@ const LearningSelect = ({ result }) => {
                                             <button title='Editar' className='CardActionButtonContainer' onClick={() => {setEditLearningId(learning.id), setEditLearning(true) }}>
                                                 <img src={update} alt="logo-update" className='edit' />
                                             </button>
-                                            <button title='Eliminar' className='CardActionButtonContainer' onClick={() => deleteLearning(learning.id).then(() => navigate(0))}><img src={delte} alt="delete" className='delete'/></button>
+                                            <button title='Eliminar' className='CardActionButtonContainer' onClick={() => {deleteLearning(learning.id), setLoading(true)}}><img src={delte} alt="delete" className='delete'/></button>
                                         </td>
                                         </tr> 
                                     </tbody>

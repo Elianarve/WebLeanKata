@@ -68,7 +68,7 @@ const MentalContras = ({ targetState }) => {
                                             <button title='Editar' className='CardActionButtonContainer' onClick={() => {setEditMentalId(mentalContrast.id), setEditMental(true)}}>
                                                 <img src={update} alt="logo-update" className='logo-edit' />
                                             </button>
-                                            <button title='Eliminar' className='CardActionButtonContainer'onClick={() => deleteMentalContrast(mentalContrast.id).then(() => navigate(0))}>
+                                            <button title='Eliminar' className='CardActionButtonContainer'onClick={() => {deleteMentalContrast(mentalContrast.id), setLoading(true)}}>
                                                 <img src={delte} alt="img-delete" className='delete' />
                                             </button>
                                         </td>

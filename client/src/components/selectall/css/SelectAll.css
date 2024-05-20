@@ -90,12 +90,11 @@
   color: #002661;
 }
 
+
 .container-select:hover {
-  border-radius: 0;
   letter-spacing: 4px;
-  background-color: #9acd32;
-  color: hsl(0, 0%, 100%);
-  box-shadow: #9acd32 0px 7px 29px 0px;
+  color: #002661;
+  box-shadow: 0 0 15px #92FFC0, 0 0 15px #002661;
 }
 
   .CardActionButtonContainer{

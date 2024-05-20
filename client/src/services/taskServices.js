@@ -1,4 +1,6 @@
 import axios from "axios";
+import Swal from 'sweetalert2';
+
 
 const API_URL = 'http://localhost:5000/task';
 
@@ -39,8 +41,16 @@ export const deleteTask  = async (id) => {
         try {
             const headers = getHeaders();
             const response = await axios.delete(`${API_URL}/${id}`, {headers});
-            if (response.status === 200) {
-                alert('Eliminado correctamente');
+            const confirmDelete = await Swal.fire({
+                title: '¿Estás seguro que deseas borrar la tarea?',
+                showCancelButton: true,
+                confirmButtonColor: '#fb005a',
+                cancelButtonColor: '#171717',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }); 
+            if (confirmDelete && response.status === 200) {
+                Swal.fire('Eliminado correctamente');
             }
         } catch (error) {
             console.error("Error al eliminar el Task  ", error);
