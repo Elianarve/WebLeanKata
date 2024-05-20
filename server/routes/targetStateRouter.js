@@ -1,16 +1,21 @@
 import express from 'express';
 import { getTargetState, addTargetState, updateTargetState, getOneTargetState, deleteTargetState } from '../controllers/TargetStateController.js'; 
+import authToken from '../middleware/autMiddleware.js';
+import { authRol } from '../middleware/rolMiddleware.js';
+import handleValidationResults from '../helpers/validationHelper.js';
+import processValidator from '../validators/processValidator.js';
+
 
 const router = express.Router();
 
-router.get('/', getTargetState);
+router.get('/', authToken, authRol(['user','admin']),  getTargetState);
 
-router.post('/', addTargetState);
+router.post('/', authToken, authRol(['user','admin']),  addTargetState);
 
-router.put('/:id', updateTargetState);
+router.put('/:id', authToken, authRol(['user','admin']), processValidator, handleValidationResults,  updateTargetState);
 
-router.delete('/:id', deleteTargetState);
+router.delete('/:id', authToken, authRol(['user','admin']),  deleteTargetState);
 
-router.get('/:id', getOneTargetState);
+router.get('/:id', authToken, authRol(['user','admin']),  getOneTargetState);
 
 export default router;

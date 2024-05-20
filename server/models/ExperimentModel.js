@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
 import HypothesisModel from "./HypothesisModel.js";
+import UsersModel from "./userModel.js";
 
 const ExperimentModel = connection_db.define('experiment', {
     id: {
@@ -8,7 +9,7 @@ const ExperimentModel = connection_db.define('experiment', {
         primaryKey: true,
         onDelete: 'CASCADE'
     },
-    hiphotesis_id: {
+    hyphotesis_id: {
         type: DataTypes.STRING,
         allowNull: false,
         references: {
@@ -55,12 +56,17 @@ const ExperimentModel = connection_db.define('experiment', {
     state_experiment: {
         type: DataTypes.TEXT,
         allowNull: false 
+    },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true
     }    
 },{
     tableName: 'experiments',
     timestamps: false
 });
 
-// HypothesisModel.hasMany(ExperimentModel, { foreingKey: 'hiphotesis_id' });
+UsersModel.hasMany(ExperimentModel, { foreignKey: 'userId' });
+
 
 export default ExperimentModel;

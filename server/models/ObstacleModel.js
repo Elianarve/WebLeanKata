@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
 import TargetStateModel from "./TargetStateModel.js";
+import UsersModel from "./userModel.js";
 
 const ObstacleModel = connection_db.define('obstacle', { 
     id: {
@@ -11,7 +12,6 @@ const ObstacleModel = connection_db.define('obstacle', {
     target_state_id: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         references: {
             model: TargetStateModel,
             key: 'id' 
@@ -21,12 +21,16 @@ const ObstacleModel = connection_db.define('obstacle', {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true
+    }
 
 },{
     tableName: 'obstacles',
     timestamps: false
 });
 
-// TargetStateModel.hasMany(ObstacleModel, { foreingKey: 'target_state_id' });
+UsersModel.hasMany(ObstacleModel, { foreignKey: 'userId' });
 
 export default ObstacleModel;

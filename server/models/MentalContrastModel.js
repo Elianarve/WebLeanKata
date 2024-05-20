@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
 import TargetStateModel from "./TargetStateModel.js";
+import UsersModel from "./userModel.js";
 
 const MentalContrastModel = connection_db.define('mentalContrast', {
     id: {
@@ -34,7 +35,6 @@ const MentalContrastModel = connection_db.define('mentalContrast', {
     timestamps: false
 });
 
-// TargetStateModel.hasOne(MentalContrastModel, { foreignKey: 'target_state_id' });
-
+UsersModel.hasMany(MentalContrastModel, { foreignKey: 'userId' });
 
 export default MentalContrastModel;

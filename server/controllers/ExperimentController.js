@@ -15,18 +15,15 @@ export const addExperiment = async (req, res) => {
     try {
         
         let count = 1;
-        const idExperiment= await ExperimentModel.findOne({}, { sort: { 'created' : -1 } });
+        const idExperiment= await ExperimentModel.findOne({order: [['id', 'DESC']]});
        
         if (idExperiment) {
             const numberId = parseInt(idExperiment.id.slice(2));
             count = numberId + 1;
         } 
         const formatted_Id = 'Ex' + count.toString().padStart(3, '0');
-        console.log(formatted_Id)
-        const hipothesis = await HypothesisModel.findOne(); 
-        const experimentId = hipothesis.id;
       
-        const addExperiment = await ExperimentModel.create({  id: formatted_Id, hiphotesis_id: experimentId, ...req.body });
+        const addExperiment = await ExperimentModel.create({  id: formatted_Id, ...req.body });
         res.status(201).json(addExperiment);
     }catch(error){
         console.log(error)

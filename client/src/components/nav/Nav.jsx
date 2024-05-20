@@ -1,10 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
+import { useUserContext } from '../../context/UserContext'; 
 import { useState } from 'react';
-import '../nav/Nav.css';
-import logo from '../../assets/img/logo-lk.png';
+import "./Nav.css";
+import logo from "../../assets/img/logotipo2.png";
+import Logout from '../logOut/LogOut';
 
 const Nav = () => {
+   const { user, userAuth } = useUserContext(); 
   const [openMenu, setOpenMenu] = useState(false);
+
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
@@ -12,21 +16,28 @@ const Nav = () => {
 
   return (
     <nav className="navbar">
-      <div className="logo">
-        <img src={logo} alt="logo" />
+      <div className="logo-name">
+        <img className='logo-img' src={logo} alt="logo" />
       </div>
-      <ul className='nav-links'>
-        <li className="nav-button" onClick={toggleMenu} >Proyecto/Reto</li>
-        {openMenu && (
-        <div className='nav-display'>
-        <a className='a-link' href="/actualstate">Nuevo</a>
-        <hr className='line' />
-        <a className='a-link' href="/home">Existente</a>
+
+      { userAuth && (
+      <div className="menu-toggle" onClick={toggleMenu}>
+        <div className={`bar ${openMenu ? 'active' : ''}`}></div>
+        <div className={`bar ${openMenu ? 'active' : ''}`}></div>
+        <div className={`bar ${openMenu ? 'active' : ''}`}></div>
+      </div>
+      )}
+      { userAuth && (
+      <ul className={`nav-links ${openMenu ? 'open' : ''}`}>
+        <li className="nav-button"><Link to="/home" onClick={toggleMenu}>Lean <span className='letter-nav'>K</span>ata</Link></li>
+        <li className="nav-button"><Link to="process" onClick={toggleMenu}>Crear Reto</Link></li>
+        <li className="nav-button"><Link to="home" onClick={toggleMenu}>Ver Existente</Link></li>
+        <div className='button-profile'>
+        <p className="nav-button-profile">{user && user.name}</p>&nbsp;
+        <Logout/>
         </div>
-         )}
-        <li className="nav-button"><Link to="/">Inicio</Link></li>
-        <li className="nav-button"><Link to="/Edit/:id">Tablero Principal</Link></li>
       </ul>
+      )}
     </nav>
   );
 };

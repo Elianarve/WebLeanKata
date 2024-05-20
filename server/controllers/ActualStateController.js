@@ -1,5 +1,6 @@
 import ActualStateModel from "../models/ActualStateModel.js";
 import searchModel from "../helpers/searchHelper.js";
+import ChallengeModel from "../models/ChallengeModel.js";
 
 export const getActualState = async (request, response) =>{
     try {
@@ -20,9 +21,12 @@ export const addActualState = async (req, res) => {
             const numberId = parseInt(idChallenge.id.slice(2));
             count = numberId + 1;
         } 
+        let challengeId;
         const formatted_Id = 'EA' + count.toString().padStart(3, '0');
-        console.log(formatted_Id)
-        const addAcState = await ActualStateModel.create({  id: formatted_Id, ...req.body, });
+        const challenge = await ChallengeModel.findOne({order: [['id', 'DESC']]});
+        challengeId = challenge.id;
+
+        const addAcState = await ActualStateModel.create({  id: formatted_Id, ...req.body, challenge_id: challengeId });
         res.status(201).json(addAcState);
     }catch(error){
         console.log(error)
@@ -33,9 +37,12 @@ export const addActualState = async (req, res) => {
 export const updateActualState = async (req, res) => {   
     const actualStateId = req.params.id; 
     try {
-        await ActualStateModel.update(req.body,{  where: {id: actualStateId}});
-        await ActualStateModel.findOne({where: {id: actualStateId}});
+       const response = await ActualStateModel.update(req.body,{  where: {id: actualStateId}});
+       console.log(response + "respuesta actualizar modelo")
+       const actualStateUpdated = await ActualStateModel.findOne({where: {id: actualStateId}});
+       console.log(actualStateUpdated + "modelo actualizado")
         res.status(200).json({message: `Actualizado correctamente`});
+
     } catch(error) {
         res.status(500).json({message: error.message});
     }   
@@ -64,7 +71,6 @@ export const deleteActualState = async (req, res) => {
 
 export const searchActualState = async (req, res) => {
     const searchText = req.query.searchText;
-
     try {
         const searchResults = await searchModel(ActualStateModel, 'name', searchText);
         res.json(searchResults);

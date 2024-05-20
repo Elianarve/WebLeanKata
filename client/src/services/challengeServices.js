@@ -1,10 +1,23 @@
 import axios from "axios";
+import Swal from 'sweetalert2';
+
 
 const API_URL_CHALLENGE = 'http://localhost:5000/challenge';
 
+const getHeaders = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        throw new Error('Token no encontrado en el almacenamiento local');
+    }
+    return {
+        'Authorization': `Bearer ${token}`
+    };
+};
+
 export const getChallenge = async () => {
     try {
-        const response = await axios.get(`${API_URL_CHALLENGE}`);
+        const headers = getHeaders();
+        const response = await axios.get(`${API_URL_CHALLENGE}`, {headers});
         const data = await response.data
         return data;
     } catch (error) {
@@ -15,7 +28,8 @@ export const getChallenge = async () => {
 
 export const getOneChallenge = async (id) => {
     try {
-        const response = await axios.get(`${API_URL_CHALLENGE}`);
+        const headers = getHeaders();
+        const response = await axios.get(`${API_URL_CHALLENGE}/${id}`, {headers});
         return response;
     } catch (error) {
         console.error("Error al obtener el reto por ID", error);
@@ -25,9 +39,18 @@ export const getOneChallenge = async (id) => {
 
 export const deleteChallenge = async (id) => {
         try {
-            const response = await axios.delete(`${API_URL_CHALLENGE}/${id}`);
-            if (response.status === 200) {
-                alert('Eliminado correctamente');
+            const headers = getHeaders();
+            const response = await axios.delete(`${API_URL_CHALLENGE}/${id}`, {headers});
+            const confirmDelete = await Swal.fire({
+                title: '¿Estás seguro que deseas borrar el reto?',
+                showCancelButton: true,
+                confirmButtonColor: '#fb005a',
+                cancelButtonColor: '#171717',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            });
+            if (confirmDelete && response.status === 200) {
+                Swal.fire('Eliminado correctamente');
             }
         } catch (error) {
             console.error("Error al eliminar el reto ", error);
@@ -37,18 +60,17 @@ export const deleteChallenge = async (id) => {
 
 
 export const postChallenge = async (data) => {
-    const response = await axios.post(API_URL_CHALLENGE, data);
-    console.log(response);
-    alert("Reto creado exitosamente");
+    const headers = getHeaders();
+    const response = await axios.post(API_URL_CHALLENGE, data, {headers});
     return response;
   };
 
 
   export const updateChallenge = async (id, data) => {
     try {
-        const response = await axios.put(`${API_URL_CHALLENGE}/${id}`,data);
+        const headers = getHeaders();
+        const response = await axios.put(`${API_URL_CHALLENGE}/${id}`,data, {headers});
         if (response.status === 200) {
-            alert('Reto actualizado correctamente');
             return response.data;
         }
     } catch (error) {
@@ -56,4 +78,3 @@ export const postChallenge = async (data) => {
         throw error;
     }
 };
-

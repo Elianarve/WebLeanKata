@@ -1,0 +1,114 @@
+.landing-container{
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.landing{
+    display: flex;
+}
+
+.landing-title span{
+    color: rgb(129, 175, 38);
+}
+
+.landing-title{
+    font-size: 2.9rem;
+    width: 100%;
+    text-align: center;
+}
+
+.section-left{
+    display: grid;
+    place-items: center;
+}
+
+.section-right{
+    display: grid;
+    place-items: center;
+    width: 30vw;
+}
+
+.img-landing{
+    margin-top: 13%;
+}
+
+.bton-landing-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.register-btn{
+    font-size: 1.1rem;
+    padding: 0.6em 6.5em; 
+    border-radius: 0.5em;
+    background: linear-gradient(80deg, yellowgreen, #002661);
+    color: #ECF0F1;
+    cursor: pointer;
+    transition:0.3s ease, transform 0.3s ease;
+    border: none;
+}
+
+.login-btn{
+    font-size: 1.1rem;
+    margin-top: 10px;
+    padding: 0.6em 5.8em; 
+    border-radius: 0.5em;
+    background: linear-gradient(80deg, #002661, yellowgreen);
+    color: #ECF0F1;
+    cursor: pointer;
+    transition:0.3s ease, transform 0.3s ease;
+    border: none;
+}
+
+.register-btn:hover, .login-btn:hover {
+    background: linear-gradient(5deg, #498dc1, #6ab67c);
+    transform: scale(1.05);
+    color: #002661;
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%); 
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0); 
+        opacity: 1; 
+    }
+}
+
+.img-landing{
+    animation: slideInFromRight 2s ease-out forwards;
+    width: 80%;
+}
+
+
+@media (max-width: 860px){
+
+.img-landing{
+    width: 150%;
+}
+
+.landing-title{
+    font-size:  150%;
+}
+
+.landing{
+    display: grid;
+    width: 100%;
+    place-items: center;
+    font-size: 1rem;
+}
+
+.login-btn{
+    padding: 10px 35px;
+    margin-bottom: 30px;
+}
+
+.register-btn{
+    padding: 10px 45px;
+}
+
+}

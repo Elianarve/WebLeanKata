@@ -1,0 +1,20 @@
+.footer-container {
+  text-align: center;
+  font-size: small;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1500;
+}
+
+.footer-container p {
+  margin: 0;
+  padding: 7px;
+}
+
+.blueFooter {
+  background-color: #002661;
+  color: #ecf0f1;
+  margin: 0;
+}

@@ -1,16 +1,21 @@
 import express from 'express';
 import { getResults, addResult, updateResult, getOneResult, deleteResult } from '../controllers/ResultsController.js';
+import authToken from '../middleware/autMiddleware.js';
+import { authRol } from '../middleware/rolMiddleware.js';
+import handleValidationResults from '../helpers/validationHelper.js';
+import processValidator from '../validators/processValidator.js';
+
 
 const router = express.Router();
 
-router.get('/', getResults);
+router.get('/', authToken, authRol(['user','admin']),  getResults);
 
-router.post('/', addResult);
+router.post('/', authToken, authRol(['user','admin']), processValidator, handleValidationResults,  addResult);
 
-router.put('/:id', updateResult);
+router.put('/:id', authToken, authRol(['user','admin']),  updateResult);
 
-router.delete('/:id', deleteResult);
+router.delete('/:id', authToken, authRol(['user','admin']),  deleteResult);
 
-router.get('/:id', getOneResult);
+router.get('/:id', authToken, authRol(['user','admin']),  getOneResult);
 
 export default router;

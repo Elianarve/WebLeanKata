@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
 import ChallengeModel from "./ChallengeModel.js";
+import UsersModel from "./userModel.js";
 
 const TargetStateModel = connection_db.define('targetstate', { 
     id: {
@@ -19,7 +20,6 @@ const TargetStateModel = connection_db.define('targetstate', {
     challenge_id: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         references: {
             model: ChallengeModel,
             key: 'id' 
@@ -34,6 +34,7 @@ const TargetStateModel = connection_db.define('targetstate', {
     timestamps: false
 });
 
-// ChallengeModel.hasMany(TargetStateModel, { foreingKey: 'challenge_id' });
+ ChallengeModel.hasMany(TargetStateModel, { foreignKey: 'challenge_id' });
+ UsersModel.hasMany(TargetStateModel, { foreignKey: 'userId' });
 
 export default TargetStateModel;

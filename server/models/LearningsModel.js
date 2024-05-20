@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
 import ResultsModel from "./ResultsModel.js";
+import UsersModel from "./userModel.js";
 
 const LearningModel = connection_db.define('learning', {
     id: {
@@ -30,6 +31,6 @@ const LearningModel = connection_db.define('learning', {
     timestamps: false
 });
 
-// ResultsModel.hasOne(LearningModel, { foreignKey: 'results_id' });
+UsersModel.hasMany(LearningModel, { foreignKey: 'userId' });
 
 export default LearningModel;

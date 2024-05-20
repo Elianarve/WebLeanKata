@@ -1,4 +1,4 @@
-import ActualStateModel from "../models/ActualStateModel.js";
+import TribeModel from "../models/TribeModel.js";
 import ChallengeModel from "../models/ChallengeModel.js";
 import { Op } from 'sequelize';
 
@@ -16,20 +16,19 @@ export const addChallenge = async (req, res) => {
     try {
     
         const idChallenge = await ChallengeModel.findOne({order: [['id', 'DESC']]});
-        console.log(idChallenge)
+
         let count = 1;
         if (idChallenge) {
             const numberId = parseInt(idChallenge.id.slice(1));
             count = numberId + 1;
         }
-        let actualstateId;
+        let tribeId;
         const formatted_Id = 'R' + count.toString().padStart(3, '0');    
-        console.log(formatted_Id) 
-        const actState = await ActualStateModel.findOne({order: [['id', 'DESC']]});   
-        actualstateId = actState.id;
-        console.log(actualstateId)
 
-        const addChallenge = await ChallengeModel.create({ id: formatted_Id, ...req.body, actual_state_id: actualstateId });
+        const tribe = await TribeModel.findOne({order: [['id', 'DESC']]});   
+        tribeId = tribe.id;
+
+        const addChallenge = await ChallengeModel.create({ id: formatted_Id, ...req.body, tribe_id: tribeId });
         res.status(201).json(addChallenge);
     }catch(error){
         return res.status(500).send({ error: 'Internal Server Error' + error});
@@ -40,7 +39,7 @@ export const addChallenge = async (req, res) => {
 export const updateChallenge = async (req, res) => {   
     const challengeId = req.params.id; 
     try {
-        await ChallengeModel.update(req.body,{  where: {id: challengeId}});
+        await ChallengeModel.update(req.body,{where: {id: challengeId}});
         await ChallengeModel.findOne({where: {id: challengeId}});
         res.status(200).json({message: `Actualizado correctamente`});
     } catch(error) {
@@ -70,15 +69,14 @@ export const deleteChallenge = async (req, res) => {
 };
 
 export const searchChallenge = async (req, res) => {
-    const searchText = req.query.texto; // Accedemos al parámetro de consulta 'texto' en la URL
+    const searchText = req.query.texto; 
 
     try {
         const challenges = await ChallengeModel.findAll({
             where: {
                 [Op.or]: [
-                    { name: { [Op.iLike]: `%${searchText}%` } }, // Buscar por nombre
-                    { description: { [Op.iLike]: `%${searchText}%` } } // Buscar por descripción
-                    // Agrega más campos aquí si deseas buscar en otros campos
+                    { name: { [Op.iLike]: `%${searchText}%`}},
+                    { description: { [Op.iLike]: `%${searchText}%`}}
                 ]
             }
         });

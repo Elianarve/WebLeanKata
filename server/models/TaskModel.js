@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import connection_db from "../database/connection_db.js";
 import ExperimentModel from "./ExperimentModel.js";
+import UsersModel from "./userModel.js";
 
 const TaskModel = connection_db.define('task', {
     id: {
@@ -11,7 +12,6 @@ const TaskModel = connection_db.define('task', {
     experiment_id: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         references: {
             model: ExperimentModel,
             key: 'id' 
@@ -46,6 +46,7 @@ const TaskModel = connection_db.define('task', {
     timestamps: false
 });      
 
-// ExperimentModel.hasMany(TaskModel, { foreignKey: 'experiment_id' });
+ExperimentModel.hasMany(TaskModel, { foreignKey: 'experiment_id' });
+UsersModel.hasMany(TaskModel, { foreignKey: 'userId' });
 
 export default TaskModel;
