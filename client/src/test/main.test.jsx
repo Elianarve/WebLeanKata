@@ -40,12 +40,6 @@ import { createMemoryHistory } from 'history';
 import router from '../router/router.jsx';
 import ReactDOM from 'react-dom/client';
 import { describe, it, expect } from 'vitest';
-import jest from 'jest';
-
-jest.mock('react-dom/client', () => ({
-  createRoot: jest.fn().mockReturnThis(),
-  render: jest.fn(),
-}));
 
 describe('Main', () => {
   it('renders RouterProvider with correct router', () => {
