@@ -90,7 +90,7 @@ const ObstacleSelect = ({targetState}) => {
                                                 <button title='Añadir hipotesis' className='CardActionButtonContainer' onClick={() => {setEditObstacleId(obstacle.id), setEditHypothesis(true)}}>
                                                     <img src={HypothesisLogo}/>
                                                 </button>
-                                                <button title='Eliminar' className='CardActionButtonContainer' onClick={() => deleteObstacle(obstacle.id).then(() => navigate(0))}>
+                                                <button title='Eliminar' className='CardActionButtonContainer' onClick={() => {deleteObstacle(obstacle.id), setLoading(true)}}>
                                                     <img src={delte} alt="img-delete" className='delete' />
                                                 </button>
                                             </td>

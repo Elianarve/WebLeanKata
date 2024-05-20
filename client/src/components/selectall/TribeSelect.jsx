@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { getOneTribe } from "../../services/tribeServices";
+import { getOneTribe, deleteTribe } from "../../services/tribeServices";
 import './css/SelectAll.css';
 import update from "../../assets/img/EditButton.svg";
 import ProcessSelect from './ProcessSelect';
 import EditTribe from '../edit/EditTribe';
 import { getOneChallenge } from '../../services/challengeServices';
+import delte from '../../assets/img/delete.svg';
 
 const TribeSelect = ({challengeId}) => {
     const [tribe, setTribe] = useState(null);
@@ -56,6 +57,9 @@ const TribeSelect = ({challengeId}) => {
                                             <td className='tr-table'>
                                                 <button title='Editar' className='CardActionButtonContainer' onClick={() => setEditable(true)}>
                                                     <img src={update} alt="logo-update" className='edit' />
+                                                </button>
+                                                <button title='Eliminar' className='CardActionButtonContainer' onClick={() => {deleteTribe(tribe.id), setLoading(true)}}>
+                                                <img src={delte} alt="img-delete" className='delete' />
                                                 </button>
                                             </td>
                                         </tr>

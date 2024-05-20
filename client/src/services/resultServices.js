@@ -1,4 +1,6 @@
 import axios from "axios";
+import Swal from 'sweetalert2';
+
 
 const API_URL = 'http://localhost:5000/results';
 
@@ -39,9 +41,16 @@ export const deleteResult = async (id) => {
         try {
             const headers = getHeaders();
             const response = await axios.delete(`${API_URL}/${id}`, {headers});
-            const confirmDelete = window.confirm("¿Estás seguro que deseas borrar el reultado?"); 
+            const confirmDelete = await Swal.fire({
+                title: '¿Estás seguro que deseas borrar el resultado?',
+                showCancelButton: true,
+                confirmButtonColor: '#fb005a',
+                cancelButtonColor: '#171717',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            });            
             if (confirmDelete && response.status === 200) {
-                alert('Eliminado correctamente');
+                Swal.fire('Eliminado correctamente');
             }
         } catch (error) {
             console.error("Error al eliminar el Result ", error);
