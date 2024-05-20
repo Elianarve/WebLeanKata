@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useId } from 'react';
 import { useUserContext } from '../../context/UserContext';
@@ -59,14 +59,13 @@ const RegisterForm = () => {
           <div className="items">
             <label className="label-item" htmlFor="name">Nombre</label>
               <input
-                type="text"
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
                   setNameError('');
                 }}
                 required
-                className="input-reg-name"
+                className="input-reg"
                 id="name"
                 placeholder="Nombre"
               />

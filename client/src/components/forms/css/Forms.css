@@ -31,7 +31,7 @@ body{
   background: #ECF0F1;
   box-shadow: 0 0 10px #002661;
   padding: 20px;
-  width: 40%;
+  max-width: 70%;
   max-height: 50vh;
   overflow-y: auto;
   margin-top: 5%;
