@@ -174,3 +174,6 @@ input[type="date"]{
   pointer-events: none;
 }
 
+.error-message{
+  color: #FF5733; 
+}

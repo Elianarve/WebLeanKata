@@ -6,14 +6,14 @@ io.on('connection', (socket) => {
   socket.on('message', (message) => {
     console.log('Mensaje recibido:', message);
 
-    // Reenvía el mensaje al chatbot
+ 
     io.emit('chatbot', message);
   });
 
   socket.on('chatbot', (message) => {
     console.log('Mensaje del chatbot recibido:', message);
 
-    // Reenvía el mensaje al frontend
+ 
     io.emit('message', message);
   });
 });
