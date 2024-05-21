@@ -78,7 +78,7 @@ const HypothesisSelect = ({obstacle}) => {
                                     <button title='Editar' className='CardActionButtonContainer' onClick={() => {setEditHypothesisId(hypothes.id), setEditHypothesis(true) }}>
                                         <img src={update} className='edit' />
                                     </button>
-                                    <button title='Añadir experiencia' className='CardActionButtonContainer' onClick={() => {setEditHypothesisId(hypothes.id), setEditExperiment(true)}}>
+                                    <button title='Añadir experimento' className='CardActionButtonContainer' onClick={() => {setEditHypothesisId(hypothes.id), setEditExperiment(true)}}>
                                         <img src={addExpLogo}/>
                                     </button>
                                     <button title='Eliminar' className='CardActionButtonContainer' onClick={() =>{deleteHypothesis(hypothes.id), setLoading(true)}}>

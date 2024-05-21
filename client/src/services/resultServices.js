@@ -62,7 +62,6 @@ export const deleteResult = async (id) => {
 export const postResult = async (data) => {
     const headers = getHeaders();
     const response = await axios.post(API_URL, data, {headers});
-    console.log(response.data)
     return response;
   };
 
