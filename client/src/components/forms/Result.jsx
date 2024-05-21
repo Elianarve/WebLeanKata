@@ -9,9 +9,8 @@ const Result = ({editExperimentId, setLoading, setCreateResult}) => {
     const onSubmit = async (formData) => {
         try {
           const data = {...formData, experiment_id: editExperimentId};
-          console.log(data)
           const response = await postResult(data);
-          console.log("Resultado creada:", response.data);
+          console.log("Resultado creado:", response.data);
           setLoading(true);
           setCreateResult(false);
         } catch (error) {

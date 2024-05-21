@@ -13,7 +13,7 @@ export const getLearning = async (request, response) =>{
 export const addLearnings = async (req, res) => {
     try {
         let count = 1;
-        const idLearning = await LearningsModel.findOne({}, { sort: { 'created' : -1 } });
+        const idLearning = await LearningsModel.findOne({order: [['id', 'DESC']]});
         if (idLearning) {
             const numberId = parseInt(idLearning.id.slice(2));
             count = numberId + 1;

@@ -8,7 +8,6 @@ const connection_db = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   dialect: 'mysql',
 
   logging: (msg) => {
-    //   // Filtrar los mensajes que comienzan con 'Executing' para mostrar solo las consultas ejecutadas
      return msg.startsWith('Executing');
     }
   

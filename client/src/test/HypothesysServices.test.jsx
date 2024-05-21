@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 import axios from 'axios';
 
-import { getOneHypothesis, deleteHypothesis } from '../../src/services/hypothesisServices';
+import { getOneHypothesis } from '../../src/services/hypothesisServices';
 import { vi } from 'vitest';
 import { describe, it, expect } from 'vitest';
 

@@ -33,7 +33,7 @@ const Hypothesis = ({editObstacleId, setLoading, setEditHypothesis}) => {
       <div className='items'>
       <div className='date-input-wrapper'>
         <label className='label-item'>Fecha de planificación:</label>
-        <input type="date" {...register('plan_date', { required: true, validate: value => new Date(value) > new Date() || 'La fecha de planificación debe ser posterior a la fecha actual' })} />
+        <input type="date" {...register('plan_date', { required: true })} />
         <span className='date-icon-hypothesis'>&#x1F4C5;</span>
         </div>
         {errors.plan_date && <p className="error-message">La fecha de planificación es requerida</p>}

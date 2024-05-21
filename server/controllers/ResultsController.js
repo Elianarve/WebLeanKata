@@ -12,7 +12,7 @@ export const getResults = async (request, response) =>{
 export const addResult = async (req, res) => {
     try {
         let count = 1;
-        const idResult  = await ResultsModel.findOne({}, { sort: { 'created' : -1 } });
+        const idResult  = await ResultsModel.findOne({order: [['id', 'DESC']]});
         if (idResult) {
             const numberId = parseInt(idResult.id.slice(2));
             count = numberId + 1;
