@@ -6,6 +6,7 @@ import {
   updateImage,
 } from "../../services/experimentServices";
 import "../forms/css/Forms.css";
+import Swal from 'sweetalert2';
 
 const EditExperiment = ({
   editExperimentId,
@@ -54,7 +55,7 @@ const EditExperiment = ({
     data.image = url_image;
     try {
       await updateExperiment(editExperimentId, data);
-      alert("¡Los datos del experimento han sido actualizados correctamente!");
+      Swal.fire("¡Los datos del experimento han sido actualizados correctamente!");
       setLoading(true);
       setEditExperiment(false);
     } catch (error) {

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { getChallenge } from "../../services/challengeServices";
+import { getChallenge, deleteChallenge } from "../../services/challengeServices";
 import './css/SelectAll.css';
 import update from "../../assets/img/EditButton.svg";
 import EditChallenge from '../edit/EditChallenge';
+import delte from '../../assets/img/delete.svg';
 
 const SelectAllChallenges = ({ challengeId }) => {
     const [challenges, setChallenges] = useState([]);
@@ -62,6 +63,9 @@ const SelectAllChallenges = ({ challengeId }) => {
                     <td className='tr-table'>
                         <button title='Editar' className='CardActionButtonContainer' onClick={() => setEditable(true)}>
                             <img src={update} alt="logo-update" className='logo-edit' />
+                        </button>
+                        <button title='Eliminar' className='CardActionButtonContainer' onClick={() => {deleteChallenge(selectedChallenge?.id), setLoading(true)}}>
+                        <img src={delte} alt="img-delete" className='delete' />
                         </button>
                     </td>
                     </tr>

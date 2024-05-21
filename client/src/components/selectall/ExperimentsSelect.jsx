@@ -123,7 +123,7 @@ const ExperimentsSelect = ({hypothesis}) => {
                                     <button title='Añadir resultado' className='CardActionButtonContainer' onClick={() => {setEditExperimentId(experiment.id), setCreateResult(true)}}>
                                         <img src={experienceLogo}/>
                                     </button>
-                                    <button title='Eliminar' className='CardActionButtonContainer' onClick={() => deleteExperiment(experiment.id).then(() => navigate(0))}>
+                                    <button title='Eliminar' className='CardActionButtonContainer' onClick={() => {deleteExperiment(experiment.id), setLoading(true)}}>
                                         <img src={delte} alt="img-delete" className='delete'/>
                                     </button>
                                 </td>

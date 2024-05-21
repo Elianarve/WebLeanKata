@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import {useForm} from 'react-hook-form';
 import {getOneMentalContrast, updateMentalContrast} from '../../services/mentalContrastServices';
 import '../forms/css/Forms.css';
+import Swal from 'sweetalert2';
 
 const EditMentalContrast = ({editMentalId, setLoading, setEditMental}) => {
     const {register, formState: {errors}, handleSubmit,setValue} = useForm();
@@ -21,7 +22,7 @@ const EditMentalContrast = ({editMentalId, setLoading, setEditMental}) => {
     const onSubmit = async (mentalContrastData) => {
         try {
             await updateMentalContrast(editMentalId, mentalContrastData);
-            alert('¡Los datos del contraste mental han sido actualizados correctamente!');
+            Swal.fire('¡Los datos del contraste mental han sido actualizados correctamente!');
             setLoading(true);
             setEditMental(false);
         } catch (error) {
