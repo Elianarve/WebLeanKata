@@ -1,10 +1,10 @@
 import { useUserContext } from '../../context/UserContext'; 
 import "../nav/Nav.css";
-import './Logout.css'
+import './LogOut.css';
 import profile from '../../assets/img/profile.png';
 
 
-const Logout = () => {
+const LogOut = () => {
   const { setUser, setUserAuth } = useUserContext(); 
 
   const deleteDataUser = () => {
@@ -27,4 +27,4 @@ const Logout = () => {
   )
 }
 
-export default Logout;
+export default LogOut;

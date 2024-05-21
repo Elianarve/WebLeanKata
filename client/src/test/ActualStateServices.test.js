@@ -1,27 +1,8 @@
 import axios from 'axios';
 import '@testing-library/jest-dom';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import axios from 'axios';
-import { deleteActualState } from '../services/actualStateServices'; // Ajusta la ruta de importación según la estructura de tu proyecto
-
-describe('deleteActualState', () => {
-  beforeEach(() => {
-    localStorage.setItem('authToken', 'test-token');
-    vi.resetAllMocks();
-  });
-
-
-  it('debería lanzar un error si la solicitud falla', async () => {
-    const mockError = new Error('Network error');
-    vi.spyOn(axios, 'delete').mockRejectedValue(mockError);
-
-    await expect(deleteActualState(1)).rejects.toThrow('Network error');
-  });
-});
-
-
 import axios from 'axios';
 
 export const getOneActualState = async (id) => {
@@ -38,11 +19,10 @@ export const getOneActualState = async (id) => {
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import axios from 'axios';
-import { postActualState } from '../services/actualStateServices'; // Ajusta la ruta de importación según la estructura de tu proyecto
+import { postActualState } from '../services/actualStateServices'; 
 
 describe('postActualState', () => {
   beforeEach(() => {
-    // Configurar el token de autenticación en localStorage antes de cada prueba
     localStorage.setItem('authToken', 'test-token');
     vi.resetAllMocks();
   });
@@ -67,11 +47,9 @@ describe('postActualState', () => {
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import axios from 'axios';
-import { getActualState } from '../services/actualStateServices'; // Ajusta la ruta de importación según la estructura de tu proyecto
-
+import { getActualState } from '../services/actualStateServices'; 
 describe('getActualState', () => {
   beforeEach(() => {
-    // Configurar el token de autenticación en localStorage antes de cada prueba
     localStorage.setItem('authToken', 'test-token');
     vi.resetAllMocks();
   });

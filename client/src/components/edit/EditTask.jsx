@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { getOneTask, updateTask } from "../../services/taskServices";
 import "../forms/css/Forms.css";
+import Swal from 'sweetalert2';
+
 
 const EditTask = ({ editTaskId, setLoading, setEdiTask }) => {
   const {
@@ -31,7 +33,7 @@ const EditTask = ({ editTaskId, setLoading, setEdiTask }) => {
   const onSubmit = async (taskData) => {
     try {
       await updateTask(editTaskId, taskData);
-      alert("¡Los datos del elemento han sido actualizados correctamente!");
+      Swal.fire("¡Los datos del elemento han sido actualizados correctamente!");
       setLoading(true);
       setEdiTask(false);
     } catch (error) {

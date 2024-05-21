@@ -6,6 +6,8 @@ import {
   updateImage,
 } from "../../services/obstacleServices";
 import "../forms/css/Forms.css";
+import Swal from 'sweetalert2';
+
 
 const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
   const {
@@ -34,7 +36,7 @@ const EditObstacle = ({ editObstacleId, setLoading, setEditObstacle }) => {
     data.image = url_image;
     try {
       await updateObstacle(editObstacleId, data);
-      alert("¡Los datos del Obstáculo han sido actualizados correctamente!");
+      Swal.fire("¡Los datos del Obstáculo han sido actualizados correctamente!");
       setLoading(true);
       setEditObstacle(false);
     } catch (error) {

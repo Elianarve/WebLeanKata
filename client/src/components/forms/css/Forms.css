@@ -1,5 +1,6 @@
 body{
   background-color: hsl(192, 15%, 94%);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .form-box{
@@ -30,7 +31,7 @@ body{
   background: #ECF0F1;
   box-shadow: 0 0 10px #002661;
   padding: 20px;
-  width: 40%;
+  max-width: 70%;
   max-height: 50vh;
   overflow-y: auto;
   margin-top: 5%;
@@ -173,3 +174,6 @@ input[type="date"]{
   pointer-events: none;
 }
 
+.error-message{
+  color: #FF5733; 
+}

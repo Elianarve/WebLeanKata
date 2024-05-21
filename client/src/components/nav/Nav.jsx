@@ -3,7 +3,7 @@ import { useUserContext } from '../../context/UserContext';
 import { useState } from 'react';
 import "./Nav.css";
 import logo from "../../assets/img/logotipo2.png";
-import Logout from '../../components/logOut/Logout';
+import Logout from '../logOut/LogOut';
 
 const Nav = () => {
    const { user, userAuth } = useUserContext(); 

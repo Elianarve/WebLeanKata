@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { getOneLearning, updateLearning } from '../../services/learningsServices';
 import '../forms/css/Forms.css';
+import Swal from 'sweetalert2';
 
 
 const EditLearning = ({editLearningId, setLoading, setEditLearning}) => {
@@ -24,7 +25,7 @@ const EditLearning = ({editLearningId, setLoading, setEditLearning}) => {
   const onSubmit = async (learningData) => {
     try {
       await updateLearning(editLearningId, learningData);
-      alert('¡Los datos del elemento han sido actualizados correctamente!');
+      Swal.fire('¡Los datos del elemento han sido actualizados correctamente!');
       setLoading(true);
       setEditLearning(false);
     } catch (error) {

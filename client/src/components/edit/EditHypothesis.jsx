@@ -5,6 +5,8 @@ import {
 } from "../../services/hypothesisServices";
 import { useForm } from "react-hook-form";
 import "../forms/css/Forms.css";
+import Swal from 'sweetalert2';
+
 
 const EditHypothesis = ({
   editHypothesisId,
@@ -34,7 +36,7 @@ const EditHypothesis = ({
   const onSubmit = async (hypothesisData) => {
     try {
       await updateHypothesis(editHypothesisId, hypothesisData);
-      alert("¡Los datos de la hipótesis han sido actualizados correctamente!");
+      Swal.fire("¡Los datos de la hipótesis han sido actualizados correctamente!");
       setLoading(true);
       setEditHypothesis(false);
     } catch (error) {
